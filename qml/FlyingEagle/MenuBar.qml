@@ -5,6 +5,8 @@ Rectangle {
     height: 60
     color: "#00000000"
 
+    signal handlerLoader(string name, int index)
+
     Image {
         id: logo
         anchors.leftMargin: 20
@@ -22,6 +24,10 @@ Rectangle {
         height: 50
         backgroundNormal: "images/home.png"
         backgroundPressed: "images/homeSel.png"
+
+        onClicked: {
+            handlerLoader("HomePage.qml", 0)
+        }
     }
 
     Text {

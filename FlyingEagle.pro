@@ -26,4 +26,5 @@ OTHER_FILES += \
     qml/FlyingEagle/LangSelectionPage.qml \
     qml/FlyingEagle/FavoritePage.qml \
     qml/FlyingEagle/TopicSelectionPage.qml \
-    qml/FlyingEagle/RankSelectionPage.qml
+    qml/FlyingEagle/RankSelectionPage.qml \
+    qml/FlyingEagle/NewMusicSelectionPage.qml

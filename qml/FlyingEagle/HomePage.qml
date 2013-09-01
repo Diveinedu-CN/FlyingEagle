@@ -24,7 +24,7 @@ Rectangle {
             backgroundNormal: "images/lang.png"
 
             onClicked: {
-                handlerLoader("StarSelectionPage.qml", 0)
+                handlerLoader("LangSelectionPage.qml", 0)
             }
         }
 
@@ -35,6 +35,10 @@ Rectangle {
             width: 243
             height: 212
             backgroundNormal: "images/fav.png"
+
+            onClicked: {
+                handlerLoader("FavoritePage.qml", 1)
+            }
         }
     }
 
@@ -53,6 +57,10 @@ Rectangle {
             width: 281
             height: 322
             backgroundNormal: "images/star.png"
+
+            onClicked: {
+                handlerLoader("StarSelectionPage.qml", 2)
+            }
         }
     }
 
@@ -71,6 +79,10 @@ Rectangle {
             width: 119
             height: 169
             backgroundNormal: "images/title.png"
+
+            onClicked: {
+                handlerLoader("TopicSelectionPage.qml", 3)
+            }
         }
 
         PushButton {
@@ -80,6 +92,10 @@ Rectangle {
             width: 119
             height: 194
             backgroundNormal: "images/top.png"
+
+            onClicked: {
+                handlerLoader("RankSelectionPage.qml", 4)
+            }
         }
 
         PushButton {
@@ -89,6 +105,10 @@ Rectangle {
             width: 201
             height: 173
             backgroundNormal: "images/song.png"
+
+            onClicked: {
+                handlerLoader("MusicSelectionPage.qml", 5)
+            }
         }
 
         PushButton {
@@ -98,8 +118,10 @@ Rectangle {
             width: 201
             height: 175
             backgroundNormal: "images/newsong.png"
+
+            onClicked: {
+                handlerLoader("NewMusicSelectionPage.qml", 6)
+            }
         }
-
-
     }
 }

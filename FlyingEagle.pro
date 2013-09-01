@@ -22,4 +22,8 @@ include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
 
 OTHER_FILES += \
-    qml/FlyingEagle/StarSelectionPage.qml
+    qml/FlyingEagle/StarSelectionPage.qml \
+    qml/FlyingEagle/LangSelectionPage.qml \
+    qml/FlyingEagle/FavoritePage.qml \
+    qml/FlyingEagle/TopicSelectionPage.qml \
+    qml/FlyingEagle/RankSelectionPage.qml

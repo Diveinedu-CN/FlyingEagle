@@ -1,5 +1,5 @@
 /*
- *根据歌星选择歌曲
+ *收藏页面
 **/
 
 import QtQuick 2.0
@@ -7,7 +7,7 @@ import QtQuick 2.0
 Rectangle {
     width: 1280
     height: 591
-    color: "red"
+    color: "blue"
 
     signal handlerLoader(string name, int index)
 }

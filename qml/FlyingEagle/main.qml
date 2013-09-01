@@ -29,15 +29,33 @@ Rectangle {
         color: "transparent"
         anchors.bottomMargin: -26
 
-//        Loader {
-//            id: contentLoader
-//        }
+        signal handlerLoader(string name, int index)
 
-        //测试首页
-        HomePage {
-            anchors.bottomMargin: -25
-            anchors.fill: parent
+        Loader {
+            id: contentLoader
+            source: "HomePage.qml"
+        }
 
+        //创建连接
+        Connections {
+            target: contentLoader.item
+            onHandlerLoader: {
+                switch (index) {
+                case 0:
+                    contentLoader.source = "StarSelectionPage.qml";
+                }
+            }
+        }
+
+        Connections {
+            target: mainMenu
+            onHandlerLoader: {
+                switch (index) {
+                case 0:
+                    contentLoader.source = "HomePage.qml"
+                    break;
+                }
+            }
         }
     }
 
@@ -55,7 +73,7 @@ Rectangle {
         color: "#88000000"
         anchors.leftMargin: 0
         anchors.topMargin: 0
-        visible: true
+        visible: false
 
         MouseArea {
             anchors.fill: parent

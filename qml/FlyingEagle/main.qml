@@ -21,14 +21,23 @@ Rectangle {
     Rectangle {
         id: contentArea
         width: parent.width
+        height: 591
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.top: mainMenu.bottom
         anchors.bottom: mainToolBar.top
         color: "transparent"
+        anchors.bottomMargin: -26
 
-        Loader {
-            id: contentLoader
+//        Loader {
+//            id: contentLoader
+//        }
+
+        //测试首页
+        HomePage {
+            anchors.bottomMargin: -25
+            anchors.fill: parent
+
         }
     }
 
@@ -53,6 +62,7 @@ Rectangle {
             onClicked: {
                 parent.visible = false
             }
+
         }
     }
 

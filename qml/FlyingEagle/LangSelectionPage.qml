@@ -39,6 +39,9 @@ Rectangle {
         //Tab标签栏
         Image {
             id: tabBar
+            anchors.left: parent.left
+            anchors.top: navDiangeImage.bottom
+            source: "images/daohangtiao.png"
         }
     }
 }

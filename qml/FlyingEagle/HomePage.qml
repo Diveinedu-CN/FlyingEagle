@@ -23,7 +23,6 @@ Rectangle {
         width: 194
         height: 633
         color: "transparent"
-
         PushButton {
             id: pushbutton1
             x: 0
@@ -71,7 +70,6 @@ Rectangle {
         width: 436
         height: 634
         color: "transparent"
-
         PushButton {
             id: pushbutton3
             x: 0
@@ -103,7 +101,6 @@ Rectangle {
         width: 420
         height: 634
         color: "transparent"
-
         PushButton {
             id: pushbutton4
             x: 0

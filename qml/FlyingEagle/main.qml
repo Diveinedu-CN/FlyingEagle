@@ -112,8 +112,9 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 10
         maximumLength: 20
-        placeholderText: qsTr("")
+        placeholderText: qsTr("搜歌")
         style: TextFieldStyle {
+            id:style
             textColor: "#FFFFFFFF"
             background: Image {
                 anchors.fill: parent
@@ -121,7 +122,23 @@ Rectangle {
                 anchors.rightMargin: 40
                 source: "images/searchbar.png"
             }
+            panel:Item {
+                anchors.fill: parent
+                property font font
+                property color textColor: style.textColor
+                property color selectionColor: style.selectionColor
+                property color selectedTextColor: style.selectedTextColor
+                implicitWidth: backgroundLoader.implicitWidth ? backgroundLoader.implicitWidth : 100
+                implicitHeight: backgroundLoader.implicitHeight ? backgroundLoader.implicitHeight : 20
+                property color placeholderTextColor: Qt.rgba(1, 1, 1, 0.5)
+                Loader {
+                    id: backgroundLoader
+                    sourceComponent: background
+                    anchors.fill: parent
+                }
+            }
         }
+
     }
 
     //下部工具条

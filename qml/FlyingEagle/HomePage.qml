@@ -1,6 +1,15 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: homepage
+    property double zAngle:0
+    transform: Rotation { origin.x: 640; origin.y: 360;origin.z:0; axis {x:0; y:1; z:0} angle:zAngle }
+    SequentialAnimation{
+        loops: Animation.Infinite
+        NumberAnimation { target: homepage; property: "zAngle"; to: +0.8; duration: 1000; easing.type: Easing.Linear  }
+        NumberAnimation { target: homepage; property: "zAngle"; to: -0.8; duration: 1000; easing.type: Easing.Linear  }
+        running: true
+    }
     anchors.fill: parent
     //anchors.bottomMargin: -25
     color: "transparent"

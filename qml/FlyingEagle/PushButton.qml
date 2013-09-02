@@ -31,6 +31,7 @@ Rectangle {
 
     Image {
         id: bg
+        width: parent.width;height: parent.height
         visible: backgroundNormal != ""
         fillMode: Image.PreserveAspectFit
         source: maButton.pressed ? backgroundPressed : backgroundNormal

@@ -9,18 +9,19 @@ Rectangle {
 
     Rectangle {
         id: rectangle1
-        x: 191
-        y: 68
-        width: 274
-        height: 453
+        x: 100
+        y: 20
+        width: 194
+        height: 633
         color: "transparent"
 
         PushButton {
             id: pushbutton1
-            x: 26
-            y: 15
-            width: 230
-            height: 206
+            x: 0
+            y: 0
+            width: 194
+            height: 234
+            clip: false
             backgroundNormal: "images/lang.png"
 
             onClicked: {
@@ -30,54 +31,76 @@ Rectangle {
 
         PushButton {
             id: pushbutton2
-            x: 18
-            y: 229
-            width: 243
-            height: 212
+            x: 0
+            y: 250
+            width: 194
+            height: 233
             backgroundNormal: "images/fav.png"
 
             onClicked: {
                 handlerLoader("FavoritePage.qml", 1)
             }
         }
+
+        Image {
+            id: image1
+            x: 0
+            y: 452
+            width: 194
+            height: 180
+            fillMode: Image.PreserveAspectFit
+            transformOrigin: Item.Center
+            rotation: 0
+            source: "images/dy-fav.png"
+        }
     }
 
     Rectangle {
         id: rectangle2
-        x: 478
-        y: 68
-        width: 298
-        height: 453
+        x: 300
+        y: 20
+        width: 436
+        height: 634
         color: "transparent"
 
         PushButton {
             id: pushbutton3
-            x: 9
-            y: 82
-            width: 281
-            height: 322
+            x: 0
+            y: 0
+            width: parent.width
+            height: 484
             backgroundNormal: "images/star.png"
 
             onClicked: {
                 handlerLoader("StarSelectionPage.qml", 2)
             }
         }
+
+        Image {
+            id: image2
+            x: 0
+            y: 433
+            width: 436
+            height: 201
+            fillMode: Image.PreserveAspectFit
+            source: "images/dy-star.png"
+        }
     }
 
     Rectangle {
         id: rectangle3
-        x: 793
-        y: 67
-        width: 357
-        height: 454
+        x: 744
+        y: 20
+        width: 420
+        height: 634
         color: "transparent"
 
         PushButton {
             id: pushbutton4
-            x: 8
-            y: 8
-            width: 119
-            height: 169
+            x: 0
+            y: 49
+            width: 141
+            height: 187
             backgroundNormal: "images/title.png"
 
             onClicked: {
@@ -87,10 +110,10 @@ Rectangle {
 
         PushButton {
             id: pushbutton5
-            x: 8
-            y: 183
-            width: 119
-            height: 194
+            x: 0
+            y: 246
+            width: 141
+            height: 187
             backgroundNormal: "images/top.png"
 
             onClicked: {
@@ -100,10 +123,10 @@ Rectangle {
 
         PushButton {
             id: pushbutton6
-            x: 148
-            y: 8
-            width: 201
-            height: 173
+            x: 145
+            y: 0
+            width: 272
+            height: 236
             backgroundNormal: "images/song.png"
 
             onClicked: {
@@ -113,15 +136,35 @@ Rectangle {
 
         PushButton {
             id: pushbutton7
-            x: 148
-            y: 202
-            width: 201
-            height: 175
+            x: 145
+            y: 246
+            width: 272
+            height: 236
             backgroundNormal: "images/newsong.png"
 
             onClicked: {
                 handlerLoader("NewMusicSelectionPage.qml", 6)
             }
+        }
+
+        Image {
+            id: image3
+            x: 0
+            y: 433
+            width: 141
+            height: 201
+            fillMode: Image.PreserveAspectFit
+            source: "images/dy-top.png"
+        }
+
+        Image {
+            id: image4
+            x: 145
+            y: 457
+            width: 272
+            height: 177
+            fillMode: Image.PreserveAspectFit
+            source: "images/dy-new.png"
         }
     }
 }

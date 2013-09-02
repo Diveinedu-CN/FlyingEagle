@@ -10,8 +10,8 @@ Rectangle {
     Image {
         id: logo
         anchors.leftMargin: 20
-        width: 160
-        height: 60
+        width: 113
+        height: 48
         source: "images/logo.png"
     }
 
@@ -20,8 +20,8 @@ Rectangle {
         anchors.topMargin: 4
         anchors.left: logo.right
         anchors.leftMargin: 4
-        width: 50
-        height: 50
+        width: 41
+        height: 40
         backgroundNormal: "images/home.png"
         backgroundPressed: "images/homeSel.png"
 
@@ -46,8 +46,8 @@ Rectangle {
         anchors.topMargin: 4
         anchors.left: mainTitle.right
         anchors.leftMargin: 4
-        width: 50
-        height: 50
+        width: 41
+        height: 40
         backgroundNormal: "images/fuwu.png"
         backgroundPressed: "images/fuwuSel.png"
     }

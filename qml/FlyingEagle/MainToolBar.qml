@@ -158,9 +158,14 @@ Rectangle {
         value: 0.5
         style: ProgressBarStyle {
             background: Image {
+                anchors.fill: parent
+                anchors.leftMargin: -4
                 source: "images/sliderBg.png"
             }
             progress: Image {
+                anchors.fill: parent
+                anchors.topMargin: 4
+                anchors.bottomMargin: 4
                 source: "images/sliderFg.png"
             }
         }

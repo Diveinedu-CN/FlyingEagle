@@ -111,10 +111,14 @@ Rectangle {
         anchors.topMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
-
+        maximumLength: 20
+        placeholderText: qsTr("")
         style: TextFieldStyle {
             textColor: "#FFFFFFFF"
             background: Image {
+                anchors.fill: parent
+                anchors.leftMargin: -40
+                anchors.rightMargin: 40
                 source: "images/searchbar.png"
             }
         }

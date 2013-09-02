@@ -1,4 +1,6 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.0
 
 Rectangle {
     width: 1280
@@ -97,17 +99,27 @@ Rectangle {
     Slider {
         id: yinliangSlider
         anchors.left: tiaoyinButton.right
-        anchors.leftMargin: 4
+        anchors.leftMargin: 26
         anchors.top: parent.top
-        anchors.topMargin: 42
-        width: 154
+        anchors.topMargin: 46
+        width: 160
         height: 38
+
+        style: SliderStyle {
+            groove: Image {
+                source: "images/tuning_sback.png"
+            }
+            handle: Image {
+                y: 2
+                source: "images/buttom.png"
+            }
+        }
     }
 
     RightPushButton {
         id: jingyinButton
         anchors.left: yinliangSlider.right
-        anchors.leftMargin: 4
+        anchors.leftMargin: 0
         anchors.bottom: parent.bottom
         text: qsTr("静音")
         backgroundNormal: "images/jingyin.png"
@@ -136,13 +148,40 @@ Rectangle {
 
     ProgressBar {
         id: jinduProgressBar
-        anchors.left: fuzhuButton.right
-        anchors.leftMargin: 150
+        anchors.left: mvButton.right
+        anchors.leftMargin: -10
         anchors.top: parent.top
-        anchors.topMargin: 20
-        width: 100
+        anchors.topMargin: 50
+        width: 110
         height: 20
-        color: "red"
-        secondColor: "green"
+
+        value: 0.5
+        style: ProgressBarStyle {
+            background: Image {
+                source: "images/sliderBg.png"
+            }
+            progress: Image {
+                source: "images/sliderFg.png"
+            }
+        }
+    }
+
+    PushButton {
+        id: mvButton
+        anchors.left: fuzhuButton.right
+        anchors.leftMargin: 20
+        anchors.bottom: parent.bottom
+        backgroundNormal: "images/MV-button.png"
+    }
+
+    PushButton {
+        id: yixuanButton
+        anchors.left: jinduProgressBar.right
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 4
+        anchors.bottom: parent.bottom
+        text: qsTr("已 选")
+        colorText: "#FFFFFFFF"
+        backgroundNormal: "images/yixuan.png"
     }
 }

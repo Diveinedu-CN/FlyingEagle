@@ -1,4 +1,6 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.0
 
 Rectangle {
     width: 1280
@@ -11,7 +13,7 @@ Rectangle {
     }
 
     //上部菜单栏
-    MenuBar {
+    MainBar {
         id: mainMenu
         height: 60
         anchors.top: parent.top
@@ -104,16 +106,16 @@ Rectangle {
     }
 
     //在这里加入搜索条,这样就不会被弹窗阴影遮盖了
-    Rectangle {
-        width: 100
-        height: 40
-        anchors.right: parent.right
+    TextField {
         anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-
+        style: TextFieldStyle {
+            textColor: "#FFFFFFFF"
+            background: Image {
+                source: "images/searchbar.png"
             }
         }
     }

@@ -107,7 +107,7 @@ Rectangle {
 
         style: SliderStyle {
             groove: Image {
-                source: "images/tuning_sback.png"
+                source: "images/tuning_sfront.png"
             }
             handle: Image {
                 y: 2
@@ -151,21 +151,22 @@ Rectangle {
         anchors.left: mvButton.right
         anchors.leftMargin: -10
         anchors.top: parent.top
-        anchors.topMargin: 50
+        anchors.topMargin: 40
         width: 110
-        height: 20
+        height: 41
 
         value: 0.5
         style: ProgressBarStyle {
             background: Image {
                 anchors.fill: parent
-                anchors.leftMargin: -4
+                anchors.leftMargin: -14
                 source: "images/sliderBg.png"
             }
             progress: Image {
                 anchors.fill: parent
-                anchors.topMargin: 4
-                anchors.bottomMargin: 4
+                anchors.leftMargin: 0
+                anchors.topMargin: 7
+                anchors.bottomMargin: 7
                 source: "images/sliderFg.png"
             }
         }
@@ -189,4 +190,33 @@ Rectangle {
         colorText: "#FFFFFFFF"
         backgroundNormal: "images/yixuan.png"
     }
+
+    /*已选按钮上的气泡*/
+    Button {
+        id: yixuanQipao
+//        property type name: value
+        anchors.right: parent.right
+        anchors.topMargin: 10
+        Text {
+            anchors.fill: parent
+            anchors.topMargin: 8
+            horizontalAlignment: Text.AlignHCenter
+            text: qsTr("99+")
+            font.pixelSize:16
+            font.bold: true
+            color: "white"
+        }
+
+        style: ButtonStyle {
+            background: Image {
+                anchors.fill: parent
+                anchors.bottomMargin: -10
+                source:"images/qipao2.png"
+            }
+            SystemPalette {
+            }
+        }
+    }
+
+
 }

@@ -28,4 +28,6 @@ OTHER_FILES += \
     qml/FlyingEagle/TopicSelectionPage.qml \
     qml/FlyingEagle/RankSelectionPage.qml \
     qml/FlyingEagle/NewMusicSelectionPage.qml \
-    qml/FlyingEagle/MainBar.qml
+    qml/FlyingEagle/MainBar.qml \
+    qml/FlyingEagle/componentCreation.js \
+    qml/FlyingEagle/TabBarButton.qml

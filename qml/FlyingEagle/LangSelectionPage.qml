@@ -4,15 +4,20 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
+import "componentCreation.js" as ComponentCreation
 
 Rectangle {
     width: 1280
     height: 591
     color: "transparent"
 
+    property var langArray: new Array("全部歌星", "热门", "港台男", "港台女", "大陆男", "大陆女", "日韩", "欧美", "网络", "组合", "其他")
+
     signal handlerLoader(string name, int index)
 
     Item {
+        id: tabbarId
+
         anchors.left: parent.left
         anchors.top: parent.top
         width: parent.width
@@ -42,6 +47,155 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: navDiangeImage.bottom
             source: "images/daohangtiao.png"
+        }
+
+        //创建语言选择按钮
+        Component.onCompleted: {
+            var preButton = null;
+            for(var i=0; i<langArray.length; i++) {
+                var button = ComponentCreation.createTabButton(tabBar, langArray[i]);
+                if (preButton == null) {
+                    button.anchors.left = tabbarId.left;
+                    button.anchors.leftMargin = 20;
+                } else {
+                    button.anchors.left = preButton.right;
+                    button.anchors.leftMargin = 10;
+                }
+                preButton = button;
+            }
+        }
+    }
+
+    ListModel {
+        id: testModel
+        ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "John Brown"
+            number: "555 8426"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "John Brown"
+            number: "555 8426"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "John Brown"
+            number: "555 8426"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "John Brown"
+            number: "555 8426"
+            star: "张学友"
+            image: ""
+        }
+        ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+            star: "张学友"
+            image: ""
+        }
+    }
+
+    ListView {
+        id: starList
+        anchors.top: tabbarId.bottom
+        anchors.topMargin: 100
+        width: parent.width
+        height: 300
+        orientation: Qt.Horizontal
+
+        model: testModel
+        delegate: Rectangle {
+            width: 358
+            height: 139
+
+            color: "transparent"
+
+            Image {
+                source: "images/musicBg.png"
+            }
+
+            Text {
+                id: musicTitle
+                anchors.left: parent.left
+                anchors.leftMargin: 10
+                anchors.top: parent.top
+                anchors.topMargin: 10
+
+                text: name
+                color: "#FFFFFFFF"
+                font.pixelSize: 30
+                font.bold: true
+            }
+
+            Text {
+                anchors.left: musicTitle.left
+                anchors.top: musicTitle.bottom
+                anchors.topMargin: 10
+
+                text: number
+                color: "#FFFFFFFF"
+            }
+
+            Text {
+                anchors.left: musicTitle.left
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 20
+
+                text: star
+                color: "#FFFFFFFF"
+                font.pixelSize: 26
+            }
+
+            Image {
+
+            }
         }
     }
 }

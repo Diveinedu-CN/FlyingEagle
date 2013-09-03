@@ -36,6 +36,7 @@ Rectangle {
         fillMode: Image.PreserveAspectFit
         source: maButton.pressed ? backgroundPressed : backgroundNormal
         anchors.fill: parent
+        antialiasing: true
     }
 
     Image {
@@ -44,6 +45,7 @@ Rectangle {
         source: icon
         anchors.fill: parent
         anchors.centerIn: parent
+        antialiasing: true
     }
 
     Text {

@@ -68,6 +68,7 @@ Rectangle {
             transformOrigin: Item.Center
             rotation: 0
             source: "images/dy-fav.png"
+            antialiasing: true
         }
     }
 
@@ -109,6 +110,7 @@ Rectangle {
             height: 201
             fillMode: Image.PreserveAspectFit
             source: "images/dy-star.png"
+            antialiasing: true
         }
     }
 
@@ -189,6 +191,7 @@ Rectangle {
             height: 201
             fillMode: Image.PreserveAspectFit
             source: "images/dy-top.png"
+            antialiasing: true
         }
 
         Image {
@@ -199,6 +202,7 @@ Rectangle {
             height: 177
             fillMode: Image.PreserveAspectFit
             source: "images/dy-new.png"
+            antialiasing: true
         }
     }
 }

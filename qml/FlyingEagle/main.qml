@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
+import "YGYKeyBoard"
 
 Rectangle {
     width: 1280
@@ -103,10 +104,14 @@ Rectangle {
             }
 
         }
+        YGYKeyBoard {
+            id:keyboard
+        }
     }
 
     //在这里加入搜索条,这样就不会被弹窗阴影遮盖了
     TextField {
+        id:searchBar
         anchors.top: parent.top
         anchors.topMargin: 10
         anchors.right: parent.right
@@ -138,7 +143,21 @@ Rectangle {
                 }
             }
         }
-
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                searchBar.forceActiveFocus();
+                if(keyboard.state === "show")
+                {
+                    popContentArea.visible = false
+                    keyboard.state = "hide";
+                }else
+                {
+                    popContentArea.visible = true
+                    keyboard.state = "show";
+                }
+            }
+        }
     }
 
     //下部工具条

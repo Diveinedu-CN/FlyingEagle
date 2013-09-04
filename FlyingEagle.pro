@@ -30,4 +30,5 @@ OTHER_FILES += \
     qml/FlyingEagle/NewMusicSelectionPage.qml \
     qml/FlyingEagle/MainBar.qml \
     qml/FlyingEagle/componentCreation.js \
-    qml/FlyingEagle/TabBarButton.qml
+    qml/FlyingEagle/TabBarButton.qml \
+    qml/FlyingEagle/TestListModel.qml

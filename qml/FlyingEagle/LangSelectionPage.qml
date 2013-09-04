@@ -66,105 +66,39 @@ Rectangle {
         }
     }
 
-    ListModel {
+    TestListModel {
         id: testModel
-        ListElement {
-            name: "Bill Smith"
-            number: "555 3264"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "John Brown"
-            number: "555 8426"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Sam Wise"
-            number: "555 0473"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Bill Smith"
-            number: "555 3264"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "John Brown"
-            number: "555 8426"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Sam Wise"
-            number: "555 0473"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Bill Smith"
-            number: "555 3264"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "John Brown"
-            number: "555 8426"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Sam Wise"
-            number: "555 0473"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Bill Smith"
-            number: "555 3264"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "John Brown"
-            number: "555 8426"
-            star: "张学友"
-            image: ""
-        }
-        ListElement {
-            name: "Sam Wise"
-            number: "555 0473"
-            star: "张学友"
-            image: ""
-        }
     }
 
-    ListView {
+    GridView {
         id: starList
         anchors.top: tabbarId.bottom
         anchors.topMargin: 100
+
         width: parent.width
-        height: 300
-        orientation: Qt.Horizontal
+        height: 418
+        cellWidth: 426
+        cellHeight: 139
+
+        flow: GridView.TopToBottom
+        snapMode: GridView.SnapToRow
 
         model: testModel
-        delegate: Rectangle {
-            width: 358
+        delegate: Item {
+            width: 426
             height: 139
 
-            color: "transparent"
-
             Image {
+                anchors.left: parent.left
+                anchors.leftMargin: 30
+                anchors.top: parent.top
                 source: "images/musicBg.png"
             }
 
             Text {
                 id: musicTitle
                 anchors.left: parent.left
-                anchors.leftMargin: 10
+                anchors.leftMargin: 40
                 anchors.top: parent.top
                 anchors.topMargin: 10
 

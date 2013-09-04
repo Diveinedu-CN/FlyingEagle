@@ -22,8 +22,8 @@ Rectangle {
         transform: Rotation { origin.x: 0; origin.y: rectangle1.height/2;origin.z:0; axis {x:0; y:1; z:0} angle:rectangle1.zAngle }
         SequentialAnimation{
             loops: Animation.Infinite
-            NumberAnimation { target: rectangle1; property: "zAngle"; to: -5; duration: 1000; easing.type: Easing.Linear  }
-            NumberAnimation { target: rectangle1; property: "zAngle"; to: 0; duration: 1000; easing.type: Easing.Linear  }
+            NumberAnimation { target: rectangle1; property: "zAngle"; to: -5; duration: 1500; easing.type: Easing.Linear  }
+            NumberAnimation { target: rectangle1; property: "zAngle"; to: 0; duration: 1500; easing.type: Easing.Linear  }
             running: true
         }
         x: 100

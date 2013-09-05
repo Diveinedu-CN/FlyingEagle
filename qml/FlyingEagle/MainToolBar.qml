@@ -6,7 +6,8 @@ Rectangle {
     width: 1280
     height: 95
     property url backgroundImage: ""
-
+    property alias yixuanQiPao: yixuanQipao
+    property alias yixuanButton: yixuanButton
     Image {
         anchors.fill: parent
         source: !parent.backgroundImage ? parent.backgroundImage : "images/bar.png"
@@ -194,7 +195,7 @@ Rectangle {
     /*已选按钮上的气泡*/
     Button {
         id: yixuanQipao
-//        property type name: value
+        width:50;height: 50;
         anchors.right: parent.right
         anchors.topMargin: 10
         Text {
@@ -217,6 +218,5 @@ Rectangle {
             }
         }
     }
-
 
 }

@@ -100,7 +100,11 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                parent.visible = false
+                if(keyboard.state === "show")
+                {
+                    keyboard.state = "hide";
+                    popContentAreaTimer.start();
+                }
             }
 
         }
@@ -159,7 +163,6 @@ Rectangle {
                 {
                     keyboard.state = "hide";
                     popContentAreaTimer.start();
-//                    popContentArea.visible = false;
                 }else
                 {
                     popContentArea.visible = true;
@@ -168,6 +171,65 @@ Rectangle {
             }
         }
     }
+
+
+    //已选弹窗阴影遮盖层,默认不显示,比搜索栏更上一层
+    Rectangle {
+        id: popContentAreaYixuan
+        x: 0
+        y: 0
+        width: parent.width
+        height: 651
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: mainToolBar.top
+        anchors.bottomMargin: -26
+        color: "#BF000000"
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
+        visible: false
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+            }
+        }
+
+        Loader {
+            id: yixuanLoader
+            source: "SelectedSongPage.qml"
+        }
+        //建立信号连接处理点击已选或已选气泡
+        Connections {
+            target: mainToolBar.yixuanButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+                console.log("mainToolBar.z:"+mainToolBar.z);
+                console.log("yixuanLoader.item.z:"+yixuanLoader.item.z);
+                if(yixuanLoader.item.z <= mainToolBar.z)
+                {
+                    yixuanLoader.item.z = mainToolBar.z+1;
+                    console.log("yixuanLoader.item.z:"+yixuanLoader.item.z);
+                }
+            }
+        }
+        Connections {
+            target: mainToolBar.yixuanQiPao
+            ignoreUnknownSignals:true
+            onClicked: {
+                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+            }
+        }
+        Connections {
+            target: yixuanLoader.item.selectedCloseButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+            }
+        }
+    }
+
 
     //下部工具条
     MainToolBar {

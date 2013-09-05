@@ -81,7 +81,7 @@ Rectangle {
         }
     }
 
-    //弹窗阴影遮盖层,默认不显示,作为弹窗视图所在图层
+    //输入法弹窗阴影遮盖层,默认不显示,作为弹窗视图所在图层
     Rectangle {
         id: popContentArea
         x: 0
@@ -106,6 +106,14 @@ Rectangle {
         }
         YGYKeyBoard {
             id:keyboard
+        }
+    }
+    //输入法 弹窗阴影遮盖层 消失定时器
+    Timer {
+        id:popContentAreaTimer
+        interval: 150; running: true; repeat: false
+        onTriggered: {
+            popContentArea.visible = false;
         }
     }
 
@@ -149,11 +157,12 @@ Rectangle {
                 searchBar.forceActiveFocus();
                 if(keyboard.state === "show")
                 {
-                    popContentArea.visible = false
                     keyboard.state = "hide";
+                    popContentAreaTimer.start();
+//                    popContentArea.visible = false;
                 }else
                 {
-                    popContentArea.visible = true
+                    popContentArea.visible = true;
                     keyboard.state = "show";
                 }
             }

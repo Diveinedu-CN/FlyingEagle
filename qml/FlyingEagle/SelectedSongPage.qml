@@ -106,7 +106,87 @@ Rectangle {
             }
         }
     }
+    //已选框中间的列表
+    Component {
+        id: songItemDelegate
+        Item {
+            property  int size: 20;
+            property  int topMargin: 16;
+            width: grid.cellWidth; height: grid.cellHeight
+            anchors.leftMargin: 72
+            Text {
+                id:_seqno;
+                width:20;height: 40;
+                font.pixelSize: size;
+                anchors.left: parent.left;
+                anchors.leftMargin: 10;
+                anchors.top:parent.top;
+                anchors.topMargin: topMargin;
+                color:"red";
+                text: index+".";
+                anchors.verticalCenter: parent.verticalCenter;
+            }
+            Text {
+                id:_name;
+                height: 40;
+                font.pixelSize: size;
+                anchors.left: _seqno.right;
+                anchors.leftMargin: 10;
+                anchors.top:parent.top;
+                anchors.topMargin: topMargin;
+                color:"black";
+                text: name;
+                anchors.verticalCenter: parent.verticalCenter;
+            }
+            Text {
+                id:_star;
+                height: 40;
+                font.pixelSize: 0
+                anchors.right: _firstButton.left;
+                anchors.rightMargin: 20;
+                anchors.top:parent.top;
+                anchors.topMargin: topMargin;
+                color:"black";
+                text: star;
+                anchors.verticalCenter: parent.verticalCenter;
+            }
+            Image {
+                id:_firstButton;
+                width:40;height: 40;
+                anchors.right:_delButton.left;
+                anchors.rightMargin: 10;
+                source: "images/first.png";
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Image {
+                id:_delButton;
+                width:40;height: 40;
+                anchors.right: parent.right;
+                source: "images/del.png";
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
+    }
 
+    GridView {
+        id: grid
+        width: 424;
+        height: 456
+        anchors.left: yixuanButton.left
+        anchors.top: yixuanButton.bottom
+        cellWidth: grid.width; cellHeight: 55
+        flow: GridView.TopToBottom
+        snapMode: GridView.SnapToRow
+        clip: true
+        model: TestListModel {}
+        delegate: songItemDelegate
+//        highlight: Rectangle { width: grid.cellWidth-2; color: "lightblue"; anchors.left: parent.left; anchors.leftMargin: 2; radius: 10 }
+        highlightFollowsCurrentItem: true
+        focus: true
+    }
+
+
+    //已选框底部栏
     Button {
         id: daluanButton
         width: 72
@@ -155,7 +235,7 @@ Rectangle {
         anchors.leftMargin: 12
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 38
-        text:"10/100"
+        text:grid.currentIndex+"/"+grid.count
         font.pixelSize: 20
         color:"white"
     }

@@ -172,7 +172,6 @@ Rectangle {
         }
     }
 
-
     //已选弹窗阴影遮盖层,默认不显示,比搜索栏更上一层
     Rectangle {
         id: popContentAreaYixuan
@@ -191,26 +190,41 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+                yixuanLoader.item.showUp(false);
+                popContentAreaYixuanTimer.start();
             }
         }
-
+        Timer {
+            id:popContentAreaYixuanTimer
+            interval: 700; running: false; repeat: false
+            onTriggered: {
+                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+                if(yixuanLoader.source != "")
+                {
+                    yixuanLoader.setSource("")
+                }else
+                {
+                    yixuanLoader.setSource("SelectedSongPage.qml");
+                }
+            }
+        }
         Loader {
             id: yixuanLoader
-            source: "SelectedSongPage.qml"
+            source: ""
         }
         //建立信号连接处理点击已选或已选气泡
         Connections {
             target: mainToolBar.yixuanButton
             ignoreUnknownSignals:true
             onClicked: {
-                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
-                console.log("mainToolBar.z:"+mainToolBar.z);
-                console.log("yixuanLoader.item.z:"+yixuanLoader.item.z);
-                if(yixuanLoader.item.z <= mainToolBar.z)
+                if(yixuanLoader.source!="")
                 {
-                    yixuanLoader.item.z = mainToolBar.z+1;
-                    console.log("yixuanLoader.item.z:"+yixuanLoader.item.z);
+                    yixuanLoader.item.showUp(false);
+                    popContentAreaYixuanTimer.start();
+                }else
+                {
+                    popContentAreaYixuan.visible = true;
+                    yixuanLoader.setSource("SelectedSongPage.qml");
                 }
             }
         }
@@ -218,14 +232,23 @@ Rectangle {
             target: mainToolBar.yixuanQiPao
             ignoreUnknownSignals:true
             onClicked: {
-                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+                if(yixuanLoader.source!="")
+                {
+                    yixuanLoader.item.showUp(false);
+                    popContentAreaYixuanTimer.start()
+                }else
+                {
+                    popContentAreaYixuan.visible = true;
+                    yixuanLoader.setSource("SelectedSongPage.qml");
+                }
+
             }
         }
         Connections {
             target: yixuanLoader.item.selectedCloseButton
             ignoreUnknownSignals:true
             onClicked: {
-                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+                popContentAreaYixuanTimer.start();
             }
         }
     }

@@ -84,7 +84,7 @@ Rectangle {
         }
     }
 
-    //弹窗阴影遮盖层,默认不显示,作为弹窗视图所在图层
+    //输入法弹窗阴影遮盖层,默认不显示,作为弹窗视图所在图层
     Rectangle {
         id: popContentArea
         x: 0
@@ -103,12 +103,24 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                parent.visible = false
+                if(keyboard.state === "show")
+                {
+                    keyboard.state = "hide";
+                    popContentAreaTimer.start();
+                }
             }
 
         }
         YGYKeyBoard {
             id:keyboard
+        }
+    }
+    //输入法 弹窗阴影遮盖层 消失定时器
+    Timer {
+        id:popContentAreaTimer
+        interval: 150; running: true; repeat: false
+        onTriggered: {
+            popContentArea.visible = false;
         }
     }
 
@@ -152,16 +164,98 @@ Rectangle {
                 searchBar.forceActiveFocus();
                 if(keyboard.state === "show")
                 {
-                    popContentArea.visible = false
                     keyboard.state = "hide";
+                    popContentAreaTimer.start();
                 }else
                 {
-                    popContentArea.visible = true
+                    popContentArea.visible = true;
                     keyboard.state = "show";
                 }
             }
         }
     }
+
+    //已选弹窗阴影遮盖层,默认不显示,比搜索栏更上一层
+    Rectangle {
+        id: popContentAreaYixuan
+        x: 0
+        y: 0
+        width: parent.width
+        height: 651
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: mainToolBar.top
+        anchors.bottomMargin: -26
+        color: "#BF000000"
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
+        visible: false
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                yixuanLoader.item.showUp(false);
+                popContentAreaYixuanTimer.start();
+            }
+        }
+        Timer {
+            id:popContentAreaYixuanTimer
+            interval: 700; running: false; repeat: false
+            onTriggered: {
+                popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
+                if(yixuanLoader.source != "")
+                {
+                    yixuanLoader.setSource("")
+                }else
+                {
+                    yixuanLoader.setSource("SelectedSongPage.qml");
+                }
+            }
+        }
+        Loader {
+            id: yixuanLoader
+            source: ""
+        }
+        //建立信号连接处理点击已选或已选气泡
+        Connections {
+            target: mainToolBar.yixuanButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                if(yixuanLoader.source!="")
+                {
+                    yixuanLoader.item.showUp(false);
+                    popContentAreaYixuanTimer.start();
+                }else
+                {
+                    popContentAreaYixuan.visible = true;
+                    yixuanLoader.setSource("SelectedSongPage.qml");
+                }
+            }
+        }
+        Connections {
+            target: mainToolBar.yixuanQiPao
+            ignoreUnknownSignals:true
+            onClicked: {
+                if(yixuanLoader.source!="")
+                {
+                    yixuanLoader.item.showUp(false);
+                    popContentAreaYixuanTimer.start()
+                }else
+                {
+                    popContentAreaYixuan.visible = true;
+                    yixuanLoader.setSource("SelectedSongPage.qml");
+                }
+
+            }
+        }
+        Connections {
+            target: yixuanLoader.item.selectedCloseButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                popContentAreaYixuanTimer.start();
+            }
+        }
+    }
+
 
     //下部工具条
     MainToolBar {

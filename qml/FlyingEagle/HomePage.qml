@@ -2,16 +2,35 @@ import QtQuick 2.0
 
 Rectangle {
     id: homepage
-//    property double zAngle:0
-//    transform: Rotation { origin.x: 640; origin.y: 360;origin.z:0; axis {x:0; y:1; z:0} angle:zAngle }
-//    SequentialAnimation{
-//        loops: Animation.Infinite
-//        NumberAnimation { target: homepage; property: "zAngle"; to: +0.8; duration: 1000; easing.type: Easing.Linear  }
-//        NumberAnimation { target: homepage; property: "zAngle"; to: -0.8; duration: 1000; easing.type: Easing.Linear  }
-//        running: true
-//    }
+    ParallelAnimation {
+        running: true
+        SequentialAnimation{
+            loops: Animation.Infinite
+            NumberAnimation { target: rectangle1; property: "zAngle"; to: +5; duration: 1000; easing.type: Easing.Linear  }
+            NumberAnimation { target: rectangle1; property: "zAngle"; to: 0; duration: 1000; easing.type: Easing.Linear  }
+
+        }
+        SequentialAnimation{
+            loops: Animation.Infinite
+            NumberAnimation { target: rectangle2; property: "zAngle"; to: +5; duration: 1000; easing.type: Easing.Linear  }
+            NumberAnimation { target: rectangle2; property: "zAngle"; to: 0; duration: 1000; easing.type: Easing.Linear  }
+
+        }
+        SequentialAnimation{
+            loops: Animation.Infinite
+            NumberAnimation { target: rectangle2; property: "xDelta"; to: -5; duration: 1000; easing.type: Easing.Linear  }
+            NumberAnimation { target: rectangle2; property: "xDelta"; to: 0; duration: 1000; easing.type: Easing.Linear  }
+
+        }
+        SequentialAnimation{
+            loops: Animation.Infinite
+            NumberAnimation { target: rectangle3; property: "zAngle"; to: +4; duration: 1000; easing.type: Easing.Linear  }
+            NumberAnimation { target: rectangle3; property: "zAngle"; to: 0; duration: 1000; easing.type: Easing.Linear  }
+
+        }
+    }
+
     anchors.fill: parent
-    //anchors.bottomMargin: -25
     color: "transparent"
 
     signal handlerLoader(string name, int index)
@@ -20,12 +39,6 @@ Rectangle {
         id: rectangle1
         property double zAngle:0
         transform: Rotation { origin.x: 0; origin.y: rectangle1.height/2;origin.z:0; axis {x:0; y:1; z:0} angle:rectangle1.zAngle }
-        SequentialAnimation{
-            loops: Animation.Infinite
-            NumberAnimation { target: rectangle1; property: "zAngle"; to: -5; duration: 1500; easing.type: Easing.Linear  }
-            NumberAnimation { target: rectangle1; property: "zAngle"; to: 0; duration: 1500; easing.type: Easing.Linear  }
-            running: true
-        }
         x: 100
         y: 20
         width: 194
@@ -77,13 +90,11 @@ Rectangle {
         anchors.left: rectangle1.right
         anchors.leftMargin: 10
         property double zAngle:0
-        transform: Rotation { origin.x: rectangle2.width/2; origin.y: rectangle2.height/2;origin.z:0; axis {x:0; y:1; z:0} angle:rectangle2.zAngle }
-        SequentialAnimation{
-            loops: Animation.Infinite
-            NumberAnimation { target: rectangle2; property: "zAngle"; to: +5; duration: 1000; easing.type: Easing.Linear  }
-            NumberAnimation { target: rectangle2; property: "zAngle"; to: 0; duration: 1000; easing.type: Easing.Linear  }
-            running: true
-        }
+        property double xDelta:0
+        transform: [
+            Rotation { origin.x: rectangle2.width/2; origin.y: rectangle2.height/2;origin.z:0; axis {x:0; y:1; z:0} angle:rectangle2.zAngle },
+            Translate { x: rectangle2.xDelta }
+        ]
 //        x: 300
         y: 20
         width: 436
@@ -118,12 +129,6 @@ Rectangle {
         id: rectangle3
         property double zAngle:0
         transform: Rotation { origin.x: rectangle3.width; origin.y: rectangle3.height/2;origin.z:0; axis {x:0; y:1; z:0} angle:rectangle3.zAngle }
-        SequentialAnimation{
-            loops: Animation.Infinite
-            NumberAnimation { target: rectangle3; property: "zAngle"; to: +4; duration: 1000; easing.type: Easing.Linear  }
-            NumberAnimation { target: rectangle3; property: "zAngle"; to: 0; duration: 1000; easing.type: Easing.Linear  }
-            running: true
-        }
 //        x: 744
         y: 20
         width: 420

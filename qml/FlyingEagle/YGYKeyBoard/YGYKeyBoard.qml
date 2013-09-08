@@ -24,7 +24,7 @@ Item {
         },
         Transition {
             from: "hide"; to: "show"
-            PropertyAnimation { target: keyboard; properties: "anchors.bottomMargin"; to: "0"; duration: 50; easing.type: Easing.InOutQuad;}
+            PropertyAnimation { target: keyboard; properties: "anchors.bottomMargin"; to: "0"; duration: 300; easing.type: Easing.InOutQuad;}
         }
     ]
 }

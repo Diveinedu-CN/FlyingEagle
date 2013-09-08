@@ -14,6 +14,25 @@ Rectangle {
 
     signal handlerLoader(string name, int index)
 
+    //导航图标
+    Image {
+        id: navDiangeImage
+        anchors.left: parent.left
+        anchors.top: parent.top
+        source: "images/diange.fw.png"
+    }
+
+    //导航标题
+    Text {
+        id: navTitleLabel
+        anchors.left: navDiangeImage.right
+        anchors.leftMargin: 4
+        anchors.verticalCenter: navDiangeImage.verticalCenter
+        text: qsTr("点歌")
+        font.pixelSize: 24
+        color: "#FFFFFFFF"
+    }
+
     FlipButton {
         id: gaoqing
 
@@ -25,6 +44,10 @@ Rectangle {
         text: "高清歌曲"
 
         image: "images/dy-star.png"
+
+        onClicked: {
+            handlerLoader("FinalMusicSelectionPage.qml", 0)
+        }
     }
 
     PushButton {
@@ -67,7 +90,7 @@ Rectangle {
         image: "images/dy-star.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: junlv
 
         x: 299
@@ -75,12 +98,15 @@ Rectangle {
         width: 80
         height: 80
 
+        originX: 80
+        originY: 80
+
         text: "军旅红歌"
 
-        color: "cyan"
+        image: "images/dy-new.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: mingzu
 
         x: 299
@@ -88,9 +114,12 @@ Rectangle {
         width: 80
         height: 80
 
+        originX: 80
+        originY: 80
+
         text: "民族歌曲"
 
-        color: "darkcyan"
+        image: "images/dy-new.png"
     }
 
     FlipButton {
@@ -106,7 +135,7 @@ Rectangle {
         image: "images/dy-star.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: yingshi
 
         x: 471
@@ -116,10 +145,10 @@ Rectangle {
 
         text: "影视歌曲"
 
-        color: "gray"
+        image: "images/dy-new.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: xiaoyuan
 
         x: 471
@@ -129,7 +158,7 @@ Rectangle {
 
         text: "校园歌曲"
 
-        color: "pink"
+        image: "images/dy-new.png"
     }
 
     PushButton {
@@ -188,7 +217,7 @@ Rectangle {
         image: "images/dy-star.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: randb
 
         x: 557
@@ -196,12 +225,17 @@ Rectangle {
         width: 80
         height: 80
 
+        originX: 40
+        originY: 0
+
+        isHorizontal: false
+
         text: "R&B"
 
-        color: "coral"
+        image: "images/dy-new.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: dianzi
 
         x: 643
@@ -209,9 +243,14 @@ Rectangle {
         width: 80
         height: 80
 
+        originX: 40
+        originY: 0
+
+        isHorizontal: false
+
         text: "电子"
 
-        color: "cornsilk"
+        image: "images/dy-new.png"
     }
 
     PushButton {
@@ -309,7 +348,7 @@ Rectangle {
         color: "darkviolet"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: caoyuan
 
         x: 901
@@ -319,10 +358,10 @@ Rectangle {
 
         text: "草原歌曲"
 
-        color: "peru"
+        image: "images/dy-new.png"
     }
 
-    PushButton {
+    FlipEdgeButton {
         id: lizhi
 
         x: 901
@@ -332,7 +371,7 @@ Rectangle {
 
         text: "励志歌曲"
 
-        color: "plum"
+        image: "images/dy-new.png"
     }
 
     PushButton {
@@ -351,13 +390,28 @@ Rectangle {
     SequentialAnimation {
         id: enterAnimation
 
-        RotationAnimation {
+        PropertyAnimation {
             targets: [gaoqing, jingdian, dujia, jieri, nannv, djhaige, wangluo]
-            direction: RotationAnimation.Clockwise
             property: "angle"
             duration: 2000
-            from: 180
+            from: -180
             to: 0
+        }
+
+        PropertyAnimation {
+            targets: [yingshi, xiaoyuan, junlv, mingzu, randb, dianzi, caoyuan, lizhi]
+            property: "angle"
+            duration: 2000
+            from: -180
+            to: 0
+        }
+
+        PropertyAnimation {
+            targets: [shengri, huanle, ertong, mingyao, xiqu, zhongguo, jueshi, yaogun, xiha, chunyinyue]
+            property: "opacity"
+            duration: 4000
+            from: 0
+            to: 1
         }
     }
 

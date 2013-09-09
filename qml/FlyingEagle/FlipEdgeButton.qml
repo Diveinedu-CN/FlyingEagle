@@ -12,8 +12,8 @@ Flipable {
 
     property alias text: _text.text
     property alias angle: rotation.angle
-
-    signal clicked
+    property alias originX: rotation.origin.x
+    property alias originY: rotation.origin.y
 
     implicitWidth: 80
     implicitHeight: 80
@@ -49,8 +49,8 @@ Flipable {
 
     transform: Rotation {
         id: rotation
-        origin.x: flipable.width/2
-        origin.y: flipable.height/2
+        origin.x: 0
+        origin.y: 0
         axis.x: isHorizontal? 0 : 1
         axis.y: isHorizontal? 1 : 0
         axis.z: 0
@@ -75,8 +75,6 @@ Flipable {
         onClicked: {
             flipable.flipped = !flipable.flipped
             console.log("ok, transition")
-
-            parent.clicked()
         }
     }
 }

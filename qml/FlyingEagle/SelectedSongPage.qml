@@ -328,10 +328,10 @@ Item {
 //            PauseAnimation { duration: 1300 }
 //        }
         Behavior on minimize {
-            NumberAnimation { duration: 700; easing.type: Easing.InOutSine }
+            NumberAnimation { duration: 500; easing.type: Easing.InOutSine }
         }
         Behavior on bend {
-            NumberAnimation { duration: 700; easing.type: Easing.InOutSine }
+            NumberAnimation { duration: 500; easing.type: Easing.InOutSine }
         }
         vertexShader: "
             uniform highp mat4 qt_Matrix;

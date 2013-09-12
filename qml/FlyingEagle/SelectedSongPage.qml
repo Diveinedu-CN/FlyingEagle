@@ -32,7 +32,7 @@ Item {
     Rectangle {
         id: selectedSongPage
         x:820
-        y: 70
+        y: 50
         width: 450
         height: 569
         color:"transparent"

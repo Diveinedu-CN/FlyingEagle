@@ -34,7 +34,6 @@ Rectangle {
     color: "transparent"
 
     signal handlerLoader(string name, int index)
-
     Rectangle {
         id: rectangle1
         property double zAngle:0
@@ -83,6 +82,36 @@ Rectangle {
             source: "images/dy-fav.png"
             antialiasing: true
         }
+        //第一列水波效果
+        ShaderEffectSource {
+            id: theSource1
+            sourceItem: image1
+            smooth: true
+            hideSource:true
+    //        live:false
+        }
+        ShaderEffect {
+            x: image1.x
+            y: image1.y
+            width: image1.width
+            height: image1.height
+            property variant source: theSource1
+            property real amplitude: 0.04 * 0.1
+            property real frequency: 10
+            property real time: 0
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            fragmentShader:
+                "uniform highp float amplitude;" +
+                "uniform highp float frequency;" +
+                "uniform highp float time;" +
+                "uniform sampler2D source;" +
+                "varying highp vec2 qt_TexCoord0;" +
+                "uniform lowp float qt_Opacity;" +
+                "void main() {" +
+                "    highp vec2 p = sin(time + frequency * qt_TexCoord0);" +
+                "    gl_FragColor = qt_Opacity * texture2D(source, qt_TexCoord0 + amplitude * vec2(p.y, -p.x));" +
+                "}"
+        }
     }
 
     Rectangle {
@@ -122,6 +151,36 @@ Rectangle {
             fillMode: Image.PreserveAspectFit
             source: "images/dy-star.png"
             antialiasing: true
+        }
+        //第二列水波效果
+        ShaderEffectSource {
+            id: theSource2
+            sourceItem: image2
+            smooth: true
+            hideSource:true
+    //        live:false
+        }
+        ShaderEffect {
+            x: image2.x
+            y: image2.y
+            width: image2.width
+            height: image2.height
+            property variant source: theSource2
+            property real amplitude: 0.04 * 0.1
+            property real frequency: 10
+            property real time: 0
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            fragmentShader:
+                "uniform highp float amplitude;" +
+                "uniform highp float frequency;" +
+                "uniform highp float time;" +
+                "uniform sampler2D source;" +
+                "varying highp vec2 qt_TexCoord0;" +
+                "uniform lowp float qt_Opacity;" +
+                "void main() {" +
+                "    highp vec2 p = sin(time + frequency * qt_TexCoord0);" +
+                "    gl_FragColor = qt_Opacity * texture2D(source, qt_TexCoord0 + amplitude * vec2(p.y, -p.x));" +
+                "}"
         }
     }
 
@@ -209,5 +268,67 @@ Rectangle {
             source: "images/dy-new.png"
             antialiasing: true
         }
+        //第三,四列水波效果
+        ShaderEffectSource {
+            id: theSource3
+            sourceItem: image3
+            smooth: true
+            hideSource:true
+    //        live:false
+        }
+        ShaderEffectSource {
+            id: theSource4
+            sourceItem: image4
+            smooth: true
+            hideSource:true
+    //        live:false
+        }
+        ShaderEffect {
+            x: image3.x
+            y: image3.y
+            width: image3.width
+            height: image3.height
+            property variant source: theSource3
+            property real amplitude: 0.04 * 0.1
+            property real frequency: 10
+            property real time: 0
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            fragmentShader:
+                "uniform highp float amplitude;" +
+                "uniform highp float frequency;" +
+                "uniform highp float time;" +
+                "uniform sampler2D source;" +
+                "varying highp vec2 qt_TexCoord0;" +
+                "uniform lowp float qt_Opacity;" +
+                "void main() {" +
+                "    highp vec2 p = sin(time + frequency * qt_TexCoord0);" +
+                "    gl_FragColor = qt_Opacity * texture2D(source, qt_TexCoord0 + amplitude * vec2(p.y, -p.x));" +
+                "}"
+        }
+        ShaderEffect {
+            x: image4.x
+            y: image4.y
+            width: image4.width
+            height: image4.height
+            property variant source: theSource4
+            property real amplitude: 0.04 * 0.1
+            property real frequency: 10
+            property real time: 0
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            fragmentShader:
+                "uniform highp float amplitude;" +
+                "uniform highp float frequency;" +
+                "uniform highp float time;" +
+                "uniform sampler2D source;" +
+                "varying highp vec2 qt_TexCoord0;" +
+                "uniform lowp float qt_Opacity;" +
+                "void main() {" +
+                "    highp vec2 p = sin(time + frequency * qt_TexCoord0);" +
+                "    gl_FragColor = qt_Opacity * texture2D(source, qt_TexCoord0 + amplitude * vec2(p.y, -p.x));" +
+                "}"
+        }
     }
+
+
+
 }

@@ -256,6 +256,60 @@ Rectangle {
         }
     }
 
+    //调音按钮弹出页面
+    Rectangle {
+        id: tunningPopupPage
+        x: 0
+        y: 0
+        width: parent.width
+        height: 651
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: mainToolBar.top
+        anchors.bottomMargin: -26
+        color: "#BF000000"
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
+        visible: false
+        function handleTunningPage()
+        {
+            if(tunningPopupPage.visible == false)
+            {
+                tunningPopupPage.visible = true;
+                tunningLoader.setSource("TunningPage.qml")
+            }else
+            {
+                tunningPopupPage.visible = false
+                tunningLoader.setSource("");
+            }
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tunningPopupPage.handleTunningPage();
+            }
+        }
+        Loader {
+            id: tunningLoader
+            source: ""
+        }
+
+        Connections {
+            target: mainToolBar.tiaoyinButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                tunningPopupPage.handleTunningPage();
+            }
+        }
+        Connections {
+            target: tunningLoader.item
+            ignoreUnknownSignals:true
+            onCloseClicked: {
+                console.log("handleTunningPage");
+                tunningPopupPage.handleTunningPage();
+            }
+        }
+    }
 
     //下部工具条
     MainToolBar {

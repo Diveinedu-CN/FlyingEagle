@@ -34,4 +34,5 @@ OTHER_FILES += \
     qml/FlyingEagle/TestListModel.qml \
     qml/FlyingEagle/FlipButton.qml \
     qml/FlyingEagle/FlipEdgeButton.qml \
-    qml/FlyingEagle/FinalMusicSelectionPage.qml
+    qml/FlyingEagle/FinalMusicSelectionPage.qml \
+    qml/FlyingEagle/TunningPage.qml

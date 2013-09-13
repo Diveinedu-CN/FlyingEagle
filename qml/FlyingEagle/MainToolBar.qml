@@ -8,6 +8,7 @@ Rectangle {
     property url backgroundImage: ""
     property alias yixuanQiPao: yixuanQipao
     property alias yixuanButton: yixuanButton
+    property alias tiaoyinButton: tiaoyinButton
     Image {
         anchors.fill: parent
         source: !parent.backgroundImage ? parent.backgroundImage : "images/bar.png"

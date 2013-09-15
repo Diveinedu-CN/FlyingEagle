@@ -7,19 +7,25 @@ Rectangle {
     width: 1280
     height: 592
     color: "transparent"
-    signal closeClicked();
+    property alias tunningVisible: tunningPage.visible
+    property alias qifenVisible: qifenPage.visible
+    signal closeTunningClicked();
+    signal closeQifenClicked();
+    signal closeFuzhuClicked();
+    //调音框
     Rectangle {
-        id: tuningPage
+        id: tunningPage
         width: 478
         height: 254
         color: "transparent"
+        visible: false
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.leftMargin: 200
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                console.log("mousearea")
+
             }
         }
 
@@ -130,11 +136,15 @@ Rectangle {
             value: 0.8
             style: ProgressBarStyle {
                 background: Image {
+                    width: 14
+                    height: 90
                     anchors.fill: parent
                     anchors.bottom: parent.bottom
                     source: "images/dsc_tuning_sback.png"
                 }
                 progress: Image {
+                    width: 14
+                    height: 90
                     anchors.fill: parent
                     anchors.bottom: parent.bottom
                     source: "images/dsc_tuning_sfront.png"
@@ -152,13 +162,19 @@ Rectangle {
             orientation: 0
             style: ProgressBarStyle {
                 background: Image {
+                    width: 14
+                    height: 90
                     anchors.fill: parent
                     anchors.bottom: parent.bottom
+                    fillMode: Image.Stretch
                     source: "images/dsc_tuning_sback.png"
                 }
                 progress: Image {
+                    width: 14
+                    height: 90
                     anchors.fill: parent
                     anchors.bottom: parent.bottom
+                    fillMode: Image.Stretch
                     source: "images/dsc_tuning_sfront.png"
                 }
             }
@@ -256,11 +272,245 @@ Rectangle {
             anchors.topMargin: -16
             anchors.top: parent.top
             onClicked: {
-               parent.parent.closeClicked();
+               parent.parent.closeTunningClicked();
             }
         }
 
 
+    }
+
+    //气氛框
+    Rectangle {
+        id: qifenPage
+        width: 516
+        height: 264
+        color: "transparent"
+        visible: false
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: 700
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+
+            }
+        }
+
+        Image {
+            id: qifenBgImage
+            x: 0
+            y: 0
+            anchors.rightMargin: 0
+            anchors.bottomMargin: 0
+            anchors.leftMargin: 0
+            anchors.topMargin: 0
+            anchors.fill: parent
+            source: "images/dsc_atmos_bg.png"
+            fillMode: Image.Stretch
+        }
+
+        Text {
+            id: audioEffectText
+            x: 47
+            y: 36
+            width: 46
+            height: 22
+            color: "#ffffff"
+            text: qsTr("声效")
+            font.pointSize: 26
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Text {
+            id: lightEffectText
+            x: 277
+            y: 34
+            width: 46
+            height: 22
+            color: "#ffffff"
+            text: qsTr("灯效")
+            font.pointSize: 26
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        PushButton {
+            id: handwrittenButton
+            x: 101
+            y: 28
+            width: 122
+            height: 38
+            backgroundNormal: "images/dsc_atmos_sxzf.png"
+            anchors.topMargin: 28
+            anchors.leftMargin: 101
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+        Rectangle {
+            id: switchButton
+            x: 341
+            y: 28
+            width: 122
+            height: 38
+            anchors.topMargin: 28
+            anchors.leftMargin: 341
+            anchors.top: parent.top
+            anchors.left: parent.left
+            color:"transparent"
+            Image {
+                id: switchbg
+                width: 104
+                height: 34
+                anchors.fill: parent
+                source: "images/dsc_atmos_inout.png"
+            }
+            Image {
+                id: switchimg
+                property int rightMargin: 0
+                width: 48
+                height: 38
+                anchors.top: parent.top
+                anchors.topMargin: 2
+                anchors.right: parent.right
+                anchors.rightMargin: rightMargin
+                source: "images/dsc_atmos_button.png"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    if(switchimg.rightMargin==0)
+                    {
+                        switchimg.rightMargin = 70;
+                    }else
+                    {
+                        switchimg.rightMargin = 0;
+                    }
+                }
+            }
+        }
+
+        PushButton {
+            id: gzButton
+            x: 40
+            y: 91
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_app.png"
+            anchors.topMargin: 91
+            anchors.leftMargin: 40
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: dcButton
+            x: 137
+            y: 91
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_hoot.png"
+            anchors.topMargin: 91
+            anchors.leftMargin: 137
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: hhButton
+            x: 40
+            y: 159
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_cheer.png"
+            anchors.topMargin: 159
+            anchors.leftMargin: 40
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: ksButton
+            x: 137
+            y: 159
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_ks.png"
+            anchors.topMargin: 159
+            anchors.leftMargin: 137
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: rgButton
+            x: 277
+            y: 91
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_rg.png"
+            anchors.topMargin: 91
+            anchors.leftMargin: 277
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: dgButton
+            x: 377
+            y: 91
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_dyn.png"
+            anchors.topMargin: 91
+            anchors.leftMargin: 377
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: sqButton
+            x: 277
+            y: 159
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_atmos_sq.png"
+            anchors.topMargin: 159
+            anchors.leftMargin: 277
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: lxButton
+            x: 377
+            y: 159
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_tuning_pop.png"
+            anchors.topMargin: 159
+            anchors.leftMargin: 377
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: closeQifenButton
+            x: 476
+            y: -16
+            width: 46
+            height: 60
+            backgroundNormal: "images/dsc_tuning_off.png"
+            anchors.topMargin: -16
+            anchors.leftMargin: 476
+            anchors.left: parent.left
+            anchors.top: parent.top
+            onClicked: {
+               parent.parent.closeQifenClicked();
+            }
+        }
     }
 
 }

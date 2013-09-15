@@ -256,7 +256,7 @@ Rectangle {
         }
     }
 
-    //调音按钮弹出页面
+    //调音气氛辅助按钮弹出页面
     Rectangle {
         id: tunningPopupPage
         x: 0
@@ -271,7 +271,7 @@ Rectangle {
         anchors.leftMargin: 0
         anchors.topMargin: 0
         visible: false
-        function handleTunningPage()
+        function handleTunningPage(index)
         {
             if(tunningPopupPage.visible == false)
             {
@@ -282,11 +282,35 @@ Rectangle {
                 tunningPopupPage.visible = false
                 tunningLoader.setSource("");
             }
+
+            switch(index)
+            {
+            case "tiaoyin":
+                if(tunningLoader.source!="")
+                {
+                    tunningLoader.item.tunningVisible = true;
+                }else {
+
+                }
+                break;
+            case "qifen":
+                if(tunningLoader.source!="")
+                {
+                    tunningLoader.item.qifenVisible = true;
+                }else {
+
+                }
+                break;
+            case "fuzhu":
+                break;
+            default:
+                break;
+            }
         }
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                tunningPopupPage.handleTunningPage();
+                tunningPopupPage.handleTunningPage("");
             }
         }
         Loader {
@@ -298,15 +322,29 @@ Rectangle {
             target: mainToolBar.tiaoyinButton
             ignoreUnknownSignals:true
             onClicked: {
-                tunningPopupPage.handleTunningPage();
+                tunningPopupPage.handleTunningPage("tiaoyin");
             }
         }
         Connections {
             target: tunningLoader.item
             ignoreUnknownSignals:true
-            onCloseClicked: {
-                console.log("handleTunningPage");
-                tunningPopupPage.handleTunningPage();
+            onCloseTunningClicked: {
+                tunningPopupPage.handleTunningPage("tiaoyin");
+            }
+        }
+        //气氛框右上角关闭按钮点击处理
+        Connections {
+            target: tunningLoader.item
+            ignoreUnknownSignals:true
+            onCloseQifenClicked: {
+                tunningPopupPage.handleTunningPage("qifen");
+            }
+        }
+        Connections {
+            target: mainToolBar.qifenButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                tunningPopupPage.handleTunningPage("qifen");
             }
         }
     }

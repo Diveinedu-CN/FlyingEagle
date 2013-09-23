@@ -36,14 +36,12 @@ Rectangle {
     FlipButton {
         id: gaoqing
 
-        x: 213
-        y: 84
-        width: 80
-        height: 160
+        x: 906
+        y: 190
+        width: 96
+        height: 204
 
-        text: "高清歌曲"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/高清歌曲.png"
 
         onClicked: {
             handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -52,339 +50,291 @@ Rectangle {
 
     PushButton {
         id: mingyao
-        x: 213
-        y: 256
-        width: 80
-        height: 80
+        x: 51
+        y: 298
+        width: 96
+        height: 96
 
-        text: "民谣"
-
-        color: "green"
+        icon: "images/主题分类/民谣.png"
     }
 
     PushButton {
         id: xiqu
 
-        x: 213
-        y: 342
-        width: 80
-        height: 80
+        x: 51
+        y: 409
+        width: 96
+        height: 96
 
-        text: "戏曲片段"
-
-        color: "yellow"
+        icon: "images/主题分类/戏曲.png"
     }
 
     FlipButton {
         id: dujia
 
-        x: 299
+        x: 255
         y: 84
-        width: 166
-        height: 166
+        width: 205
+        height: 310
 
         isHorizontal: false
 
-        text: "独家歌曲"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/独家.png"
     }
 
     FlipEdgeButton {
         id: junlv
 
-        x: 299
-        y: 256
-        width: 80
-        height: 80
+        x: 257
+        y: 409
+        width: 96
+        height: 96
 
         originX: 80
         originY: 80
 
-        text: "军旅红歌"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/军旅.png"
     }
 
     FlipEdgeButton {
         id: mingzu
 
-        x: 299
-        y: 342
-        width: 80
-        height: 80
+        x: 155
+        y: 409
+        width: 96
+        height: 96
 
         originX: 80
         originY: 80
 
-        text: "民族歌曲"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/民族.png"
     }
 
     FlipButton {
         id: jingdian
 
-        x: 385
-        y: 256
-        width: 80
-        height: 166
+        x: 153
+        y: 190
+        width: 96
+        height: 204
 
-        text: "经典老歌"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/经典老歌.png"
     }
 
     FlipEdgeButton {
         id: yingshi
 
-        x: 471
-        y: 84
-        width: 80
-        height: 80
+        x: 1110
+        y: 190
+        width: 96
+        height: 96
 
-        text: "影视歌曲"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/影视.png"
     }
 
     FlipEdgeButton {
         id: xiaoyuan
 
-        x: 471
-        y: 170
-        width: 80
-        height: 80
+        x: 1110
+        y: 409
+        width: 96
+        height: 96
 
-        text: "校园歌曲"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/校园.png"
     }
 
     PushButton {
         id: zhongguo
 
-        x: 471
-        y: 256
-        width: 80
-        height: 80
+        x: 364
+        y: 409
+        width: 96
+        height: 96
 
-        text: "中国风"
-
-        color: "aqua"
+        icon: "images/主题分类/中国风.png"
     }
 
     PushButton {
         id: jueshi
 
-        x: 471
-        y: 342
-        width: 80
-        height: 80
+        x: 51
+        y: 84
+        width: 96
+        height: 96
 
-        text: "爵士"
-
-        color: "bisque"
+        icon: "images/主题分类/爵士.png"
     }
 
     FlipButton {
         id: jieri
 
-        x: 557
+        x: 466
         y: 84
-        width: 166
-        height: 80
+        width: 638
+        height: 98
 
         isHorizontal: false
 
-        text: "节日"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/节日.png"
     }
 
     FlipButton {
         id: nannv
 
-        x: 557
-        y: 170
-        width: 166
-        height: 166
+        x: 466
+        y: 190
+        width: 206
+        height: 315
 
         isHorizontal: false
 
-        text: "男女对唱"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/对唱.png"
     }
 
     FlipEdgeButton {
         id: randb
 
-        x: 557
-        y: 342
-        width: 80
-        height: 80
+        x: 906
+        y: 409
+        width: 96
+        height: 96
 
         originX: 40
         originY: 0
 
         isHorizontal: false
 
-        text: "R&B"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/R&B.png"
     }
 
     FlipEdgeButton {
         id: dianzi
 
-        x: 643
-        y: 342
-        width: 80
-        height: 80
+        x: 1008
+        y: 409
+        width: 96
+        height: 96
 
         originX: 40
         originY: 0
 
         isHorizontal: false
 
-        text: "电子"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/电子.png"
     }
 
     PushButton {
         id: shengri
 
-        x: 729
-        y: 84
-        width: 80
-        height: 80
+        x: 1110
+        y: 298
+        width: 96
+        height: 96
 
-        text: "生日祝福"
-
-        color: "crimson"
+        icon: "images/主题分类/生日.png"
     }
 
     PushButton {
         id: huanle
 
-        x: 815
+        x: 1110
         y: 84
-        width: 80
-        height: 80
+        width: 96
+        height: 96
 
-        text: "欢乐庆典"
-
-        color: "orangered"
+        icon: "images/主题分类/欢乐庆典.png"
     }
 
     FlipButton {
         id: wangluo
 
-        x: 729
-        y: 170
-        width: 166
-        height: 80
+        x: 686
+        y: 190
+        width: 208
+        height: 96
 
         isHorizontal: false
 
-        text: "网络歌曲"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/网络歌曲.png"
     }
 
     FlipButton {
         id: djhaige
 
-        x: 729
-        y: 256
-        width: 166
-        height: 80
+        x: 686
+        y: 300
+        width: 208
+        height: 96
 
         isHorizontal: false
 
-        text: "DJ嗨歌"
-
-        image: "images/dy-star.png"
+        image: "images/主题分类/DJ.png"
     }
 
     PushButton {
         id: yaogun
 
-        x: 729
-        y: 342
-        width: 80
-        height: 80
+        x: 686
+        y: 409
+        width: 96
+        height: 96
 
-        text: "摇滚"
-
-        color: "olive"
+        icon: "images/主题分类/摇滚.png"
     }
 
     PushButton {
         id: xiha
 
-        x: 815
-        y: 342
-        width: 80
-        height: 80
+        x: 798
+        y: 409
+        width: 96
+        height: 96
 
-        text: "嘻哈"
-
-        color: "orchid"
+        icon: "images/主题分类/嘻哈.png"
     }
 
     PushButton {
         id: ertong
 
-        x: 901
-        y: 84
-        width: 80
-        height: 80
+        x: 1008
+        y: 190
+        width: 96
+        height: 96
 
-        text: "儿童歌曲"
-
-        color: "darkviolet"
+        icon: "images/主题分类/儿童.png"
     }
 
     FlipEdgeButton {
         id: caoyuan
 
-        x: 901
-        y: 168
-        width: 80
-        height: 80
+        x: 51
+        y: 190
+        width: 96
+        height: 96
 
-        text: "草原歌曲"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/草原.png"
     }
 
     FlipEdgeButton {
         id: lizhi
 
-        x: 901
-        y: 254
-        width: 80
-        height: 80
+        x: 1008
+        y: 298
+        width: 96
+        height: 96
 
-        text: "励志歌曲"
-
-        image: "images/dy-new.png"
+        image: "images/主题分类/励志.png"
     }
 
     PushButton {
         id: chunyinyue
 
-        x: 901
-        y: 340
-        width: 80
-        height: 80
+        x: 153
+        y: 84
+        width: 96
+        height: 96
 
-        text: "纯音乐"
-
-        color: "fuchsia"
+        icon: "images/主题分类/纯音乐.png"
     }
 
     SequentialAnimation {

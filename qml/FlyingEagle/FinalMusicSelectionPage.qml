@@ -39,22 +39,27 @@ Rectangle {
 
             Image {
                 id: waike
-                width: 300
-                height: 250
+                x: 81
+                y: 62
+                width: 331
+                height: 226
                 anchors.left: parent.left
-                anchors.leftMargin: 100
+                anchors.leftMargin: 81
                 anchors.top: parent.top
-                anchors.topMargin: 60
+                anchors.topMargin: 62
 
-                source: "images/waike.jpg"
+                source: "images/主题分类子页面/1.png"
             }
 
             Image {
                 property real translateY: -80
+                x: 94
+                y: 208
 
                 id: guangpan
-                width: 300
-                height: 300
+                width: 305
+                height: 307
+                anchors.leftMargin: 13
                 anchors.left: waike.left
                 anchors.top: waike.bottom
                 anchors.topMargin: -80
@@ -65,7 +70,7 @@ Rectangle {
 
                 z: waike.z - 1
 
-                source: "images/disk.png"
+                source: "images/主题分类子页面/2.png"
             }
 
             SequentialAnimation {
@@ -74,7 +79,7 @@ Rectangle {
                 NumberAnimation {
                     target: guangpan;
                     property: "translateY";
-                    to: -120
+                    to: -90
                     duration: 1000;
                     easing.type: Easing.InOutQuad
                 }
@@ -82,7 +87,7 @@ Rectangle {
                 NumberAnimation {
                     target: guangpan;
                     property: "translateY";
-                    to: -60
+                    to: -50
                     duration: 1000;
                     easing.type: Easing.InOutQuad
                 }
@@ -100,18 +105,27 @@ Rectangle {
             anchors.top: leftHalf.top
             anchors.topMargin: 60
 
+            Image {
+                width: 791
+                height: 458
+
+                source: "images/主题分类子页面/3.png"
+            }
+
             TestListModel {
                 id: testModel
             }
 
             GridView {
                 id: musicList
+                x: 0
+                y: 0
 
-                width: 600
+                width: 791
                 height: 400
 
-                cellWidth: 600
-                cellHeight: 39
+                cellWidth: 791
+                cellHeight: 57
 
                 flow: GridView.TopToBottom
                 snapMode: GridView.SnapToRow
@@ -120,18 +134,27 @@ Rectangle {
 
                 model: testModel
                 delegate: Item {
-                    width: 600
-                    height: 39
+                    width: 791
+                    height: 57
+
+//                    Rectangle {
+//                        width: 791
+//                        height: 57
+
+//                        color: index % 2?"#FF0000":"#00FF00"
+//                    }
 
                     Text {
                         id: numberId
                         anchors.left: parent.left
-                        anchors.leftMargin: 40
+//                        anchors.leftMargin: 40
                         anchors.top: parent.top
-                        width: 40
+                        anchors.topMargin: 20
+                        width: 60
 
-                        text: index
-                        color: "#FFFF0000"
+                        text: index+1
+                        horizontalAlignment: Text.AlignHCenter
+                        color: "#FFFFFFFF"
                         font.pixelSize: 18
                     }
 
@@ -139,9 +162,11 @@ Rectangle {
                         id: titleId
 
                         anchors.left: numberId.right
+                        anchors.leftMargin: 20
                         anchors.top: parent.top
+                        anchors.topMargin: 20
 
-                        text: number
+                        text: name
                         color: "#FFFFFFFF"
                         font.pixelSize: 18
                     }
@@ -149,51 +174,110 @@ Rectangle {
                     Text {
                         id: starId
 
-                        anchors.right: zhiding.left
+                        anchors.left: parent.right
+                        anchors.leftMargin: -362
                         anchors.top: parent.top
+                        anchors.topMargin: 20
 
                         text: star
-                        color: "#FFFFFFFF"
+                        //55, 99, 152
+                        color: "#FF376398"
                         font.pixelSize: 18
                     }
 
-                    Button {
+                    PushButton {
                         id: zhiding
-                        width: 40
-                        height: 40
+                        width: 31
+                        height: 31
 
-                        anchors.right: shoucang.left
+                        anchors.left: parent.right
+                        anchors.leftMargin: -192
                         anchors.top: parent.top
+                        anchors.topMargin: 16
+
+                        icon: "images/主题分类子页面/5.png"
                     }
 
-                    Button {
+                    PushButton {
                         id: shoucang
-                        width: 40
-                        height: 40
+                        width: 31
+                        height: 31
 
-                        anchors.right: yulan.left
+                        anchors.left: parent.right
+                        anchors.leftMargin: -128
                         anchors.top: parent.top
+                        anchors.topMargin: 16
+
+                        icon: "images/主题分类子页面/6.png"
                     }
 
-                    Button {
+                    PushButton {
                         id: yulan
-                        width: 40
-                        height: 40
+                        width: 34
+                        height: 22
 
-                        anchors.right: parent.right
+                        anchors.left: parent.right
+                        anchors.leftMargin: -66
                         anchors.top: parent.top
+                        anchors.topMargin: 20
+
+                        icon: "images/主题分类子页面/7.png"
                     }
                 }
+            }
+
+            PushButton {
+                id: leftButton
+                x: 336
+                y: 427
+                width: 68
+                height: 36
+
+                anchors.top: musicList.bottom
+                anchors.topMargin: 27
+
+                icon: "images/left.png"
+            }
+
+            Text {
+                id: pageLabel
+                x: 420
+                y: 434
+                width: 128
+                height: 22
+
+                anchors.top: musicList.bottom
+                anchors.topMargin: 34
+
+                text: "10/100"
+                horizontalAlignment: Text.AlignHCenter
+                color: "#FFFFFFFF"
+                font.pixelSize: 18
+            }
+
+            PushButton {
+                id: rightButton
+                x: 563
+                y: 427
+                width: 68
+                height: 36
+
+                anchors.top: musicList.bottom
+                anchors.topMargin: 27
+
+                icon: "images/right.png"
             }
         }
     }
 
-    Button {
-        x: 1000
-        y: 500
+    PushButton {
+        x: 1090
+        y: 482
 
-        width: 60
-        height: 40
+        width: 100
+        height: 44
+
+        icon: "images/back.png"
 
         onClicked: {
             handlerLoader("TopicSelectionPage.qml", 0)

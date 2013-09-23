@@ -43,7 +43,7 @@ Flipable {
         id: _text
         anchors.centerIn: parent
 
-        text: "Test"
+        text: ""
         font.pixelSize: 20
     }
 

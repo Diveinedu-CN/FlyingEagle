@@ -10,7 +10,7 @@ import QtQuick.Controls.Styles 1.0
 Rectangle {
     width: 1280
     height: 591
-    color: "orange"
+    color: "transparent"
 
     signal handlerLoader(string name, int index)
 

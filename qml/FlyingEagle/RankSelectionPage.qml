@@ -31,22 +31,25 @@ Rectangle {
     }
 
     Item {
+        x: 54
+        y: 46
         width: 1280
-        height: 500
+        height: 504
+        anchors.topMargin: 4
         anchors.top: navDiangeImage.bottom
 //        color: "red"
 
         FlipButton {
             id: firstGrid
 
-            x: 119
-            y: 48
-            width: 80
-            height: 123
+            x: 0
+            y: 23
+            width: 112
+            height: 138
 
-            text: "第一个"
+//            text: "第一个"
 
-            image: "images/dy-star.png"
+            image: "images/top/1.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -56,14 +59,14 @@ Rectangle {
         FlipButton {
             id: secondGrid
 
-            x: 119
-            y: 177
-            width: 80
-            height: 123
+            x: 0
+            y: 167
+            width: 112
+            height: 138
 
-            text: "第二个"
+//            text: "第二个"
 
-            image: "images/dy-star.png"
+            image: "images/top/2.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -73,14 +76,14 @@ Rectangle {
         FlipButton {
             id: rihanGrid
 
-            x: 119
-            y: 306
-            width: 80
-            height: 123
+            x: 0
+            y: 316
+            width: 112
+            height: 138
 
-            text: "日韩"
+//            text: "日韩"
 
-            image: "images/dy-star.png"
+            image: "images/top/3.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -90,14 +93,14 @@ Rectangle {
         FlipButton {
             id: quanbuGrid
 
-            x: 205
-            y: 48
-            width: 338
-            height: 252
+            x: 118
+            y: 23
+            width: 436
+            height: 286
 
-            text: "全部"
+//            text: "全部"
 
-            image: "images/dy-star.png"
+            image: "images/top/4.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -107,14 +110,14 @@ Rectangle {
         FlipButton {
             id: liuxingGrid
 
-            x: 205
-            y: 306
-            width: 166
-            height: 123
+            x: 118
+            y: 316
+            width: 221
+            height: 138
 
-            text: "流行"
+//            text: "流行"
 
-            image: "images/dy-star.png"
+            image: "images/top/5.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -124,14 +127,14 @@ Rectangle {
         FlipButton {
             id: meinvGrid
 
-            x: 377
-            y: 306
-            width: 166
-            height: 123
+            x: 345
+            y: 316
+            width: 212
+            height: 138
 
-            text: "美女"
+//            text: "美女"
 
-            image: "images/dy-star.png"
+            image: "images/top/6.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -141,14 +144,14 @@ Rectangle {
         FlipButton {
             id: minnanGrid
 
-            x: 549
-            y: 48
-            width: 166
-            height: 123
+            x: 563
+            y: 29
+            width: 212
+            height: 136
 
-            text: "闽南"
+//            text: "闽南"
 
-            image: "images/dy-star.png"
+            image: "images/top/7.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -158,14 +161,14 @@ Rectangle {
         FlipButton {
             id: xingeGrid
 
-            x: 549
-            y: 177
-            width: 168
-            height: 252
+            x: 563
+            y: 173
+            width: 212
+            height: 281
 
-            text: "新歌"
+//            text: "新歌"
 
-            image: "images/dy-star.png"
+            image: "images/top/8.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -175,14 +178,14 @@ Rectangle {
         FlipButton {
             id: meinv2Grid
 
-            x: 721
-            y: 48
-            width: 115
-            height: 123
+            x: 786
+            y: 29
+            width: 138
+            height: 138
 
-            text: "美女2"
+//            text: "美女2"
 
-            image: "images/dy-star.png"
+            image: "images/top/9.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -192,14 +195,14 @@ Rectangle {
         FlipButton {
             id: duichangGrid
 
-            x: 842
-            y: 48
-            width: 115
-            height: 123
+            x: 934
+            y: 29
+            width: 138
+            height: 138
 
-            text: "对唱"
+//            text: "对唱"
 
-            image: "images/dy-star.png"
+            image: "images/top/12.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -209,14 +212,14 @@ Rectangle {
         FlipButton {
             id: oumeiGrid
 
-            x: 963
-            y: 48
-            width: 80
-            height: 123
+            x: 1083
+            y: 29
+            width: 112
+            height: 138
 
-            text: "欧美"
+//            text: "欧美"
 
-            image: "images/dy-star.png"
+            image: "images/top/13.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -226,14 +229,14 @@ Rectangle {
         FlipButton {
             id: lanseGrid
 
-            x: 723
-            y: 177
-            width: 94
-            height: 123
+            x: 786
+            y: 173
+            width: 112
+            height: 138
 
-            text: "蓝色"
+//            text: "蓝色"
 
-            image: "images/dy-star.png"
+            image: "images/top/10.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -243,14 +246,14 @@ Rectangle {
         FlipButton {
             id: guoyuGrid
 
-            x: 823
-            y: 177
-            width: 220
-            height: 123
+            x: 909
+            y: 173
+            width: 286
+            height: 138
 
-            text: "国语"
+//            text: "国语"
 
-            image: "images/dy-star.png"
+            image: "images/top/14.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -260,14 +263,14 @@ Rectangle {
         FlipButton {
             id: wangluoGrid
 
-            x: 723
-            y: 306
-            width: 113
-            height: 123
+            x: 786
+            y: 318
+            width: 138
+            height: 136
 
-            text: "网络"
+//            text: "网络"
 
-            image: "images/dy-star.png"
+            image: "images/top/11.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -277,14 +280,14 @@ Rectangle {
         FlipButton {
             id: shuaigeGrid
 
-            x: 842
-            y: 306
-            width: 115
-            height: 123
+            x: 934
+            y: 318
+            width: 138
+            height: 136
 
-            text: "帅哥"
+//            text: "帅哥"
 
-            image: "images/dy-star.png"
+            image: "images/top/15.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)
@@ -294,14 +297,14 @@ Rectangle {
         FlipButton {
             id: yueyuGrid
 
-            x: 963
-            y: 306
-            width: 80
-            height: 123
+            x: 1083
+            y: 318
+            width: 112
+            height: 138
 
-            text: "粤语"
+//            text: "粤语"
 
-            image: "images/dy-star.png"
+            image: "images/top/16.png"
 
             onClicked: {
                 handlerLoader("FinalMusicSelectionPage.qml", 0)

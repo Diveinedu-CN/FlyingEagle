@@ -52,7 +52,7 @@ Rectangle {
             image: "images/top/1.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -69,7 +69,7 @@ Rectangle {
             image: "images/top/2.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -86,7 +86,7 @@ Rectangle {
             image: "images/top/3.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -103,7 +103,7 @@ Rectangle {
             image: "images/top/4.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -120,7 +120,7 @@ Rectangle {
             image: "images/top/5.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -137,7 +137,7 @@ Rectangle {
             image: "images/top/6.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -154,7 +154,7 @@ Rectangle {
             image: "images/top/7.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -171,7 +171,7 @@ Rectangle {
             image: "images/top/8.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -188,7 +188,7 @@ Rectangle {
             image: "images/top/9.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -205,7 +205,7 @@ Rectangle {
             image: "images/top/12.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -222,7 +222,7 @@ Rectangle {
             image: "images/top/13.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -239,7 +239,7 @@ Rectangle {
             image: "images/top/10.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -256,7 +256,7 @@ Rectangle {
             image: "images/top/14.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -273,7 +273,7 @@ Rectangle {
             image: "images/top/11.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -290,7 +290,7 @@ Rectangle {
             image: "images/top/15.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -307,7 +307,7 @@ Rectangle {
             image: "images/top/16.png"
 
             onClicked: {
-                handlerLoader("FinalMusicSelectionPage.qml", 0)
+                handlerLoader("FinalRankMusicSelectionPage.qml", 0)
             }
         }
 
@@ -338,7 +338,7 @@ Rectangle {
                 targets: [yueyuGrid];
                 properties: "y";
                 from: 100
-                to: 306
+                to: 318
                 duration: 200
             }
         }

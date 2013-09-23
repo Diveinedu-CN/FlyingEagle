@@ -9,9 +9,12 @@ Rectangle {
     color: "transparent"
     property alias tunningVisible: tunningPage.visible
     property alias qifenVisible: qifenPage.visible
+    property alias fuzhuVisible: fuzhuPage.visible
+    property alias fuwuVisible: fuwuPage.visible
     signal closeTunningClicked();
     signal closeQifenClicked();
     signal closeFuzhuClicked();
+    signal closeFuwuClicked();
     //调音框
     Rectangle {
         id: tunningPage
@@ -288,7 +291,7 @@ Rectangle {
         visible: false
         anchors.bottom: parent.bottom
         anchors.left: parent.left
-        anchors.leftMargin: 700
+        anchors.leftMargin: 500
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -512,6 +515,289 @@ Rectangle {
             }
         }
     }
+
+    //辅助框
+    Rectangle {
+        id: fuzhuPage
+        width: 602
+        height: 266
+        color: "transparent"
+        visible: false
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: 600
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+
+            }
+        }
+
+        Image {
+            id: fuzhuBgImage
+            x: 0
+            y: 0
+            anchors.rightMargin: 0
+            anchors.bottomMargin: 0
+            anchors.leftMargin: 0
+            anchors.topMargin: 0
+            anchors.fill: parent
+            source: "images/dsc_assist_bg.png"
+        }
+
+        Text {
+            id: audioEffectText1
+            x: 59
+            y: 36
+            width: 46
+            height: 22
+            color: "#ffffff"
+            text: qsTr("音效")
+            font.pointSize: 26
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Text {
+            id: bgText
+            x: 289
+            y: 36
+            width: 46
+            height: 25
+            color: "#ffffff"
+            text: qsTr("背景")
+            font.pointSize: 26
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        PushButton {
+            id: jichangButton
+            x: 56
+            y: 94
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_assist_jc.png"
+            anchors.topMargin: 94
+            anchors.leftMargin: 56
+            anchors.top: parent.top
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: bangongButton
+            x: 154
+            y: 94
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_assist_office.png"
+            anchors.topMargin: 94
+            anchors.leftMargin: 154
+            anchors.top: parent.top
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: chezhanButton
+            x: 56
+            y: 156
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_assist_cz.png"
+            anchors.topMargin: 156
+            anchors.leftMargin: 56
+            anchors.top: parent.top
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: gongdiButton
+            x: 154
+            y: 156
+            width: 86
+            height: 50
+            backgroundNormal: "images/dsc_assist_gd.png"
+            anchors.topMargin: 156
+            anchors.leftMargin: 154
+            anchors.top: parent.top
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: bgText1
+            x: 320
+            y: 208
+            width: 46
+            height: 22
+            color: "#ffffff"
+            text: qsTr("背景1")
+            font.pointSize: 20
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Text {
+            id: bgText2
+            x: 462
+            y: 208
+            width: 46
+            height: 22
+            color: "#ffffff"
+            text: qsTr("背景2")
+            font.pointSize: 20
+            verticalAlignment: Text.AlignVCenter
+            font.bold: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        PushButton {
+            id: bgButton1
+            x: 285
+            y: 94
+            width: 120
+            height: 108
+            backgroundNormal: "images/dsc_assist_bgt1.png"
+            anchors.topMargin: 94
+            anchors.leftMargin: 285
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: bgButton2
+            x: 425
+            y: 94
+            width: 120
+            height: 108
+            backgroundNormal: "images/dsc_assist_bgt2.png"
+            anchors.topMargin: 94
+            anchors.leftMargin: 425
+            anchors.left: parent.left
+            anchors.top: parent.top
+        }
+
+        PushButton {
+            id: closeFuzhuButton
+            x: 563
+            y: -19
+            width: 46
+            height: 60
+            backgroundNormal: "images/dsc_tuning_off.png"
+            anchors.topMargin: -19
+            anchors.leftMargin: 563
+            anchors.top: parent.top
+            anchors.left: parent.left
+            onClicked: {
+               parent.parent.closeFuzhuClicked();
+            }
+        }
+    }
+    //服务框
+    Rectangle {
+        id: fuwuPage
+        x: 1
+        width: 692
+        height: 166
+        color: "#00000000"
+        visible: false
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: 83
+        anchors.leftMargin: 142
+        MouseArea {
+            anchors.fill: parent
+        }
+
+        Image {
+            id: fuwuBgImage
+            anchors.fill: parent
+            source: "images/fuwu-bg.png"
+        }
+
+
+        PushButton {
+            id: hujiaoButton
+            x: 37
+            y: 33
+            width: 116
+            height: 90
+            anchors.topMargin: 33
+            anchors.leftMargin: 37
+            anchors.top: parent.top
+            backgroundNormal: "images/hj.png"
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: jiushuiButton
+            x: 161
+            y: 33
+            width: 116
+            height: 90
+            anchors.topMargin: 33
+            anchors.leftMargin: 161
+            anchors.top: parent.top
+            backgroundNormal: "images/js.png"
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: dianyingButton
+            x: 285
+            y: 33
+            width: 116
+            height: 90
+            anchors.topMargin: 33
+            anchors.leftMargin: 285
+            anchors.top: parent.top
+            backgroundNormal: "images/dy.png"
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: xiaofeiButton
+            x: 408
+            y: 33
+            width: 116
+            height: 90
+            anchors.topMargin: 33
+            anchors.leftMargin: 408
+            anchors.top: parent.top
+            backgroundNormal: "images/xf.png"
+            anchors.left: parent.left
+        }
+
+        PushButton {
+            id: udiskaddButton
+            x: 529
+            y: 33
+            width: 116
+            height: 90
+            anchors.topMargin: 33
+            anchors.leftMargin: 529
+            anchors.top: parent.top
+            backgroundNormal: "images/udisk_add.png"
+            anchors.left: parent.left
+        }
+        PushButton {
+            id: closeFuwuButton
+            x: 645
+            y: -18
+            width: 46
+            height: 60
+            anchors.topMargin: -18
+            anchors.leftMargin: 645
+            anchors.top: parent.top
+            backgroundNormal: "images/dsc_tuning_off.png"
+            anchors.left: parent.left
+            onClicked: {
+               parent.parent.closeFuwuClicked();
+            }
+        }
+    }//<!--end服务框-->
 
 }
 

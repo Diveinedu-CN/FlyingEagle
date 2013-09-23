@@ -4,7 +4,7 @@ Rectangle {
     width: parent.width
     height: 60
     color: "#00000000"
-
+    property alias fuwuButton: fuwuButton
     signal handlerLoader(string name, int index)
 
     Image {

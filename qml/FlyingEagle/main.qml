@@ -302,6 +302,20 @@ Rectangle {
                 }
                 break;
             case "fuzhu":
+                if(tunningLoader.source!="")
+                {
+                    tunningLoader.item.fuzhuVisible = true;
+                }else {
+
+                }
+                break;
+            case "fuwu":
+                if(tunningLoader.source!="")
+                {
+                    tunningLoader.item.fuwuVisible = true;
+                }else {
+
+                }
                 break;
             default:
                 break;
@@ -345,6 +359,36 @@ Rectangle {
             ignoreUnknownSignals:true
             onClicked: {
                 tunningPopupPage.handleTunningPage("qifen");
+            }
+        }
+        //辅助
+        Connections {
+            target: tunningLoader.item
+            ignoreUnknownSignals:true
+            onCloseFuzhuClicked: {
+                tunningPopupPage.handleTunningPage("fuzhu");
+            }
+        }
+        Connections {
+            target: mainToolBar.fuzhuButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                tunningPopupPage.handleTunningPage("fuzhu");
+            }
+        }
+        //服务
+        Connections {
+            target: tunningLoader.item
+            ignoreUnknownSignals:true
+            onCloseFuwuClicked: {
+                tunningPopupPage.handleTunningPage("fuwu");
+            }
+        }
+        Connections {
+            target: mainMenu.fuwuButton
+            ignoreUnknownSignals:true
+            onClicked: {
+                tunningPopupPage.handleTunningPage("fuwu");
             }
         }
     }

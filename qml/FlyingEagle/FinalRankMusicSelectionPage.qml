@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.0
 
 Rectangle {
     width: 1280
@@ -27,13 +28,13 @@ Rectangle {
 
     Row {
         Item {
-            anchors.left: leftHalf.right
-            anchors.top: leftHalf.top
+            anchors.left: parent.left
+            anchors.top: parent.top
             anchors.topMargin: 60
 
             Image {
                 x: 55
-                y: 68
+                y: 10
                 width: 1158
                 height: 489
 
@@ -42,40 +43,40 @@ Rectangle {
 
             Image {
                 x: 1075
-                y: 95
+                y: 39
                 width: 146
                 height: 136
                 source: "images/finalTop/5.png"
             }
 
-            Button {
+            PushButton {
                 x: 1075
-                y: 95
+                y: 39
                 width: 146
                 height: 136
 
                 text: "总排行"
-//                style: {
-//                    color: "red"
-//                }
+                colorText: "#FFFFFFFF"
             }
 
-            Button {
+            PushButton {
                 x: 1075
-                y: 228
+                y: 173
                 width: 146
                 height: 136
 
-                text: "总排行"
+                text: "月排行"
+                colorText: "#FFFFFFFF"
             }
 
-            Button {
+            PushButton {
                 x: 1075
-                y: 362
+                y: 308
                 width: 146
                 height: 136
 
-                text: "总排行"
+                text: "周排行"
+                colorText: "#FFFFFFFF"
             }
 
             TestListModel {
@@ -85,7 +86,7 @@ Rectangle {
             GridView {
                 id: musicList
                 x: 55
-                y: 105
+                y: 54
 
                 width: 1018
                 height: 416

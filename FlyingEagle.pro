@@ -36,4 +36,5 @@ OTHER_FILES += \
     qml/FlyingEagle/FlipEdgeButton.qml \
     qml/FlyingEagle/FinalMusicSelectionPage.qml \
     qml/FlyingEagle/TunningPage.qml \
-    qml/FlyingEagle/FinalRankMusicSelectionPage.qml
+    qml/FlyingEagle/FinalRankMusicSelectionPage.qml \
+    qml/FlyingEagle/SearchBarMenu.qml

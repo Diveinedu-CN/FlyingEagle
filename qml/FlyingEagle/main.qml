@@ -125,6 +125,7 @@ Rectangle {
     }
 
     //在这里加入搜索条,这样就不会被弹窗阴影遮盖了
+    /*
     TextField {
         id:searchBar
         anchors.top: parent.top
@@ -173,6 +174,16 @@ Rectangle {
                 }
             }
         }
+    }
+    */
+    SearchBarMenu {
+        id:searchBarMenu
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+
+        width: 330; height:316;
     }
 
     //已选弹窗阴影遮盖层,默认不显示,比搜索栏更上一层

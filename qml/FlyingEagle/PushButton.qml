@@ -1,6 +1,8 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: pushButton
+
     property alias text: label.text
     property url backgroundNormal: ""
     property url backgroundPressed: ""
@@ -8,7 +10,9 @@ Rectangle {
     property color colorNormal: "#a0a0a0"
     property color colorPressed: "#d0d0d0"
     property color colorText: "#000000"
-    signal clicked
+    property int tag: 0
+
+    signal clicked(Item item)
 
     width: 64
     height: 64
@@ -62,7 +66,7 @@ Rectangle {
         anchors.fill: parent
 
         onClicked: {
-            parent.clicked();
+            parent.clicked(pushButton);
         }
     }
 }

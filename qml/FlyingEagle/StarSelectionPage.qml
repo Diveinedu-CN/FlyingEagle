@@ -8,7 +8,7 @@ import "componentCreation.js" as ComponentCreation
 Rectangle {
     width: 1280
     height: 591
-    color: "red"
+    color: "transparent"
 
     property var langArray: new Array("全部", "国语", "粤语", "闽南语", "外语", "网络", "独家")
 
@@ -29,15 +29,21 @@ Rectangle {
             source: "images/diange.fw.png"
         }
 
-        //导航标题
-        Text {
-            id: navTitleLabel
+        NavigationBar {
+            id: navBar
             anchors.left: navDiangeImage.right
-            anchors.leftMargin: 4
-            anchors.verticalCenter: navDiangeImage.verticalCenter
-            text: qsTr("点歌")
-            font.pixelSize: 24
-            color: "#FFFFFFFF"
+
+            Component.onCompleted: {
+                navBar.createButtons(langArray)
+            }
+        }
+
+        Connections {
+            target: navBar
+            ignoreUnknownSignals: true
+            onClicked: {
+                console.log(item.tag)
+            }
         }
 
         //Tab标签栏
@@ -48,19 +54,28 @@ Rectangle {
             source: "images/daohangtiao.png"
         }
 
-        //创建语言选择按钮
-        Component.onCompleted: {
-            var preButton = null;
-            for(var i=0; i<langArray.length; i++) {
-                var button = ComponentCreation.createTabButton(tabBar, langArray[i]);
-                if (preButton == null) {
-                    button.anchors.left = tabbarId.left;
-                    button.anchors.leftMargin = 20;
+        MenuTabBar {
+            id: menuTabBar
+            anchors.left: tabBar.left
+            anchors.top: tabBar.top
+
+            Component.onCompleted: {
+                menuTabBar.createButtons(langArray)
+            }
+        }
+
+        Connections {
+            target: menuTabBar
+            ignoreUnknownSignals: true
+            onClicked: {
+//                musicList.model.destroy();
+
+                if(item.tag === 0) {
+                    musicList.model = Qt.createComponent("TestListModel.qml")
+                    console.log(musicList.model)
                 } else {
-                    button.anchors.left = preButton.right;
-                    button.anchors.leftMargin = 10;
+                    musicList.model = Qt.createComponent("TestListModel.qml")
                 }
-                preButton = button;
             }
         }
     }
@@ -102,6 +117,19 @@ Rectangle {
                 height: 207
 
                 source: "images/starBg.png"
+            }
+
+            Text {
+                id: starName
+                anchors.left: parent.left
+                anchors.leftMargin: 40
+                anchors.top: parent.top
+                anchors.topMargin: 10
+
+                text: star
+                color: "#FFFFFFFF"
+                font.pixelSize: 30
+                font.bold: true
             }
         }
     }

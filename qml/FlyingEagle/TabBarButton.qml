@@ -8,8 +8,9 @@ Rectangle {
 
     property url background: ""
     property alias text: label.text
+    property int tag: 0
 
-    signal clicked
+    signal clicked(Item item)
 
     Image {
         anchors.bottom: parent.bottom;
@@ -27,7 +28,7 @@ Rectangle {
         anchors.fill: parent
 
         onClicked: {
-            parent.clicked();
+            parent.clicked(parent);
         }
     }
 }

@@ -11,6 +11,7 @@ Rectangle {
     property alias tiaoyinButton: tiaoyinButton
     property alias qifenButton: qifenButton
     property alias fuzhuButton: fuzhuButton
+
     Image {
         anchors.fill: parent
         source: !parent.backgroundImage ? parent.backgroundImage : "images/bar.png"

@@ -155,7 +155,7 @@ Item {
                 Text {
                     id:_name;
                     height: 40;
-                    font.pixelSize: size;
+                    font.pixelSize: 0
                     anchors.left: _seqno.right;
                     anchors.leftMargin: 10;
                     anchors.top:parent.top;
@@ -167,7 +167,7 @@ Item {
                 Text {
                     id:_star;
                     height: 40;
-                    font.pixelSize: size
+                    font.pixelSize: 0
                     anchors.right: _firstButton.left;
                     anchors.rightMargin: 20;
                     anchors.top:parent.top;

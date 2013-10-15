@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
-import "YGYKeyBoard"
+//import "YGYKeyBoard"
+import "KeyBoard"
 
 Rectangle {
     width: 1280
@@ -111,8 +112,14 @@ Rectangle {
             }
 
         }
-        YGYKeyBoard {
-            id:keyboard
+//        YGYKeyBoard {
+        KeyBoard {
+            id:keyboard;
+            onNeedHide:
+            {
+                keyboard.state = "hide";
+                popContentAreaTimer.start();
+            }
         }
     }
     //输入法 弹窗阴影遮盖层 消失定时器
@@ -125,6 +132,7 @@ Rectangle {
     }
 
     //在这里加入搜索条,这样就不会被弹窗阴影遮盖了
+    /*
     TextField {
         id:searchBar
         anchors.top: parent.top
@@ -173,6 +181,16 @@ Rectangle {
                 }
             }
         }
+    }
+    */
+    SearchBarMenu {
+        id:searchBarMenu
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+
+        width: 330; height:316;
     }
 
     //已选弹窗阴影遮盖层,默认不显示,比搜索栏更上一层

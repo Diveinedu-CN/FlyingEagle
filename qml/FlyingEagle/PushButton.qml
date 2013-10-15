@@ -1,5 +1,6 @@
 import QtQuick 2.0
 
+
 Rectangle {
     property alias text: label.text
     property url backgroundNormal: ""

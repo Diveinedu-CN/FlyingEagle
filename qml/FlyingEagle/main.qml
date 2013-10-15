@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
-import "YGYKeyBoard"
+//import "YGYKeyBoard"
+import "KeyBoard"
 
 Rectangle {
     width: 1280
@@ -111,8 +112,14 @@ Rectangle {
             }
 
         }
-        YGYKeyBoard {
-            id:keyboard
+//        YGYKeyBoard {
+        KeyBoard {
+            id:keyboard;
+            onNeedHide:
+            {
+                keyboard.state = "hide";
+                popContentAreaTimer.start();
+            }
         }
     }
     //输入法 弹窗阴影遮盖层 消失定时器

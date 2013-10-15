@@ -87,8 +87,15 @@ Rectangle {
 
         model: testModel
         delegate: Item {
-            width: 791
-            height: 52
+            width: 182
+            height: 207
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    musicList.currentIndex = index
+                }
+            }
 
             Image {
                 width: 182

@@ -68,125 +68,31 @@ Rectangle {
             target: menuTabBar
             ignoreUnknownSignals: true
             onClicked: {
-//                musicList.model.destroy();
-
-                if(item.tag === 0) {
-                    musicList.model = Qt.createComponent("TestListModel.qml")
-                    console.log(musicList.model)
-                } else {
-                    musicList.model = Qt.createComponent("TestListModel.qml")
-                }
+                console.log(item.tag)
             }
         }
     }
 
-    TestListModel {
-        id: testModel
-    }
+////////////////////////////////////
+    Rectangle {
+        width: 1280
+        height: 591
+        color: "transparent"
 
-    GridView {
-        id: musicList
-        x: 106
-        y: 79
+        anchors.left: parent.left
+        anchors.top: menuTabBar.bottom
 
-        width: 1095
-        height: 444
-
-        cellWidth: 182
-        cellHeight: 207
-
-        flow: GridView.TopToBottom
-        snapMode: GridView.SnapToRow
-
-        clip: true
-
-        model: testModel
-        delegate: Item {
-            width: 182
-            height: 207
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    musicList.currentIndex = index
-                }
-            }
-
-            Image {
-                width: 182
-                height: 207
-
-                source: "images/starBg.png"
-            }
-
-            Text {
-                id: starName
-                anchors.left: parent.left
-                anchors.leftMargin: 40
-                anchors.top: parent.top
-                anchors.topMargin: 10
-
-                text: star
-                color: "#FFFFFFFF"
-                font.pixelSize: 30
-                font.bold: true
-            }
+        Loader {
+            id: gridLoader
+            source: "AlbumSelectionPage.qml"
         }
     }
 
-    PushButton {
-        id: leftButton
-        x: 693
-        y: 495
-        width: 68
-        height: 36
-
-        anchors.top: musicList.bottom
-        anchors.topMargin: -28
-
-        icon: "images/left.png"
-    }
-
-    Text {
-        id: pageLabel
-        x: 775
-        y: 502
-        width: 128
-        height: 22
-
-        anchors.top: musicList.bottom
-        anchors.topMargin: -21
-
-        text: "10/100"
-        horizontalAlignment: Text.AlignHCenter
-        color: "#FFFFFFFF"
-        font.pixelSize: 18
-    }
-
-    PushButton {
-        id: rightButton
-        x: 921
-        y: 495
-        width: 68
-        height: 36
-
-        anchors.top: musicList.bottom
-        anchors.topMargin: -28
-
-        icon: "images/right.png"
-    }
-
-    PushButton {
-        x: 1101
-        y: 494
-
-        width: 100
-        height: 44
-
-        icon: "images/back.png"
-
+    Connections{
+        target: gridLoader.item
+        ignoreUnknownSignals: true
         onClicked: {
-            handlerLoader("TopicSelectionPage.qml", 0)
+            gridLoader.source = "MusicAlbumSelectionPage.qml"
         }
     }
 }

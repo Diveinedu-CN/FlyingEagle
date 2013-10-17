@@ -84,7 +84,7 @@ Rectangle {
 
         Loader {
             id: gridLoader
-            source: "AlbumSelectionPage.qml"
+            source: "PathAlbumSelectionPage.qml"
         }
     }
 

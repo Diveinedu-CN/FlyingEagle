@@ -34,7 +34,6 @@ Rectangle {
         anchors.bottomMargin: -26
 
         signal handlerLoader(string name, int index)
-
         Loader {
             id: contentLoader
             source: "HomePage.qml"
@@ -43,6 +42,7 @@ Rectangle {
         //创建连接
         Connections {
             target: contentLoader.item
+            ignoreUnknownSignals:true
             onHandlerLoader: {
 //                switch (index) {
 //                case 0:
@@ -70,6 +70,16 @@ Rectangle {
 
                 //切换目标页面由信号传入
                 contentLoader.source = name
+            }
+            onHandleShowBaotai: {
+                baobaigexing.showNumpad(title);
+            }
+            onHandleShowSingerInfo: {
+//                console.log("recieved onHandleShowSingerInfo"+ starname);
+                baobaigexing.showSingerInfo(starname);
+            }
+            onHandleShowMvPreview: {
+                baobaigexing.showMvPreview(mv);
             }
         }
 
@@ -419,5 +429,13 @@ Rectangle {
         anchors.bottom: parent.bottom
         backgroundImage: "images/bar.png"
         color: "transparent"
+    }
+
+    //报台歌星简介置顶框
+    BaotaiGexingJianJiePage {
+        id: baobaigexing;
+        width: 1280;
+        height: 720;
+        visible: false;
     }
 }

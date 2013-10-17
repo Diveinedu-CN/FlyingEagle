@@ -7,6 +7,7 @@ import QtQuick.Controls.Styles 1.0
 import "componentCreation.js" as ComponentCreation
 
 Rectangle {
+    id: lang_music_selection;
     width: 1280
     height: 591
     color: "transparent"
@@ -14,7 +15,9 @@ Rectangle {
     property var langArray: new Array("全部歌星", "热门", "港台男", "港台女", "大陆男", "大陆女", "日韩", "欧美", "网络", "组合", "其他")
 
     signal handlerLoader(string name, int index)
-
+    signal handleShowBaotai(string title)
+    signal handleShowSingerInfo(string starname)
+    signal handleShowMvPreview(string mv)
     Item {
         id: tabbarId
 
@@ -106,6 +109,12 @@ Rectangle {
                 color: "#FFFFFFFF"
                 font.pixelSize: 30
                 font.bold: true
+                MouseArea {
+                    anchors.fill: parent;
+                    onClicked: {
+                        lang_music_selection.handleShowBaotai(parent.text);
+                    }
+                }
             }
 
             Text {
@@ -125,10 +134,27 @@ Rectangle {
                 text: star
                 color: "#FFFFFFFF"
                 font.pixelSize: 26
+                MouseArea {
+                    anchors.fill: parent;
+                    onClicked: {
+                        lang_music_selection.handleShowSingerInfo(parent.text);
+                    }
+                }
             }
 
             Image {
-
+                id:mv_img;
+                width: 95; height:95;
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.topMargin: 15;
+                anchors.rightMargin: 55;
+                MouseArea {
+                    anchors.fill: parent;
+                    onClicked: {
+                        lang_music_selection.handleShowMvPreview("mv_id");
+                    }
+                }
             }
         }
     }

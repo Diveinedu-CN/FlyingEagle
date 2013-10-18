@@ -7,7 +7,6 @@ Rectangle {
     signal hideClicked();
     width: 693; height: 80;
     color: "transparent";
-    anchors.bottom: footer_div.top;
     Fakekey { id: _fakekey }
     Item { id: fakekey;
         function sendKey(s)

@@ -692,6 +692,7 @@ Rectangle {
             color: "transparent";
             anchors.bottom: footer_div.top;
             ZishuInput {
+                anchors.fill: parent;
                 onHideClicked: {
                     secendFilter_DIV.visible = false;
                     baotai_gexing.visible = false;

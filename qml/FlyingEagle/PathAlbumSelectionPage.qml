@@ -36,18 +36,171 @@ Rectangle {
             visible: PathView.onPath
             z: PathView.zOrder
 
-            Image{
-                id:myImage
+            Flipable {
                 width: 356
                 height: 356
-                source: image
                 anchors.horizontalCenter: parent.horizontalCenter
-                smooth: true
-            }
 
-            Text {
-                text: index
-                color: "red"
+                id: flipable
+
+                property bool flipped: false
+
+                front: Item {
+                    id: front
+                    width: 356
+                    height: 356
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Image{
+                        id:myImage
+                        width: 356
+                        height: 356
+                        source: image
+                    }
+
+                    Text {
+                        text: index
+                        color: "red"
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            flipable.flipped = !flipable.flipped
+                        }
+                    }
+
+//                    PushButton {
+//                        anchors.bottom: parent.bottom
+//                        anchors.bottomMargin: 20
+//                        anchors.horizontalCenter: parent.horizontalCenter
+
+//                        width: 100
+//                        height: 50
+
+//                        backgroundNormal: "images/moresongs.png"
+//                        visible: !(flipable.flipped)
+//                    }
+                }
+
+                back: Item {
+                    id: back
+                    width: 356
+                    height: 356
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Image {
+                        width: 356
+                        height: 356
+
+                        source: "images/albumBg.png"
+                    }
+
+                    Image {
+                        id: headImage
+
+                        width: 126
+                        height: 121
+                        anchors.left: back.left
+                        anchors.top: back.top
+
+                        source: "images/singergravatar.png"
+                    }
+
+                    Text {
+                        anchors.left: headImage.right
+                        anchors.top: back.top
+                        anchors.topMargin: 10
+
+                        text: "七(国语新歌*精选)"
+                        color: "white"
+                    }
+
+                    Text {
+                        anchors.left: headImage.right
+                        anchors.top: back.top
+                        anchors.topMargin: 40
+
+                        text: "歌手:陈奕迅"
+                        color: "white"
+                    }
+
+                    Text {
+                        anchors.left: headImage.right
+                        anchors.top: back.top
+                        anchors.topMargin: 60
+
+                        text: "语言:粤语"
+                        color: "white"
+                    }
+
+                    Text {
+                        anchors.left: headImage.right
+                        anchors.top: back.top
+                        anchors.topMargin: 80
+
+                        text: "发行时间:2013-7-22"
+                        color: "white"
+                    }
+
+                    Text {
+                        anchors.left: back.left
+                        anchors.top: back.top
+                        anchors.topMargin: 140
+
+                        text: "简介"
+                        color: "white"
+                    }
+
+                    Text {
+                        anchors.left: back.left
+                        anchors.top: back.top
+                        anchors.topMargin: 160
+                        color: "white"
+                        width: parent.width
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+
+                        text: "陈奕迅2002年开始成功打入台湾乐坛,由<Special Thanks to...>至<黑*白*灰>"
+                    }
+
+//                    MouseArea {
+//                        anchors.fill: parent
+//                        onClicked: {
+//                            flipable.flipped = !flipable.flipped
+//                        }
+//                    }
+
+                    PushButton {
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 20
+                        anchors.horizontalCenter: parent.horizontalCenter
+
+                        width: 100
+                        height: 50
+
+                        backgroundNormal: "images/moresongs.png"
+                        text: "专辑歌曲"
+                        colorText: "white"
+                    }
+                }
+
+                transform: Rotation {
+                    id: rotation
+                    origin.x: flipable.width/2
+                    origin.y: flipable.height/2
+                    axis.x: 0; axis.y: 1; axis.z: 0     // set axis.y to 1 to rotate around y-axis
+                    angle: 0    // the default angle
+                }
+
+                states: State {
+                    name: "back"
+                    PropertyChanges { target: rotation; angle: 180 }
+                    when: flipable.flipped
+                }
+
+                transitions: Transition {
+                    NumberAnimation { target: rotation; property: "angle"; duration: 400 }
+                }
             }
 
             transform:[

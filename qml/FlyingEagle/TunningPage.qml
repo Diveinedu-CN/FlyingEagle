@@ -15,6 +15,7 @@ Rectangle {
     signal closeQifenClicked();
     signal closeFuzhuClicked();
     signal closeFuwuClicked();
+    signal handWriteGreetingClicked();
     //调音框
     Rectangle {
         id: tunningPage
@@ -351,6 +352,9 @@ Rectangle {
             anchors.leftMargin: 101
             anchors.left: parent.left
             anchors.top: parent.top
+            onClicked: {
+                tunningItem.handWriteGreetingClicked();
+            }
         }
         Rectangle {
             id: switchButton

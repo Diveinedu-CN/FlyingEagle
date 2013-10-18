@@ -72,14 +72,17 @@ Rectangle {
                 contentLoader.source = name
             }
             onHandleShowBaotai: {
-                baobaigexing.showNumpad(title);
+                baotaigexing.showNumpad(title);
             }
             onHandleShowSingerInfo: {
 //                console.log("recieved onHandleShowSingerInfo"+ starname);
-                baobaigexing.showSingerInfo(starname);
+                baotaigexing.showSingerInfo(starname);
             }
             onHandleShowMvPreview: {
-                baobaigexing.showMvPreview(mv);
+                baotaigexing.showMvPreview(mv);
+            }
+            onHandleShowSecondFilter: {
+                baotaigexing.showSecendFilter(inputType);
             }
         }
 
@@ -436,7 +439,7 @@ Rectangle {
 
     //报台歌星简介置顶框
     BaotaiGexingJianJiePage {
-        id: baobaigexing;
+        id: baotaigexing;
         width: 1280;
         height: 720;
         color: "#BF000000";

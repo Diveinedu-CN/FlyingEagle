@@ -14,11 +14,17 @@ Item {
         anchors.fill: parent
         onClicked: ;
     }
-    Loader {
-        id: keyboardLoader
-        anchors.fill: parent
-        source: Tab.EnableVirtualKeyboard ? "./Standard.qml" : ""
+    Rectangle {
+        width: 693;
+        height: 295;
+        color: "transparent";
+        Loader {
+            id: keyboardLoader
+            anchors.fill: parent
+            source: Tab.EnableVirtualKeyboard ? "./Standard.qml" : ""
+        }
     }
+
     states: [ State { name: "show" }, State { name: "hide" } ]
     transitions: [
         Transition {

@@ -10,7 +10,8 @@ Rectangle {
     property alias numpadVisible: numpad.visible;
     property alias singerInfoVisible: singerInfo.visible;
     property alias mv_previewVisible: mv_preview.visible;
-    property alias greetingsVisible:greetings.visible;
+    property alias greetingsVisible: greetings.visible;
+    property alias secendFilterVisible: secendFilter_DIV.visible;
     signal singerInfoCloseClicked();
     signal mvPreviewCloseClicked();
     signal greetingSendClicked();
@@ -22,6 +23,7 @@ Rectangle {
         baotai_gexing.singerInfoVisible = false;
         baotai_gexing.mv_previewVisible = false;
         baotai_gexing.greetingsVisible = false;
+        baotai_gexing.secendFilterVisible = false;
         baotai_gexing.visible = true;
         number_input.text = title;
     }
@@ -32,6 +34,7 @@ Rectangle {
         baotai_gexing.singerInfoVisible = true;
         baotai_gexing.mv_previewVisible = false;
         baotai_gexing.greetingsVisible = false;
+        baotai_gexing.secendFilterVisible = false;
         baotai_gexing.visible = true;
     }
     function showMvPreview(mvname)
@@ -41,6 +44,7 @@ Rectangle {
         baotai_gexing.singerInfoVisible = false;
         baotai_gexing.mv_previewVisible = true;
         baotai_gexing.greetingsVisible = false;
+        baotai_gexing.secendFilterVisible = false;
         baotai_gexing.visible = true;
     }
     function showSendGreetings(mvname)
@@ -50,7 +54,40 @@ Rectangle {
         baotai_gexing.singerInfoVisible = false;
         baotai_gexing.mv_previewVisible = false;
         baotai_gexing.greetingsVisible = true;
+        baotai_gexing.secendFilterVisible = false;
         baotai_gexing.visible = true;
+    }
+    function showSecendFilter(inputType)
+    {
+        baotai_gexing.numpadVisible = false;
+        baotai_gexing.singerInfoVisible = false;
+        baotai_gexing.mv_previewVisible = false;
+        baotai_gexing.greetingsVisible = false;
+        baotai_gexing.secendFilterVisible = true;
+        baotai_gexing.visible = true;
+
+        quanbu.selected = false;
+        shoupin.selected = false;
+        shouxie.selected = false;
+        zishu.selected = false;
+        switch (inputType) {
+        case "quanbu":
+            quanbu.selected = true;
+            break;
+        case "shoupin":
+            shoupin.selected = true;
+            break;
+        case "shouxie":
+            shouxie.selected = true;
+            break;
+        case "zishu":
+            zishu.selected = true;
+            break;
+        default:
+            break;
+        }
+
+        console.log("inputType:" + inputType);
     }
 
     //报台数字输入盘部分
@@ -412,6 +449,7 @@ Rectangle {
         anchors.top: parent.top;
         anchors.topMargin: 74;
         width: 640; height: 518;
+        color: "transparent";
         Image {
             id: mv_preview_bg;
             anchors.fill: parent;
@@ -598,7 +636,153 @@ Rectangle {
             width: 693; height: 295;
             anchors.top: sendGreetings.bottom;
             anchors.topMargin: 25;
+            onNeedHide: {
+                secendFilter_DIV.visible = false;
+                baotai_gexing.visible = false;
+            }
         }
+    }
+
+
+
+    //二次筛选歌曲输入弹出框部分
+    Rectangle {
+        id: secendFilter_DIV;
+        width: 702;
+        height: 420/*335*/;
+        anchors.top: parent.top;
+        anchors.topMargin: 215;
+        color: "transparent";
+        Rectangle {
+            id: normalInputArea;
+            visible: !zishu.selected;
+            TextInput {
+                id: secendFilter_input
+                anchors.left: parent.left;
+                anchors.leftMargin: 10;
+                width: 258
+                height: 42
+                text: qsTr("123456")
+                color: "white"
+                font.pointSize: 30
+                transformOrigin: Item.Center
+                echoMode: TextInput.Normal
+                anchors.top: parent.top;
+                anchors.topMargin: 0;
+                horizontalAlignment: TextInput.AlignLeft
+            }
+            KeyBoard {
+                id: seckeyboard;
+                width: 693; height: 295;
+                anchors.top: secendFilter_input.bottom;
+                anchors.topMargin: 0;
+                anchors.left: parent.left;
+                anchors.leftMargin: 10;
+                onNeedHide: {
+                    secendFilter_DIV.visible = false;
+                    baotai_gexing.visible = false;
+                }
+            }
+
+        }
+        Rectangle {
+            id:zishuInputKeyboard;
+            visible: zishu.selected;
+            width: 693; height: 80;
+            color: "transparent";
+            anchors.bottom: footer_div.top;
+            ZishuInput {
+                onHideClicked: {
+                    secendFilter_DIV.visible = false;
+                    baotai_gexing.visible = false;
+                }
+            }
+        }
+
+        //下面的输入类型选择按钮横条
+        Rectangle {
+            id: footer_div;
+            width: 1280;height: 55;
+            anchors.bottom: parent.bottom;
+            anchors.bottomMargin: 0;
+            color: "transparent";
+            property string selectedimg: "images/secondfilter_selected.png";
+            property string unselectedimg: "images/secondfilter_unselected.png";
+
+            PushButton {
+                id:quanbu;
+                property bool selected: false;
+                text: "全部";
+                colorText: "white";
+                width: 80; height: 40;
+                anchors.top: parent.top;
+                anchors.left: parent.left;
+                anchors.leftMargin: 90;
+                backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+                onClicked: {
+                    quanbu.selected = !quanbu.selected;
+                    shoupin.selected = false;
+                    shouxie.selected = false;
+                    zishu.selected = false;
+
+                }
+            }
+            PushButton {
+                id:shoupin;
+                property bool selected: false;
+                text: "首拼";
+                colorText: "white";
+                width: 80; height: 40;
+                anchors.top: parent.top;
+                anchors.left: quanbu.right;
+                anchors.leftMargin: 15;
+                backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+                onClicked: {
+                    quanbu.selected = false;
+                    shoupin.selected = !shoupin.selected;
+                    shouxie.selected = false;
+                    zishu.selected = false;
+
+                }
+            }
+            PushButton {
+                id:shouxie;
+                property bool selected: false;
+                text: "手写";
+                colorText: "white";
+                width: 80; height: 40;
+                anchors.top: parent.top;
+                anchors.left: shoupin.right;
+                anchors.leftMargin: 15;
+                backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+                onClicked: {
+                    quanbu.selected = false;
+                    shoupin.selected = false;
+                    shouxie.selected = !shouxie.selected;
+                    zishu.selected = false;
+
+                }
+            }
+            PushButton {
+                id:zishu;
+                property bool selected: false;
+                text: "字数";
+                colorText: "white";
+                width: 80; height: 40;
+                anchors.top: parent.top;
+                anchors.left: shouxie.right;
+                anchors.leftMargin: 15;
+                backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+                onClicked: {
+                    quanbu.selected = false;
+                    shoupin.selected = false;
+                    shouxie.selected = false;
+                    zishu.selected = !zishu.selected;
+
+                }
+            }
+        }
+
     }
 
 }

@@ -118,7 +118,7 @@ Rectangle {
             id:space_button;
             width:300;height: 54;
             backgroundNormal: "./images/std-keyboard-space.png";
-            onClicked: ;
+            onClicked: fakekey.sendKey(" ");
         }
         PushButton {
             id:newline_button;

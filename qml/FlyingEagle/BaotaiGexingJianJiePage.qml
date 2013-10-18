@@ -1,4 +1,6 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.0
+import "Keyboard"
 
 Rectangle {
     id:baotai_gexing;
@@ -8,8 +10,10 @@ Rectangle {
     property alias numpadVisible: numpad.visible;
     property alias singerInfoVisible: singerInfo.visible;
     property alias mv_previewVisible: mv_preview.visible;
+    property alias greetingsVisible:greetings.visible;
     signal singerInfoCloseClicked();
     signal mvPreviewCloseClicked();
+    signal greetingSendClicked();
     signal confirmClicked();
     signal moreSongsCliecked();
     function showNumpad(title)
@@ -17,6 +21,7 @@ Rectangle {
         baotai_gexing.numpadVisible = true;
         baotai_gexing.singerInfoVisible = false;
         baotai_gexing.mv_previewVisible = false;
+        baotai_gexing.greetingsVisible = false;
         baotai_gexing.visible = true;
         number_input.text = title;
     }
@@ -26,6 +31,7 @@ Rectangle {
         baotai_gexing.numpadVisible = false;
         baotai_gexing.singerInfoVisible = true;
         baotai_gexing.mv_previewVisible = false;
+        baotai_gexing.greetingsVisible = false;
         baotai_gexing.visible = true;
     }
     function showMvPreview(mvname)
@@ -34,9 +40,18 @@ Rectangle {
         baotai_gexing.numpadVisible = false;
         baotai_gexing.singerInfoVisible = false;
         baotai_gexing.mv_previewVisible = true;
+        baotai_gexing.greetingsVisible = false;
         baotai_gexing.visible = true;
     }
+    function showSendGreetings(mvname)
+    {
 
+        baotai_gexing.numpadVisible = false;
+        baotai_gexing.singerInfoVisible = false;
+        baotai_gexing.mv_previewVisible = false;
+        baotai_gexing.greetingsVisible = true;
+        baotai_gexing.visible = true;
+    }
 
     //报台数字输入盘部分
     Rectangle {
@@ -82,7 +97,6 @@ Rectangle {
             transformOrigin: Item.Center
             echoMode: TextInput.Normal
             horizontalAlignment: TextInput.AlignLeft
-
         }
 
         PushButton {
@@ -91,6 +105,7 @@ Rectangle {
             y: 357
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-delete.png"
+            onClicked: number_input.remove(number_input.length-1,number_input.length);
         }
 
         PushButton {
@@ -100,6 +115,7 @@ Rectangle {
             text: "0"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -109,6 +125,7 @@ Rectangle {
             text: "9"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -118,6 +135,7 @@ Rectangle {
             text: "8"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -127,6 +145,7 @@ Rectangle {
             text: "7"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -136,6 +155,7 @@ Rectangle {
             text: "6"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -145,6 +165,7 @@ Rectangle {
             text: "5"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -154,6 +175,7 @@ Rectangle {
             text: "4"
             colorText: "#ffffff"
             backgroundNormal: "images/baotai-num.png"
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -166,6 +188,7 @@ Rectangle {
             anchors.rightMargin: 22
             backgroundNormal: "images/baotai-num.png"
             anchors.right: parent.right
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -177,6 +200,7 @@ Rectangle {
             backgroundNormal: "images/baotai-num.png"
             anchors.leftMargin: 37
             anchors.left: num1.right
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -188,6 +212,7 @@ Rectangle {
             backgroundNormal: "images/baotai-num.png"
             anchors.leftMargin: 18
             anchors.left: parent.left
+            onClicked: number_input.text+=text;
         }
 
         PushButton {
@@ -441,6 +466,138 @@ Rectangle {
                 baotai_gexing.mvPreviewCloseClicked();
                 baotai_gexing.visible = false;
             }
+        }
+    }
+    //发送祝福语部分
+    Rectangle {
+        id: greetings;
+        anchors.left: parent.left;
+        anchors.leftMargin: 290;
+        anchors.top: parent.top;
+        anchors.topMargin: 0;
+        width: 700;height: 720;
+        color: "transparent";
+        //祝福语选择书写框
+        Rectangle {
+            id: sendGreetings;
+            width: 696; height: 260;
+            anchors.top: parent.top;
+            anchors.topMargin: 60;
+            color: "transparent";
+            Image {
+                id: sendGreetingsBg;
+                anchors.fill: parent;
+                source: "images/shouxiezhufu_bg.png"
+            }
+            Rectangle  {
+                id:greetingsList
+                anchors.left: parent.left;
+                anchors.top: parent.top;
+                anchors.topMargin: 20;
+                anchors.leftMargin: 26;
+                width: 192; height:210;
+                color: "transparent"
+                clip: true;
+
+                ListModel {
+                    id: greetingsListModel
+
+                    ListElement {
+                        greeting_text: "我爱你! "
+                    }
+                    ListElement {
+                        greeting_text: "生日快乐!"
+                    }
+                    ListElement {
+                        greeting_text: "祝福你们!"
+                    }
+                    ListElement {
+                        greeting_text: "很开心!!"
+                    }
+                }
+                Component {
+                    id: greetingsListDelegate
+                    Item {
+                        id:_item;
+                        width: parent.width; height: 50
+                        anchors.left: parent.left;
+                        anchors.leftMargin: 10;
+                        Text {
+                            id:greetingText;
+                            height: 50;
+                            font.pixelSize: 30;
+                            anchors.top: parent.top;
+                            anchors.left: parent.left;
+                            anchors.leftMargin: 10;
+                            color:"white";
+                            text: greeting_text;
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignBottom
+                            MouseArea {
+                                anchors.fill: parent;
+                                onClicked: {
+                                    greetingTextInput.text = greetingText.text;
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+
+                ListView {
+                    anchors.fill: parent
+                    focus: true;
+                    cacheBuffer: 80;
+                    clip:true;
+                    snapMode: ListView.SnapToItem;
+                    model: greetingsListModel;
+                    delegate: greetingsListDelegate;
+                }
+
+            }
+            TextArea {
+                id: greetingTextInput;
+                width: 438; height: 194;
+                anchors.top: parent.top;
+                anchors.right: parent.right;
+                anchors.topMargin: 28;
+                anchors.rightMargin: 30;
+                font.pointSize: 30
+                transformOrigin: Item.Center
+                horizontalAlignment: TextInput.AlignLeft
+                verticalAlignment: TextInput.AlignTop;
+                textColor: "black";
+                textFormat: TextEdit.PlainText;
+                clip: true;
+
+                Component.onCompleted: {
+                    keyboard.state = "show";
+                }
+
+
+                PushButton {
+                    id: sendButton;
+                    width: 80; height: 40;
+                    anchors.bottom: parent.bottom;
+                    anchors.right: parent.right;
+                    anchors.rightMargin: 10;
+                    anchors.bottomMargin: 10;
+                    backgroundNormal: "images/shouxiezhufu_fasong.png";
+                    onClicked: {
+                        baotai_gexing.greetingSendClicked();
+                        baotai_gexing.visible = false;
+                    }
+                }
+            }
+        }
+
+        //祝福语编辑时输入法框
+        KeyBoard {
+            id: keyboard;
+            width: 693; height: 295;
+            anchors.top: sendGreetings.bottom;
+            anchors.topMargin: 25;
         }
     }
 

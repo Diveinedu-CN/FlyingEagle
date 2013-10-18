@@ -381,6 +381,9 @@ Rectangle {
             onCloseQifenClicked: {
                 tunningPopupPage.handleTunningPage("qifen");
             }
+            onHandWriteGreetingClicked: {
+                baobaigexing.showSendGreetings();
+            }
         }
         Connections {
             target: mainToolBar.qifenButton
@@ -436,6 +439,7 @@ Rectangle {
         id: baobaigexing;
         width: 1280;
         height: 720;
+        color: "#BF000000";
         visible: false;
     }
 }

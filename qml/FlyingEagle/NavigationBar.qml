@@ -7,21 +7,21 @@ Rectangle {
     width: 1000
     height: 46
 
-    color: "red"
+    color: "transparent"
 
     signal clicked(Item item)
 
     function removeChildren() {
-        for(var child in container.children) {
-            child.destroy();
+        for(var i=0; i < container.children.length; i++) {
+            container.childAt(i).destory()
         }
     }
 
     function createButtons(titleArray) {
-        removeChildren();
+//        removeChildren();
 
         var preButton = null;
-        for(var i=0; i<langArray.length; i++) {
+        for(var i=0; i<titleArray.length; i++) {
             var button = ComponentCreation.createNavButton(container, titleArray[i]);
             if (preButton == null) {
                 button.anchors.left = container.left;

@@ -11,6 +11,9 @@ Rectangle {
     color: "transparent"
 
     property var langArray: new Array("全部", "国语", "粤语", "闽南语", "外语", "网络", "独家")
+    property var ablumArray: new Array("歌曲", "专辑")
+    property var pathArray: new Array("歌星")
+    property var pathArray2: new Array("歌星", "歌星名")
 
     signal handlerLoader(string name, int index)
 
@@ -30,19 +33,35 @@ Rectangle {
         }
 
         NavigationBar {
+            id: navBar2
+            anchors.left: navDiangeImage.right
+            visible: false
+
+            Component.onCompleted: {
+                navBar2.createButtons(pathArray2)
+            }
+        }
+
+        NavigationBar {
             id: navBar
             anchors.left: navDiangeImage.right
 
             Component.onCompleted: {
-                navBar.createButtons(langArray)
+                navBar.createButtons(pathArray)
             }
         }
 
         Connections {
-            target: navBar
+            target: navBar2
             ignoreUnknownSignals: true
             onClicked: {
-                console.log(item.tag)
+                if(item.tag === 0) {
+                    menuTabBar.visible = true
+                    menuTabBar2.visible = false
+                    navBar.visible = true
+                    navBar2.visible = false
+                    gridLoader.source = "AlbumSelectionPage.qml"
+                }
             }
         }
 
@@ -52,6 +71,17 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: navDiangeImage.bottom
             source: "images/daohangtiao.png"
+        }
+
+        MenuTabBar {
+            id: menuTabBar2
+            anchors.left: tabBar.left
+            anchors.top: tabBar.top
+            visible: false
+
+            Component.onCompleted: {
+                menuTabBar2.createButtons(ablumArray)
+            }
         }
 
         MenuTabBar {
@@ -71,6 +101,23 @@ Rectangle {
                 console.log(item.tag)
             }
         }
+
+        Connections {
+            target: menuTabBar2
+            ignoreUnknownSignals: true
+            onClicked: {
+                switch(item.tag) {
+                    case 0:
+                        gridLoader.source = "MusicAlbumSelectionPage.qml";
+                        break;
+                    case 1:
+                        gridLoader.source = "PathAlbumSelectionPage.qml";
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 
 ////////////////////////////////////
@@ -84,7 +131,7 @@ Rectangle {
 
         Loader {
             id: gridLoader
-            source: "PathAlbumSelectionPage.qml"
+            source: "AlbumSelectionPage.qml"
         }
     }
 
@@ -92,6 +139,13 @@ Rectangle {
         target: gridLoader.item
         ignoreUnknownSignals: true
         onClicked: {
+            navBar.visible = false
+            menuTabBar.visible = false
+
+            navBar2.visible = true
+            menuTabBar2.visible = true
+
+//            menuTabBar.createButtons(ablumArray)
             gridLoader.source = "MusicAlbumSelectionPage.qml"
         }
     }

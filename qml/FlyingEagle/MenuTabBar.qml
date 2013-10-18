@@ -13,7 +13,7 @@ Rectangle {
     }
 
     function createButtons(titleArray) {
-        removeChildren();
+//        removeChildren();
 
         var preButton = null;
         for(var i=0; i<titleArray.length; i++) {

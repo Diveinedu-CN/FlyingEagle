@@ -56,6 +56,18 @@ Item {
             keyboard.needHide();
         }
     }
+    function showNumericKeyboard()
+    {
+        keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./Numeric.qml" : "");
+    }
 
+    function showEnglishKeyboard()
+    {
+        keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./Standard.qml" : "");
+    }
+    function showHandWritingKeyboard()
+    {
+        keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./HandWriting.qml" : "");
+    }
 
 }

@@ -724,7 +724,7 @@ Rectangle {
                     shoupin.selected = false;
                     shouxie.selected = false;
                     zishu.selected = false;
-
+                    seckeyboard.showEnglishKeyboard();
                 }
             }
             PushButton {
@@ -742,7 +742,7 @@ Rectangle {
                     shoupin.selected = !shoupin.selected;
                     shouxie.selected = false;
                     zishu.selected = false;
-
+                    seckeyboard.showEnglishKeyboard();
                 }
             }
             PushButton {
@@ -760,7 +760,7 @@ Rectangle {
                     shoupin.selected = false;
                     shouxie.selected = !shouxie.selected;
                     zishu.selected = false;
-
+                    seckeyboard.showHandWritingKeyboard();
                 }
             }
             PushButton {

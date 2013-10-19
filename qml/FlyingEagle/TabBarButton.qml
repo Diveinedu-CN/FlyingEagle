@@ -13,7 +13,7 @@ Rectangle {
     signal clicked(Item item)
 
     Image {
-        anchors.bottom: parent.bottom;
+        anchors.bottom: _id.bottom;
         source: background
     }
 
@@ -21,11 +21,11 @@ Rectangle {
         id: label
         color: "#FFFFFFFF"
         font.pixelSize: 22
-        anchors.centerIn: parent
+        anchors.centerIn: _id
     }
 
     MouseArea {
-        anchors.fill: parent
+        anchors.fill: _id
 
         onClicked: {
             parent.clicked(parent);

@@ -12,7 +12,7 @@ Rectangle {
     height: 591
     color: "transparent"
 
-    property var langArray: new Array("全部歌星", "热门", "港台男", "港台女", "大陆男", "大陆女", "日韩", "欧美", "网络", "组合", "其他")
+    property var langArray: new Array("全部", "国语", "粤语", "闽南语", "外语", "网络", "独家")
 
     signal handlerLoader(string name, int index)
     signal handleShowBaotai(string title)

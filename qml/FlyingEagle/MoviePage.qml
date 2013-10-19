@@ -19,6 +19,22 @@ Rectangle {
     }
 
     PushButton {
+        x: 316
+        y: 467
+        width: 136
+        height: 51
+        backgroundNormal: "images/movieButton.png"
+        text: "立即播放"
+        colorText: "#ffffff"
+    }
 
+    PushButton {
+        x: 539
+        y: 467
+        width: 136
+        height: 51
+        backgroundNormal: "images/movieButton.png"
+        text: "加入已选"
+        colorText: "#ffffff"
     }
 }

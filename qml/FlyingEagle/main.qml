@@ -385,7 +385,7 @@ Rectangle {
                 tunningPopupPage.handleTunningPage("qifen");
             }
             onHandWriteGreetingClicked: {
-                baobaigexing.showSendGreetings();
+                baotaigexing.showSendGreetings();
             }
         }
         Connections {

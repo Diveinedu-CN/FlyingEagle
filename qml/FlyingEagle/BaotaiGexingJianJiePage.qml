@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
-import "Keyboard"
+import "KeyBoard"
 
 Rectangle {
     id:baotai_gexing;

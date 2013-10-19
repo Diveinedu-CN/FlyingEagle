@@ -7,6 +7,8 @@ Rectangle {
     width: 1280
     height: 591
     color: "transparent"
+
+    signal handleLoader(string name, int index)
     signal handleShowBaotai(string title)
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
@@ -323,6 +325,7 @@ Rectangle {
                     anchors.rightMargin: 70;
                     backgroundNormal: "images/back.png";
                     onClicked: {
+                        finalRankMusicSelection.handleLoader("RankSelectionPage.qml", 0)
                     }
                 }
             }

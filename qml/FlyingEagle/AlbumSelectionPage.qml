@@ -131,10 +131,7 @@ Rectangle {
         icon: "images/back.png"
 
         onClicked: {
-            onClicked: {
-                //返回
-                container.clicked(2, 1)
-            }
+            handlerLoader("HomePage.qml", 0)
         }
     }
 }

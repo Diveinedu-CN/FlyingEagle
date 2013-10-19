@@ -77,7 +77,7 @@ Flipable {
         onClicked: {
             flipable.flipped = !flipable.flipped
 
-            clicked()
+            flipable.clicked()
         }
     }
 }

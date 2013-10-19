@@ -6,6 +6,7 @@ import QtQuick 2.0
 import "componentCreation.js" as ComponentCreation
 
 Rectangle {
+    id: starSelection;
     width: 1280
     height: 591
     color: "transparent"
@@ -16,7 +17,10 @@ Rectangle {
     property var pathArray2: new Array("歌星", "歌星名")
 
     signal handlerLoader(string name, int index)
-
+    signal handleShowBaotai(string title)
+    signal handleShowSingerInfo(string starname)
+    signal handleShowMvPreview(string mv)
+    signal handleShowSecondFilter(string inputType)
     Item {
         id: tabbarId
 
@@ -147,6 +151,24 @@ Rectangle {
 
 //            menuTabBar.createButtons(ablumArray)
             gridLoader.source = "MusicAlbumSelectionPage.qml"
+        }
+    }
+
+    //创建连接转发signal到最外层给main.qml,让其可以显示全屏报台 歌星简介 二次筛选输入框.
+    Connections {
+        target: gridLoader.item
+        ignoreUnknownSignals:true
+        onHandleShowBaotai: {
+            starSelection.handleShowBaotai(title);
+        }
+        onHandleShowSingerInfo: {
+            starSelection.handleShowSingerInfo(starname);
+        }
+        onHandleShowMvPreview: {
+            starSelection.handleShowMvPreview(mv);
+        }
+        onHandleShowSecondFilter: {
+            starSelection.handleShowSecondFilter(inputType);
         }
     }
 }

@@ -73,12 +73,15 @@ Rectangle {
         switch (inputType) {
         case "quanbu":
             quanbu.selected = true;
+            seckeyboard.showEnglishKeyboard();
             break;
         case "shoupin":
             shoupin.selected = true;
+            seckeyboard.showEnglishKeyboard();
             break;
         case "shouxie":
             shouxie.selected = true;
+            seckeyboard.showHandWritingKeyboard();
             break;
         case "zishu":
             zishu.selected = true;
@@ -89,6 +92,12 @@ Rectangle {
 
         console.log("inputType:" + inputType);
     }
+    MouseArea {
+        anchors.fill: parent;
+        onClicked: {
+            parent.visible = false;
+        }
+    }
 
     //报台数字输入盘部分
     Rectangle {
@@ -98,6 +107,11 @@ Rectangle {
         width: 302;
         height: 437;
         color: "transparent";
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: {
+            }
+        }
         Image {
             id: numpadBg;
             x: 0
@@ -279,6 +293,11 @@ Rectangle {
         width: 470
         height: 440
         color: "transparent"
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: {
+            }
+        }
         Image {
             id: singerInfoBg;
             anchors.fill: parent;
@@ -450,6 +469,11 @@ Rectangle {
         anchors.topMargin: 74;
         width: 640; height: 518;
         color: "transparent";
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: {
+            }
+        }
         Image {
             id: mv_preview_bg;
             anchors.fill: parent;
@@ -515,6 +539,11 @@ Rectangle {
         anchors.topMargin: 0;
         width: 700;height: 720;
         color: "transparent";
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: {
+            }
+        }
         //祝福语选择书写框
         Rectangle {
             id: sendGreetings;
@@ -660,8 +689,10 @@ Rectangle {
                 id: secendFilter_input
                 anchors.left: parent.left;
                 anchors.leftMargin: 10;
-                width: 258
+                width: 693
                 height: 42
+                maximumLength:25;
+                focus: normalInputArea.visible;
                 text: qsTr("123456")
                 color: "white"
                 font.pointSize: 30

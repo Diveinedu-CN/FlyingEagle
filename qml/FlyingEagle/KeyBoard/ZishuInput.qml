@@ -15,6 +15,11 @@ Rectangle {
             console.log(s);
         }
     }
+    MouseArea {
+        anchors.fill: parent;
+        onClicked: {
+        }
+    }
     Image {
         id: zishuInputBg;
         anchors.fill: parent;

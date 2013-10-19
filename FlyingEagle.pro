@@ -39,4 +39,5 @@ OTHER_FILES += \
     qml/FlyingEagle/FinalRankMusicSelectionPage.qml \
     qml/FlyingEagle/SearchBarMenu.qml \
     qml/FlyingEagle/BaotaiGexingJianJiePage.qml \
-    qml/FlyingEagle/KeyBoard/ZishuInput.qml
+    qml/FlyingEagle/KeyBoard/ZishuInput.qml \
+    qml/FlyingEagle/MovieUDiskPage.qml

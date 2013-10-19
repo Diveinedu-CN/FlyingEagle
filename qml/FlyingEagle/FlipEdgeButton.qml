@@ -15,6 +15,8 @@ Flipable {
     property alias originX: rotation.origin.x
     property alias originY: rotation.origin.y
 
+    signal clicked()
+
     implicitWidth: 80
     implicitHeight: 80
 
@@ -74,7 +76,8 @@ Flipable {
         anchors.fill: parent
         onClicked: {
             flipable.flipped = !flipable.flipped
-            console.log("ok, transition")
+
+            clicked()
         }
     }
 }

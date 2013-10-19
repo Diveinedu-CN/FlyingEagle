@@ -70,4 +70,8 @@ Rectangle {
             parent.clicked(pushButton);
         }
     }
+
+    function trash() {
+        pushButton.destroy()
+    }
 }

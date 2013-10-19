@@ -127,7 +127,7 @@ Rectangle {
         color: "transparent"
 
         anchors.left: parent.left
-        anchors.top: menuTabBar.bottom
+        anchors.top: tabbarId.bottom
 
         Loader {
             id: gridLoader
@@ -145,7 +145,6 @@ Rectangle {
             navBar2.visible = true
             menuTabBar2.visible = true
 
-//            menuTabBar.createButtons(ablumArray)
             gridLoader.source = "MusicAlbumSelectionPage.qml"
         }
     }

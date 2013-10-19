@@ -34,15 +34,26 @@ Rectangle {
             source: "images/diange.fw.png"
         }
 
-        //导航标题
-        Text {
-            id: navTitleLabel
+//        //导航标题
+//        Text {
+//            id: navTitleLabel
+//            anchors.left: navDiangeImage.right
+//            anchors.leftMargin: 4
+//            anchors.verticalCenter: navDiangeImage.verticalCenter
+//            text: qsTr("点歌")
+//            font.pixelSize: 24
+//            color: "#FFFFFFFF"
+//        }
+
+        NavigationBar {
+            id: navBar
             anchors.left: navDiangeImage.right
             anchors.leftMargin: 4
             anchors.verticalCenter: navDiangeImage.verticalCenter
-            text: qsTr("点歌")
-            font.pixelSize: 24
-            color: "#FFFFFFFF"
+
+            Component.onCompleted: {
+                navBar.createButtons(new Array("点歌"))
+            }
         }
 
         //Tab标签栏

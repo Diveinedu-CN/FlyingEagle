@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.0
 Rectangle {
     width: 1280
     height: 591
-    color: "purple"
+    color: "transparent"
 
     //导航图标
     Image {
@@ -15,16 +15,16 @@ Rectangle {
         source: "images/diange.fw.png"
     }
 
-    //导航标题
-    Text {
-        id: navTitleLabel
-        anchors.left: navDiangeImage.right
-        anchors.leftMargin: 4
-        anchors.verticalCenter: navDiangeImage.verticalCenter
-        text: qsTr("点歌")
-        font.pixelSize: 24
-        color: "#FFFFFFFF"
-    }
+//    //导航标题
+//    Text {
+//        id: navTitleLabel
+//        anchors.left: navDiangeImage.right
+//        anchors.leftMargin: 4
+//        anchors.verticalCenter: navDiangeImage.verticalCenter
+//        text: qsTr("点歌")
+//        font.pixelSize: 24
+//        color: "#FFFFFFFF"
+//    }
 
     Row {
         Item {
@@ -177,19 +177,6 @@ Rectangle {
                         anchors.topMargin: 16
 
                         icon: "images/主题分类子页面/6.png"
-                    }
-
-                    PushButton {
-                        id: yulan
-                        width: 34
-                        height: 22
-
-                        anchors.left: parent.right
-                        anchors.leftMargin: -66
-                        anchors.top: parent.top
-                        anchors.topMargin: 20
-
-                        icon: "images/主题分类子页面/7.png"
                     }
                 }
             }

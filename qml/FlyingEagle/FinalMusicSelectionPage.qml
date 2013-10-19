@@ -8,28 +8,28 @@ import QtQuick.Controls 1.0
 Rectangle {
     width: 1280
     height: 591
-    color: "green"
+    color: "transparent"
 
     signal handlerLoader(string name, int index)
 
-    //导航图标
-    Image {
-        id: navDiangeImage
-        anchors.left: parent.left
-        anchors.top: parent.top
-        source: "images/diange.fw.png"
-    }
+//    //导航图标
+//    Image {
+//        id: navDiangeImage
+//        anchors.left: parent.left
+//        anchors.top: parent.top
+//        source: "images/diange.fw.png"
+//    }
 
-    //导航标题
-    Text {
-        id: navTitleLabel
-        anchors.left: navDiangeImage.right
-        anchors.leftMargin: 4
-        anchors.verticalCenter: navDiangeImage.verticalCenter
-        text: qsTr("点歌")
-        font.pixelSize: 24
-        color: "#FFFFFFFF"
-    }
+//    //导航标题
+//    Text {
+//        id: navTitleLabel
+//        anchors.left: navDiangeImage.right
+//        anchors.leftMargin: 4
+//        anchors.verticalCenter: navDiangeImage.verticalCenter
+//        text: qsTr("点歌")
+//        font.pixelSize: 24
+//        color: "#FFFFFFFF"
+//    }
 
     Row {
         Item {

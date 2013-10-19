@@ -5,14 +5,18 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: rank_selection;
     width: 1280
     height: 591
     color: "transparent"
 
-    property var pathArray: new Array("排行榜")
-
     signal handlerLoader(string name, int index)
+    signal handleShowBaotai(string title)
+    signal handleShowSingerInfo(string starname)
+    signal handleShowMvPreview(string mv)
+    signal handleShowSecondFilter(string inputType)
 
+    property var pathArray: new Array("排行榜")    
     //导航图标
     Image {
         id: navDiangeImage
@@ -74,6 +78,20 @@ Rectangle {
 
             contentLoader.source = "FinalRankMusicSelectionPage.qml"
 //            console.log("contentLoader")
+        }
+        //指定排行里页面下面的按钮条的事件转发
+        onHandleShowBaotai: {
+            rank_selection.handleShowBaotai(title);
+        }
+        onHandleShowSingerInfo: {
+//                console.log("recieved onHandleShowSingerInfo"+ starname);
+            rank_selection.handleSingerInfo(starname);
+        }
+        onHandleShowMvPreview: {
+            rank_selection.handleShowMvPreview(mv);
+        }
+        onHandleShowSecondFilter: {
+            rank_selection.handleShowSecondFilter(inputType);
         }
     }
 }

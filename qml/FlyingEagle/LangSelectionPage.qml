@@ -292,6 +292,7 @@ Rectangle {
             anchors.rightMargin: 70;
             backgroundNormal: "images/back.png";
             onClicked: {
+                handlerLoader("HomePage.qml", 0)
             }
         }
     }

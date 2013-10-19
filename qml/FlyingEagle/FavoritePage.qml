@@ -257,7 +257,7 @@ Rectangle {
         icon: "images/back.png"
 
         onClicked: {
-            handlerLoader("TopicSelectionPage.qml", 0)
+            handlerLoader("HomePage.qml", 0)
         }
     }
 }

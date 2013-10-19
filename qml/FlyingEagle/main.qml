@@ -44,30 +44,6 @@ Rectangle {
             target: contentLoader.item
             ignoreUnknownSignals:true
             onHandlerLoader: {
-//                switch (index) {
-//                case 0:
-//                    contentLoader.source = "LangSelectionPage.qml";
-//                    break;
-//                case 1:
-//                    contentLoader.source = "FavoritePage.qml"
-//                    break;
-//                case 2:
-//                    contentLoader.source = "StarSelectionPage.qml"
-//                    break;
-//                case 3:
-//                    contentLoader.source = "TopicSelectionPage.qml"
-//                    break;
-//                case 4:
-//                    contentLoader.source = "RankSelectionPage.qml"
-//                    break;
-//                case 5:
-//                    contentLoader.source = "MusicSelectionPage.qml"
-//                    break;
-//                case 6:
-//                    contentLoader.source = "NewMusicSelectionPage.qml"
-//                    break;
-//                }
-
                 //切换目标页面由信号传入
                 contentLoader.source = name
             }
@@ -385,7 +361,7 @@ Rectangle {
                 tunningPopupPage.handleTunningPage("qifen");
             }
             onHandWriteGreetingClicked: {
-                baobaigexing.showSendGreetings();
+                baotaigexing.showSendGreetings();
             }
         }
         Connections {

@@ -13,9 +13,7 @@ Rectangle {
 
     function removeChildren() {
         for(var i=0; i < container.children.length; i++) {
-            var child = container.children[i]
-            console.log("remove child at index: " + i + " " + child)
-            child.trash()
+            container.children[i].trash()
         }
     }
 

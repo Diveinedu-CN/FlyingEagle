@@ -7,7 +7,7 @@ import QtQuick 2.0
 Rectangle {
     width: 1280
     height: 591
-    color: "blue"
+    color: "transparent"
 
     signal handlerLoader(string name, int index)
 

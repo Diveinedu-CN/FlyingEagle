@@ -6,11 +6,13 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 
 Rectangle {
+    id: finalPage
+
     width: 1280
     height: 591
     color: "transparent"
 
-    signal handlerLoader(string name, int index)
+    signal handleLoader(string name, int index)
 
 //    //导航图标
 //    Image {
@@ -195,7 +197,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        icon: "images/主题分类子页面/5.png"
+                        backgroundNormal: "images/主题分类子页面/5.png"
                     }
 
                     PushButton {
@@ -208,7 +210,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        icon: "images/主题分类子页面/6.png"
+                        backgroundNormal: "images/主题分类子页面/6.png"
                     }
 
                     PushButton {
@@ -221,7 +223,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 20
 
-                        icon: "images/主题分类子页面/7.png"
+                        backgroundNormal: "images/主题分类子页面/7.png"
                     }
                 }
             }
@@ -236,7 +238,7 @@ Rectangle {
                 anchors.top: musicList.bottom
                 anchors.topMargin: 27
 
-                icon: "images/left.png"
+                backgroundNormal: "images/left.png"
             }
 
             Text {
@@ -265,7 +267,7 @@ Rectangle {
                 anchors.top: musicList.bottom
                 anchors.topMargin: 27
 
-                icon: "images/right.png"
+                backgroundNormal: "images/right.png"
             }
         }
     }
@@ -277,10 +279,10 @@ Rectangle {
         width: 100
         height: 44
 
-        icon: "images/back.png"
+        backgroundNormal: "images/back.png"
 
         onClicked: {
-            handlerLoader("TopicSelectionPage.qml", 0)
+            finalPage.handleLoader("TopicSelectionPage.qml", 0)
         }
     }
 }

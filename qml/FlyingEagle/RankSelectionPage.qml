@@ -59,7 +59,6 @@ Rectangle {
                 navBar.createButtons(pathArray)
 
                 contentLoader.source = "RankContent.qml"
-                console.log("navBar")
             }
         }
     }
@@ -92,6 +91,12 @@ Rectangle {
         }
         onHandleShowSecondFilter: {
             rank_selection.handleShowSecondFilter(inputType);
+        }
+        onHandleLoader: {
+            pathArray.pop()
+            navBar.createButtons(pathArray)
+
+            contentLoader.source = "RankContent.qml"
         }
     }
 }

@@ -8,6 +8,8 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
 Rectangle {
+    id: topicPage
+
     width: 1280
     height: 591
     color: "transparent"
@@ -77,6 +79,12 @@ Rectangle {
 
             contentLoader.source = "FinalMusicSelectionPage.qml"
 //            console.log("contentLoader")
+        }
+        onHandleLoader: {
+            pathArray.pop()
+            navBar.createButtons(pathArray)
+
+            contentLoader.source = "TopicContent.qml"
         }
     }
 }

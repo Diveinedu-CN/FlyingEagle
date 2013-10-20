@@ -12,6 +12,8 @@ Rectangle {
     signal handlerLoader(string name, int index)
 
     Item {
+        id: contentItem
+
         x: 55
         y: -8
         anchors.left: parent.left
@@ -19,6 +21,7 @@ Rectangle {
 
         width: 1158
         height: 516
+        visible: false
 
         Image {
             x: 25
@@ -149,7 +152,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 16
 
-                    icon: "images/主题分类子页面/5.png"
+                    backgroundNormal: "images/主题分类子页面/5.png"
                 }
 
                 PushButton {
@@ -162,7 +165,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 16
 
-                    icon: "images/主题分类子页面/6.png"
+                    backgroundNormal: "images/主题分类子页面/6.png"
                 }
 
                 PushButton {
@@ -175,7 +178,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 20
 
-                    icon: "images/主题分类子页面/7.png"
+                    backgroundNormal: "images/主题分类子页面/7.png"
                 }
             }
         }
@@ -187,7 +190,7 @@ Rectangle {
             height: 44
             text: "退出"
             colorText: "#ffffff"
-            icon: "images/btnQuit.png"
+            backgroundNormal: "images/btnQuit.png"
         }
 
 
@@ -201,7 +204,7 @@ Rectangle {
             anchors.top: musicList.bottom
             anchors.topMargin: -18
 
-            icon: "images/left.png"
+            backgroundNormal: "images/left.png"
         }
 
         Text {
@@ -230,7 +233,7 @@ Rectangle {
             anchors.top: musicList.bottom
             anchors.topMargin: -18
 
-            icon: "images/right.png"
+            backgroundNormal: "images/right.png"
         }
     }
 
@@ -243,7 +246,18 @@ Rectangle {
         Loader {
             x: 0
             y: -14
+
+            id: keyboardLoader
             source: "telKeyBoard.qml"
+        }
+    }
+
+    Connections {
+        target: keyboardLoader.item
+        ignoreUnknownSignals: true
+        onConfirmClicked: {
+            keyboardLoader.source = ""
+            contentItem.visible = true
         }
     }
 
@@ -254,7 +268,7 @@ Rectangle {
         width: 100
         height: 44
 
-        icon: "images/back.png"
+        backgroundNormal: "images/back.png"
 
         onClicked: {
             handlerLoader("HomePage.qml", 0)

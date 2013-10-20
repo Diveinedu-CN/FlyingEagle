@@ -45,44 +45,6 @@ Rectangle {
 
                 property bool flipped: false
 
-                front: Item {
-                    id: front
-                    width: 356
-                    height: 356
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-                    Image{
-                        id:myImage
-                        width: 356
-                        height: 356
-                        source: image
-                    }
-
-                    Text {
-                        text: index
-                        color: "red"
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            flipable.flipped = !flipable.flipped
-                        }
-                    }
-
-//                    PushButton {
-//                        anchors.bottom: parent.bottom
-//                        anchors.bottomMargin: 20
-//                        anchors.horizontalCenter: parent.horizontalCenter
-
-//                        width: 100
-//                        height: 50
-
-//                        backgroundNormal: "images/moresongs.png"
-//                        visible: !(flipable.flipped)
-//                    }
-                }
-
                 back: Item {
                     id: back
                     width: 356
@@ -170,6 +132,7 @@ Rectangle {
 //                        }
 //                    }
 
+                    //点击显示专辑歌曲
                     PushButton {
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: 20
@@ -184,11 +147,53 @@ Rectangle {
                     }
                 }
 
+                front: Item {
+                    id: front
+                    width: 356
+                    height: 356
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Image{
+                        id:myImage
+                        width: 356
+                        height: 356
+                        source: image
+                    }
+
+                    Text {
+                        text: index
+                        color: "red"
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            if(pathView.currentIndex != index) {
+                                return
+                            }
+
+                            flipable.flipped = !flipable.flipped
+                        }
+                    }
+
+//                    PushButton {
+//                        anchors.bottom: parent.bottom
+//                        anchors.bottomMargin: 20
+//                        anchors.horizontalCenter: parent.horizontalCenter
+
+//                        width: 100
+//                        height: 50
+
+//                        backgroundNormal: "images/moresongs.png"
+//                        visible: !(flipable.flipped)
+//                    }
+                }
+
                 transform: Rotation {
                     id: rotation
                     origin.x: flipable.width/2
                     origin.y: flipable.height/2
-                    axis.x: 0; axis.y: 1; axis.z: 0     // set axis.y to 1 to rotate around y-axis
+                    axis.x: 1; axis.y: 0; axis.z: 0     // set axis.y to 1 to rotate around y-axis
                     angle: 0    // the default angle
                 }
 

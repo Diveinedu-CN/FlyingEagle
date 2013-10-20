@@ -16,6 +16,7 @@ Rectangle {
         height: 204
 
         image: "images/主题分类/高清歌曲.png"
+        angle: -180
 
         onClicked: {
             parent.clicked("高清歌曲", 0)
@@ -28,6 +29,7 @@ Rectangle {
         y: 298
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/民谣.png"
 
@@ -43,6 +45,7 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/戏曲.png"
 
@@ -58,6 +61,7 @@ Rectangle {
         y: 84
         width: 205
         height: 310
+        angle: -180
 
         isHorizontal: false
 
@@ -75,6 +79,8 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         originX: 80
         originY: 80
@@ -93,6 +99,8 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         originX: 80
         originY: 80
@@ -111,6 +119,7 @@ Rectangle {
         y: 190
         width: 96
         height: 204
+        angle: -180
 
         image: "images/主题分类/经典老歌.png"
 
@@ -126,6 +135,8 @@ Rectangle {
         y: 190
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         image: "images/主题分类/影视.png"
 
@@ -141,6 +152,8 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         image: "images/主题分类/校园.png"
 
@@ -156,6 +169,7 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/中国风.png"
 
@@ -171,6 +185,7 @@ Rectangle {
         y: 84
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/爵士.png"
 
@@ -186,6 +201,7 @@ Rectangle {
         y: 84
         width: 638
         height: 98
+        angle: -180
 
         isHorizontal: false
 
@@ -203,6 +219,7 @@ Rectangle {
         y: 190
         width: 206
         height: 315
+        angle: -180
 
         isHorizontal: false
 
@@ -220,6 +237,8 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         originX: 40
         originY: 0
@@ -240,6 +259,8 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         originX: 40
         originY: 0
@@ -260,6 +281,7 @@ Rectangle {
         y: 298
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/生日.png"
 
@@ -275,6 +297,7 @@ Rectangle {
         y: 84
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/欢乐庆典.png"
 
@@ -290,6 +313,7 @@ Rectangle {
         y: 190
         width: 208
         height: 96
+        angle: -180
 
         isHorizontal: false
 
@@ -307,6 +331,7 @@ Rectangle {
         y: 300
         width: 208
         height: 96
+        angle: -180
 
         isHorizontal: false
 
@@ -324,6 +349,7 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/摇滚.png"
 
@@ -339,6 +365,7 @@ Rectangle {
         y: 409
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/嘻哈.png"
 
@@ -354,6 +381,7 @@ Rectangle {
         y: 190
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/儿童.png"
 
@@ -369,6 +397,8 @@ Rectangle {
         y: 190
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         image: "images/主题分类/草原.png"
 
@@ -384,6 +414,8 @@ Rectangle {
         y: 298
         width: 96
         height: 96
+        angle: -180
+        opacity: 0
 
         image: "images/主题分类/励志.png"
 
@@ -399,6 +431,7 @@ Rectangle {
         y: 84
         width: 96
         height: 96
+        opacity: 0
 
         icon: "images/主题分类/纯音乐.png"
 
@@ -416,6 +449,14 @@ Rectangle {
             duration: 2000
             from: -180
             to: 0
+        }
+
+        PropertyAnimation {
+            targets: [yingshi, xiaoyuan, junlv, mingzu, randb, dianzi, caoyuan, lizhi]
+            property: "opacity"
+            duration: 10
+            from: 0
+            to: 1
         }
 
         PropertyAnimation {

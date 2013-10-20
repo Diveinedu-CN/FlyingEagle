@@ -37,4 +37,11 @@ Rectangle {
         text: "加入已选"
         colorText: "#ffffff"
     }
+
+    FoldMenuList {
+        anchors.right: parent.right
+        anchors.rightMargin: 100
+        anchors.top: parent.top
+        anchors.topMargin: 100
+    }
 }

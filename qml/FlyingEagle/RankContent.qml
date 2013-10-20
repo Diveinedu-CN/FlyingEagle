@@ -6,6 +6,8 @@ Item {
     width: 1280
     height: 504
 
+    id: rankContent
+
 //    anchors.topMargin: 4
 //    anchors.top: navDiangeImage.bottom
 //        color: "red"
@@ -34,7 +36,8 @@ Item {
         id: secondGrid
 
         x: 0
-        y: 167
+//        y: 167
+        y: 1000
         width: 112
         height: 138
 
@@ -51,7 +54,8 @@ Item {
         id: rihanGrid
 
         x: 0
-        y: 316
+//        y: 316
+        y: 1000
         width: 112
         height: 138
 
@@ -68,7 +72,8 @@ Item {
         id: quanbuGrid
 
         x: 118
-        y: 23
+//        y: 23
+        y: 1000
         width: 436
         height: 286
 
@@ -85,7 +90,8 @@ Item {
         id: liuxingGrid
 
         x: 118
-        y: 316
+//        y: 316
+        y: 1000
         width: 221
         height: 138
 
@@ -102,7 +108,8 @@ Item {
         id: meinvGrid
 
         x: 345
-        y: 316
+//        y: 316
+        y: 1000
         width: 212
         height: 138
 
@@ -119,7 +126,8 @@ Item {
         id: minnanGrid
 
         x: 563
-        y: 29
+//        y: 29
+        y: 1000
         width: 212
         height: 136
 
@@ -136,7 +144,8 @@ Item {
         id: xingeGrid
 
         x: 563
-        y: 173
+//        y: 173
+        y: 1000
         width: 212
         height: 281
 
@@ -153,7 +162,8 @@ Item {
         id: meinv2Grid
 
         x: 786
-        y: 29
+//        y: 29
+        y: 1000
         width: 138
         height: 138
 
@@ -170,7 +180,8 @@ Item {
         id: duichangGrid
 
         x: 934
-        y: 29
+//        y: 29
+        y: 1000
         width: 138
         height: 138
 
@@ -187,7 +198,8 @@ Item {
         id: oumeiGrid
 
         x: 1083
-        y: 29
+//        y: 29
+        y: 1000
         width: 112
         height: 138
 
@@ -204,7 +216,8 @@ Item {
         id: lanseGrid
 
         x: 786
-        y: 173
+//        y: 173
+        y: 1000
         width: 112
         height: 138
 
@@ -221,7 +234,8 @@ Item {
         id: guoyuGrid
 
         x: 909
-        y: 173
+//        y: 173
+        y: 1000
         width: 286
         height: 138
 
@@ -238,7 +252,8 @@ Item {
         id: wangluoGrid
 
         x: 786
-        y: 318
+//        y: 318
+        y: 1000
         width: 138
         height: 136
 
@@ -255,7 +270,8 @@ Item {
         id: shuaigeGrid
 
         x: 934
-        y: 318
+//        y: 318
+        y: 1000
         width: 138
         height: 136
 
@@ -272,7 +288,8 @@ Item {
         id: yueyuGrid
 
         x: 1083
-        y: 318
+//        y: 318
+        y: 1000
         width: 112
         height: 138
 
@@ -285,35 +302,154 @@ Item {
         }
     }
 
-    transform: Rotation {
-        id: rotation
-        origin.x: 0
-        origin.y: 0
-        axis.x: 0
-        axis.y: 1
-        axis.z: 0
-        angle: 0
-    }
+    transform: [
+        Rotation {
+                id: rotationH
+                origin.x: 0
+                origin.y: 0
+                axis.x: 0
+                axis.y: 1
+                axis.z: 0
+                angle: 0
+            },
+        Rotation {
+                id: rotationV
+                origin.x: 0
+                origin.y: 0
+                axis.x: 1
+                axis.y: 0
+                axis.z: 0
+                angle: 0
+            }
+    ]
 
     ParallelAnimation {
         id: animation
 
-        ParentAnimation {
-            RotationAnimation {
-                target: rotation
-                properties: "angle"
-                to:0
-                from: 90
-                direction: RotationAnimation.Clockwise
-            }
+        RotationAnimation {
+            target: rotationH
+            properties: "angle"
+            to:0
+            from: 40
+            duration: 1200
+            direction: RotationAnimation.Counterclockwise
         }
 
-        NumberAnimation {
-            targets: [yueyuGrid];
-            properties: "y";
-            from: 100
-            to: 318
-            duration: 200
+        RotationAnimation {
+            target: rotationV
+            properties: "angle"
+            to:0
+            from: 40
+            duration: 1200
+            direction: RotationAnimation.Counterclockwise
+        }
+
+        PropertyAnimation {
+            target: rankContent
+            properties: "opacity"
+            from: 0
+            to: 1
+            duration: 1200
+        }
+
+        SequentialAnimation {
+            NumberAnimation {
+                targets: [quanbuGrid, minnanGrid];
+                properties: "y";
+                from: 1000
+                to: 29
+                duration: 120
+            }
+
+            NumberAnimation {
+                targets: [meinv2Grid];
+                properties: "y";
+                from: 1000
+                to: 29
+                duration: 120
+            }
+
+            NumberAnimation {
+                targets: [duichangGrid, oumeiGrid];
+                properties: "y";
+                from: 1000
+                to: 29
+                duration: 120
+            }
+
+            NumberAnimation {
+                targets: [secondGrid, xingeGrid];
+                properties: "y";
+                from: 1000
+                to: 167
+                duration: 120
+            }
+
+            NumberAnimation {
+                targets: [secondGrid, xingeGrid];
+                properties: "y";
+                from: 1000
+                to: 167
+                duration: 120
+            }
+
+            NumberAnimation {
+                targets: [lanseGrid];
+                properties: "y";
+                from: 1000
+                to: 167
+                duration: 120
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [guoyuGrid];
+                    properties: "x";
+                    from: 500
+                    to: 909
+                    duration: 200
+                }
+
+                NumberAnimation {
+                    targets: [guoyuGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 167
+                    duration: 200
+                }
+
+                NumberAnimation {
+                    targets: [rihanGrid];
+                    properties: "x";
+                    from: 500
+                    to: 0
+                    duration: 200
+                }
+
+                NumberAnimation {
+                    targets: [rihanGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 316
+                    duration: 200
+                }
+            }
+
+            NumberAnimation {
+                targets: [liuxingGrid, meinvGrid];
+                properties: "y";
+                from: 1000
+                to: 318
+                duration: 120
+            }
+
+            NumberAnimation {
+                targets: [wangluoGrid, yueyuGrid, shuaigeGrid];
+                properties: "y";
+                from: 1000
+                to: 318
+                duration: 120
+            }
         }
     }
 

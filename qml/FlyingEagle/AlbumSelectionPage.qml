@@ -56,15 +56,13 @@ Rectangle {
 
             Text {
                 id: starName
-                anchors.left: parent.left
-                anchors.leftMargin: 40
-                anchors.top: parent.top
-                anchors.topMargin: 10
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 18
 
                 text: star
                 color: "#FFFFFFFF"
-                font.pixelSize: 30
-                font.bold: true
+                font.pixelSize: 26
             }
         }
     }
@@ -79,11 +77,12 @@ Rectangle {
         anchors.top: musicList.bottom
         anchors.topMargin: -28
 
-        icon: "images/left.png"
+        backgroundNormal: "images/left.png"
 
         onClicked: {
             //左移
-            container.clicked(0, 1)
+            console.log(musicList.currentIndex)
+            musicList.moveCurrentIndexLeft()
         }
     }
 
@@ -113,11 +112,12 @@ Rectangle {
         anchors.top: musicList.bottom
         anchors.topMargin: -28
 
-        icon: "images/right.png"
+        backgroundNormal: "images/right.png"
 
         onClicked: {
             //右移
-            container.clicked(1, 1)
+            console.log(musicList.currentIndex)
+            musicList.moveCurrentIndexRight()
         }
     }
 
@@ -128,7 +128,7 @@ Rectangle {
         width: 100
         height: 44
 
-        icon: "images/back.png"
+        backgroundNormal: "images/back.png"
 
         onClicked: {
             handlerLoader("HomePage.qml", 0)

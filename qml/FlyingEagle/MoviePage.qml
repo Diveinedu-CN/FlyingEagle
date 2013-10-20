@@ -37,4 +37,8 @@ Rectangle {
         text: "加入已选"
         colorText: "#ffffff"
     }
+
+    TestList {
+        anchors.right: parent.right
+    }
 }

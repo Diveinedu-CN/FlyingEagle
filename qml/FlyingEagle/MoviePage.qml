@@ -38,7 +38,10 @@ Rectangle {
         colorText: "#ffffff"
     }
 
-    TestList {
+    FoldMenuList {
         anchors.right: parent.right
+        anchors.rightMargin: 100
+        anchors.top: parent.top
+        anchors.topMargin: 100
     }
 }

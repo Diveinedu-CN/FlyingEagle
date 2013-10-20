@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item {
     id:main
-    width: 360
-    height: 640
+    width: 260
+    height: 460
 
     TestModel2 {
         id: testModel
@@ -14,6 +14,7 @@ Item {
         model: testModel
         spacing: 20
         cacheBuffer: 200 // in pixels
+        clip: true
 
         delegate: Rectangle {
             property alias itemHeight: cell.height
@@ -21,18 +22,18 @@ Item {
 
             id: cell
 
-            width: 100
-            height: 50
+            width: 260
+            height: 32
             color: "transparent"
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if(cell.unfold) {
-                        cell.height = (subList.length + 1) * 50
+                    if(!cell.unfold) {
+                        cell.height = (subList.count + 1) * 50
                         arrowImage.source = "images/movieUp.png"
                     } else {
-                        cell.height = 50
+                        cell.height = 32
                         arrowImage.source = "images/movieDown.png"
                     }
 
@@ -45,6 +46,7 @@ Item {
 
                 anchors.top: cell.top
                 anchors.left: cell.left
+                width: 260
                 height: 20
 
                 Text {
@@ -57,7 +59,7 @@ Item {
                 Image {
                     id: arrowImage
                     anchors.left: parent.left
-                    anchors.leftMargin: 100
+                    anchors.leftMargin: 200
 
                     source: cell.unfold ? "images/movieUp.png" : "images/movieDown.png"
                 }
@@ -65,15 +67,20 @@ Item {
 
             Column {
                 anchors.top: mainList.bottom
+                anchors.topMargin: 40
+                spacing: 20
+
                 Repeater {
                     id: repeater
 
                     model: cell.unfold ? subList : 0
                     delegate: Item {
-                        width: 100
-                        height: 20
+                        width: 260
+                        height: 32
 
                         Text {
+                            anchors.left: parent.left
+                            anchors.leftMargin: 20
                             text: nick
                             color: "white"
                             font.pixelSize: 18

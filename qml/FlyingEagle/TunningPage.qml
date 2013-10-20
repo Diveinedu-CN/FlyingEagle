@@ -16,6 +16,9 @@ Rectangle {
     signal closeFuzhuClicked();
     signal closeFuwuClicked();
     signal handWriteGreetingClicked();
+    signal movieButtonClicked();
+    signal udiskAddButtonClicked();
+
     //调音框
     Rectangle {
         id: tunningPage
@@ -759,6 +762,7 @@ Rectangle {
             anchors.top: parent.top
             backgroundNormal: "images/dy.png"
             anchors.left: parent.left
+            onClicked: tunningItem.movieButtonClicked();
         }
 
         PushButton {
@@ -785,6 +789,7 @@ Rectangle {
             anchors.top: parent.top
             backgroundNormal: "images/udisk_add.png"
             anchors.left: parent.left
+            onClicked: tunningItem.udiskAddButtonClicked();
         }
         PushButton {
             id: closeFuwuButton

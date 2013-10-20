@@ -393,6 +393,14 @@ Rectangle {
             onCloseFuwuClicked: {
                 tunningPopupPage.handleTunningPage("fuwu");
             }
+            onMovieButtonClicked: {
+                movieUdiskAdd.showMovie();
+                console.log("movie")
+            }
+            onUdiskAddButtonClicked: {
+                movieUdiskAdd.showUDisk();
+                console.log("udisk")
+            }
         }
         Connections {
             target: mainMenu.fuwuButton
@@ -421,4 +429,13 @@ Rectangle {
         color: "#BF000000";
         visible: false;
     }
+    //电影界面和优盘加歌界面
+    MovieUDiskPage {
+        id: movieUdiskAdd;
+        width: 1280;
+        height: 720;
+        color: "#BF000000";
+        visible: false;
+    }
+
 }

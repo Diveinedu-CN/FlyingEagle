@@ -28,7 +28,7 @@ Rectangle {
         anchors.fill: _id
 
         onClicked: {
-            parent.clicked(parent);
+            _id.clicked(_id);
         }
     }
 }

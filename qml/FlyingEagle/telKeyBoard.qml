@@ -4,6 +4,8 @@ Item {
     width: 302
     height: 437
 
+    signal confirmClicked();
+
     Image {
         anchors.fill: parent
         source: "images/loginBg.png"
@@ -18,12 +20,27 @@ Item {
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
 
-    Text {
-        x: 27
-        y: 77
-        color: "#cabdbd"
-        text: "请输入手机号码"
-        font.pointSize: 24
+//    Text {
+//        x: 27
+//        y: 77
+//        color: "#cabdbd"
+//        text: "请输入手机号码"
+//        font.pointSize: 24
+//    }
+
+    TextInput {
+        id: number_input
+        x: 22
+        y: 74
+        width: 258
+        height: 42
+        text: qsTr("请输入手机号码")
+        color: "white"
+        font.pointSize: 30
+        transformOrigin: Item.Center
+        echoMode: TextInput.Normal
+        horizontalAlignment: TextInput.AlignLeft
+        clip: true
     }
 
     PushButton{
@@ -34,18 +51,20 @@ Item {
 
         text: "1"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
-        x: 120
+        x: 118
         y: 133
         width: 63
         height: 63
 
         text: "2"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
@@ -56,7 +75,8 @@ Item {
 
         text: "3"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
@@ -67,18 +87,20 @@ Item {
 
         text: "4"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
-        x: 120
+        x: 118
         y: 207
         width: 63
         height: 63
 
         text: "5"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
     PushButton{
         x: 219
@@ -88,7 +110,8 @@ Item {
 
         text: "6"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
@@ -99,18 +122,20 @@ Item {
 
         text: "7"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
-        x: 120
+        x: 118
         y: 283
         width: 63
         height: 63
 
         text: "8"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
@@ -121,7 +146,8 @@ Item {
 
         text: "9"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
@@ -131,18 +157,20 @@ Item {
         height: 63
 
 //            text: "0"
-        icon: "images/delete.png"
+        backgroundNormal: "images/delete.png"
+        onClicked: number_input.remove(number_input.length-1,number_input.length);
     }
 
     PushButton{
-        x: 120
+        x: 118
         y: 358
         width: 63
         height: 63
 
         text: "0"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: number_input.text += text
     }
 
     PushButton{
@@ -153,6 +181,9 @@ Item {
 
         text: "确定"
         colorText: "#ffffff"
-        icon: "images/number.png"
+        backgroundNormal: "images/number.png"
+        onClicked: {
+            parent.confirmClicked()
+        }
     }
 }

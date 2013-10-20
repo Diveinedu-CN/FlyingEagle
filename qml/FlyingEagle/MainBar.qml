@@ -5,14 +5,19 @@ Rectangle {
     height: 60
     color: "#00000000"
     property alias fuwuButton: fuwuButton
+    property alias fuwuText: fuwuText
     signal handlerLoader(string name, int index)
 
-    Image {
+    PushButton {
         id: logo
         anchors.leftMargin: 20
         width: 113
         height: 48
-        source: "images/logo.png"
+        backgroundNormal: "images/logo.png"
+
+        onClicked: {
+            handlerLoader("HomePage.qml", 0)
+        }
     }
 
     PushButton {
@@ -42,6 +47,19 @@ Rectangle {
     }
 
     PushButton {
+        anchors.left: mainButton.right
+        anchors.leftMargin: 10
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        width: 60
+        height: 40
+
+        onClicked: {
+            handlerLoader("HomePage.qml", 0)
+        }
+    }
+
+    PushButton {
         id: fuwuButton
         anchors.topMargin: 4
         anchors.left: mainTitle.right
@@ -60,5 +78,15 @@ Rectangle {
         anchors.topMargin: 10
         color: "#FFFFFF"
         font.pixelSize: 24
+    }
+
+    PushButton {
+        id: fuwuText
+        anchors.left: fuwuButton.right
+        anchors.leftMargin: 10
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        width: 60
+        height: 40
     }
 }

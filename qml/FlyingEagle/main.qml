@@ -409,6 +409,13 @@ Rectangle {
                 tunningPopupPage.handleTunningPage("fuwu");
             }
         }
+        Connections {
+            target: mainMenu.fuwuText
+            ignoreUnknownSignals:true
+            onClicked: {
+                tunningPopupPage.handleTunningPage("fuwu");
+            }
+        }
     }
 
     //下部工具条

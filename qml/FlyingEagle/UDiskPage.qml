@@ -1,8 +1,10 @@
 import QtQuick 2.0
-
+import Fakekey 1.0
+import Zinnia 1.0
+import "KeyBoard/shortstraw.js" as Straw
+import "KeyBoard/script.js" as Script
 Rectangle {
     id: udiskAddPage
-
     width: 1090
     height: 586
     signal udiskCloseClicked();
@@ -762,8 +764,10 @@ Rectangle {
                 anchors.top: parent.top;
                 anchors.topMargin: 5;
                 text: "吻别";
-                font.pixelSize: 22;
+                font.pixelSize: 22
                 color: "black";
+                clip: true;
+                maximumLength: 40;
             }
         }
 
@@ -805,6 +809,8 @@ Rectangle {
                     onClicked:{
                         shouzimu.highlighted = true;
                         shouxie.highlighted = false;
+                        keyboardArea.visible = true;
+                        handWritingArea.visible = false;
                     }
                 }
                 PushButton {
@@ -820,6 +826,8 @@ Rectangle {
                     onClicked:{
                         shouxie.highlighted = true;
                         shouzimu.highlighted = false;
+                        keyboardArea.visible = false;
+                        handWritingArea.visible = true;
                     }
                 }
                 PushButton {
@@ -831,6 +839,7 @@ Rectangle {
                     anchors.top: parent.top;
                     anchors.topMargin: 10;
                     backgroundNormal: "images/udiskAddEditBackspace.png"
+                    onClicked: fakekey.sendKey(":backspace");
                 }
                 PushButton {
                     id: deleteButton
@@ -841,6 +850,7 @@ Rectangle {
                     anchors.top: parent.top;
                     anchors.topMargin: 10;
                     backgroundNormal: "images/udiskAddEditDelete.png"
+                    onClicked: canvas.clear();
                 }
             }
             //候选字栏
@@ -860,6 +870,31 @@ Rectangle {
                     anchors.leftMargin: 15;
                     anchors.top: parent.top;
                     anchors.topMargin: 15;
+                    onClicked:
+                    {
+                        inputArea.displayCandidatesIndex -= 4;
+                        if(inputArea.displayCandidatesIndex>=0)
+                        {
+                            inputArea.displayCandidates = inputArea.candidates.slice(inputArea.displayCandidatesIndex,inputArea.displayCandidatesIndex+4);
+                        }
+                    }
+                }
+                Row {
+                    id: candidateArea
+                    clip: true;
+                    anchors { top: parent.top; left: udiskAddEditleft.right; leftMargin: 0; topMargin: 0 }
+                    width:224;
+                    spacing: 0;
+                    Repeater {
+                        id: repeater;
+                        model: inputArea.displayCandidates;
+                        PushButton {
+                            width:56;height: 50;
+                            text: modelData;
+                            backgroundNormal: "";
+                            onClicked: fakekey.sendKey(modelData)
+                        }
+                    }
                 }
                 PushButton {
                     id: udiskAddEditright
@@ -869,39 +904,82 @@ Rectangle {
                     anchors.rightMargin: 15;
                     anchors.top: parent.top;
                     anchors.topMargin: 15;
+                    onClicked:
+                    {
+                        var leftCount = inputArea.candidates.length - inputArea.displayCandidatesIndex - 5;
+                        if (leftCount>4)
+                        {
+                            inputArea.displayCandidatesIndex += 4
+                            inputArea.displayCandidates = inputArea.candidates.slice(inputArea.displayCandidatesIndex,inputArea.displayCandidatesIndex+4);
+                        }else if (leftCount > 0)
+                        {
+                            inputArea.displayCandidatesIndex += 4
+                            inputArea.displayCandidates = inputArea.candidates.slice(inputArea.displayCandidatesIndex,inputArea.candidates.length);
+                        }
+                    }
                 }
             }
             //键盘区和手写区
             Rectangle {
                 id: inputArea;
-                width: 295;
+                width: 296;
                 height: 312;
                 anchors.top: candidateRow.bottom;
                 anchors.left: parent.left;
                 color: "transparent";
+                property int displayCandidatesIndex:0;
+                property variant candidates: ["候选1", "候选2", "候选3", "候选4", "候选5"];
+                property variant displayCandidates: ["候选1", "候选2", "候选3", "候选4", "候选5"];
                 //虚拟键盘
                 Rectangle {
                     id: keyboardArea;
                     anchors.fill: parent;
                     color: "transparent";
+                    property bool isChinese: false;
+                    Fakekey { id: _fakekey }
+                    Item { id: fakekey;
+                        function sendKey(s)
+                        {
+                            _fakekey.sendKey(s);
+                            console.log(s);
+                        }
+                    }
                     Column {
                         anchors.fill: parent;
                         anchors.topMargin: 6;
                         anchors.leftMargin: 7;
                         width: 295;
                         height: 312;
-                        spacing: 5;
+                        spacing: 3;
                         Repeater {
-                            model: [['a','b','c','d','e'],['e','f','h','i','j'],['k','l','m','n','o'],['p','q','r','s','t'],['u','v','w','x','y']];
+                            model: [['a','b','c','d','e'],['e','f','h','i','j'],['k','l','m','n','o'],['p','q','r','s','t'],['u','v','w','x','y'],['z',"空格","中英","确定"]];
                             Row {
                                 spacing: 3;
                                 Repeater {
                                     model: modelData;
                                     PushButton {
-                                        width: 56;
+                                        width: (modelData!="空格")?56:114;
                                         height: 48;
-                                        backgroundNormal: "images/udiskAddEditkey1.png"
+                                        backgroundNormal: (modelData!="空格")?"images/udiskAddEditkey1.png":"images/udiskAddEditkey2.png";
                                         text: modelData.toUpperCase();
+                                        onClicked: {
+                                            if (modelData==="空格")
+                                            {
+                                                fakekey.sendKey(" ");
+                                            }else if(modelData==="确定")
+                                            {
+                                                fakekey.sendKey(":enter")
+                                            }else if(modelData==="中英")
+                                            {
+                                                keyboardArea.isChinese =! keyboardArea.isChinese;
+                                            }else
+                                            {
+                                                if(!keyboardArea.isChinese)
+                                                {
+                                                    fakekey.sendKey(text);
+                                                }
+                                            }
+                                        }
                                     }
 
                                 }
@@ -913,7 +991,110 @@ Rectangle {
                 Rectangle {
                     id: handWritingArea;
                     anchors.fill: parent;
+                    anchors.topMargin: 6;
+                    anchors.leftMargin: 9;
+                    color: "transparent";
                     visible: false;
+                    Rectangle {
+                        id:strokeArea;
+                        anchors.fill: parent;
+                        color: "transparent";
+                        Canvas {
+                            id:canvas
+                            property int paintX
+                            property int paintY
+                            property int count: 0
+                            property int lineWidth: 5
+                            property variant drawColor: "black"
+
+                            property int strokes: 0
+                            anchors.fill: parent;
+                            MouseArea {
+                                id:mousearea
+                                hoverEnabled:true
+                                anchors.fill: parent
+                                onClicked: canvas.drawPoint()
+                                onPositionChanged:  {
+                                    if (mousearea.pressed) {
+                                        canvas.drawLineSegment();
+                                        Script.addItem(mouseX, mouseY);
+                                    }
+                                    canvas.paintX = mouseX;
+                                    canvas.paintY = mouseY;
+                                }
+
+                                onReleased: {
+                                    var ctx = canvas.getContext('2d');
+                                    var array = Straw.shortStraw(Script.getList());
+                                    ctx.beginPath();
+                                    ctx.strokeStyle = "red";
+                                    ctx.lineWidth = 2;
+                                    for (var i = 0; (i < array.length)&&array[i]; i++) {
+                                        //console.log("strokes "+strokes+": " + array[i].x + ", "+ array[i].y );
+                                        inputArea.candidates = zinnia.query(canvas.strokes, array[i].x, array[i].y).split(" ");
+                                        inputArea.displayCandidates = inputArea.candidates.slice(0,5);
+                                        inputArea.displayCandidatesIndex=0;
+                                        if (i>0)
+                                        {
+                                            ctx.lineTo(array[i].x, array[i].y);
+                                        }else if(i==0)
+                                        {
+                                            ctx.moveTo(array[i].x, array[i].y);
+                                        }
+                                    }
+
+                                    ctx.stroke();
+                                    ctx.closePath();
+
+                                    Script.clear();
+                                    canvas.strokes++;
+                                    canvas.requestPaint();
+                                }
+                            }
+
+                            function drawLineSegment() {
+                                var ctx = canvas.getContext('2d');
+                                ctx.beginPath();
+                                ctx.strokeStyle = "black";
+                                ctx.lineWidth = lineWidth;
+                                ctx.moveTo(paintX, paintY);
+                                ctx.lineTo(mousearea.mouseX, mousearea.mouseY);
+                                ctx.stroke();
+                                ctx.closePath();
+                                canvas.requestPaint();
+                            }
+
+                            function drawPoint() {
+                                var ctx = canvas.getContext('2d');
+                                ctx.lineWidth = lineWidth
+                                ctx.fillStyle = drawColor
+                                ctx.fillRect(mousearea.mouseX, mousearea.mouseY, 2, 2);
+                                canvas.requestPaint();
+                            }
+
+                            function clear() {
+                                var ctx = canvas.getContext('2d');
+                                strokes=0;
+                                inputArea.candidates = [];
+                                zinnia.clear();
+                                ctx.clearRect(0, 0, width, height);
+                                canvas.requestPaint();
+                            }
+                            function clearCanvas() {
+                                var ctx = canvas.getContext('2d');
+                                strokes=0;
+                                zinnia.clear();
+                                ctx.clearRect(0, 0, width, height);
+                                canvas.requestPaint();
+                            }
+                        }
+
+                        Zinnia {
+                            id: zinnia
+                            width:canvas.width
+                            height:canvas.height
+                        }
+                    }
                 }
             }
         }

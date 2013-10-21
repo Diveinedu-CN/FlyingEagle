@@ -4,6 +4,7 @@ Rectangle {
     width: 1280
     height: 591
     color: "transparent"
+    property int animationTime: 1000
 
     signal clicked(string name, int index)
 
@@ -446,7 +447,7 @@ Rectangle {
         PropertyAnimation {
             targets: [gaoqing, jingdian, dujia, jieri, nannv, djhaige, wangluo]
             property: "angle"
-            duration: 2000
+            duration: animationTime
             from: -180
             to: 0
         }
@@ -462,7 +463,7 @@ Rectangle {
         PropertyAnimation {
             targets: [yingshi, xiaoyuan, junlv, mingzu, randb, dianzi, caoyuan, lizhi]
             property: "angle"
-            duration: 2000
+            duration: animationTime
             from: -180
             to: 0
         }
@@ -470,7 +471,7 @@ Rectangle {
         PropertyAnimation {
             targets: [shengri, huanle, ertong, mingyao, xiqu, zhongguo, jueshi, yaogun, xiha, chunyinyue]
             property: "opacity"
-            duration: 4000
+            duration: animationTime * 2
             from: 0
             to: 1
         }

@@ -30,6 +30,163 @@ Rectangle {
         }
     }
 
+    property int animationTime: 800
+    //放大动画, 选中的图片一边放大,一边翻转, 其它未选中图片分别向左右散开
+    ParallelAnimation {
+        id: langAnimation
+        PropertyAnimation {
+            target: pushbutton1
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton1
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+        RotationAnimation {
+            target: pushButton1Rotate
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:90
+            duration: animationTime
+            direction: RotationAnimation.Counterclockwise
+        }
+
+        onStopped: {
+            handlerLoader("LangSelectionPage.qml", 0)
+        }
+    }
+
+    ParallelAnimation {
+        id: favoriteAnimation
+        PropertyAnimation {
+            target: pushbutton2
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton2
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+
+        onStopped: {
+            handlerLoader("FavoritePage.qml", 0)
+        }
+    }
+
+    ParallelAnimation {
+        id: starAnimation
+        PropertyAnimation {
+            target: pushbutton3
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton3
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+
+        onStopped: {
+            handlerLoader("StarSelectionPage.qml", 0)
+        }
+    }
+
+    ParallelAnimation {
+        id: topicAnimation
+        PropertyAnimation {
+            target: pushbutton4
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton4
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+
+        onStopped: {
+            handlerLoader("TopicSelectionPage.qml", 0)
+        }
+    }
+
+    ParallelAnimation {
+        id: rankAnimation
+        PropertyAnimation {
+            target: pushbutton5
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton5
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+
+        onStopped: {
+            handlerLoader("RankSelectionPage.qml", 0)
+        }
+    }
+
+    ParallelAnimation {
+        id: musicAnimation
+        PropertyAnimation {
+            target: pushbutton6
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton6
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+
+        onStopped: {
+            handlerLoader("MusicSelectionPage.qml", 0)
+        }
+    }
+
+    ParallelAnimation {
+        id: newMusicAnimation
+        PropertyAnimation {
+            target: pushbutton7
+            properties: "opacity"
+            from: 1
+            to: 0
+            duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton7
+            properties: "scale"
+            to: 10
+            duration: animationTime
+        }
+
+        onStopped: {
+            handlerLoader("NewMusicSelectionPage.qml", 0)
+        }
+    }
+
     anchors.fill: parent
     color: "transparent"
 
@@ -52,8 +209,18 @@ Rectangle {
             clip: false
             backgroundNormal: "images/lang.png"
 
+            Rotation {
+                    id: pushButton1Rotate
+                    origin.x: 0
+                    origin.y: 0
+                    axis.x: 0
+                    axis.y: 1
+                    axis.z: 0
+                    angle: 0
+                }
+
             onClicked: {
-                handlerLoader("LangSelectionPage.qml", 0)
+                langAnimation.start()
             }
         }
 
@@ -66,7 +233,8 @@ Rectangle {
             backgroundNormal: "images/fav.png"
 
             onClicked: {
-                handlerLoader("FavoritePage.qml", 1)
+//                handlerLoader("FavoritePage.qml", 1)
+                favoriteAnimation.start()
             }
         }
 
@@ -138,7 +306,8 @@ Rectangle {
             backgroundNormal: "images/star.png"
 
             onClicked: {
-                handlerLoader("StarSelectionPage.qml", 2)
+//                handlerLoader("StarSelectionPage.qml", 2)
+                starAnimation.start()
             }
         }
 
@@ -204,7 +373,8 @@ Rectangle {
             backgroundNormal: "images/title.png"
 
             onClicked: {
-                handlerLoader("TopicSelectionPage.qml", 3)
+//                handlerLoader("TopicSelectionPage.qml", 3)
+                topicAnimation.start()
             }
         }
 
@@ -217,7 +387,8 @@ Rectangle {
             backgroundNormal: "images/top.png"
 
             onClicked: {
-                handlerLoader("RankSelectionPage.qml", 4)
+//                handlerLoader("RankSelectionPage.qml", 4)
+                rankAnimation.start()
             }
         }
 
@@ -230,7 +401,8 @@ Rectangle {
             backgroundNormal: "images/song.png"
 
             onClicked: {
-                handlerLoader("MusicSelectionPage.qml", 5)
+//                handlerLoader("MusicSelectionPage.qml", 5)
+                musicAnimation.start()
             }
         }
 
@@ -243,7 +415,8 @@ Rectangle {
             backgroundNormal: "images/newsong.png"
 
             onClicked: {
-                handlerLoader("NewMusicSelectionPage.qml", 6)
+//                handlerLoader("NewMusicSelectionPage.qml", 6)
+                newMusicAnimation.start()
             }
         }
 

@@ -46,7 +46,7 @@ Item {
             anchors.fill: parent
             anchors.top:parent.top
             anchors.topMargin: 12
-            source: "images/bg－select.png"
+            source: "images/bg-select.png"
         }
         ExclusiveGroup { id: xuanchangGroup }
         Button {

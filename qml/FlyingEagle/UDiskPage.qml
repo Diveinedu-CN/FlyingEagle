@@ -20,7 +20,7 @@ Rectangle {
         id:udiskAddList
         anchors.fill: parent;
         color: "transparent"
-        visible: false;
+        visible: true;
         Image {
             id: udiskAddListBg
             anchors.fill: parent;
@@ -331,6 +331,8 @@ Rectangle {
                 colorText: "white";
                 onClicked: {
                     udiskPopup.visible = false;
+                    udiskAddList.visible = false;
+                    udiskAddEdit.visible = true;
                 }
             }
         }
@@ -341,6 +343,7 @@ Rectangle {
         id:udiskAddEdit
         anchors.fill: parent;
         color: "transparent"
+        visible: false;
         Image {
             id: udiskAddEditBg
             anchors.fill: parent;
@@ -576,11 +579,15 @@ Rectangle {
             anchors.leftMargin: 156
             anchors.topMargin: 79
             Image {
+                z:parent.z-1;
                 anchors.fill: parent;
+                anchors.leftMargin: -4;
+                anchors.topMargin: -4;
                 source: "images/udiskAddEditInputBg.png"
             }
             text: "吻别"
             font.pixelSize: 22
+            font.bold: true;
             color: "white"
         }
 
@@ -592,6 +599,8 @@ Rectangle {
             height: 35
             Image {
                 anchors.fill: parent
+                anchors.leftMargin: -4;
+                anchors.topMargin: -4;
                 source: "images/udiskAddEditInputBg.png"
             }
             font.pixelSize: 22
@@ -607,6 +616,8 @@ Rectangle {
             height: 35
             Image {
                 anchors.fill: parent
+                anchors.leftMargin: -4;
+                anchors.topMargin: -4;
                 source: "images/udiskAddEditInputBg.png"
             }
             font.pixelSize: 22

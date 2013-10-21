@@ -104,6 +104,8 @@ Rectangle {
 //        YGYKeyBoard {
         KeyBoard {
             id:keyboard;
+            anchors.left: parent.left;
+            anchors.leftMargin: 245;
             onNeedHide:
             {
                 keyboard.state = "hide";

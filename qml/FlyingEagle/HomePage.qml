@@ -31,6 +31,21 @@ Rectangle {
         }
     }
 
+    function showShaders(bShow)
+    {
+        if(bShow) {
+            shader1.visible = true
+            shader2.visible = true
+            shader3.visible = true
+            shader4.visible = true
+        } else {
+            shader1.visible = false
+            shader2.visible = false
+            shader3.visible = false
+            shader4.visible = false
+        }
+    }
+
     property int animationTime: 600
     property int animationAngle: 90
     property int scaleValue: 3
@@ -75,6 +90,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("LangSelectionPage.qml")
             handlerLoader("LangSelectionPage.qml", 0)
         }
     }
@@ -117,6 +133,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("FavoritePage.qml")
             handlerLoader("FavoritePage.qml", 0)
         }
     }
@@ -159,6 +176,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("StarSelectionPage.qml")
             handlerLoader("StarSelectionPage.qml", 0)
         }
     }
@@ -208,6 +226,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("TopicSelectionPage.qml")
             handlerLoader("TopicSelectionPage.qml", 0)
         }
     }
@@ -257,6 +276,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("RankSelectionPage.qml")
             handlerLoader("RankSelectionPage.qml", 0)
         }
     }
@@ -299,6 +319,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("MusicSelectionPage.qml")
             handlerLoader("MusicSelectionPage.qml", 0)
         }
     }
@@ -341,6 +362,7 @@ Rectangle {
         }
 
         onStopped: {
+            console.log("NewMusicSelectionPage.qml")
             handlerLoader("NewMusicSelectionPage.qml", 0)
         }
     }
@@ -369,6 +391,7 @@ Rectangle {
 
             onClicked: {
 //                zAnimation.running = false
+                showShaders(false)
                 langAnimation.start()
             }
         }
@@ -383,6 +406,7 @@ Rectangle {
 
             onClicked: {
 //                handlerLoader("FavoritePage.qml", 1)
+                showShaders(false)
                 favoriteAnimation.start()
             }
         }
@@ -408,6 +432,7 @@ Rectangle {
     //        live:false
         }
         ShaderEffect {
+            id:shader1
             x: image1.x
             y: image1.y
             width: image1.width
@@ -456,6 +481,7 @@ Rectangle {
 
             onClicked: {
 //                handlerLoader("StarSelectionPage.qml", 2)
+                showShaders(false)
                 starAnimation.start()
             }
         }
@@ -479,6 +505,7 @@ Rectangle {
     //        live:false
         }
         ShaderEffect {
+            id: shader2
             x: image2.x
             y: image2.y
             width: image2.width
@@ -523,6 +550,7 @@ Rectangle {
 
             onClicked: {
 //                handlerLoader("TopicSelectionPage.qml", 3)
+                showShaders(false)
                 topicAnimation.start()
             }
         }
@@ -537,6 +565,7 @@ Rectangle {
 
             onClicked: {
 //                handlerLoader("RankSelectionPage.qml", 4)
+                showShaders(false)
                 rankAnimation.start()
             }
         }
@@ -565,6 +594,7 @@ Rectangle {
 
             onClicked: {
 //                handlerLoader("NewMusicSelectionPage.qml", 6)
+                showShaders(false)
                 newMusicAnimation.start()
             }
         }
@@ -606,6 +636,7 @@ Rectangle {
     //        live:false
         }
         ShaderEffect {
+            id: shader3
             x: image3.x
             y: image3.y
             width: image3.width
@@ -628,6 +659,7 @@ Rectangle {
                 "}"
         }
         ShaderEffect {
+            id: shader4
             x: image4.x
             y: image4.y
             width: image4.width

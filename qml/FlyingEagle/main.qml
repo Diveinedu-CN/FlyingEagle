@@ -36,7 +36,7 @@ Rectangle {
         signal handlerLoader(string name, int index)
         Loader {
             id: contentLoader
-            asynchronous: true
+//            asynchronous: true
             visible: status==Loader.Ready?true:false
             source: "HomePage.qml"
         }
@@ -47,6 +47,7 @@ Rectangle {
             ignoreUnknownSignals:true
             onHandlerLoader: {
                 //切换目标页面由信号传入
+                console.log(name+": main.qml")
                 contentLoader.source = name
             }
             onHandleShowBaotai: {

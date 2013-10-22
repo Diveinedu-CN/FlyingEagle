@@ -22,9 +22,12 @@ Rectangle {
     signal clicked
 
     Image {
-        source:maButton.pressed ? backgroundPressed : backgroundNormal
+//        source:maButton.pressed ? backgroundPressed : backgroundNormal
+        source: backgroundNormal
         anchors.fill: parent
         fillMode: Image.PreserveAspectFit
+        scale: maButton.pressed ? 0.9:1
+        opacity: maButton.pressed ? 0.8:1
     }
 
     Text {

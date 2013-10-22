@@ -36,15 +36,17 @@ Rectangle {
 
     Image {
         id: bg
-        width: parent.width;height: parent.height
+        width: parent.width;
+        height: parent.height;
         visible: backgroundNormal != ""
         fillMode: Image.PreserveAspectFit
-        source: maButton.pressed ? backgroundPressed : backgroundNormal
+//        source: maButton.pressed ? backgroundPressed : backgroundNormal
+        source: backgroundNormal
         anchors.fill: parent
         antialiasing: true
         asynchronous: true
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
+        opacity: maButton.pressed ? 0.8:1
+        scale: maButton.pressed ? 0.9:1;
     }
 
     Image {
@@ -55,8 +57,6 @@ Rectangle {
         anchors.centerIn: parent
         antialiasing: true
         asynchronous: true
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
     }
 
     Text {
@@ -67,6 +67,7 @@ Rectangle {
         visible: text != ""
         anchors.centerIn: parent
     }
+
 
     MouseArea {
         id: maButton

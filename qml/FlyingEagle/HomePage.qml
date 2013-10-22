@@ -47,46 +47,98 @@ Rectangle {
     }
 
     property int animationTime: 600
-    property int animationAngle: 90
-    property int scaleValue: 3
-    property var opacityValue: 0.5
+    property int animationAngle: 360
+    property int scaleValue:5
+    property var opacityValue: 0
     property int animationX: 400
     //放大动画, 选中的图片一边放大,一边翻转, 其它未选中图片分别向左右散开
     ParallelAnimation {
         id: langAnimation
         PropertyAnimation {
-            target: pushbutton1
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
         }
-        PropertyAnimation {
-            target: pushbutton1
-            properties: "angle"
-            easing.type: Easing.InQuad
-            to:animationAngle
-            duration: animationTime
-//            direction: RotationAnimation.Counterclockwise
-        }
+//        PropertyAnimation {
+//            target: pushbutton1
+//            properties: "angle"
+//            easing.type: Easing.Linear
+//            to:animationAngle
+//            duration: animationTime
+////            direction: RotationAnimation.Counterclockwise
+//        }
         PropertyAnimation {
             target: pushbutton1
             properties: "scale"
             to: scaleValue
             duration: animationTime
         }
+//        SequentialAnimation {
+//            NumberAnimation {
+//                target: pushbutton1
+//                properties: "x"
+//                to: -500
+//                duration: animationTime/2
+//            }
+//            NumberAnimation {
+//                target: pushbutton1
+//                properties: "x"
+//                to: 0
+//                duration: animationTime/2
+//            }
+//        }
+        NumberAnimation {
+            target: pushbutton1
+            properties: "x"
+            to: 550
+            duration: animationTime
+        }
+
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton1
+                properties: "y"
+                to: -520
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton1
+                properties: "y"
+                to: 220
+                duration: animationTime/2
+            }
+        }
+
         PropertyAnimation {
             targets: [pushbutton2]
             properties: "y"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+600
             duration: animationTime
+        }
+        PropertyAnimation {
+            target: pushbutton2
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:-60
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
         }
         PropertyAnimation {
             targets: [pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+600
             duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
+            properties: "angle"
+            easing.type: Easing.OutCubic
+            to:60
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
         }
 
         onStopped: {
@@ -98,38 +150,66 @@ Rectangle {
     ParallelAnimation {
         id: favoriteAnimation
         PropertyAnimation {
-            target: pushbutton2
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
         }
-        PropertyAnimation {
-            target: pushbutton2
-            properties: "angle"
-            easing.type: Easing.InQuad
-            to:animationAngle
-            duration: animationTime
-//            direction: RotationAnimation.Counterclockwise
-        }
+//        PropertyAnimation {
+//            target: pushbutton2
+//            properties: "angle"
+//            easing.type: Easing.InQuad
+//            to:animationAngle
+//            duration: animationTime
+////            direction: RotationAnimation.Counterclockwise
+//        }
         PropertyAnimation {
             target: pushbutton2
             properties: "scale"
             to: scaleValue
             duration: animationTime
         }
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton2
+                properties: "y"
+                to: 1120
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton2
+                properties: "y"
+                to: 220
+                duration: animationTime/2
+            }
+        }
+        NumberAnimation {
+            target: pushbutton2
+            properties: "x"
+            to: 550
+            duration: animationTime
+        }
         PropertyAnimation {
             targets: [pushbutton1]
             properties: "y"
-            easing.type: Easing.InQuad
+            easing.type: Easing.OutCubic
             to: -animationX
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+600
             duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
+            properties: "angle"
+            easing.type: Easing.OutCubic
+            to:60
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
         }
 
         onStopped: {
@@ -141,18 +221,32 @@ Rectangle {
     ParallelAnimation {
         id: starAnimation
         PropertyAnimation {
-            target: pushbutton3
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
         }
-        PropertyAnimation {
-            target: pushbutton3
-            properties: "angle"
-            easing.type: Easing.InQuad
-            to:animationAngle
-            duration: animationTime
-//            direction: RotationAnimation.Counterclockwise
+//        PropertyAnimation {
+//            target: pushbutton3
+//            properties: "angle"
+//            easing.type: Easing.Linear
+//            to:animationAngle
+//            duration: animationTime
+////            direction: RotationAnimation.Counterclockwise
+//        }
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton3
+                properties: "x"
+                to: -1000
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton3
+                properties: "x"
+                to: 0
+                duration: animationTime/2
+            }
         }
         PropertyAnimation {
             target: pushbutton3
@@ -184,44 +278,64 @@ Rectangle {
     ParallelAnimation {
         id: topicAnimation
         PropertyAnimation {
-            target: pushbutton4
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
         }
-        PropertyAnimation {
-            target: pushbutton4
-            properties: "angle"
-            easing.type: Easing.InQuad
-            to:animationAngle
-            duration: animationTime
-//            direction: RotationAnimation.Counterclockwise
-        }
+//        PropertyAnimation {
+//            target: pushbutton4
+//            properties: "angle"
+//            easing.type: Easing.InQuad
+//            to:animationAngle
+//            duration: animationTime
+////            direction: RotationAnimation.Counterclockwise
+//        }
         PropertyAnimation {
             target: pushbutton4
             properties: "scale"
             to: scaleValue
             duration: animationTime
         }
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton4
+                properties: "y"
+                to: -520
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton4
+                properties: "y"
+                to: 220
+                duration: animationTime/2
+            }
+        }
+        NumberAnimation {
+            target: pushbutton4
+            properties: "x"
+            to: 150
+            duration: animationTime
+        }
         PropertyAnimation {
             targets: [pushbutton1, pushbutton2, pushbutton3]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: -animationX
+            easing.type: Easing.OutCubic
+            to: -animationX-800
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton5, pushbutton7]
             properties: "y"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+800
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton6, pushbutton7]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+800
             duration: animationTime
         }
 
@@ -234,7 +348,7 @@ Rectangle {
     ParallelAnimation {
         id: rankAnimation
         PropertyAnimation {
-            target: pushbutton5
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
@@ -253,25 +367,45 @@ Rectangle {
             to: scaleValue
             duration: animationTime
         }
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton5
+                properties: "y"
+                to: -820
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton5
+                properties: "y"
+                to: 220
+                duration: animationTime/2
+            }
+        }
+        NumberAnimation {
+            target: pushbutton5
+            properties: "x"
+            to: 250
+            duration: animationTime
+        }
         PropertyAnimation {
             targets: [pushbutton1, pushbutton2, pushbutton3]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: -animationX
+            easing.type: Easing.OutCubic
+            to: -animationX-800
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton4, pushbutton6]
             properties: "y"
-            easing.type: Easing.InQuad
-            to: -animationX
+            easing.type: Easing.OutCubic
+            to: -animationX-800
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton6, pushbutton7]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+800
             duration: animationTime
         }
 
@@ -284,37 +418,57 @@ Rectangle {
     ParallelAnimation {
         id: musicAnimation
         PropertyAnimation {
-            target: pushbutton6
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
         }
-        PropertyAnimation {
-            target: pushbutton6
-            properties: "angle"
-            easing.type: Easing.InQuad
-            to:animationAngle
-            duration: animationTime
-//            direction: RotationAnimation.Counterclockwise
-        }
+//        PropertyAnimation {
+//            target: pushbutton6
+//            properties: "angle"
+//            easing.type: Easing.InQuad
+//            to:animationAngle
+//            duration: animationTime
+////            direction: RotationAnimation.Counterclockwise
+//        }
         PropertyAnimation {
             target: pushbutton6
             properties: "scale"
             to: scaleValue
             duration: animationTime
         }
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton6
+                properties: "y"
+                to: -520
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton6
+                properties: "y"
+                to: 220
+                duration: animationTime/2
+            }
+        }
+        NumberAnimation {
+            target: pushbutton6
+            properties: "x"
+            to: 250
+            duration: animationTime
+        }
         PropertyAnimation {
             targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: -animationX
+            easing.type: Easing.OutCubic
+            to: -animationX-800
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton5, pushbutton7]
             properties: "y"
-            easing.type: Easing.InQuad
-            to: animationX
+            easing.type: Easing.OutCubic
+            to: animationX+800
             duration: animationTime
         }
 
@@ -327,37 +481,57 @@ Rectangle {
     ParallelAnimation {
         id: newMusicAnimation
         PropertyAnimation {
-            target: pushbutton7
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
             properties: "opacity"
             to: opacityValue
             duration: animationTime
         }
-        PropertyAnimation {
-            target: pushbutton7
-            properties: "angle"
-            easing.type: Easing.InQuad
-            to:animationAngle
-            duration: animationTime
-//            direction: RotationAnimation.Counterclockwise
-        }
+//        PropertyAnimation {
+//            target: pushbutton7
+//            properties: "angle"
+//            easing.type: Easing.InCubic
+//            to:animationAngle
+//            duration: animationTime
+////            direction: RotationAnimation.Counterclockwise
+//        }
         PropertyAnimation {
             target: pushbutton7
             properties: "scale"
             to: scaleValue
             duration: animationTime
         }
+        SequentialAnimation {
+            NumberAnimation {
+                target: pushbutton7
+                properties: "y"
+                to: 1020
+                duration: animationTime/2
+            }
+            NumberAnimation {
+                target: pushbutton7
+                properties: "y"
+                to: 220
+                duration: animationTime/2
+            }
+        }
+        NumberAnimation {
+            target: pushbutton7
+            properties: "x"
+            to: 250
+            duration: animationTime
+        }
         PropertyAnimation {
             targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5]
             properties: "x"
-            easing.type: Easing.InQuad
-            to: -animationX
+            easing.type: Easing.OutCubic
+            to: -animationX-800
             duration: animationTime
         }
         PropertyAnimation {
             targets: [pushbutton4, pushbutton6]
             properties: "y"
-            easing.type: Easing.InQuad
-            to: -animationX
+            easing.type: Easing.OutCubic
+            to: -animationX-800
             duration: animationTime
         }
 

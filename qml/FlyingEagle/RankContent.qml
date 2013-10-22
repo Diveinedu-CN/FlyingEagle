@@ -6,9 +6,11 @@ Item {
     width: 1280
     height: 504
 
-    property int yAnimationTime: 1000
+    property int yAnimationTime: 120
     property int defaultScale: 1
     property int animationScale: 3
+    property int ySrc: 1000
+    property int xSrc: 1500
 
     id: rankContent
 
@@ -23,6 +25,8 @@ Item {
 
         x: 0
         y: 23
+//        x: xSrc
+//        y: ySrc
         width: 112
         height: 138
 
@@ -41,9 +45,10 @@ Item {
     FlipButton {
         id: secondGrid
 
-        x: 0
-        y: 167
-//        y: 1000
+//        x: 0
+//        y: 167
+        x: xSrc
+        y: ySrc
         width: 112
         height: 138
 
@@ -61,8 +66,10 @@ Item {
     FlipButton {
         id: rihanGrid
 
-        x: 0
-        y: 316
+//        x: 0
+//        y: 316
+        x: xSrc
+        y: ySrc
 //        y: 1000
         width: 112
         height: 138
@@ -81,9 +88,10 @@ Item {
     FlipButton {
         id: quanbuGrid
 
-        x: 118
-        y: 23
-//        y: 1000
+//        x: 118
+//        y: 23
+        x: xSrc
+        y: ySrc
         width: 436
         height: 286
 
@@ -101,9 +109,10 @@ Item {
     FlipButton {
         id: liuxingGrid
 
-        x: 118
-        y: 316
-//        y: 1000
+//        x: 118
+//        y: 316
+        x: xSrc
+        y: ySrc
         width: 221
         height: 138
 
@@ -121,9 +130,10 @@ Item {
     FlipButton {
         id: meinvGrid
 
-        x: 345
-        y: 316
-//        y: 1000
+//        x: 345
+//        y: 316
+        x: xSrc
+        y: ySrc
         width: 212
         height: 138
 
@@ -141,9 +151,10 @@ Item {
     FlipButton {
         id: minnanGrid
 
-        x: 563
-        y: 29
-//        y: 1000
+//        x: 563
+//        y: 29
+        x: xSrc
+        y: ySrc
         width: 212
         height: 136
 
@@ -161,9 +172,10 @@ Item {
     FlipButton {
         id: xingeGrid
 
-        x: 563
-        y: 173
-//        y: 1000
+//        x: 563
+//        y: 173
+        x: xSrc
+        y: ySrc
         width: 212
         height: 281
 
@@ -181,9 +193,10 @@ Item {
     FlipButton {
         id: meinv2Grid
 
-        x: 786
-        y: 29
-//        y: 1000
+//        x: 786
+//        y: 29
+        x: xSrc
+        y: ySrc
         width: 138
         height: 138
 
@@ -201,9 +214,10 @@ Item {
     FlipButton {
         id: duichangGrid
 
-        x: 934
-        y: 29
-//        y: 1000
+//        x: 934
+//        y: 29
+        x: xSrc
+        y: ySrc
         width: 138
         height: 138
 
@@ -221,9 +235,10 @@ Item {
     FlipButton {
         id: oumeiGrid
 
-        x: 1083
-        y: 29
-//        y: 1000
+//        x: 1083
+//        y: 29
+        x: xSrc
+        y: ySrc
         width: 112
         height: 138
 
@@ -241,9 +256,10 @@ Item {
     FlipButton {
         id: lanseGrid
 
-        x: 786
-        y: 173
-//        y: 1000
+//        x: 786
+//        y: 173
+        x: xSrc
+        y: ySrc
         width: 112
         height: 138
 
@@ -261,9 +277,10 @@ Item {
     FlipButton {
         id: guoyuGrid
 
-        x: 909
-        y: 173
-//        y: 1000
+//        x: 909
+//        y: 173
+        x: xSrc
+        y: ySrc
         width: 286
         height: 138
 
@@ -281,9 +298,10 @@ Item {
     FlipButton {
         id: wangluoGrid
 
-        x: 786
-        y: 318
-//        y: 1000
+//        x: 786
+//        y: 318
+        x: xSrc
+        y: ySrc
         width: 138
         height: 136
 
@@ -301,9 +319,10 @@ Item {
     FlipButton {
         id: shuaigeGrid
 
-        x: 934
-        y: 318
-//        y: 1000
+//        x: 934
+//        y: 318
+        x: xSrc
+        y: ySrc
         width: 138
         height: 136
 
@@ -321,9 +340,10 @@ Item {
     FlipButton {
         id: yueyuGrid
 
-        x: 1083
-        y: 318
-//        y: 1000
+//        x: 1083
+//        y: 318
+        x: xSrc
+        y: ySrc
         width: 112
         height: 138
 
@@ -391,163 +411,263 @@ Item {
         }
 
         //从左到右动画时间由短变长, 在原有基础上改为从右下脚飞入
-        NumberAnimation {
-            targets: [quanbuGrid, minnanGrid, meinv2Grid, duichangGrid, oumeiGrid, secondGrid, xingeGrid, lanseGrid];
-            properties: "scale";
-            from: 3
-            to: 1
-            duration: yAnimationTime
+//        NumberAnimation {
+//            targets: [quanbuGrid, minnanGrid, meinv2Grid, duichangGrid, oumeiGrid, secondGrid, xingeGrid, lanseGrid];
+//            properties: "scale";
+//            from: 3
+//            to: 1
+//            duration: yAnimationTime
+//        }
+
+//        SequentialAnimation {
+//            NumberAnimation {
+//                targets: [quanbuGrid, minnanGrid];
+//                properties: "scale";
+//                from: 5
+//                to: 1
+//                duration: yAnimationTime
+//            }
+
+//            NumberAnimation {
+//                targets: [meinv2Grid];
+//                properties: "scale";
+//                from: 5
+//                to: 1
+//                duration: yAnimationTime
+//            }
+
+//            NumberAnimation {
+//                targets: [duichangGrid, oumeiGrid];
+//                properties: "scale";
+//                from: 5
+//                to: 1
+//                duration: yAnimationTime
+//            }
+
+//            NumberAnimation {
+//                targets: [secondGrid, xingeGrid];
+//                properties: "scale";
+//                from: 5
+//                to: 1
+//                duration: yAnimationTime
+//            }
+
+//            NumberAnimation {
+//                targets: [secondGrid, xingeGrid];
+//                properties: "scale";
+//                from: 5
+//                to: 1
+//                duration: yAnimationTime
+//            }
+
+//            NumberAnimation {
+//                targets: [lanseGrid];
+//                properties: "scale";
+//                from: 5
+//                to: 1
+//                duration: yAnimationTime
+//            }
+//        }
+
+        SequentialAnimation {
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [quanbuGrid, minnanGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 29
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [quanbuGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 118
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [minnanGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 563
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [meinv2Grid];
+                    properties: "y";
+                    from: 1000
+                    to: 29
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [meinv2Grid];
+                    properties: "x";
+                    from: 1000
+                    to: 786
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    //934, 1083
+                    targets: [duichangGrid, oumeiGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 29
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    //934, 1083
+                    targets: [duichangGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 934
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    //934, 1083
+                    targets: [oumeiGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 1083
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [secondGrid, xingeGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 167
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [secondGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 0
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [xingeGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 563
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [lanseGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 167
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [lanseGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 786
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [guoyuGrid];
+                    properties: "x";
+                    from: 500
+                    to: 909
+                    duration: yAnimationTime
+                }
+
+                NumberAnimation {
+                    targets: [guoyuGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 167
+                    duration: yAnimationTime
+                }
+
+                NumberAnimation {
+                    targets: [rihanGrid];
+                    properties: "x";
+                    from: 500
+                    to: 0
+                    duration: yAnimationTime
+                }
+
+                NumberAnimation {
+                    targets: [rihanGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 316
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [liuxingGrid, meinvGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 318
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [liuxingGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 118
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [meinvGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 345
+                    duration: yAnimationTime
+                }
+            }
+
+            ParallelAnimation {
+                NumberAnimation {
+                    targets: [wangluoGrid, yueyuGrid, shuaigeGrid];
+                    properties: "y";
+                    from: 1000
+                    to: 318
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [wangluoGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 786
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [yueyuGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 1083
+                    duration: yAnimationTime
+                }
+                NumberAnimation {
+                    targets: [shuaigeGrid];
+                    properties: "x";
+                    from: 1000
+                    to: 934
+                    duration: yAnimationTime
+                }
+            }
         }
-
-//        SequentialAnimation {
-//            NumberAnimation {
-//                targets: [quanbuGrid, minnanGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [meinv2Grid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [duichangGrid, oumeiGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [secondGrid, xingeGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [secondGrid, xingeGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [lanseGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-//        }
-
-//        SequentialAnimation {
-//            NumberAnimation {
-//                targets: [quanbuGrid, minnanGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 29
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [meinv2Grid];
-//                properties: "y";
-//                from: 1000
-//                to: 29
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [duichangGrid, oumeiGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 29
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [secondGrid, xingeGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 167
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [secondGrid, xingeGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 167
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [lanseGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 167
-//                duration: yAnimationTime
-//            }
-
-//            ParallelAnimation {
-//                NumberAnimation {
-//                    targets: [guoyuGrid];
-//                    properties: "x";
-//                    from: 500
-//                    to: 909
-//                    duration: 200
-//                }
-
-//                NumberAnimation {
-//                    targets: [guoyuGrid];
-//                    properties: "y";
-//                    from: 1000
-//                    to: 167
-//                    duration: 200
-//                }
-
-//                NumberAnimation {
-//                    targets: [rihanGrid];
-//                    properties: "x";
-//                    from: 500
-//                    to: 0
-//                    duration: 200
-//                }
-
-//                NumberAnimation {
-//                    targets: [rihanGrid];
-//                    properties: "y";
-//                    from: 1000
-//                    to: 316
-//                    duration: 200
-//                }
-//            }
-
-//            NumberAnimation {
-//                targets: [liuxingGrid, meinvGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 318
-//                duration: 120
-//            }
-
-//            NumberAnimation {
-//                targets: [wangluoGrid, yueyuGrid, shuaigeGrid];
-//                properties: "y";
-//                from: 1000
-//                to: 318
-//                duration: 120
-//            }
-//        }
     }
 
     Component.onCompleted: {

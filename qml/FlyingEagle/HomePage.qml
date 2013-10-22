@@ -3,6 +3,7 @@ import QtQuick 2.0
 Rectangle {
     id: homepage
     ParallelAnimation {
+        id: zAnimation
         running: true
         SequentialAnimation{
             loops: Animation.Infinite
@@ -30,30 +31,47 @@ Rectangle {
         }
     }
 
-    property int animationTime: 800
+    property int animationTime: 600
+    property int animationAngle: 90
+    property int scaleValue: 3
+    property var opacityValue: 0.5
+    property int animationX: 400
     //放大动画, 选中的图片一边放大,一边翻转, 其它未选中图片分别向左右散开
     ParallelAnimation {
         id: langAnimation
         PropertyAnimation {
             target: pushbutton1
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton1
-            properties: "scale"
-            to: 10
-            duration: animationTime
-        }
-        RotationAnimation {
-            target: pushButton1Rotate
             properties: "angle"
             easing.type: Easing.InQuad
-            to:90
+            to:animationAngle
             duration: animationTime
-            direction: RotationAnimation.Counterclockwise
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton1
+            properties: "scale"
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton2]
+            properties: "y"
+            easing.type: Easing.InQuad
+            to: animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: animationX
+            duration: animationTime
         }
 
         onStopped: {
@@ -66,14 +84,35 @@ Rectangle {
         PropertyAnimation {
             target: pushbutton2
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton2
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:animationAngle
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton2
             properties: "scale"
-            to: 10
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton1]
+            properties: "y"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton3, pushbutton4, pushbutton5, pushbutton6, pushbutton7]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: animationX
             duration: animationTime
         }
 
@@ -87,14 +126,35 @@ Rectangle {
         PropertyAnimation {
             target: pushbutton3
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton3
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:animationAngle
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton3
             properties: "scale"
-            to: 10
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton1, pushbutton2]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton4, pushbutton5, pushbutton6, pushbutton7]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: animationX
             duration: animationTime
         }
 
@@ -108,14 +168,42 @@ Rectangle {
         PropertyAnimation {
             target: pushbutton4
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton4
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:animationAngle
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton4
             properties: "scale"
-            to: 10
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton1, pushbutton2, pushbutton3]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton5, pushbutton7]
+            properties: "y"
+            easing.type: Easing.InQuad
+            to: animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton6, pushbutton7]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: animationX
             duration: animationTime
         }
 
@@ -129,14 +217,42 @@ Rectangle {
         PropertyAnimation {
             target: pushbutton5
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton5
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:animationAngle
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton5
             properties: "scale"
-            to: 10
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton1, pushbutton2, pushbutton3]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton4, pushbutton6]
+            properties: "y"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton6, pushbutton7]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: animationX
             duration: animationTime
         }
 
@@ -150,14 +266,35 @@ Rectangle {
         PropertyAnimation {
             target: pushbutton6
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton6
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:animationAngle
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton6
             properties: "scale"
-            to: 10
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton5, pushbutton7]
+            properties: "y"
+            easing.type: Easing.InQuad
+            to: animationX
             duration: animationTime
         }
 
@@ -171,14 +308,35 @@ Rectangle {
         PropertyAnimation {
             target: pushbutton7
             properties: "opacity"
-            from: 1
-            to: 0
+            to: opacityValue
             duration: animationTime
         }
         PropertyAnimation {
             target: pushbutton7
+            properties: "angle"
+            easing.type: Easing.InQuad
+            to:animationAngle
+            duration: animationTime
+//            direction: RotationAnimation.Counterclockwise
+        }
+        PropertyAnimation {
+            target: pushbutton7
             properties: "scale"
-            to: 10
+            to: scaleValue
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton1, pushbutton2, pushbutton3, pushbutton4, pushbutton5]
+            properties: "x"
+            easing.type: Easing.InQuad
+            to: -animationX
+            duration: animationTime
+        }
+        PropertyAnimation {
+            targets: [pushbutton4, pushbutton6]
+            properties: "y"
+            easing.type: Easing.InQuad
+            to: -animationX
             duration: animationTime
         }
 
@@ -200,37 +358,28 @@ Rectangle {
         width: 194
         height: 633
         color: "transparent"
-        PushButton {
+        FlipButton {
             id: pushbutton1
             x: 0
             y: 0
             width: 194
             height: 234
             clip: false
-            backgroundNormal: "images/lang.png"
-
-            Rotation {
-                    id: pushButton1Rotate
-                    origin.x: 0
-                    origin.y: 0
-                    axis.x: 0
-                    axis.y: 1
-                    axis.z: 0
-                    angle: 0
-                }
+            image: "images/lang.png"
 
             onClicked: {
+//                zAnimation.running = false
                 langAnimation.start()
             }
         }
 
-        PushButton {
+        FlipButton {
             id: pushbutton2
             x: 0
             y: 250
             width: 194
             height: 233
-            backgroundNormal: "images/fav.png"
+            image: "images/fav.png"
 
             onClicked: {
 //                handlerLoader("FavoritePage.qml", 1)
@@ -297,13 +446,13 @@ Rectangle {
         width: 436
         height: 634
         color: "transparent"
-        PushButton {
+        FlipButton {
             id: pushbutton3
             x: 0
             y: 0
             width: parent.width
             height: 484
-            backgroundNormal: "images/star.png"
+            image: "images/star.png"
 
             onClicked: {
 //                handlerLoader("StarSelectionPage.qml", 2)
@@ -364,13 +513,13 @@ Rectangle {
         anchors.left: rectangle2.right
         anchors.leftMargin: 10
         color: "transparent"
-        PushButton {
+        FlipButton {
             id: pushbutton4
             x: 0
             y: 49
             width: 141
             height: 187
-            backgroundNormal: "images/title.png"
+            image: "images/title.png"
 
             onClicked: {
 //                handlerLoader("TopicSelectionPage.qml", 3)
@@ -378,13 +527,13 @@ Rectangle {
             }
         }
 
-        PushButton {
+        FlipButton {
             id: pushbutton5
             x: 0
             y: 246
             width: 141
             height: 187
-            backgroundNormal: "images/top.png"
+            image: "images/top.png"
 
             onClicked: {
 //                handlerLoader("RankSelectionPage.qml", 4)
@@ -392,13 +541,13 @@ Rectangle {
             }
         }
 
-        PushButton {
+        FlipButton {
             id: pushbutton6
             x: 145
             y: 0
             width: 272
             height: 236
-            backgroundNormal: "images/song.png"
+            image: "images/song.png"
 
             onClicked: {
 //                handlerLoader("MusicSelectionPage.qml", 5)
@@ -406,13 +555,13 @@ Rectangle {
             }
         }
 
-        PushButton {
+        FlipButton {
             id: pushbutton7
             x: 145
             y: 246
             width: 272
             height: 236
-            backgroundNormal: "images/newsong.png"
+            image: "images/newsong.png"
 
             onClicked: {
 //                handlerLoader("NewMusicSelectionPage.qml", 6)

@@ -7,7 +7,10 @@ Item {
     property alias minimuze: effect.minimize
     property alias bend: effect.bend
     Component.onCompleted: {
-        showUp(true);
+        if(_item.visible)
+        {
+            showUp(true);
+        }
     }
 
     Connections {

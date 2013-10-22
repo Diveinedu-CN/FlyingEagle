@@ -184,7 +184,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        icon: "images/主题分类子页面/5.png"
+                        icon: "images/TopicCategorySubPage/5.png"
                     }
 
                     PushButton {
@@ -197,7 +197,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        icon: "images/主题分类子页面/6.png"
+                        icon: "images/TopicCategorySubPage/6.png"
                     }
                 }
             }//end gridview

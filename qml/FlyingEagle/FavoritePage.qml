@@ -66,7 +66,7 @@ Rectangle {
             y: 79
             width: 791
             height: 418
-            source: "images/主题分类子页面/3.png"
+            source: "images/TopicCategorySubPage/3.png"
         }
 
         TestListModel {
@@ -152,7 +152,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 16
 
-                    backgroundNormal: "images/主题分类子页面/5.png"
+                    backgroundNormal: "images/TopicCategorySubPage/5.png"
                 }
 
                 PushButton {
@@ -165,7 +165,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 16
 
-                    backgroundNormal: "images/主题分类子页面/6.png"
+                    backgroundNormal: "images/TopicCategorySubPage/6.png"
                 }
 
                 PushButton {
@@ -178,7 +178,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 20
 
-                    backgroundNormal: "images/主题分类子页面/7.png"
+                    backgroundNormal: "images/TopicCategorySubPage/7.png"
                 }
             }
         }

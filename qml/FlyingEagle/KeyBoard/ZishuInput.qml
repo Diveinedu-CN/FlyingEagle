@@ -24,6 +24,9 @@ Rectangle {
         id: zishuInputBg;
         anchors.fill: parent;
         source: "images/zishu_input_bg.png"
+        asynchronous: true
+        sourceSize.width: parent.width
+        sourceSize.height: parent.height
     }
     Row {
         id: zishuRow

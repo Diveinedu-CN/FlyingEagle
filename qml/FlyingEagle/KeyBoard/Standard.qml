@@ -25,6 +25,9 @@ Rectangle {
         id: stdkbd_bg;
         anchors { left: parent.left; top: parent.top }
         source: "./images/std-keyboard-bg.png"
+        asynchronous: true
+        sourceSize.width: parent.width
+        sourceSize.height: parent.height
     }
 
     Row {

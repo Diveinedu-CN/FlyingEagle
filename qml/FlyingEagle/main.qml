@@ -211,35 +211,34 @@ Rectangle {
         }
         Timer {
             id:popContentAreaYixuanTimer
-            interval: 700; running: false; repeat: false
+            interval: 500; running: false; repeat: false
             onTriggered: {
                 popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
-                if(yixuanLoader.source != "")
-                {
-                    yixuanLoader.setSource("")
-                }else
-                {
-                    yixuanLoader.setSource("SelectedSongPage.qml");
-                }
             }
         }
         Loader {
             id: yixuanLoader
-            source: ""
+            sourceComponent: yixuanComponent;
+            Component {
+                id: yixuanComponent
+                SelectedSongPage {
+
+                }
+            }
         }
         //建立信号连接处理点击已选或已选气泡
         Connections {
             target: mainToolBar.yixuanButton
             ignoreUnknownSignals:true
             onClicked: {
-                if(yixuanLoader.source!="")
+                if (popContentAreaYixuan.visible==true)
                 {
                     yixuanLoader.item.showUp(false);
                     popContentAreaYixuanTimer.start();
                 }else
                 {
                     popContentAreaYixuan.visible = true;
-                    yixuanLoader.setSource("SelectedSongPage.qml");
+                    yixuanLoader.item.showUp(true);
                 }
             }
         }
@@ -247,14 +246,14 @@ Rectangle {
             target: mainToolBar.yixuanQiPao
             ignoreUnknownSignals:true
             onClicked: {
-                if(yixuanLoader.source!="")
+                if (popContentAreaYixuan.visible==true)
                 {
                     yixuanLoader.item.showUp(false);
-                    popContentAreaYixuanTimer.start()
+                    popContentAreaYixuanTimer.start();
                 }else
                 {
                     popContentAreaYixuan.visible = true;
-                    yixuanLoader.setSource("SelectedSongPage.qml");
+                    yixuanLoader.item.showUp(true);
                 }
 
             }

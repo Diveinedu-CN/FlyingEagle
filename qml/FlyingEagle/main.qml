@@ -287,46 +287,25 @@ Rectangle {
             if(tunningPopupPage.visible == false)
             {
                 tunningPopupPage.visible = true;
-                tunningLoader.setSource("TunningPage.qml")
             }else
             {
                 tunningPopupPage.visible = false
-                tunningLoader.setSource("");
             }
 
             switch(index)
             {
             case "tiaoyin":
-                if(tunningLoader.source!="")
-                {
-                    tunningLoader.item.tunningVisible = true;
-                }else {
-
-                }
+                tunningLoader.item.showTiaoYin();
                 break;
             case "qifen":
-                if(tunningLoader.source!="")
-                {
-                    tunningLoader.item.qifenVisible = true;
-                }else {
+                tunningLoader.item.showQiFen();
 
-                }
                 break;
             case "fuzhu":
-                if(tunningLoader.source!="")
-                {
-                    tunningLoader.item.fuzhuVisible = true;
-                }else {
-
-                }
+                tunningLoader.item.showFuZhu();
                 break;
             case "fuwu":
-                if(tunningLoader.source!="")
-                {
-                    tunningLoader.item.fuwuVisible = true;
-                }else {
-
-                }
+                tunningLoader.item.showFuWu();
                 break;
             default:
                 break;
@@ -338,9 +317,14 @@ Rectangle {
                 tunningPopupPage.handleTunningPage("");
             }
         }
+        Component {
+            id: tunningComponent
+            TunningPage {
+            }
+        }
         Loader {
             id: tunningLoader
-            source: ""
+            sourceComponent: tunningComponent;
         }
 
         Connections {

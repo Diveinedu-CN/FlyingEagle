@@ -19,6 +19,42 @@ Rectangle {
     signal movieButtonClicked();
     signal udiskAddButtonClicked();
 
+    function showTiaoYin()
+    {
+        console.log("showTiaoYin")
+        tunningItem.visible = true;
+        tunningItem.tunningVisible = true;
+        tunningItem.qifenVisible = false;
+        tunningItem.fuzhuVisible = false;
+        tunningItem.fuwuVisible = false;
+    }
+    function showQiFen()
+    {
+        console.log("showQiFen")
+        tunningItem.visible = true;
+        tunningItem.tunningVisible = false;
+        tunningItem.qifenVisible = true;
+        tunningItem.fuzhuVisible = false;
+        tunningItem.fuwuVisible = false;
+    }
+    function showFuZhu()
+    {
+        console.log("showFuZhu")
+        tunningItem.visible = true;
+        tunningItem.tunningVisible = false;
+        tunningItem.qifenVisible = false;
+        tunningItem.fuzhuVisible = true;
+        tunningItem.fuwuVisible = false;
+    }
+    function showFuWu()
+    {
+        console.log("showFuWu")
+        tunningItem.visible = true;
+        tunningItem.tunningVisible = false;
+        tunningItem.qifenVisible = false;
+        tunningItem.fuzhuVisible = false;
+        tunningItem.fuwuVisible = true;
+    }
     //调音框
     Rectangle {
         id: tunningPage

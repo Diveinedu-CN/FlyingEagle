@@ -50,7 +50,7 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.topMargin: 62
 
-                source: "images/主题分类子页面/1.png"
+                source: "images/TopicCategorySubPage/1.png"
             }
 
             Image {
@@ -72,7 +72,7 @@ Rectangle {
 
                 z: waike.z - 1
 
-                source: "images/主题分类子页面/2.png"
+                source: "images/TopicCategorySubPage/2.png"
             }
 
             SequentialAnimation {
@@ -111,7 +111,7 @@ Rectangle {
                 width: 791
                 height: 458
 
-                source: "images/主题分类子页面/3.png"
+                source: "images/TopicCategorySubPage/3.png"
             }
 
             TestListModel {
@@ -197,7 +197,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        backgroundNormal: "images/主题分类子页面/5.png"
+                        backgroundNormal: "images/TopicCategorySubPage/5.png"
                     }
 
                     PushButton {
@@ -210,7 +210,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        backgroundNormal: "images/主题分类子页面/6.png"
+                        backgroundNormal: "images/TopicCategorySubPage/6.png"
                     }
 
                     PushButton {
@@ -223,7 +223,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 20
 
-                        backgroundNormal: "images/主题分类子页面/7.png"
+                        backgroundNormal: "images/TopicCategorySubPage/7.png"
                     }
                 }
             }

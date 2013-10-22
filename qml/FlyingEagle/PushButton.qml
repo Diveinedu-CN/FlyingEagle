@@ -42,6 +42,9 @@ Rectangle {
         source: maButton.pressed ? backgroundPressed : backgroundNormal
         anchors.fill: parent
         antialiasing: true
+        asynchronous: true
+        sourceSize.width: parent.width
+        sourceSize.height: parent.height
     }
 
     Image {
@@ -51,6 +54,9 @@ Rectangle {
         anchors.fill: parent
         anchors.centerIn: parent
         antialiasing: true
+        asynchronous: true
+        sourceSize.width: parent.width
+        sourceSize.height: parent.height
     }
 
     Text {

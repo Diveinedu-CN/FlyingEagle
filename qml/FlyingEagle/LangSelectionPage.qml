@@ -268,11 +268,13 @@ Rectangle {
             width: 100;
             text: qsTr("10/100")
             color: "white";
-            font.pixelSize: 30;
+            font.pixelSize: 18
             verticalAlignment: Text.AlignVCenter;
             horizontalAlignment: Text.AlignHCenter;
             anchors.right: right.left;
             anchors.rightMargin: 30;
+            anchors.top: right.top
+            anchors.topMargin: 5
         }
         PushButton {
             id:right;

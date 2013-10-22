@@ -36,7 +36,7 @@ Rectangle {
         signal handlerLoader(string name, int index)
         Loader {
             id: contentLoader
-            asynchronous: true
+//            asynchronous: true
             visible: status==Loader.Ready?true:false
             source: "HomePage.qml"
         }

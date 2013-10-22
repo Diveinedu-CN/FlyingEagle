@@ -65,7 +65,7 @@ Rectangle {
             x: 350
             y: 79
             width: 791
-            height: 418
+            height: 458
             source: "images/TopicCategorySubPage/3.png"
         }
 
@@ -82,7 +82,7 @@ Rectangle {
             height: 400
 
             cellWidth: 791
-            cellHeight: 52
+            cellHeight: 56
 
             flow: GridView.TopToBottom
             snapMode: GridView.SnapToRow
@@ -92,7 +92,7 @@ Rectangle {
             model: testModel
             delegate: Item {
                 width: 791
-                height: 52
+                height: 55
 
 //                    Rectangle {
 //                        width: 791
@@ -106,10 +106,11 @@ Rectangle {
                     anchors.left: parent.left
 //                        anchors.leftMargin: 40
                     anchors.top: parent.top
-                    anchors.topMargin: 20
+                    anchors.topMargin: 25
                     width: 60
 
                     text: index+1
+                    verticalAlignment: Text.AlignBottom
                     horizontalAlignment: Text.AlignHCenter
                     color: "#FFFFFFFF"
                     font.pixelSize: 18
@@ -121,7 +122,7 @@ Rectangle {
                     anchors.left: numberId.right
                     anchors.leftMargin: 20
                     anchors.top: parent.top
-                    anchors.topMargin: 20
+                    anchors.topMargin: 25
 
                     text: name
                     color: "#FFFFFFFF"
@@ -134,7 +135,7 @@ Rectangle {
                     anchors.left: parent.right
                     anchors.leftMargin: -362
                     anchors.top: parent.top
-                    anchors.topMargin: 20
+                    anchors.topMargin: 25
 
                     text: star
                     //55, 99, 152
@@ -150,7 +151,7 @@ Rectangle {
                     anchors.left: parent.right
                     anchors.leftMargin: -192
                     anchors.top: parent.top
-                    anchors.topMargin: 16
+                    anchors.topMargin: 20
 
                     backgroundNormal: "images/TopicCategorySubPage/5.png"
                 }
@@ -163,7 +164,7 @@ Rectangle {
                     anchors.left: parent.right
                     anchors.leftMargin: -128
                     anchors.top: parent.top
-                    anchors.topMargin: 16
+                    anchors.topMargin: 20
 
                     backgroundNormal: "images/TopicCategorySubPage/6.png"
                 }
@@ -194,47 +195,6 @@ Rectangle {
         }
 
 
-        PushButton {
-            id: leftButton
-            x: 693
-            y: 461
-            width: 68
-            height: 36
-
-            anchors.top: musicList.bottom
-            anchors.topMargin: -18
-
-            backgroundNormal: "images/left.png"
-        }
-
-        Text {
-            id: pageLabel
-            x: 775
-            y: 468
-            width: 128
-            height: 22
-
-            anchors.top: musicList.bottom
-            anchors.topMargin: -11
-
-            text: "10/100"
-            horizontalAlignment: Text.AlignHCenter
-            color: "#FFFFFFFF"
-            font.pixelSize: 18
-        }
-
-        PushButton {
-            id: rightButton
-            x: 921
-            y: 461
-            width: 68
-            height: 36
-
-            anchors.top: musicList.bottom
-            anchors.topMargin: -18
-
-            backgroundNormal: "images/right.png"
-        }
     }
 
     Item {
@@ -260,11 +220,53 @@ Rectangle {
             contentItem.visible = true
         }
     }
+    PushButton {
+        id: leftButton
+        x: 733/*693*/
+        y: 461
+        width: 68
+        height: 36
+
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 35;
+
+        backgroundNormal: "images/left.png"
+    }
+
+    Text {
+        id: pageLabel
+        x: 805/*775*/
+        y: 468
+        width: 128
+        height: 22
+
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 40;
+
+        text: "10/100"
+        horizontalAlignment: Text.AlignHCenter
+        color: "#FFFFFFFF"
+        font.pixelSize: 18
+    }
 
     PushButton {
-        x: 1090
-        y: 482
+        id: rightButton
+        x: 950/*921*/
+        y: 461
+        width: 68
+        height: 36
 
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 35;
+
+        backgroundNormal: "images/right.png"
+    }
+
+    PushButton {
+        x: 1110
+        y: 482
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 27;
         width: 100
         height: 44
 

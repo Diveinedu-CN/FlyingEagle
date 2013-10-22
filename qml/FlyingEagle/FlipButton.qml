@@ -23,9 +23,6 @@ Flipable {
 
         source: frontImage
         fillMode: Image.PreserveAspectCrop
-        asynchronous: true
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
     }
 
     back: Image {
@@ -33,9 +30,6 @@ Flipable {
 
         source: backImage
         fillMode: Image.PreserveAspectCrop
-        asynchronous: true
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
     }
 
     Image {
@@ -43,9 +37,6 @@ Flipable {
 
             source: image
             fillMode: Image.PreserveAspectCrop
-            asynchronous: true
-            sourceSize.width: parent.width
-            sourceSize.height: parent.height
     }
 
     Text {

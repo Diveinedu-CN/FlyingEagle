@@ -267,7 +267,7 @@ Rectangle {
             property real amplitude: 0.04 * 0.1
             property real frequency: 10
             property real time: 0
-            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 1000 }
             fragmentShader:
                 "uniform highp float amplitude;" +
                 "uniform highp float frequency;" +
@@ -338,7 +338,7 @@ Rectangle {
             property real amplitude: 0.04 * 0.1
             property real frequency: 10
             property real time: 0
-            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 1000 }
             fragmentShader:
                 "uniform highp float amplitude;" +
                 "uniform highp float frequency;" +
@@ -465,7 +465,7 @@ Rectangle {
             property real amplitude: 0.04 * 0.1
             property real frequency: 10
             property real time: 0
-            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 600 }
+            NumberAnimation on time { loops: Animation.Infinite; from: 0; to: Math.PI * 2; duration: 1000 }
             fragmentShader:
                 "uniform highp float amplitude;" +
                 "uniform highp float frequency;" +
@@ -501,7 +501,4 @@ Rectangle {
                 "}"
         }
     }
-
-
-
 }

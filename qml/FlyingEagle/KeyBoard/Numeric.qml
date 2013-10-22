@@ -22,6 +22,9 @@ Rectangle {
         anchors { left: parent.left; top: parent.top }
         anchors.topMargin: 55;
         source: "./images/numeric-keyboard-bg.png"
+        asynchronous: true
+        sourceSize.width: parent.width
+        sourceSize.height: parent.height
     }
 
 

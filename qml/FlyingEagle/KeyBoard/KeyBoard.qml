@@ -14,6 +14,27 @@ Item {
         anchors.fill: parent
         onClicked: ;
     }
+    Item {
+        id: keyboardsComponents
+        Component {
+            id: standardKeyboardComponent
+            Standard {
+
+            }
+        }
+        Component {
+            id: handWritingKeyboardComponent
+            HandWriting {
+
+            }
+        }
+        Component {
+            id: numericKeyboardComponent
+            Numeric {
+
+            }
+        }
+    }
     Rectangle {
         width: 693;
         height: 295;
@@ -21,7 +42,7 @@ Item {
         Loader {
             id: keyboardLoader
             anchors.fill: parent
-            source: Tab.EnableVirtualKeyboard ? "./Standard.qml" : ""
+            sourceComponent: standardKeyboardComponent;
         }
     }
 
@@ -41,13 +62,13 @@ Item {
         target: keyboardLoader.item
         ignoreUnknownSignals:true
         onNumericClicked: {
-            keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./Numeric.qml" : "");
+           keyboardLoader.sourceComponent = numericKeyboardComponent;
         }
         onStandardClicked: {
-            keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./Standard.qml" : "");
+            keyboardLoader.sourceComponent = standardKeyboardComponent;
         }
         onHandWritngClicked: {
-            keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./HandWriting.qml" : "");
+            keyboardLoader.sourceComponent = handWritingKeyboardComponent;
         }
 
         onHideClicked:
@@ -58,16 +79,16 @@ Item {
     }
     function showNumericKeyboard()
     {
-        keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./Numeric.qml" : "");
+        keyboardLoader.sourceComponent = numericKeyboardComponent;
     }
 
     function showEnglishKeyboard()
     {
-        keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./Standard.qml" : "");
+        keyboardLoader.sourceComponent = standardKeyboardComponent;
     }
     function showHandWritingKeyboard()
     {
-        keyboardLoader.setSource(Tab.EnableVirtualKeyboard ? "./HandWriting.qml" : "");
+        keyboardLoader.sourceComponent = handWritingKeyboardComponent;
     }
 
 }

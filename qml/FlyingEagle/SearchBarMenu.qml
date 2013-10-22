@@ -161,7 +161,7 @@ Rectangle {
             height: 36
             text: "搜索"
             colorText: "white"
-            backgroundNormal: "images/搜索按钮.png"
+            backgroundNormal: "images/searchButton.png"
             onClicked: {
 
             }

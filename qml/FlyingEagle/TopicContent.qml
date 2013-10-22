@@ -15,7 +15,7 @@ Rectangle {
         width: 96
         height: 204
 
-        image: "images/主题分类/高清歌曲.png"
+        image: "images/TopicCategory/gaoqinggequ.png"
         angle: -180
 
         onClicked: {
@@ -31,7 +31,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/民谣.png"
+        icon: "images/TopicCategory/minyao.png"
 
         onClicked: {
             parent.clicked("民谣", 1)
@@ -47,7 +47,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/戏曲.png"
+        icon: "images/TopicCategory/xiqu.png"
 
         onClicked: {
             parent.clicked("戏曲", 2)
@@ -65,7 +65,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/独家.png"
+        image: "images/TopicCategory/dujia.png"
 
         onClicked: {
             parent.clicked("独家", 3)
@@ -85,7 +85,7 @@ Rectangle {
         originX: 80
         originY: 80
 
-        image: "images/主题分类/军旅.png"
+        image: "images/TopicCategory/junlv.png"
 
         onClicked: {
             parent.clicked("军旅", 4)
@@ -105,7 +105,7 @@ Rectangle {
         originX: 80
         originY: 80
 
-        image: "images/主题分类/民族.png"
+        image: "images/TopicCategory/minzu.png"
 
         onClicked: {
             parent.clicked("民族", 5)
@@ -121,7 +121,7 @@ Rectangle {
         height: 204
         angle: -180
 
-        image: "images/主题分类/经典老歌.png"
+        image: "images/TopicCategory/jingdianlaoge.png"
 
         onClicked: {
             parent.clicked("经典老歌", 6)
@@ -138,7 +138,7 @@ Rectangle {
         angle: -180
         opacity: 0
 
-        image: "images/主题分类/影视.png"
+        image: "images/TopicCategory/yingshi.png"
 
         onClicked: {
             parent.clicked("影视", 7)
@@ -155,7 +155,7 @@ Rectangle {
         angle: -180
         opacity: 0
 
-        image: "images/主题分类/校园.png"
+        image: "images/TopicCategory/xiaoyuan.png"
 
         onClicked: {
             parent.clicked("校园", 8)
@@ -171,7 +171,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/中国风.png"
+        icon: "images/TopicCategory/zhongguofeng.png"
 
         onClicked: {
             parent.clicked("中国风", 9)
@@ -187,7 +187,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/爵士.png"
+        icon: "images/TopicCategory/jueshi.png"
 
         onClicked: {
             parent.clicked("爵士", 10)
@@ -205,7 +205,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/节日.png"
+        image: "images/TopicCategory/jieri.png"
 
         onClicked: {
             parent.clicked("节日", 11)
@@ -223,7 +223,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/对唱.png"
+        image: "images/TopicCategory/duichang.png"
 
         onClicked: {
             parent.clicked("对唱", 12)
@@ -245,7 +245,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/R&B.png"
+        image: "images/TopicCategory/R&B.png"
 
         onClicked: {
             parent.clicked("R&B", 13)
@@ -267,7 +267,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/电子.png"
+        image: "images/TopicCategory/dianzi.png"
 
         onClicked: {
             parent.clicked("电子", 14)
@@ -283,7 +283,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/生日.png"
+        icon: "images/TopicCategory/shengri.png"
 
         onClicked: {
             parent.clicked("生日", 15)
@@ -299,7 +299,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/欢乐庆典.png"
+        icon: "images/TopicCategory/huanleqingdian.png"
 
         onClicked: {
             parent.clicked("欢乐庆典", 16)
@@ -317,7 +317,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/网络歌曲.png"
+        image: "images/TopicCategory/wangluogequ.png"
 
         onClicked: {
             parent.clicked("网络歌曲", 17)
@@ -335,7 +335,7 @@ Rectangle {
 
         isHorizontal: false
 
-        image: "images/主题分类/DJ.png"
+        image: "images/TopicCategory/DJ.png"
 
         onClicked: {
             parent.clicked("DJ", 18)
@@ -351,7 +351,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/摇滚.png"
+        icon: "images/TopicCategory/yaogun.png"
 
         onClicked: {
             parent.clicked("摇滚", 19)
@@ -367,7 +367,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/嘻哈.png"
+        icon: "images/TopicCategory/xiha.png"
 
         onClicked: {
             parent.clicked("嘻哈", 20)
@@ -383,7 +383,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/儿童.png"
+        icon: "images/TopicCategory/ertong.png"
 
         onClicked: {
             parent.clicked("儿童", 21)
@@ -400,7 +400,7 @@ Rectangle {
         angle: -180
         opacity: 0
 
-        image: "images/主题分类/草原.png"
+        image: "images/TopicCategory/caoyuan.png"
 
         onClicked: {
             parent.clicked("草原", 22)
@@ -417,7 +417,7 @@ Rectangle {
         angle: -180
         opacity: 0
 
-        image: "images/主题分类/励志.png"
+        image: "images/TopicCategory/lizhi.png"
 
         onClicked: {
             parent.clicked("励志", 23)
@@ -433,7 +433,7 @@ Rectangle {
         height: 96
         opacity: 0
 
-        icon: "images/主题分类/纯音乐.png"
+        icon: "images/TopicCategory/chunyinyue.png"
 
         onClicked: {
             parent.clicked("纯音乐",24)

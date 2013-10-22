@@ -347,7 +347,7 @@ Rectangle {
         Image {
             id: udiskAddEditBg
             anchors.fill: parent;
-            source: "images/udiskAddEditbg.png"
+            source: "images/udiskAddEditBg.png"
         }
         Text {
             id: wait2AddFileName

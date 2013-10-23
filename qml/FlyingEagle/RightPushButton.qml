@@ -11,8 +11,8 @@ Rectangle {
 
     property alias text: label.text
     property alias fontSize: label.font.pixelSize
-    property int textRightMargin: -16
-    property int textBottomMargin: 0
+    property int textRightMargin: 0
+    property int textBottomMargin: 10
     property url backgroundNormal: ""
     property url backgroundPressed: ""
     property color colorNormal: "#a0a0a0"
@@ -22,9 +22,12 @@ Rectangle {
     signal clicked
 
     Image {
+        id:buttonImage
 //        source:maButton.pressed ? backgroundPressed : backgroundNormal
         source: backgroundNormal
-        anchors.fill: parent
+//        anchors.fill: parent
+        anchors.left: parent.left;
+        anchors.leftMargin: 0
         fillMode: Image.PreserveAspectFit
         scale: maButton.pressed ? 0.9:1
         opacity: maButton.pressed ? 0.8:1
@@ -36,8 +39,8 @@ Rectangle {
         y: 38
         color: colorText
         text: "text"
+        verticalAlignment: Text.AlignBottom
         anchors.right: parent.right
-        anchors.rightMargin: textRightMargin
         anchors.bottom: parent.bottom
         anchors.bottomMargin: textBottomMargin
         font.pixelSize: 20

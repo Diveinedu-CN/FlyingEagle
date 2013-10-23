@@ -3,6 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
 Rectangle {
+    id: rectangle1
     width: 1280
     height: 95
     property url backgroundImage: ""
@@ -18,67 +19,125 @@ Rectangle {
     }
 
     Image {
-        x: 4
-        y: 0
-        width: 91
-        height: 87
-        anchors.leftMargin: 4
-        anchors.topMargin: 0
+        x: 10
+        y: 1
+        width: 82
+        height: 80
+        anchors.leftMargin: 10
+        anchors.topMargin: 1
         anchors.left: parent.left
         anchors.top: parent.top
         source: "images/qiege-bg.png"
     }
-
+    Image {
+        id:huoyanImage
+        x: 15
+        y: 9
+        width: 70
+        height: 67
+        rotation: 0
+        anchors.leftMargin: 15
+        anchors.topMargin: 9
+        anchors.left: parent.left
+        anchors.top: parent.top
+        source: "images/dsc_home_cateff.png"
+//        source:"images/qiege_huoyan.png"
+        SequentialAnimation {
+            id: huoyanAnimation
+            loops: Animation.Infinite
+            //first circle
+            PropertyAnimation {
+                target: huoyanImage;
+                property: "rotation"
+                from: 0
+                to: 360;
+                duration: 4000;
+            }
+            //second circle
+            ParallelAnimation {
+                PropertyAnimation {
+                    target: huoyanImage;
+                    property: "rotation"
+                    from: 0
+                    to: 360;
+                    duration: 4000;
+                }
+                SequentialAnimation {
+                    PropertyAnimation {
+                        target: huoyanImage
+                        property: "opacity"
+                        from:1
+                        to:0
+                        duration: 2000;
+                    }
+                    PauseAnimation { duration: 2000 }
+                }
+            }
+            //third circle
+            ParallelAnimation {
+                PropertyAnimation {
+                    target: huoyanImage;
+                    property: "rotation"
+                    from: 0
+                    to: 360;
+                    duration: 4000;
+                }
+                SequentialAnimation {
+                    PropertyAnimation {
+                        target: huoyanImage
+                        property: "opacity"
+                        from:0
+                        to:1
+                        duration: 2000;
+                    }
+                    PauseAnimation { duration: 2000 }
+                }
+            }
+        }
+        Component.onCompleted: huoyanAnimation.start();
+    }
     RightPushButton {
         id: qiegeButton
-        x: -1
-        y: 8
+        x: 20
+        y: 11
         width: 100
         height: 74
         anchors.left: parent.left
-        anchors.leftMargin: -1
+        anchors.leftMargin: 20
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 13
+        anchors.bottomMargin: 10
         //height: 80
         text: qsTr("切歌")
-        textRightMargin: -20
-        textBottomMargin: -12
+        textBottomMargin: 0
         color: "transparent"
         backgroundNormal: "images/qiege.png"
         backgroundPressed: "images/qiegeSel.png"
     }
 
-    Image {
-        x: 6
-        y: 3
-        width: 90
-        height: 90
-        rotation: 0
-        anchors.leftMargin: 6
-        anchors.topMargin: 3
-        anchors.left: parent.left
-        anchors.top: parent.top
-        source: "images/dsc_home_cateff.png"
-    }
+
 
     RightPushButton {
         id: yuanchangButton
+        property bool isOrign: true;
         anchors.left: qiegeButton.right
         anchors.leftMargin: 4
         anchors.bottom: parent.bottom
-        text: qsTr("原唱")
+        text: isOrign? qsTr("原唱") : qsTr("伴唱");
         backgroundNormal: "images/yuanchang.png"
         backgroundPressed: "images/yuanchangSel.png"
+        onClicked: isOrign = !isOrign;
     }
 
     RightPushButton {
         id: zantingButton
+        property bool isPlaying: true;
         anchors.left: yuanchangButton.right
         anchors.leftMargin: 4
         anchors.bottom: parent.bottom
-        text: qsTr("暂停")
-        backgroundNormal: "images/zanting.png"
+        text: isPlaying? qsTr("暂停") : qsTr("播放");
+        backgroundNormal: isPlaying ? "images/zanting.png" : "images/bofang.png";
         backgroundPressed: "images/zantingSel.png"
+        onClicked: isPlaying = !isPlaying;
     }
 
     RightPushButton {
@@ -103,11 +162,13 @@ Rectangle {
 
     Slider {
         id: yinliangSlider
+        x: 540
+        y: 46
+        width: 160
         anchors.left: tiaoyinButton.right
-        anchors.leftMargin: 26
+        anchors.leftMargin: 6
         anchors.top: parent.top
         anchors.topMargin: 46
-        width: 160
         height: 38
 
         style: SliderStyle {
@@ -116,6 +177,9 @@ Rectangle {
             }
             handle: Image {
                 y: 2
+                width: 25;
+                height: 25
+                scale: 1.5
                 source: "images/buttom.png"
             }
         }
@@ -124,7 +188,7 @@ Rectangle {
     RightPushButton {
         id: jingyinButton
         anchors.left: yinliangSlider.right
-        anchors.leftMargin: 0
+        anchors.leftMargin: 6
         anchors.bottom: parent.bottom
         text: qsTr("静音")
         backgroundNormal: "images/jingyin.png"
@@ -151,36 +215,79 @@ Rectangle {
         backgroundPressed: "images/fuzhuSel.png"
     }
 
-    ProgressBar {
+    Rectangle {
         id: jinduProgressBar
-        anchors.left: mvButton.right
-        anchors.leftMargin: -10
+        property real progressValue: 0.5
+        anchors.left: fuzhuButton.right
+        anchors.leftMargin: 6
         anchors.top: parent.top
-        anchors.topMargin: 40
-        width: 110
+        anchors.topMargin: 42
+        width: 180/*110*/
         height: 41
-
-        value: 0.5
-        style: ProgressBarStyle {
-            background: Image {
-                anchors.fill: parent
-                anchors.leftMargin: -14
-                source: "images/sliderBg.png"
-            }
-            progress: Image {
-                anchors.fill: parent
-                anchors.leftMargin: 0
-                anchors.topMargin: 7
-                anchors.bottomMargin: 7
-                source: "images/sliderFg.png"
+        color: "transparent"
+        clip: true
+        SequentialAnimation {
+            id: progressAnimation
+            loops: Animation.Infinite
+            PropertyAnimation {
+                target: jinduProgressBar;
+                property: "progressValue"
+                from: 0
+                to: 1;
+                duration: 4000;
             }
         }
+        Component.onCompleted: progressAnimation.start()
+        Image {
+            anchors.fill: parent
+            source: "images/sliderBg.png"
+        }
+        Rectangle{
+            id: progressbar
+            x: 21
+            width: 152
+            height: 26
+            clip: true
+            anchors.left: parent.left;
+            anchors.leftMargin: 21
+            anchors.top: parent.top
+            anchors.topMargin: 7
+            color: "transparent"
+            Rectangle{
+                id: progress
+                x: 8
+                y: 0
+                width: 152
+                height: 26
+                clip: false
+                anchors.right: parent.right
+                anchors.rightMargin: (1-jinduProgressBar.progressValue)*120;
+                color: "transparent"
+                Image {
+                    id:progressImg1
+                    anchors.right: progressImg2.left
+                    anchors.rightMargin: 0
+                    width: 142;
+                    height: 26;
+                    source: "images/sliderFg.png"
+                }
+                Image {
+                    id:progressImg2
+                    anchors.right: parent.right;
+                    width: 10
+                    height: 26;
+                    source: "images/sliderFgRadius.png"
+                }
+            }
+
+    }
+
     }
 
     PushButton {
         id: mvButton
         anchors.left: fuzhuButton.right
-        anchors.leftMargin: 20
+        anchors.leftMargin: 0
         anchors.bottom: parent.bottom
         backgroundNormal: "images/MV-button.png"
     }

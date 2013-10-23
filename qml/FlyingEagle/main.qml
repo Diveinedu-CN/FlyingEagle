@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
+import QtQuick.Particles 2.0
 //import "YGYKeyBoard"
 import "KeyBoard"
 
@@ -429,4 +430,43 @@ Rectangle {
         visible: false;
     }
 
+    ParticleSystem {
+        id: particles
+    }
+
+    ImageParticle {
+        system: particles
+//        sprites: Sprite {
+//            name: "bubble"
+//            source: "images/bubble.png"
+//            frameCount: 51
+//            frameDuration: 40
+//            frameDurationVariation: 8
+//        }
+        source: "images/bubble.png"
+    }
+
+    Emitter {
+        system: particles
+        emitRate: 20
+        lifeSpan: 8000
+        velocity: PointDirection { y:80; yVariation: 40; }
+        acceleration: PointDirection { y: 4 }
+        size: 60
+        endSize: 12
+        sizeVariation: 8
+        width: parent.width
+        height: 100
+    }
+
+//    Particles {
+//        id: stars
+//        x: 0; y: 0; width: parent.width; height: parent.height - 32
+//        source: "images/btnQuit.png"
+//        angleDeviation: 360
+//        velocity: 0; velocityDeviation: 0
+//        count: parent.width / 30
+//        fadeInDuration: 2000
+//        opacity: 3
+//    }
 }

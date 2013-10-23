@@ -4,6 +4,8 @@ import "componentCreation.js" as ComponentCreation
 Rectangle {
     id: container
 
+    property int currentIndex: 0
+
     signal clicked(Item item)
 
     function removeChildren() {
@@ -21,6 +23,7 @@ Rectangle {
             if (preButton == null) {
                 button.anchors.left = container.left;
                 button.anchors.leftMargin = 20;
+                button.background = "images/dsc_daohang.png"
             } else {
                 button.anchors.left = preButton.right;
                 button.anchors.leftMargin = 10;
@@ -30,5 +33,11 @@ Rectangle {
             button.clicked.connect(clicked)
             preButton = button;
         }
+    }
+
+    function selectButton(index) {
+        container.children[currentIndex].background = ""
+        container.children[index].background = "images/dsc_daohang.png"
+        currentIndex = index
     }
 }

@@ -137,12 +137,12 @@ Rectangle {
         TextInput {
             id: number_input
             x: 22
-            y: 81
+            y: 86
             width: 258
             height: 42
             text: qsTr("123456")
-            color: "white"
-            font.pointSize: 30
+            color: "#969696"
+            font.pointSize: 24
             transformOrigin: Item.Center
             echoMode: TextInput.Normal
             horizontalAlignment: TextInput.AlignLeft

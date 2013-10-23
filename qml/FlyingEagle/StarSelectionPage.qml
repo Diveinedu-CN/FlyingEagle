@@ -102,7 +102,7 @@ Rectangle {
             target: menuTabBar
             ignoreUnknownSignals: true
             onClicked: {
-                console.log(item.tag)
+                menuTabBar.selectButton(item.tag)
             }
         }
 
@@ -110,6 +110,8 @@ Rectangle {
             target: menuTabBar2
             ignoreUnknownSignals: true
             onClicked: {
+                menuTabBar2.selectButton(item.tag)
+
                 switch(item.tag) {
                     case 0:
                         gridLoader.source = "MusicAlbumSelectionPage.qml";

@@ -46,18 +46,21 @@ Rectangle {
         }
 
         //创建语言选择按钮
-        Component.onCompleted: {
-            var preButton = null;
-            for(var i=0; i<langArray.length; i++) {
-                var button = ComponentCreation.createTabButton(tabBar, langArray[i]);
-                if (preButton == null) {
-                    button.anchors.left = tabbarId.left;
-                    button.anchors.leftMargin = 20;
-                } else {
-                    button.anchors.left = preButton.right;
-                    button.anchors.leftMargin = 10;
-                }
-                preButton = button;
+        MenuTabBar {
+            id: menuTabBar
+            anchors.left: tabBar.left
+            anchors.top: tabBar.top
+
+            Component.onCompleted: {
+                menuTabBar.createButtons(langArray)
+            }
+        }
+
+        Connections {
+            target: menuTabBar
+            ignoreUnknownSignals: true
+            onClicked: {
+                menuTabBar.selectButton(item.tag)
             }
         }
     }

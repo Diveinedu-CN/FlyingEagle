@@ -252,11 +252,13 @@ Rectangle {
             width: 100;
             text: qsTr("10/100")
             color: "white";
-            font.pixelSize: 30;
+            font.pixelSize: 18
             verticalAlignment: Text.AlignVCenter;
             horizontalAlignment: Text.AlignHCenter;
             anchors.right: right.left;
-            anchors.rightMargin: 30;
+            anchors.rightMargin: 20;
+            anchors.top: right.top;
+            anchors.topMargin: 5;
         }
         PushButton {
             id:right;
@@ -273,7 +275,7 @@ Rectangle {
             width: 100; height: 44;
             anchors.top: parent.top;
             anchors.right: parent.right;
-            anchors.rightMargin: 70;
+            anchors.rightMargin: 80;
             backgroundNormal: "images/back.png";
             onClicked: {
                 handlerLoader("HomePage.qml", 0)

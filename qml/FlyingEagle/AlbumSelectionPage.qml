@@ -74,9 +74,10 @@ Rectangle {
         width: 68
         height: 36
 
-        anchors.top: musicList.bottom
-        anchors.topMargin: -28
-
+        anchors.top: backButton.top
+        anchors.topMargin: 0
+        anchors.right: pageLabel.left;
+        anchors.rightMargin: 15
         backgroundNormal: "images/left.png"
 
         onClicked: {
@@ -93,9 +94,10 @@ Rectangle {
         width: 128
         height: 22
 
-        anchors.top: musicList.bottom
-        anchors.topMargin: -21
-
+        anchors.top: rightButton.top
+        anchors.topMargin: 5
+        anchors.right: rightButton.left
+        anchors.rightMargin: 15;
         text: "10/100"
         horizontalAlignment: Text.AlignHCenter
         color: "#FFFFFFFF"
@@ -109,9 +111,10 @@ Rectangle {
         width: 68
         height: 36
 
-        anchors.top: musicList.bottom
-        anchors.topMargin: -28
-
+        anchors.top: backButton.top
+        anchors.topMargin: 0
+        anchors.right: backButton.left
+        anchors.rightMargin: 80;
         backgroundNormal: "images/right.png"
 
         onClicked: {
@@ -122,12 +125,14 @@ Rectangle {
     }
 
     PushButton {
-        x: 1101
-        y: 494
+        id: backButton
+        x: 1110
+        y: 518
 
         width: 100
         height: 44
-
+        anchors.right: parent.right;
+        anchors.rightMargin: 70;
         backgroundNormal: "images/back.png"
 
         onClicked: {

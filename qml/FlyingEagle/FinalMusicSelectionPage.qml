@@ -227,58 +227,67 @@ Rectangle {
                     }
                 }
             }
-
-            PushButton {
-                id: leftButton
-                x: 336
-                y: 427
-                width: 68
-                height: 36
-
-                anchors.top: musicList.bottom
-                anchors.topMargin: 27
-
-                backgroundNormal: "images/left.png"
-            }
-
-            Text {
-                id: pageLabel
-                x: 420
-                y: 434
-                width: 128
-                height: 22
-
-                anchors.top: musicList.bottom
-                anchors.topMargin: 34
-
-                text: "10/100"
-                horizontalAlignment: Text.AlignHCenter
-                color: "#FFFFFFFF"
-                font.pixelSize: 18
-            }
-
-            PushButton {
-                id: rightButton
-                x: 563
-                y: 427
-                width: 68
-                height: 36
-
-                anchors.top: musicList.bottom
-                anchors.topMargin: 27
-
-                backgroundNormal: "images/right.png"
-            }
         }
     }
 
     PushButton {
-        x: 1090
-        y: 482
+        id: leftButton
+        x: 336
+        y: 427
+        width: 68
+        height: 36
+
+        anchors.top: backButton.top;
+        anchors.topMargin: 0
+        anchors.right: pageLabel.left
+        anchors.rightMargin: 15;
+
+        backgroundNormal: "images/left.png"
+    }
+
+    Text {
+        id: pageLabel
+        x: 420
+        y: 434
+        width: 120
+        height: 22
+
+        anchors.top: rightButton.top
+        anchors.topMargin: 5
+        anchors.right: rightButton.left
+        anchors.rightMargin: 15;
+
+        text: "10/100"
+        horizontalAlignment: Text.AlignHCenter
+        color: "#FFFFFFFF"
+        font.pixelSize: 18
+    }
+
+    PushButton {
+        id: rightButton
+        x: 563
+        y: 427
+        width: 68
+        height: 36
+
+        anchors.top: backButton.top
+        anchors.topMargin: 0
+        anchors.right: backButton.left;
+        anchors.rightMargin: 80
+
+
+        backgroundNormal: "images/right.png"
+    }
+
+    PushButton {
+        id: backButton
+        x: 1110;/*1090*/
+        y: 500
 
         width: 100
         height: 44
-
+        anchors.right: parent.right;
+        anchors.rightMargin: 80;
         backgroundNormal: "images/back.png"
 
         onClicked: {

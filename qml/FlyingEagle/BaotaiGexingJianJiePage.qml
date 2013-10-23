@@ -278,8 +278,6 @@ Rectangle {
                 baotai_gexing.visible=false;
             }
         }
-
-
     }
 
 

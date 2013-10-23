@@ -31,12 +31,12 @@ Item {
     TextInput {
         id: number_input
         x: 22
-        y: 74
+        y: 78
         width: 258
         height: 42
         text: qsTr("请输入手机号码")
-        color: "white"
-        font.pointSize: 30
+        color: "#969696"
+        font.pointSize: 24
         transformOrigin: Item.Center
         echoMode: TextInput.Normal
         horizontalAlignment: TextInput.AlignLeft

@@ -46,6 +46,8 @@ Flipable {
             asynchronous: true
             sourceSize.width: parent.width
             sourceSize.height: parent.height
+            opacity: maButton.pressed ? 0.8:1
+            scale: maButton.pressed ? 0.9:1;
     }
 
     Text {
@@ -80,6 +82,7 @@ Flipable {
     }
 
     MouseArea {
+        id: maButton
         anchors.fill: parent
         onClicked: {
             flipable.flipped = !flipable.flipped

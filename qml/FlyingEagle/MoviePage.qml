@@ -16,6 +16,13 @@ Rectangle {
         x: 77
         y: 49
         source: "images/movieFlash.png"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+
+            }
+        }
     }
 
     PushButton {

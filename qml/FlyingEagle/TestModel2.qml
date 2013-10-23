@@ -6,17 +6,17 @@ ListModel {
         number: "555 3264"
         star: "张学良"
         image: ""
-        subList: [
-            ListElement {
-                nick: "东方红"
-            },
-            ListElement {
-                nick: "马赛曲"
-            },
-            ListElement {
-                nick: "天佑我朝"
-            }
-        ]
+        subList: []
+//            ListElement {
+//                nick: "东方红"
+//            },
+//            ListElement {
+//                nick: "马赛曲"
+//            },
+//            ListElement {
+//                nick: "天佑我朝"
+//            }
+//        ]
     }
     ListElement {
         name: "马赛曲"

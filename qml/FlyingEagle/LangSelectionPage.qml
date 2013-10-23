@@ -51,6 +51,11 @@ Rectangle {
             anchors.leftMargin: 4
             anchors.verticalCenter: navDiangeImage.verticalCenter
 
+            onClicked: {
+                console.log(item.tag)
+                navBar.selectButton(item.tag)
+            }
+
             Component.onCompleted: {
                 navBar.createButtons(new Array("点歌"))
             }

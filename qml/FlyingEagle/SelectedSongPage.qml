@@ -23,12 +23,14 @@ Item {
     function showUp(show)
     {
         if(show){
-            effect.minimize = 0;
-            effect.bend = 0;
+//            effect.minimize = 0;
+//            effect.bend = 0;
+            showOnAnimation.start();
         }else
         {
-            effect.minimize = 1;
-            effect.bend = 1;
+//            effect.minimize = 1;
+//            effect.bend = 1;
+            showOffAnimation.start();
         }
     }
 
@@ -330,12 +332,42 @@ Item {
 //            NumberAnimation { to: 0; duration: 700; easing.type: Easing.InOutSine }
 //            PauseAnimation { duration: 1300 }
 //        }
-        Behavior on minimize {
-            NumberAnimation { duration: 500; easing.type: Easing.InOutSine }
+        SequentialAnimation {
+            id: showOffAnimation
+            PropertyAnimation {
+                target: effect
+                properties: "bend"
+                to: 0.95
+                duration: 250
+            }
+            PropertyAnimation {
+                target: effect
+                properties: "minimize"
+                to: 1
+                duration: 250
+            }
         }
-        Behavior on bend {
-            NumberAnimation { duration: 500; easing.type: Easing.InOutSine }
+        SequentialAnimation {
+            id: showOnAnimation
+            PropertyAnimation {
+                target: effect
+                properties: "minimize"
+                to: 0
+                duration: 250
+            }
+            PropertyAnimation {
+                target: effect
+                properties: "bend"
+                to: 0
+                duration: 250
+            }
         }
+//        Behavior on minimize {
+//            NumberAnimation { duration: 500; easing.type: Easing.InOutSine }
+//        }
+//        Behavior on bend {
+//            NumberAnimation { duration: 500; easing.type: Easing.InOutSine }
+//        }
         vertexShader: "
             uniform highp mat4 qt_Matrix;
             uniform highp float bend;

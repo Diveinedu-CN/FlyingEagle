@@ -80,7 +80,6 @@ Flipable {
         anchors.fill: parent
         onClicked: {
             flipable.flipped = !flipable.flipped
-            console.log("ok, transition")
 
             parent.clicked()
         }

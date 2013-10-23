@@ -89,8 +89,6 @@ Rectangle {
         default:
             break;
         }
-
-        console.log("inputType:" + inputType);
     }
     MouseArea {
         anchors.fill: parent;

@@ -52,7 +52,6 @@ Rectangle {
             anchors.verticalCenter: navDiangeImage.verticalCenter
 
             onClicked: {
-                console.log(item.tag)
                 navBar.selectButton(item.tag)
             }
 

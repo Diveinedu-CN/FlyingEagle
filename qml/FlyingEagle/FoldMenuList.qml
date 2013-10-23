@@ -109,7 +109,6 @@ Item {
 
                             onClicked: {
                                 repeater.currentIndex = index
-                                console.log(index)
                             }
                         }
                     }

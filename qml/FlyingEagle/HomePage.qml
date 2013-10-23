@@ -142,7 +142,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("LangSelectionPage.qml")
             handlerLoader("LangSelectionPage.qml", 0)
         }
     }
@@ -213,7 +212,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("FavoritePage.qml")
             handlerLoader("FavoritePage.qml", 0)
         }
     }
@@ -270,7 +268,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("StarSelectionPage.qml")
             handlerLoader("StarSelectionPage.qml", 0)
         }
     }
@@ -340,7 +337,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("TopicSelectionPage.qml")
             handlerLoader("TopicSelectionPage.qml", 0)
         }
     }
@@ -410,7 +406,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("RankSelectionPage.qml")
             handlerLoader("RankSelectionPage.qml", 0)
         }
     }
@@ -473,7 +468,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("MusicSelectionPage.qml")
             handlerLoader("MusicSelectionPage.qml", 0)
         }
     }
@@ -536,7 +530,6 @@ Rectangle {
         }
 
         onStopped: {
-            console.log("NewMusicSelectionPage.qml")
             handlerLoader("NewMusicSelectionPage.qml", 0)
         }
     }

@@ -35,7 +35,6 @@ Canvas {
             ctx.strokeStyle = "red";
             ctx.lineWidth = 2;
             for (var i = 0; (i < array.length)&&array[i]; i++) {
-                //console.log("strokes "+strokes+": " + array[i].x + ", "+ array[i].y );
                 candidates = zinnia.query(strokes, array[i].x, array[i].y).split(" ");
                 if (i>0)
                 {

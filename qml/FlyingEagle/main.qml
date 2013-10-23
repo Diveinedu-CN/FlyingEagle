@@ -47,14 +47,12 @@ Rectangle {
             ignoreUnknownSignals:true
             onHandlerLoader: {
                 //切换目标页面由信号传入
-                console.log(name+": main.qml")
                 contentLoader.source = name
             }
             onHandleShowBaotai: {
                 baotaigexing.showNumpad(title);
             }
             onHandleShowSingerInfo: {
-//                console.log("recieved onHandleShowSingerInfo"+ starname);
                 baotaigexing.showSingerInfo(starname);
             }
             onHandleShowMvPreview: {
@@ -383,11 +381,9 @@ Rectangle {
             }
             onMovieButtonClicked: {
                 movieUdiskAdd.showMovie();
-                console.log("movie")
             }
             onUdiskAddButtonClicked: {
                 movieUdiskAdd.showUDisk();
-                console.log("udisk")
             }
         }
         Connections {

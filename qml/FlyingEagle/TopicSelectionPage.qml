@@ -60,7 +60,6 @@ Rectangle {
                 navBar.createButtons(pathArray)
 
                 contentLoader.source = "TopicContent.qml"
-                console.log("navBar")
             }
         }
     }
@@ -78,7 +77,6 @@ Rectangle {
             navBar.createButtons(pathArray)
 
             contentLoader.source = "FinalMusicSelectionPage.qml"
-//            console.log("contentLoader")
         }
         onHandleLoader: {
             pathArray.pop()

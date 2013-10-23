@@ -32,6 +32,13 @@ Rectangle {
             width: 426
             height: 139
 
+            MouseArea {
+                anchors.fill: parent;
+                onClicked: {
+                    music_album_selection.handleShowBaotai(parent.text);
+                }
+            }
+
             Image {
                 anchors.left: parent.left
                 anchors.leftMargin: 30
@@ -50,12 +57,7 @@ Rectangle {
                 color: "#FFFFFFFF"
                 font.pixelSize: 30
                 font.bold: true
-                MouseArea {
-                    anchors.fill: parent;
-                    onClicked: {
-                        music_album_selection.handleShowBaotai(parent.text);
-                    }
-                }
+
             }
 
             Text {

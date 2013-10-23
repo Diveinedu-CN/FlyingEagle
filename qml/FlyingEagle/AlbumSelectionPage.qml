@@ -19,8 +19,8 @@ Rectangle {
 
     GridView {
         id: musicList
-        x: 14
-        y: 79
+        x: 12
+        y: 89
 
         width: parent.width-40
         height: 444

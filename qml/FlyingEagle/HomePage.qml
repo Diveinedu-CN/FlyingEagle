@@ -747,6 +747,7 @@ Rectangle {
 
             onClicked: {
 //                handlerLoader("MusicSelectionPage.qml", 5)
+                showShaders(false)
                 musicAnimation.start()
             }
         }

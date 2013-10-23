@@ -180,7 +180,7 @@ Rectangle {
             anchors.leftMargin: 90;
             backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
             onClicked: {
-                quanbu.selected = !quanbu.selected;
+                quanbu.selected = true;
                 shoupin.selected = false;
                 shouxie.selected = false;
                 zishu.selected = false;
@@ -199,7 +199,7 @@ Rectangle {
             backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
             onClicked: {
                 quanbu.selected = false;
-                shoupin.selected = !shoupin.selected;
+                shoupin.selected = false;
                 shouxie.selected = false;
                 zishu.selected = false;
                 music_selection.handleShowSecondFilter("shoupin");
@@ -218,7 +218,7 @@ Rectangle {
             onClicked: {
                 quanbu.selected = false;
                 shoupin.selected = false;
-                shouxie.selected = !shouxie.selected;
+                shouxie.selected = false;
                 zishu.selected = false;
                 music_selection.handleShowSecondFilter("shouxie");
             }
@@ -237,7 +237,7 @@ Rectangle {
                 quanbu.selected = false;
                 shoupin.selected = false;
                 shouxie.selected = false;
-                zishu.selected = !zishu.selected;
+                zishu.selected = false;
                 music_selection.handleShowSecondFilter("zishu");
             }
         }

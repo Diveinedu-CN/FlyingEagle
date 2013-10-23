@@ -29,11 +29,11 @@ Rectangle {
         Image {
             id: selectedType;
             x: 65
-            y: 456
+            y: 114
             width: 150; height: 60;
             source: "images/udiskAddxuanzhong.png";
             Behavior on y {
-                NumberAnimation { easing.amplitude: 5; easing.type: Easing.OutInBack; duration: 100 }
+                NumberAnimation { easing.amplitude: 5; easing.type: Easing.Linear; duration: 100 }
             }
         }
         Column {
@@ -565,6 +565,14 @@ Rectangle {
                         backgroundNormal: "images/udiskAddButton.png";
                         text: modelData;
                         colorText: "white";
+                        onClicked: {
+                            console.log(text)
+                            if(text==="返回列表")
+                            {
+                                udiskAddList.visible = true;
+                                udiskAddEdit.visible = false;
+                            }
+                        }
                     }
                 }
             }

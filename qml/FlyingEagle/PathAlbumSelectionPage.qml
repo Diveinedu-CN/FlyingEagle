@@ -193,7 +193,7 @@ Rectangle {
                     id: rotation
                     origin.x: flipable.width/2
                     origin.y: flipable.height/2
-                    axis.x: 1; axis.y: 0; axis.z: 0     // set axis.y to 1 to rotate around y-axis
+                    axis.x: 0; axis.y: 1; axis.z: 0     // set axis.y to 1 to rotate around y-axis
                     angle: 0    // the default angle
                 }
 

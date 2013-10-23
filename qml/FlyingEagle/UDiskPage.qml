@@ -952,7 +952,6 @@ Rectangle {
                         function sendKey(s)
                         {
                             _fakekey.sendKey(s);
-                            console.log(s);
                         }
                     }
                     Column {
@@ -1041,7 +1040,6 @@ Rectangle {
                                     ctx.strokeStyle = "red";
                                     ctx.lineWidth = 2;
                                     for (var i = 0; (i < array.length)&&array[i]; i++) {
-                                        //console.log("strokes "+strokes+": " + array[i].x + ", "+ array[i].y );
                                         inputArea.candidates = zinnia.query(canvas.strokes, array[i].x, array[i].y).split(" ");
                                         inputArea.displayCandidates = inputArea.candidates.slice(0,5);
                                         inputArea.displayCandidatesIndex=0;

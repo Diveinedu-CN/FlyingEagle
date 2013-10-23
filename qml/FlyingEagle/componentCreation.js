@@ -8,7 +8,7 @@ var button;
 function createTabButton(container, title) {
     component = Qt.createComponent("TabBarButton.qml")
     button = component.createObject(container, {"text":title})
-    button.background = "images/dsc_daohang.png"
+    button.background = "" /*"images/dsc_daohang.png"*/
 //    button.colorText = "#FFFFFFFF"
     button.anchors.top = container.top
     button.height = 35

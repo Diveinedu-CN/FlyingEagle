@@ -12,7 +12,6 @@ Rectangle {
         function sendKey(s)
         {
             _fakekey.sendKey(s);
-            console.log(s);
         }
     }
     MouseArea {

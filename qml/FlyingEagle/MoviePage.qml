@@ -6,6 +6,8 @@ Rectangle {
     width: 1280
     height: 720
 
+    signal movieClicked();
+
     Image {
         x: 55
         y: 28
@@ -16,6 +18,13 @@ Rectangle {
         x: 77
         y: 49
         source: "images/movieFlash.png"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+
+            }
+        }
     }
 
     PushButton {
@@ -43,5 +52,17 @@ Rectangle {
         anchors.rightMargin: 100
         anchors.top: parent.top
         anchors.topMargin: 100
+    }
+
+    PushButton {
+        id:mv_preview_close;
+        x: 1179
+        y: 13
+        width: 40;height: 40;
+        backgroundNormal: "images/del.png";
+        colorText: "#ffffff"
+        onClicked: {
+            moviePage.movieClicked()
+        }
     }
 }

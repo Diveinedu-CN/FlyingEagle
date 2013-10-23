@@ -8,6 +8,7 @@ Rectangle {
     height: 46
 
     color: "transparent"
+    property int currentIndex: 0
 
     signal clicked(Item item)
 
@@ -26,6 +27,7 @@ Rectangle {
             if (preButton == null) {
                 button.anchors.left = container.left;
                 button.anchors.leftMargin = 20;
+//                button.background = "images/dsc_daohang.png"
             } else {
                 button.anchors.left = preButton.right;
                 button.anchors.leftMargin = 10;
@@ -36,5 +38,11 @@ Rectangle {
 
             preButton = button;
         }
+    }
+
+    function selectButton(index) {
+        container.children[currentIndex].background = ""
+        container.children[index].background = "images/dsc_daohang.png"
+        currentIndex = index
     }
 }

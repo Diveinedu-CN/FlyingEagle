@@ -21,7 +21,6 @@ Rectangle {
         function sendKey(s)
         {
             _fakekey.sendKey(s);
-            console.log(s);
         }
     }
     Image {
@@ -244,7 +243,6 @@ Rectangle {
                         ctx.strokeStyle = "red";
                         ctx.lineWidth = 2;
                         for (var i = 0; (i < array.length)&&array[i]; i++) {
-                            //console.log("strokes "+strokes+": " + array[i].x + ", "+ array[i].y );
                             candidates = zinnia.query(canvas.strokes, array[i].x, array[i].y).split(" ");
                             displayCandidates = candidates.slice(0,5);
                             displayCandidatesIndex=0;

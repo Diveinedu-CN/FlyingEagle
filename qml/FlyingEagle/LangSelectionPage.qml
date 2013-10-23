@@ -51,6 +51,10 @@ Rectangle {
             anchors.leftMargin: 4
             anchors.verticalCenter: navDiangeImage.verticalCenter
 
+            onClicked: {
+                navBar.selectButton(item.tag)
+            }
+
             Component.onCompleted: {
                 navBar.createButtons(new Array("点歌"))
             }
@@ -103,6 +107,13 @@ Rectangle {
             width: 426
             height: 139
 
+            MouseArea {
+                anchors.fill: parent;
+                onClicked: {
+                    lang_music_selection.handleShowBaotai(parent.text);
+                }
+            }
+
             Image {
                 anchors.left: parent.left
                 anchors.leftMargin: 30
@@ -121,12 +132,6 @@ Rectangle {
                 color: "#FFFFFFFF"
                 font.pixelSize: 30
                 font.bold: true
-                MouseArea {
-                    anchors.fill: parent;
-                    onClicked: {
-                        lang_music_selection.handleShowBaotai(parent.text);
-                    }
-                }
             }
 
             Text {

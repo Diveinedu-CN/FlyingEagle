@@ -76,14 +76,12 @@ Rectangle {
             navBar.createButtons(pathArray)
 
             contentLoader.source = "FinalRankMusicSelectionPage.qml"
-//            console.log("contentLoader")
         }
         //指定排行里页面下面的按钮条的事件转发
         onHandleShowBaotai: {
             rank_selection.handleShowBaotai(title);
         }
         onHandleShowSingerInfo: {
-//                console.log("recieved onHandleShowSingerInfo"+ starname);
             rank_selection.handleSingerInfo(starname);
         }
         onHandleShowMvPreview: {

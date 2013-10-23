@@ -51,7 +51,6 @@ Rectangle {
         }
 
         Keys.onReleased: {
-            //console.log("key pressed");
             if (searchBar.text.length > 0)
             {
                 searchDiv.menuList.needdisplay = true;

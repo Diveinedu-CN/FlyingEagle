@@ -19,13 +19,13 @@ Rectangle {
 
     GridView {
         id: musicList
-        x: 106
+        x: 14
         y: 79
 
-        width: 1095
+        width: parent.width-40
         height: 444
 
-        cellWidth: 182
+        cellWidth: 210
         cellHeight: 207
 
         flow: GridView.TopToBottom
@@ -35,7 +35,7 @@ Rectangle {
 
         model: testModel
         delegate: Item {
-            width: 182
+            width: 210
             height: 207
 
             MouseArea {
@@ -50,6 +50,7 @@ Rectangle {
             Image {
                 width: 182
                 height: 207
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 source: "images/starBg.png"
             }
@@ -82,7 +83,6 @@ Rectangle {
 
         onClicked: {
             //左移
-            console.log(musicList.currentIndex)
             musicList.moveCurrentIndexLeft()
         }
     }
@@ -119,7 +119,6 @@ Rectangle {
 
         onClicked: {
             //右移
-            console.log(musicList.currentIndex)
             musicList.moveCurrentIndexRight()
         }
     }

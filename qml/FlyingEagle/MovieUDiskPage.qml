@@ -31,6 +31,7 @@ Rectangle {
         id: moviePage
         color: "transparent"
         visible: moviePage.visible
+        onMovieClicked: movieUDisk.hidePage()
     }
 
 

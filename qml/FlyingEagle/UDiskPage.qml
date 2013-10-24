@@ -194,7 +194,7 @@ Rectangle {
             anchors.rightMargin: 50;
             width: 700
             height: 400
-            cacheBuffer: 320
+            cacheBuffer: 42
 
             cellWidth: 400
             cellHeight: 55

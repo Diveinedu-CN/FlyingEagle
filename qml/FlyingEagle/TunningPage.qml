@@ -5,7 +5,7 @@ Rectangle {
     id: tunningItem
     x:0;y:0
     width: 1280
-    height: 592
+    height: 651
     color: "transparent"
     property alias tunningVisible: tunningPage.visible
     property alias qifenVisible: qifenPage.visible
@@ -419,16 +419,32 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.rightMargin: rightMargin
                 source: "images/dsc_atmos_button.png"
+                PropertyAnimation {
+                    id:offAnimaation
+                    target: switchimg
+                    properties: "rightMargin"
+                    to: 70;
+                    duration: 200;
+                }
+                PropertyAnimation {
+                    id:onAnimaation
+                    target: switchimg
+                    properties: "rightMargin"
+                    to: 0;
+                    duration: 200;
+                }
             }
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
                     if(switchimg.rightMargin==0)
                     {
-                        switchimg.rightMargin = 70;
+                        offAnimaation.start()
+//                        switchimg.rightMargin = 70;
                     }else
                     {
-                        switchimg.rightMargin = 0;
+                        onAnimaation.start()
+//                        switchimg.rightMargin = 0;
                     }
                 }
             }

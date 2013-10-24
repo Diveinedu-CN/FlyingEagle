@@ -192,6 +192,10 @@ Rectangle {
             text: "退出"
             colorText: "#ffffff"
             backgroundNormal: "images/btnQuit.png"
+            onClicked: {
+                keyboardLoader.source = "telKeyBoard.qml"
+                contentItem.visible = false;
+            }
         }
 
 

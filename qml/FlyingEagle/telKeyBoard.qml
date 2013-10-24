@@ -1,5 +1,6 @@
 import QtQuick 2.0
-
+import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.0
 Item {
     width: 302
     height: 437
@@ -28,19 +29,26 @@ Item {
 //        font.pointSize: 24
 //    }
 
-    TextInput {
+    TextField {
         id: number_input
-        x: 22
-        y: 78
-        width: 258
-        height: 42
-        text: qsTr("请输入手机号码")
-        color: "#969696"
+        x: 19
+        y: 68
+        width: 263
+        height: 48
+        placeholderText: qsTr("请输入手机号码")
+        textColor: "#969696"
         font.pointSize: 24
         transformOrigin: Item.Center
         echoMode: TextInput.Normal
         horizontalAlignment: TextInput.AlignLeft
         clip: true
+        style: TextFieldStyle {
+            background: Rectangle {
+                radius: 2
+                implicitWidth: 258
+                implicitHeight: 42
+            }
+        }
     }
 
     PushButton{

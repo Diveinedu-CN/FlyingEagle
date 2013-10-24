@@ -679,6 +679,25 @@ Rectangle {
         anchors.top: parent.top;
         anchors.topMargin: 215;
         color: "transparent";
+        clip: true;
+        Rectangle {
+            id: secondFilterKeyboard
+            width: 702; height: 350;
+            color: "transparent"
+            anchors.bottom: footer_div.top;
+            anchors.bottomMargin: -410;
+            state: visible?"show":"hide";
+            states: [ State { name: "show" }, State { name: "hide" } ]
+            transitions: [
+                Transition {
+                    from: "show"; to: "hide"
+                    PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: "-410"; duration: 150; easing.type: Easing.InOutQuad; }
+                },
+                Transition {
+                    from: "hide"; to: "show"
+                    PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: "0"; duration: 300; easing.type: Easing.InOutQuad;}
+                }
+            ]
         Rectangle {
             id: normalInputArea;
             visible: !zishu.selected;
@@ -720,7 +739,8 @@ Rectangle {
             color: "transparent";
             anchors.left: parent.left
             anchors.leftMargin: 18;
-            anchors.bottom: footer_div.top;
+//            anchors.bottom: footer_div.top;
+            anchors.bottom: parent.bottom;
             ZishuInput {
                 anchors.fill: parent;
                 onHideClicked: {
@@ -729,11 +749,12 @@ Rectangle {
                 }
             }
         }
+        }
 
         //下面的输入类型选择按钮横条
         Rectangle {
             id: footer_div;
-            width: 1280;height: 55;
+            width: 1280;height: 56;
             anchors.bottom: parent.bottom;
             anchors.bottomMargin: 0;
             color: "transparent";

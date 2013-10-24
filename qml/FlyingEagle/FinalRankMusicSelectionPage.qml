@@ -106,7 +106,7 @@ Rectangle {
 
                 width: 1018
                 height: 416
-                cacheBuffer: 320
+                cacheBuffer: 40
 
                 cellWidth: 505
                 cellHeight: 65

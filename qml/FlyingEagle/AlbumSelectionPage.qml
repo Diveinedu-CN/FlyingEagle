@@ -32,7 +32,7 @@ Rectangle {
         snapMode: GridView.SnapToRow
 
         clip: true
-
+        cacheBuffer: 40;
         model: testModel
         delegate: Item {
             width: 210

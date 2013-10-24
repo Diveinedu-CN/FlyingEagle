@@ -84,7 +84,7 @@ Rectangle {
 
         flow: GridView.TopToBottom
         snapMode: GridView.SnapToRow
-
+        cacheBuffer: 40;
         model: testModel
         delegate: Item {
             width: 426

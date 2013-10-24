@@ -209,6 +209,7 @@ Item {
             flow: GridView.TopToBottom
             snapMode: GridView.SnapToRow
             clip: true
+            cacheBuffer: 42;
             model: TestListModel {}
             delegate: songItemDelegate
             //        highlight: Rectangle { width: grid.cellWidth-2; color: "lightblue"; anchors.left: parent.left; anchors.leftMargin: 2; radius: 10 }

@@ -121,6 +121,7 @@ Rectangle {
         interval: 150; running: true; repeat: false
         onTriggered: {
             popContentArea.visible = false;
+            searchBarMenu.menuList.needdisplay = false;
         }
     }
 

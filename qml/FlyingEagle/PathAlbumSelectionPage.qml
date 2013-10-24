@@ -13,7 +13,10 @@ Rectangle {
 
     PathView {
         id: pathView
-        anchors.fill: parent
+        anchors.top: parent.top
+        anchors.topMargin: 120
+        width: parent.width
+        height: 356
 
         pathItemCount: 7
         preferredHighlightBegin: 0.5
@@ -235,14 +238,14 @@ Rectangle {
 
             PathLine{x:150; y: 0}
             PathPercent {value: 0.20}
-            PathAttribute {name: "rotateY"; value: -50.0}
+            PathAttribute {name: "rotateY"; value: -60.0}
             PathAttribute {name: "scalePic"; value: 0.50}
             PathAttribute {name: "zOrder"; value: 10}
 
             PathLine{x:380; y: 0}
             PathPercent {value: 0.40}
-            PathAttribute {name: "rotateY"; value: -50.0}
-            PathAttribute {name: "scalePic"; value: 0.80}
+            PathAttribute {name: "rotateY"; value: -60.0}
+            PathAttribute {name: "scalePic"; value: 0.90}
             PathAttribute {name: "zOrder"; value: 50}
 
             PathLine{x:640; y: 0}
@@ -253,13 +256,13 @@ Rectangle {
 
             PathLine{x:888; y: 0}
             PathPercent {value: 0.60}
-            PathAttribute {name: "rotateY"; value: 50.0}
-            PathAttribute {name: "scalePic"; value: 0.8}
+            PathAttribute {name: "rotateY"; value: 60.0}
+            PathAttribute {name: "scalePic"; value: 0.9}
             PathAttribute {name: "zOrder"; value: 50}
 
             PathLine{x:1120; y: 0}
             PathPercent {value: 0.80}
-            PathAttribute {name: "rotateY"; value: 50.0}
+            PathAttribute {name: "rotateY"; value: 60.0}
             PathAttribute {name: "scalePic"; value: 0.50}
             PathAttribute {name: "zOrder"; value: 10}
 

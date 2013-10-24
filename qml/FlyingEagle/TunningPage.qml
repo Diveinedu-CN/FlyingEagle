@@ -171,21 +171,21 @@ Rectangle {
             y: 67
             width: 14
             height: 90
-            orientation: 0
-            value: 0.8
+            orientation: Qt.Vertical
+            value: 0.5
             style: ProgressBarStyle {
                 background: Image {
-                    width: 14
-                    height: 90
-                    anchors.fill: parent
+                    width: 90
+                    height: 14
                     anchors.bottom: parent.bottom
                     source: "images/dsc_tuning_sback.png"
                 }
                 progress: Image {
-                    width: 14
-                    height: 90
-                    anchors.fill: parent
+                    width: 80
+                    height: 6
                     anchors.bottom: parent.bottom
+                    anchors.left: parent.left;
+                    anchors.leftMargin: 4;
                     source: "images/dsc_tuning_sfront.png"
                 }
             }
@@ -198,19 +198,19 @@ Rectangle {
             width: 14
             height: 90
             value: 0.8
-            orientation: 0
+            orientation: Qt.Vertical
             style: ProgressBarStyle {
                 background: Image {
-                    width: 14
-                    height: 90
+                    width: 90
+                    height: 14
                     anchors.fill: parent
                     anchors.bottom: parent.bottom
                     fillMode: Image.Stretch
                     source: "images/dsc_tuning_sback.png"
                 }
                 progress: Image {
-                    width: 14
-                    height: 90
+                    width: 80
+                    height: 6
                     anchors.fill: parent
                     anchors.bottom: parent.bottom
                     fillMode: Image.Stretch

@@ -33,13 +33,14 @@ Rectangle {
             height: 139
 
             MouseArea {
-                anchors.fill: parent;
+                anchors.fill: cardImage;
                 onClicked: {
                     music_album_selection.handleShowBaotai(parent.text);
                 }
             }
 
             Image {
+                id: cardImage
                 anchors.left: parent.left
                 anchors.leftMargin: 30
                 anchors.top: parent.top

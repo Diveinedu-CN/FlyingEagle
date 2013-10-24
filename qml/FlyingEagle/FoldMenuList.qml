@@ -20,6 +20,7 @@ Item {
         delegate: Rectangle {
             property alias itemHeight: cell.height
             property bool unfold: false
+            property int tag: index
 
             id: cell
 
@@ -93,7 +94,7 @@ Item {
 
                         Image {
                             source: "images/movieSelected.png"
-                            visible: (repeater.currentIndex===index)?true:false
+                            visible: (repeater.currentIndex===index && listView.currentIndex == cell.tag)?true:false
                         }
 
                         Text {
@@ -108,6 +109,7 @@ Item {
                             anchors.fill: parent
 
                             onClicked: {
+                                listView.currentIndex = cell.tag
                                 repeater.currentIndex = index
                             }
                         }

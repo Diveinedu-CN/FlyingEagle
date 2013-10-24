@@ -430,20 +430,14 @@ Rectangle {
         color: "#BF000000";
         visible: false;
     }
-
+/*
     ParticleSystem {
         id: particles
     }
 
     ImageParticle {
         system: particles
-//        sprites: Sprite {
-//            name: "bubble"
-//            source: "images/bubble.png"
-//            frameCount: 51
-//            frameDuration: 40
-//            frameDurationVariation: 8
-//        }
+
         source: "images/bubble.png"
     }
 
@@ -459,15 +453,6 @@ Rectangle {
         width: parent.width
         height: 100
     }
+*/
 
-//    Particles {
-//        id: stars
-//        x: 0; y: 0; width: parent.width; height: parent.height - 32
-//        source: "images/btnQuit.png"
-//        angleDeviation: 360
-//        velocity: 0; velocityDeviation: 0
-//        count: parent.width / 30
-//        fadeInDuration: 2000
-//        opacity: 3
-//    }
 }

@@ -39,6 +39,10 @@ Item {
         width: 693;
         height: 295;
         color: "transparent";
+        MouseArea {
+            anchors.fill: parent
+            onClicked: ;
+        }
         Loader {
             id: keyboardLoader
             anchors.fill: parent

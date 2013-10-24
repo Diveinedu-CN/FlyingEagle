@@ -674,7 +674,7 @@ Rectangle {
     //二次筛选歌曲输入弹出框部分
     Rectangle {
         id: secendFilter_DIV;
-        width: 702;
+        width: 712;
         height: 420/*335*/;
         anchors.top: parent.top;
         anchors.topMargin: 215;

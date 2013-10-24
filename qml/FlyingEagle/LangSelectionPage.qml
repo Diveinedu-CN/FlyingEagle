@@ -99,20 +99,21 @@ Rectangle {
 
         flow: GridView.TopToBottom
         snapMode: GridView.SnapToRow
-
+        cacheBuffer: 40;
         model: testModel
         delegate: Item {
             width: 426
             height: 139
 
             MouseArea {
-                anchors.fill: parent;
+                anchors.fill: cardImage;
                 onClicked: {
                     lang_music_selection.handleShowBaotai(parent.text);
                 }
             }
 
             Image {
+                id: cardImage
                 anchors.left: parent.left
                 anchors.leftMargin: 30
                 anchors.top: parent.top
@@ -195,7 +196,7 @@ Rectangle {
             anchors.leftMargin: 90;
             backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
             onClicked: {
-                quanbu.selected = !quanbu.selected;
+                quanbu.selected = true;
                 shoupin.selected = false;
                 shouxie.selected = false;
                 zishu.selected = false;
@@ -214,7 +215,7 @@ Rectangle {
             backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
             onClicked: {
                 quanbu.selected = false;
-                shoupin.selected = !shoupin.selected;
+                shoupin.selected = false;
                 shouxie.selected = false;
                 zishu.selected = false;
                 lang_music_selection.handleShowSecondFilter("shoupin");
@@ -233,7 +234,7 @@ Rectangle {
             onClicked: {
                 quanbu.selected = false;
                 shoupin.selected = false;
-                shouxie.selected = !shouxie.selected;
+                shouxie.selected = false;
                 zishu.selected = false;
                 lang_music_selection.handleShowSecondFilter("shouxie");
             }
@@ -252,7 +253,7 @@ Rectangle {
                 quanbu.selected = false;
                 shoupin.selected = false;
                 shouxie.selected = false;
-                zishu.selected = !zishu.selected;
+                zishu.selected = false;
                 lang_music_selection.handleShowSecondFilter("zishu");
             }
         }

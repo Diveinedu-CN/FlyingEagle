@@ -13,7 +13,7 @@ Item {
         id: listView
         anchors.fill: parent
         spacing: 20
-        cacheBuffer: 200 // in pixels
+        cacheBuffer: 10
         clip: true
 
         model: testModel

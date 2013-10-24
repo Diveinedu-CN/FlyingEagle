@@ -72,8 +72,9 @@ Rectangle {
         zishu.selected = false;
         switch (inputType) {
         case "quanbu":
-            quanbu.selected = true;
-            seckeyboard.showEnglishKeyboard();
+//            quanbu.selected = true;
+//            seckeyboard.showEnglishKeyboard();
+            baotai_gexing.visible = false
             break;
         case "shoupin":
             shoupin.selected = true;
@@ -673,11 +674,30 @@ Rectangle {
     //二次筛选歌曲输入弹出框部分
     Rectangle {
         id: secendFilter_DIV;
-        width: 702;
+        width: 712;
         height: 420/*335*/;
         anchors.top: parent.top;
         anchors.topMargin: 215;
         color: "transparent";
+        clip: true;
+        Rectangle {
+            id: secondFilterKeyboard
+            width: 702; height: 350;
+            color: "transparent"
+            anchors.bottom: footer_div.top;
+            anchors.bottomMargin: -410;
+            state: visible?"show":"hide";
+            states: [ State { name: "show" }, State { name: "hide" } ]
+            transitions: [
+                Transition {
+                    from: "show"; to: "hide"
+                    PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: "-410"; duration: 150; easing.type: Easing.InOutQuad; }
+                },
+                Transition {
+                    from: "hide"; to: "show"
+                    PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: "0"; duration: 300; easing.type: Easing.InOutQuad;}
+                }
+            ]
         Rectangle {
             id: normalInputArea;
             visible: !zishu.selected;
@@ -717,7 +737,10 @@ Rectangle {
             visible: zishu.selected;
             width: 693; height: 80;
             color: "transparent";
-            anchors.bottom: footer_div.top;
+            anchors.left: parent.left
+            anchors.leftMargin: 18;
+//            anchors.bottom: footer_div.top;
+            anchors.bottom: parent.bottom;
             ZishuInput {
                 anchors.fill: parent;
                 onHideClicked: {
@@ -726,11 +749,12 @@ Rectangle {
                 }
             }
         }
+        }
 
         //下面的输入类型选择按钮横条
         Rectangle {
             id: footer_div;
-            width: 1280;height: 55;
+            width: 1280;height: 56;
             anchors.bottom: parent.bottom;
             anchors.bottomMargin: 0;
             color: "transparent";
@@ -748,11 +772,14 @@ Rectangle {
                 anchors.leftMargin: 90;
                 backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
                 onClicked: {
-                    quanbu.selected = !quanbu.selected;
+                    quanbu.selected = false;
                     shoupin.selected = false;
                     shouxie.selected = false;
                     zishu.selected = false;
-                    seckeyboard.showEnglishKeyboard();
+//                    seckeyboard.showEnglishKeyboard();
+                    baotai_gexing.secendFilterVisible = false;
+                    baotai_gexing.visible = false;
+
                 }
             }
             PushButton {
@@ -767,7 +794,7 @@ Rectangle {
                 backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
                 onClicked: {
                     quanbu.selected = false;
-                    shoupin.selected = !shoupin.selected;
+                    shoupin.selected = true;
                     shouxie.selected = false;
                     zishu.selected = false;
                     seckeyboard.showEnglishKeyboard();
@@ -786,7 +813,7 @@ Rectangle {
                 onClicked: {
                     quanbu.selected = false;
                     shoupin.selected = false;
-                    shouxie.selected = !shouxie.selected;
+                    shouxie.selected = true;
                     zishu.selected = false;
                     seckeyboard.showHandWritingKeyboard();
                 }
@@ -805,7 +832,7 @@ Rectangle {
                     quanbu.selected = false;
                     shoupin.selected = false;
                     shouxie.selected = false;
-                    zishu.selected = !zishu.selected;
+                    zishu.selected = true;
 
                 }
             }

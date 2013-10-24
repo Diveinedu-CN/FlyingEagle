@@ -16,21 +16,23 @@ Rectangle {
     TextField {
         id:searchBar
         anchors.top: parent.top
-        anchors.topMargin: 12
+        anchors.topMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left;
         anchors.leftMargin: 40;
         width: 330;
+        height: 46
         maximumLength: 20
         placeholderText: qsTr("S搜(歌星/歌名/歌词)")
+        font.pixelSize: 18
         style: TextFieldStyle {
             id:style
             textColor: "#FFFFFFFF"
             background: Rectangle {
                 anchors.top: parent.top;
                 anchors.right: parent.right;
-                width: 330; height: 86;
+                width: 330; height: 46;
                 color: "transparent"
             }
             panel:Item {
@@ -40,7 +42,7 @@ Rectangle {
                 property color selectionColor: style.selectionColor
                 property color selectedTextColor: style.selectedTextColor
                 implicitWidth: backgroundLoader.implicitWidth ? backgroundLoader.implicitWidth : 100
-                implicitHeight: backgroundLoader.implicitHeight ? backgroundLoader.implicitHeight : 20
+                implicitHeight: backgroundLoader.implicitHeight ? backgroundLoader.implicitHeight : 46
                 property color placeholderTextColor: Qt.rgba(1, 1, 1, 0.8)
                 Loader {
                     id: backgroundLoader
@@ -51,7 +53,7 @@ Rectangle {
         }
 
         Keys.onReleased: {
-            if (searchBar.text.length > 0)
+            if (searchBar.text.length >= 0)
             {
                 searchDiv.menuList.needdisplay = true;
             }else
@@ -76,7 +78,7 @@ Rectangle {
                     keyboard.state = "show";
                 }
 
-                if (searchBar.text.length > 0)
+                if (searchBar.text.length >= 0)
                 {
                     searchDiv.menuList.needdisplay = true;
                 }else
@@ -93,7 +95,7 @@ Rectangle {
         property bool needdisplay: false;
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 0;
+        anchors.topMargin: 8;
         anchors.leftMargin: 4;
         width: parent.width-6; height:needdisplay?parent.height:0;
         color: "transparent"
@@ -101,7 +103,10 @@ Rectangle {
         Behavior on height {
                 NumberAnimation { easing.type: Easing.InSine; duration: 100 }
         }
-
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: ;
+        }
 
         Image {
             anchors.top: parent.top;
@@ -146,6 +151,7 @@ Rectangle {
             anchors.bottomMargin: 60;
             cacheBuffer: 80;
             clip:true;
+            interactive: false
             snapMode: ListView.SnapToItem;
             model: TestListModel {}
             delegate: searchBarDelegate;

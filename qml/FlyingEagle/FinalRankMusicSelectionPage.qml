@@ -106,7 +106,7 @@ Rectangle {
 
                 width: 1018
                 height: 416
-                cacheBuffer: 320
+                cacheBuffer: 40
 
                 cellWidth: 505
                 cellHeight: 65
@@ -225,7 +225,7 @@ Rectangle {
                     anchors.leftMargin: 90;
                     backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
                     onClicked: {
-                        quanbu.selected = !quanbu.selected;
+                        quanbu.selected = true;
                         shoupin.selected = false;
                         shouxie.selected = false;
                         zishu.selected = false;
@@ -244,7 +244,7 @@ Rectangle {
                     backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
                     onClicked: {
                         quanbu.selected = false;
-                        shoupin.selected = !shoupin.selected;
+                        shoupin.selected = false;
                         shouxie.selected = false;
                         zishu.selected = false;
                         finalRankMusicSelection.handleShowSecondFilter("shoupin");
@@ -263,7 +263,7 @@ Rectangle {
                     onClicked: {
                         quanbu.selected = false;
                         shoupin.selected = false;
-                        shouxie.selected = !shouxie.selected;
+                        shouxie.selected = false;
                         zishu.selected = false;
                         finalRankMusicSelection.handleShowSecondFilter("shouxie");
                     }
@@ -282,7 +282,7 @@ Rectangle {
                         quanbu.selected = false;
                         shoupin.selected = false;
                         shouxie.selected = false;
-                        zishu.selected = !zishu.selected;
+                        zishu.selected = false;
                         finalRankMusicSelection.handleShowSecondFilter("zishu");
                     }
                 }

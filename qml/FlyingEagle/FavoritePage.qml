@@ -88,7 +88,7 @@ Rectangle {
             snapMode: GridView.SnapToRow
 
             clip: true
-
+            cacheBuffer: 40;
             model: testModel
             delegate: Item {
                 width: 791
@@ -192,6 +192,10 @@ Rectangle {
             text: "退出"
             colorText: "#ffffff"
             backgroundNormal: "images/btnQuit.png"
+            onClicked: {
+                keyboardLoader.source = "telKeyBoard.qml"
+                contentItem.visible = false;
+            }
         }
 
 

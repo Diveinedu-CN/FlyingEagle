@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
-
+import QtQuick.Particles 2.0
 Rectangle {
     id: rectangle1
     width: 1280
@@ -111,7 +111,6 @@ Rectangle {
         textBottomMargin: 0
         color: "transparent"
         backgroundNormal: "images/qiege.png"
-        backgroundPressed: "images/qiegeSel.png"
     }
 
 
@@ -123,8 +122,7 @@ Rectangle {
         anchors.leftMargin: 4
         anchors.bottom: parent.bottom
         text: isOrign? qsTr("原唱") : qsTr("伴唱");
-        backgroundNormal: "images/yuanchang.png"
-        backgroundPressed: "images/yuanchangSel.png"
+        backgroundNormal: isOrign?"images/yuanchang.png":"images/banchang.png";
         onClicked: isOrign = !isOrign;
     }
 
@@ -136,7 +134,6 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: isPlaying? qsTr("暂停") : qsTr("播放");
         backgroundNormal: isPlaying ? "images/zanting.png" : "images/bofang.png";
-        backgroundPressed: "images/zantingSel.png"
         onClicked: isPlaying = !isPlaying;
     }
 
@@ -147,7 +144,6 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: qsTr("重唱")
         backgroundNormal: "images/chongchang.png"
-        backgroundPressed: "images/chongchangSel.png"
     }
 
     RightPushButton {
@@ -187,12 +183,13 @@ Rectangle {
 
     RightPushButton {
         id: jingyinButton
+        property bool isMuted: false;
         anchors.left: yinliangSlider.right
         anchors.leftMargin: 6
         anchors.bottom: parent.bottom
-        text: qsTr("静音")
-        backgroundNormal: "images/jingyin.png"
-        backgroundPressed: "images/jingyinSel.png"
+        text: isMuted?qsTr("静音"):qsTr("开启")
+        backgroundNormal: isMuted?"images/jingyin.png":"images/kaiqi.png"
+        onClicked: isMuted = !isMuted;
     }
 
     RightPushButton {
@@ -202,7 +199,6 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: qsTr("气氛")
         backgroundNormal: "images/qifen.png"
-        backgroundPressed: "images/qifenSel.png"
     }
 
     RightPushButton {
@@ -212,7 +208,6 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: qsTr("辅助")
         backgroundNormal: "images/fuzhu.png"
-        backgroundPressed: "images/fuzhuSel.png"
     }
 
     Rectangle {
@@ -278,12 +273,38 @@ Rectangle {
                     height: 26;
                     source: "images/sliderFgRadius.png"
                 }
+                ParticleSystem {
+                    id: particles
+                }
+                ImageParticle {
+                    system: particles
+                    source: "images/jindu-qipao1.png"
+                }
+                Emitter {
+                    anchors.fill: progress
+                    system: particles
+                    emitRate: 5
+                    lifeSpan: 4000
+                    velocity: PointDirection { y:-4; yVariation: 4; }
+                    acceleration: PointDirection { y: 4 }
+                    size: 13
+                    endSize: 5
+                    sizeVariation: 0
+                    width: progress.width
+                    height: progress.height
+                }
             }
 
     }
 
     }
-
+    PushButton {
+        id: mvButtonBg
+        anchors.left: fuzhuButton.right
+        anchors.leftMargin: 0
+        anchors.bottom: parent.bottom
+        backgroundNormal: "images/MV-Button-Bg.png"
+    }
     PushButton {
         id: mvButton
         anchors.left: fuzhuButton.right

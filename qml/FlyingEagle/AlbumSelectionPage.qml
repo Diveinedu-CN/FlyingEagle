@@ -21,6 +21,7 @@ Rectangle {
         id: musicList
         x: 12
         y: 89
+        opacity: 0
 
         width: parent.width-40
         height: 444
@@ -65,6 +66,19 @@ Rectangle {
                 color: "#FFFFFFFF"
                 font.pixelSize: 26
             }
+        }
+
+        PropertyAnimation {
+            id: animation
+            target: musicList
+            property: "opacity"
+            from: 0
+            to: 1
+            duration: 1500
+        }
+
+        Component.onCompleted: {
+            animation.start()
         }
     }
 

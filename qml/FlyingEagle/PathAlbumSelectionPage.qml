@@ -17,6 +17,7 @@ Rectangle {
         anchors.topMargin: 120
         width: parent.width
         height: 356
+        opacity: 0
 
         pathItemCount: 7
         preferredHighlightBegin: 0.5
@@ -29,6 +30,8 @@ Rectangle {
         }
 
         delegate: Item{
+            id: cell
+
             property real tmpAngle : PathView.rotateY
             property real scaleValue: PathView.scalePic
             width: 356
@@ -173,6 +176,21 @@ Rectangle {
                         anchors.fill: parent
                         onClicked: {
                             if(pathView.currentIndex != index) {
+//                                console.log(index)
+//                                pathView.currentIndex = index
+//                                pathView.positionViewAtIndex(index, PathView.Center)
+//                                if(pathView.currentIndex < index) {
+//                                    pathView.incrementCurrentIndex()
+//                                } else {
+//                                    pathView.decrementCurrentIndex()
+//                                }
+
+                                if(cell.x < pathView.currentItem.x) {
+                                    pathView.decrementCurrentIndex()
+                                }else {
+                                    pathView.incrementCurrentIndex()
+                                }
+
                                 return
                             }
 
@@ -275,7 +293,18 @@ Rectangle {
 
         focus: true
         interactive: true
-        Keys.onLeftPressed: decrementCurrentIndex()
-        Keys.onRightPressed: incrementCurrentIndex()
+
+        PropertyAnimation {
+            id: animation
+            target: pathView
+            property: "opacity"
+            from: 0
+            to: 1
+            duration: 1500
+        }
+
+        Component.onCompleted: {
+            animation.start()
+        }
     }
 }

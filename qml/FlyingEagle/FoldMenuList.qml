@@ -93,6 +93,7 @@ Item {
                         height: 32
 
                         Image {
+                            anchors.fill: parent
                             source: "images/movieSelected.png"
                             visible: (repeater.currentIndex===index && listView.currentIndex == cell.tag)?true:false
                         }

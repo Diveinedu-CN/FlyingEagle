@@ -9,17 +9,23 @@ Rectangle {
     signal movieClicked();
 
     Image {
-        x: 55
-        y: 28
+        x: 69
+        y: 72
         source: "images/movieBg.png"
     }
 
     Image {
-        x: 77
-        y: 49
+        x: 92
+        y: 93
         source: "images/movieFlash.png"
 
         MouseArea {
+            x: 0
+            y: 44
+            anchors.rightMargin: 0
+            anchors.bottomMargin: -44
+            anchors.leftMargin: 0
+            anchors.topMargin: 44
             anchors.fill: parent
             onClicked: {
 
@@ -29,7 +35,7 @@ Rectangle {
 
     PushButton {
         x: 316
-        y: 467
+        y: 504
         width: 136
         height: 51
         backgroundNormal: "images/movieButton.png"
@@ -38,8 +44,8 @@ Rectangle {
     }
 
     PushButton {
-        x: 539
-        y: 467
+        x: 537
+        y: 504
         width: 136
         height: 51
         backgroundNormal: "images/movieButton.png"
@@ -48,16 +54,18 @@ Rectangle {
     }
 
     FoldMenuList {
+        x: 920
+        y: 139
         anchors.right: parent.right
         anchors.rightMargin: 100
         anchors.top: parent.top
-        anchors.topMargin: 100
+        anchors.topMargin: 139
     }
 
     PushButton {
         id:mv_preview_close;
-        x: 1179
-        y: 13
+        x: 1192
+        y: 49
         width: 40;height: 40;
         backgroundNormal: "images/del.png";
         colorText: "#ffffff"

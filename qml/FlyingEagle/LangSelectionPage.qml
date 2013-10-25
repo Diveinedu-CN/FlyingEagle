@@ -91,6 +91,7 @@ Rectangle {
         id: starList
         anchors.top: tabbarId.bottom
         anchors.topMargin: 100
+        opacity: 0
 
         width: parent.width
         height: 418
@@ -174,6 +175,19 @@ Rectangle {
                     }
                 }
             }
+        }
+
+        PropertyAnimation {
+            id: animation
+            target: starList
+            property: "opacity"
+            from: 0
+            to: 1
+            duration: 1500
+        }
+
+        Component.onCompleted: {
+            animation.start()
         }
     }
 

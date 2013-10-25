@@ -81,6 +81,7 @@ Rectangle {
         height: 418
         cellWidth: 426
         cellHeight: 139
+        opacity: 0
 
         flow: GridView.TopToBottom
         snapMode: GridView.SnapToRow
@@ -159,6 +160,19 @@ Rectangle {
                    }
                }
             }
+        }
+
+        PropertyAnimation {
+            id: animation
+            target: starList
+            property: "opacity"
+            from: 0
+            to: 1
+            duration: 1500
+        }
+
+        Component.onCompleted: {
+            animation.start()
         }
     }
 

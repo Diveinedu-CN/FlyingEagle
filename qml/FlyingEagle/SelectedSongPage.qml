@@ -115,7 +115,7 @@ Item {
             }
         }
 
-        Button {
+        PushButton {
             id: closeButton
             x: 421
             y: 0
@@ -124,18 +124,10 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: 0
             anchors.rightMargin: -11
-            checkable: true
             anchors.right: parent.right
+            backgroundNormal:"images/del.png"
 
-            style: ButtonStyle {
-                background: Image {
-                    anchors.fill: parent
-                    anchors.bottomMargin: 0
-                    source:"images/del.png"
-                }
-                SystemPalette {
-                }
-            }
+
         }
         //已选框中间的列表
         Component {
@@ -148,52 +140,52 @@ Item {
                 Text {
                     id:_seqno;
                     width:20;height: 40;
-                    font.pixelSize: size;
+                    font.pixelSize: 18
                     anchors.left: parent.left;
                     anchors.leftMargin: 10;
                     anchors.top:parent.top;
                     anchors.topMargin: topMargin;
                     color:"red";
                     text: index+".";
-                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.verticalCenter: Text.verticalCenter;
                 }
                 Text {
                     id:_name;
                     height: 40;
-                    font.pixelSize: 0
+                    font.pixelSize: 18
                     anchors.left: _seqno.right;
                     anchors.leftMargin: 10;
                     anchors.top:parent.top;
                     anchors.topMargin: topMargin;
                     color:"black";
                     text: name;
-                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.verticalCenter: Text.verticalCenter;
                 }
                 Text {
                     id:_star;
                     height: 40;
-                    font.pixelSize: 0
+                    font.pixelSize: 18
                     anchors.right: _firstButton.left;
                     anchors.rightMargin: 20;
                     anchors.top:parent.top;
                     anchors.topMargin: topMargin;
                     color:"black";
                     text: star;
-                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.verticalCenter: Text.verticalCenter;
                 }
-                Image {
+                PushButton {
                     id:_firstButton;
                     width:40;height: 40;
                     anchors.right:_delButton.left;
                     anchors.rightMargin: 10;
-                    source: "images/first.png";
+                    backgroundNormal: "images/first.png";
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Image {
+                PushButton {
                     id:_delButton;
                     width:40;height: 40;
                     anchors.right: parent.right;
-                    source: "images/del.png";
+                    backgroundNormal: "images/del.png";
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
@@ -205,7 +197,7 @@ Item {
             height: 456
             anchors.left: yixuanButton.left
             anchors.top: yixuanButton.bottom
-            cellWidth: grid.width; cellHeight: 55
+            cellWidth: grid.width; cellHeight: 54
             flow: GridView.TopToBottom
             snapMode: GridView.SnapToRow
             clip: true
@@ -219,79 +211,51 @@ Item {
 
 
         //已选框底部栏
-        Button {
+        PushButton {
             id: daluanButton
             width: 72
             height: 40
-            checkable: true
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             anchors.leftMargin: 30;
             anchors.bottomMargin: 30
+            backgroundNormal:"images/daluan.png"
 
-
-            style: ButtonStyle {
-                background: Image {
-                    anchors.fill: parent
-                    anchors.bottomMargin: 0
-                    source:"images/daluan.png"
-                }
-                SystemPalette {
-                }
-            }
         }
-        Button {
+        PushButton {
             id: prevButton
             width: 68
             height: 36
-            checkable: true
             anchors.left: daluanButton.right
             anchors.leftMargin: 80
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 30
+            backgroundNormal:"images/left.png"
+            onClicked: grid.moveCurrentIndexLeft();
 
-
-            style: ButtonStyle {
-                background: Image {
-                    anchors.fill: parent
-                    anchors.bottomMargin: 0
-                    source:"images/left.png"
-                }
-                SystemPalette {
-                }
-            }
         }
         Text {
             id:songCount
             anchors.left: prevButton.right
-            anchors.leftMargin: 12
+            anchors.leftMargin: 25
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 38
+            anchors.horizontalCenter: Text.horizontalCenter
             text:grid.currentIndex+"/"+grid.count
-            font.pixelSize: 20
+            font.pixelSize: 18
             color:"white"
         }
 
-        Button {
+        PushButton {
             id: nextButton
             width: 68
             height: 36
-            checkable: true
             anchors.right: parent.right
             anchors.rightMargin: 16
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 30
-
-
-            style: ButtonStyle {
-                background: Image {
-                    anchors.fill: parent
-                    anchors.bottomMargin: 0
-                    source:"images/right.png"
-                }
-                SystemPalette {
-                }
-            }
+            backgroundNormal:"images/right.png"
+            onClicked: grid.moveCurrentIndexRight();
         }
 
     }

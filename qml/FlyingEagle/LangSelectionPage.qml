@@ -15,7 +15,7 @@ Rectangle {
     property var langArray: new Array("全部", "国语", "粤语", "闽南语", "外语", "网络", "独家")
 
     signal handlerLoader(string name, int index)
-    signal handleShowBaotai(string title)
+    signal handleShowBaotai(variant cardPoint)
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
     signal handleShowSecondFilter(string inputType)
@@ -108,7 +108,9 @@ Rectangle {
             MouseArea {
                 anchors.fill: cardImage;
                 onClicked: {
-                    lang_music_selection.handleShowBaotai(parent.text);
+                    var centerX = parent.x+parent.width/2;
+                    var centerY = parent.y+parent.height/2;
+                    lang_music_selection.handleShowBaotai(Qt.point(centerX,centerY));
                 }
             }
 

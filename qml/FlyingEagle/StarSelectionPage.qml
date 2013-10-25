@@ -17,7 +17,7 @@ Rectangle {
     property var pathArray2: new Array("歌星", "歌星名")
 
     signal handlerLoader(string name, int index)
-    signal handleShowBaotai(string title)
+    signal handleShowBaotai(variant cardPoint)
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
     signal handleShowSecondFilter(string inputType)
@@ -160,7 +160,7 @@ Rectangle {
         target: gridLoader.item
         ignoreUnknownSignals:true
         onHandleShowBaotai: {
-            starSelection.handleShowBaotai(title);
+            starSelection.handleShowBaotai(cardPoint);
         }
         onHandleShowSingerInfo: {
             starSelection.handleShowSingerInfo(starname);

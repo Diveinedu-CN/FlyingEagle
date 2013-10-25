@@ -25,7 +25,6 @@ Rectangle {
         baotai_gexing.greetingsVisible = false;
         baotai_gexing.secendFilterVisible = false;
         baotai_gexing.visible = true;
-        number_input.text = title;
     }
     function showSingerInfo(starname)
     {
@@ -141,7 +140,7 @@ Rectangle {
             y: 86
             width: 258
             height: 42
-            text: qsTr("123456")
+            text: qsTr("")
             color: "#969696"
             font.pointSize: 24
             transformOrigin: Item.Center

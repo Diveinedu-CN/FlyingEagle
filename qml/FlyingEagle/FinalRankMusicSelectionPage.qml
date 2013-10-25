@@ -9,7 +9,7 @@ Rectangle {
     color: "transparent"
 
     signal handleLoader(string name, int index)
-    signal handleShowBaotai(string title)
+    signal handleShowBaotai(variant cardPoint)
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
     signal handleShowSecondFilter(string inputType)
@@ -130,7 +130,9 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent;
                         onClicked: {
-                            finalRankMusicSelection.handleShowBaotai(titleId.text);
+                            var centerX = parent.x+parent.width/2;
+                            var centerY = parent.y+parent.height/2;
+                            finalRankMusicSelection.handleShowBaotai(Qt.point(centerX,centerY));
                         }
                     }
                     Text {

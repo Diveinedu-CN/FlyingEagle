@@ -41,7 +41,34 @@ Rectangle {
             visible: status==Loader.Ready?true:false
             source: "HomePage.qml"
         }
+        Image {
+            id: musicNote
+            width: 90;
+            height: 116;
+            opacity: 0;
+            scale: 0;
+            source: "images/music.png"
+            SequentialAnimation {
+                id:musicNoteAnimation
+//                loops: Animation.Infinite
+                running: false
+                property int duration: 300;
+                property point startPoint: Qt.point(x,y);
+                ParallelAnimation {
+                    NumberAnimation { target: musicNote; property: "x";from:musicNoteAnimation.startPoint.x; to:640; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "y"; easing.type: Easing.OutCirc;from:musicNoteAnimation.startPoint.y; to:275; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "scale";  from:0.5; to:1; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "opacity";from:0.5; to:1; duration: musicNoteAnimation.duration }
+                }
 
+                ParallelAnimation {
+                    NumberAnimation { target: musicNote; property: "x";to:1280; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "y";to:550; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "scale"; from:1; to:0; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "opacity";from:1; to:0.2; duration: musicNoteAnimation.duration }
+                }
+            }
+        }
         //创建连接
         Connections {
             target: contentLoader.item
@@ -51,7 +78,9 @@ Rectangle {
                 contentLoader.source = name
             }
             onHandleShowBaotai: {
-                baotaigexing.showNumpad(title);
+                musicNoteAnimation.startPoint = cardPoint;
+                console.log("cardPoint:"+cardPoint);
+                baotaigexing.showNumpad(cardPoint);
             }
             onHandleShowSingerInfo: {
                 baotaigexing.showSingerInfo(starname);
@@ -421,6 +450,10 @@ Rectangle {
         height: 720;
         color: "#BF000000";
         visible: false;
+        onConfirmClicked: {
+            musicNoteAnimation.stop();
+            musicNoteAnimation.start();
+        }
     }
     //电影界面和优盘加歌界面
     MovieUDiskPage {

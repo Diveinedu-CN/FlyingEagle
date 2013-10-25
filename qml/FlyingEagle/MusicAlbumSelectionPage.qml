@@ -6,7 +6,7 @@ Rectangle {
     height: 591
     color: "transparent"
     signal handlerLoader(string name, int index)
-    signal handleShowBaotai(string title)
+    signal handleShowBaotai(variant cardPoint)
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
     signal handleShowSecondFilter(string inputType)
@@ -35,7 +35,9 @@ Rectangle {
             MouseArea {
                 anchors.fill: cardImage;
                 onClicked: {
-                    music_album_selection.handleShowBaotai(parent.text);
+                    var centerX = parent.x+parent.width/2;
+                    var centerY = parent.y+parent.height/2;
+                    music_album_selection.handleShowBaotai(Qt.point(centerX,centerY));
                 }
             }
 

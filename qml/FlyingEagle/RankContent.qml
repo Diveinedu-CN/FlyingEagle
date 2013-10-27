@@ -56,10 +56,11 @@ Item {
 
 //            text: "第二个"
 
-        image: "images/top/2.png"
+        frontImage: "images/top/2.png"
+        backImage: "images/top/22.png"
 
         onClicked: {
-            parent.clicked("无", 1)
+//            parent.clicked("无", 1)
         }
     }
 
@@ -141,7 +142,8 @@ Item {
 
 //            text: "美女"
 
-        image: "images/top/6.png"
+        frontImage: "images/top/6.png"
+        backImage: "images/top/62.png"
 
         onClicked: {
 //            parent.clicked("美女", 5)
@@ -204,7 +206,8 @@ Item {
 
 //            text: "美女2"
 
-        image: "images/top/9.png"
+        frontImage: "images/top/9.png"
+        backImage: "images/top/92.png"
 
         onClicked: {
 //            parent.clicked("无", 8)
@@ -330,10 +333,11 @@ Item {
 
 //            text: "帅哥"
 
-        image: "images/top/15.png"
+        frontImage: "images/top/15.png"
+        backImage: "images/top/152.png"
 
         onClicked: {
-            parent.clicked("帅哥", 14)
+//            parent.clicked("帅哥", 14)
         }
     }
 
@@ -379,294 +383,328 @@ Item {
             }
     ]
 
-    ParallelAnimation {
+    SequentialAnimation {
         id: animation
 
-        RotationAnimation {
-            target: rotationH
-            properties: "angle"
-            easing.type: Easing.OutExpo
-            to:0
-            from: 60
-            duration: 1000
-            direction: RotationAnimation.Counterclockwise
-        }
+        ParallelAnimation {
+            RotationAnimation {
+                target: rotationH
+                properties: "angle"
+                easing.type: Easing.OutExpo
+                to:0
+                from: 60
+                duration: 1000
+                direction: RotationAnimation.Counterclockwise
+            }
 
-        RotationAnimation {
-            target: rotationV
-            properties: "angle"
-            easing.type: Easing.OutExpo
-            to:0
-            from: 60
-            duration: 1000
-            direction: RotationAnimation.Counterclockwise
+            RotationAnimation {
+                target: rotationV
+                properties: "angle"
+                easing.type: Easing.OutExpo
+                to:0
+                from: 60
+                duration: 1000
+                direction: RotationAnimation.Counterclockwise
+            }
+
+            PropertyAnimation {
+                target: rankContent
+                properties: "opacity"
+                from: 0.5
+                to: 1
+                duration: 1000
+            }
+
+            //从左到右动画时间由短变长, 在原有基础上改为从右下脚飞入
+    //        NumberAnimation {
+    //            targets: [quanbuGrid, minnanGrid, meinv2Grid, duichangGrid, oumeiGrid, secondGrid, xingeGrid, lanseGrid];
+    //            properties: "scale";
+    //            from: 3
+    //            to: 1
+    //            duration: yAnimationTime
+    //        }
+
+    //        SequentialAnimation {
+    //            NumberAnimation {
+    //                targets: [quanbuGrid, minnanGrid];
+    //                properties: "scale";
+    //                from: 5
+    //                to: 1
+    //                duration: yAnimationTime
+    //            }
+
+    //            NumberAnimation {
+    //                targets: [meinv2Grid];
+    //                properties: "scale";
+    //                from: 5
+    //                to: 1
+    //                duration: yAnimationTime
+    //            }
+
+    //            NumberAnimation {
+    //                targets: [duichangGrid, oumeiGrid];
+    //                properties: "scale";
+    //                from: 5
+    //                to: 1
+    //                duration: yAnimationTime
+    //            }
+
+    //            NumberAnimation {
+    //                targets: [secondGrid, xingeGrid];
+    //                properties: "scale";
+    //                from: 5
+    //                to: 1
+    //                duration: yAnimationTime
+    //            }
+
+    //            NumberAnimation {
+    //                targets: [secondGrid, xingeGrid];
+    //                properties: "scale";
+    //                from: 5
+    //                to: 1
+    //                duration: yAnimationTime
+    //            }
+
+    //            NumberAnimation {
+    //                targets: [lanseGrid];
+    //                properties: "scale";
+    //                from: 5
+    //                to: 1
+    //                duration: yAnimationTime
+    //            }
+    //        }
+
+            SequentialAnimation {
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [quanbuGrid, minnanGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 29
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [quanbuGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 118
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [minnanGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 563
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [meinv2Grid];
+                        properties: "y";
+                        from: 1000
+                        to: 29
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [meinv2Grid];
+                        properties: "x";
+                        from: 1000
+                        to: 786
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        //934, 1083
+                        targets: [duichangGrid, oumeiGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 29
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        //934, 1083
+                        targets: [duichangGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 934
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        //934, 1083
+                        targets: [oumeiGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 1083
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [secondGrid, xingeGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 167
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [secondGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 0
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [xingeGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 563
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [lanseGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 167
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [lanseGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 786
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [guoyuGrid];
+                        properties: "x";
+                        from: 500
+                        to: 909
+                        duration: yAnimationTime
+                    }
+
+                    NumberAnimation {
+                        targets: [guoyuGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 167
+                        duration: yAnimationTime
+                    }
+
+                    NumberAnimation {
+                        targets: [rihanGrid];
+                        properties: "x";
+                        from: 500
+                        to: 0
+                        duration: yAnimationTime
+                    }
+
+                    NumberAnimation {
+                        targets: [rihanGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 316
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [liuxingGrid, meinvGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 318
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [liuxingGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 118
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [meinvGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 345
+                        duration: yAnimationTime
+                    }
+                }
+
+                ParallelAnimation {
+                    NumberAnimation {
+                        targets: [wangluoGrid, yueyuGrid, shuaigeGrid];
+                        properties: "y";
+                        from: 1000
+                        to: 318
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [wangluoGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 786
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [yueyuGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 1083
+                        duration: yAnimationTime
+                    }
+                    NumberAnimation {
+                        targets: [shuaigeGrid];
+                        properties: "x";
+                        from: 1000
+                        to: 934
+                        duration: yAnimationTime
+                    }
+                }
+            }
         }
 
         PropertyAnimation {
-            target: rankContent
-            properties: "opacity"
-            from: 0.5
-            to: 1
+            targets: [secondGrid]
+            property: "angle"
             duration: 1000
+            from: 180
+            to: 0
         }
 
-        //从左到右动画时间由短变长, 在原有基础上改为从右下脚飞入
-//        NumberAnimation {
-//            targets: [quanbuGrid, minnanGrid, meinv2Grid, duichangGrid, oumeiGrid, secondGrid, xingeGrid, lanseGrid];
-//            properties: "scale";
-//            from: 3
-//            to: 1
-//            duration: yAnimationTime
-//        }
+        PropertyAnimation {
+            targets: [meinv2Grid]
+            property: "angle"
+            duration: 1000
+            from: 180
+            to: 0
+        }
 
-//        SequentialAnimation {
-//            NumberAnimation {
-//                targets: [quanbuGrid, minnanGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
+        PropertyAnimation {
+            targets: [meinvGrid]
+            property: "angle"
+            duration: 1000
+            from: 180
+            to: 0
+        }
 
-//            NumberAnimation {
-//                targets: [meinv2Grid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [duichangGrid, oumeiGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [secondGrid, xingeGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [secondGrid, xingeGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-
-//            NumberAnimation {
-//                targets: [lanseGrid];
-//                properties: "scale";
-//                from: 5
-//                to: 1
-//                duration: yAnimationTime
-//            }
-//        }
-
-        SequentialAnimation {
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [quanbuGrid, minnanGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 29
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [quanbuGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 118
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [minnanGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 563
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [meinv2Grid];
-                    properties: "y";
-                    from: 1000
-                    to: 29
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [meinv2Grid];
-                    properties: "x";
-                    from: 1000
-                    to: 786
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    //934, 1083
-                    targets: [duichangGrid, oumeiGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 29
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    //934, 1083
-                    targets: [duichangGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 934
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    //934, 1083
-                    targets: [oumeiGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 1083
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [secondGrid, xingeGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 167
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [secondGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 0
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [xingeGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 563
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [lanseGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 167
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [lanseGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 786
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [guoyuGrid];
-                    properties: "x";
-                    from: 500
-                    to: 909
-                    duration: yAnimationTime
-                }
-
-                NumberAnimation {
-                    targets: [guoyuGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 167
-                    duration: yAnimationTime
-                }
-
-                NumberAnimation {
-                    targets: [rihanGrid];
-                    properties: "x";
-                    from: 500
-                    to: 0
-                    duration: yAnimationTime
-                }
-
-                NumberAnimation {
-                    targets: [rihanGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 316
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [liuxingGrid, meinvGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 318
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [liuxingGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 118
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [meinvGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 345
-                    duration: yAnimationTime
-                }
-            }
-
-            ParallelAnimation {
-                NumberAnimation {
-                    targets: [wangluoGrid, yueyuGrid, shuaigeGrid];
-                    properties: "y";
-                    from: 1000
-                    to: 318
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [wangluoGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 786
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [yueyuGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 1083
-                    duration: yAnimationTime
-                }
-                NumberAnimation {
-                    targets: [shuaigeGrid];
-                    properties: "x";
-                    from: 1000
-                    to: 934
-                    duration: yAnimationTime
-                }
-            }
+        PropertyAnimation {
+            targets: [shuaigeGrid]
+            property: "angle"
+            duration: 1000
+            from: 180
+            to: 0
         }
     }
 

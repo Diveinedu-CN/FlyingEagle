@@ -54,7 +54,7 @@ Rectangle {
             }
 
             Image {
-                property real translateY: -80
+                property real translateY: -140
                 x: 94
                 y: 208
 
@@ -81,20 +81,30 @@ Rectangle {
                 NumberAnimation {
                     target: guangpan;
                     property: "translateY";
-                    to: -90
+                    to: -80
                     duration: 1000;
                     easing.type: Easing.InOutQuad
                 }
 
-                NumberAnimation {
-                    target: guangpan;
-                    property: "translateY";
-                    to: -50
-                    duration: 1000;
-                    easing.type: Easing.InOutQuad
-                }
+                SequentialAnimation {
+                    loops: Animation.Infinite
 
-                loops: Animation.Infinite
+                    RotationAnimation {
+                        target: guangpan;
+                        from: 0
+                        to: -180
+                        duration: 4000;
+//                        easing.type: Easing.InOutQuad
+                    }
+
+                    RotationAnimation {
+                        target: guangpan;
+                        from: -180
+                        to: -360
+                        duration: 4000;
+//                        easing.type: Easing.InOutQuad
+                    }
+                }
             }
 
             Component.onCompleted: {

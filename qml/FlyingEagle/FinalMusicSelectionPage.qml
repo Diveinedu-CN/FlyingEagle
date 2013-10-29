@@ -13,6 +13,7 @@ Rectangle {
     color: "transparent"
 
     signal handleLoader(string name, int index)
+    signal handleShowBaotai(variant cardPoint)
 
 //    //导航图标
 //    Image {
@@ -93,7 +94,7 @@ Rectangle {
                         target: guangpan;
                         from: 0
                         to: -180
-                        duration: 4000;
+                        duration: 16000;
 //                        easing.type: Easing.InOutQuad
                     }
 
@@ -101,7 +102,7 @@ Rectangle {
                         target: guangpan;
                         from: -180
                         to: -360
-                        duration: 4000;
+                        duration: 16000;
 //                        easing.type: Easing.InOutQuad
                     }
                 }
@@ -155,6 +156,16 @@ Rectangle {
 
 //                        color: index % 2?"#FF0000":"#00FF00"
 //                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+
+                        onClicked: {
+                            var centerX = parent.x+parent.width/2;
+                            var centerY = parent.y+parent.height/2;
+                            finalPage.handleShowBaotai(Qt.point(centerX,centerY));
+                        }
+                    }
 
                     Text {
                         id: numberId

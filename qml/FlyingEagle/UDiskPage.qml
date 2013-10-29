@@ -1153,7 +1153,22 @@ Rectangle {
 
 
 
+        PushButton {
+            id: closeButton2
+            x: 1055
+            y: -8
+            width: 40
+            height: 40
+            anchors.top: parent.top;
+            anchors.topMargin: -8
+            backgroundNormal: "images/del.png"
+            onClicked: {
+                udiskAddList.visible = true;
+                udiskAddEdit.visible = false;
 
+                udiskAddPage.udiskCloseClicked();
+            }
+        }
     }//end ---U盘加歌编辑界面
 
 

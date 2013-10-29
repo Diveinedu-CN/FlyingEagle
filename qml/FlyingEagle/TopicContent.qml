@@ -1,12 +1,15 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: container
+
     width: 1280
     height: 591
     color: "transparent"
-    property int animationTime: 1000
+    property int animationTime: 500
 
     signal clicked(string name, int index)
+    signal handleBack()
 
     FlipButton {
         id: gaoqing
@@ -14,7 +17,7 @@ Rectangle {
         x: 906
         y: 190
         width: 96
-        height: 204
+        height: 194
 
         image: "images/TopicCategory/gaoqinggequ.png"
         angle: -180
@@ -27,7 +30,7 @@ Rectangle {
     PushButton {
         id: mingyao
         x: 51
-        y: 298
+        y: 288
         width: 96
         height: 96
         opacity: 0
@@ -43,7 +46,7 @@ Rectangle {
         id: xiqu
 
         x: 51
-        y: 409
+        y: 399
         width: 96
         height: 96
         opacity: 0
@@ -59,10 +62,11 @@ Rectangle {
         id: dujia
 
         x: 255
-        y: 84
+        y: 74
         width: 205
         height: 310
-        angle: -180
+//        angle: -180
+        opacity: 0
 
         isHorizontal: false
 
@@ -77,7 +81,7 @@ Rectangle {
         id: junlv
 
         x: 257
-        y: 409
+        y: 399
         width: 96
         height: 96
         angle: -180
@@ -97,7 +101,7 @@ Rectangle {
         id: mingzu
 
         x: 155
-        y: 409
+        y: 399
         width: 96
         height: 96
         angle: -180
@@ -117,7 +121,7 @@ Rectangle {
         id: jingdian
 
         x: 153
-        y: 190
+        y: 180
         width: 96
         height: 204
         angle: -180
@@ -133,7 +137,7 @@ Rectangle {
         id: yingshi
 
         x: 1110
-        y: 190
+        y: 180
         width: 96
         height: 96
         angle: -180
@@ -150,7 +154,7 @@ Rectangle {
         id: xiaoyuan
 
         x: 1110
-        y: 409
+        y: 399
         width: 96
         height: 96
         angle: -180
@@ -167,7 +171,7 @@ Rectangle {
         id: zhongguo
 
         x: 364
-        y: 409
+        y: 399
         width: 96
         height: 96
         opacity: 0
@@ -183,7 +187,7 @@ Rectangle {
         id: jueshi
 
         x: 51
-        y: 84
+        y: 74
         width: 96
         height: 96
         opacity: 0
@@ -199,10 +203,11 @@ Rectangle {
         id: jieri
 
         x: 466
-        y: 84
+        y: 74
         width: 638
         height: 98
-        angle: -180
+//        angle: -180
+        opacity: 0
 
         isHorizontal: false
 
@@ -217,10 +222,11 @@ Rectangle {
         id: nannv
 
         x: 466
-        y: 190
+        y: 180
         width: 206
         height: 315
-        angle: -180
+//        angle: -180
+        opacity: 0
 
         isHorizontal: false
 
@@ -235,7 +241,7 @@ Rectangle {
         id: randb
 
         x: 906
-        y: 409
+        y: 399
         width: 96
         height: 96
         angle: -180
@@ -257,7 +263,7 @@ Rectangle {
         id: dianzi
 
         x: 1008
-        y: 409
+        y: 399
         width: 96
         height: 96
         angle: -180
@@ -279,7 +285,7 @@ Rectangle {
         id: shengri
 
         x: 1110
-        y: 298
+        y: 288
         width: 96
         height: 96
         opacity: 0
@@ -295,7 +301,7 @@ Rectangle {
         id: huanle
 
         x: 1110
-        y: 84
+        y: 74
         width: 96
         height: 96
         opacity: 0
@@ -311,7 +317,7 @@ Rectangle {
         id: wangluo
 
         x: 686
-        y: 190
+        y: 180
         width: 208
         height: 96
         angle: -180
@@ -329,7 +335,7 @@ Rectangle {
         id: djhaige
 
         x: 686
-        y: 300
+        y: 290
         width: 208
         height: 96
         angle: -180
@@ -347,7 +353,7 @@ Rectangle {
         id: yaogun
 
         x: 686
-        y: 409
+        y: 399
         width: 96
         height: 96
         opacity: 0
@@ -363,7 +369,7 @@ Rectangle {
         id: xiha
 
         x: 798
-        y: 409
+        y: 399
         width: 96
         height: 96
         opacity: 0
@@ -379,7 +385,7 @@ Rectangle {
         id: ertong
 
         x: 1008
-        y: 190
+        y: 180
         width: 96
         height: 96
         opacity: 0
@@ -395,7 +401,7 @@ Rectangle {
         id: caoyuan
 
         x: 51
-        y: 190
+        y: 180
         width: 96
         height: 96
         angle: -180
@@ -412,7 +418,7 @@ Rectangle {
         id: lizhi
 
         x: 1008
-        y: 298
+        y: 288
         width: 96
         height: 96
         angle: -180
@@ -429,7 +435,7 @@ Rectangle {
         id: chunyinyue
 
         x: 153
-        y: 84
+        y: 74
         width: 96
         height: 96
         opacity: 0
@@ -444,12 +450,22 @@ Rectangle {
     SequentialAnimation {
         id: enterAnimation
 
-        PropertyAnimation {
-            targets: [gaoqing, jingdian, dujia, jieri, nannv, djhaige, wangluo]
-            property: "angle"
-            duration: animationTime
-            from: -180
-            to: 0
+        ParallelAnimation {
+            PropertyAnimation {
+                targets: [gaoqing, jingdian, djhaige, wangluo]
+                property: "angle"
+                duration: animationTime
+                from: -180
+                to: 0
+            }
+
+            PropertyAnimation {
+                targets: [dujia, nannv, jieri]
+                property: "opacity"
+                duration: animationTime
+                from: 0
+                to: 1
+            }
         }
 
         PropertyAnimation {
@@ -479,5 +495,18 @@ Rectangle {
 
     Component.onCompleted: {
         enterAnimation.start()
+    }
+
+    PushButton {
+        id:back;
+        width: 100; height: 44;
+        anchors.bottom: parent.bottom;
+        anchors.bottomMargin: 20
+        anchors.right: parent.right;
+        anchors.rightMargin: 100;
+        backgroundNormal: "images/back.png";
+        onClicked: {
+            container.handleBack("homePage.qml", 0)
+        }
     }
 }

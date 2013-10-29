@@ -14,9 +14,10 @@ Rectangle {
     height: 591
     color: "transparent"
 
-    property var pathArray: new Array("点歌")
+    property var pathArray: new Array("主题分类")
 
     signal handlerLoader(string name, int index)
+    signal handleShowBaotai(variant cardPoint)
 
     //导航图标
     Image {
@@ -83,6 +84,12 @@ Rectangle {
             navBar.createButtons(pathArray)
 
             contentLoader.source = "TopicContent.qml"
+        }
+        onHandleBack: {
+            topicPage.handlerLoader("HomePage.qml", 0)
+        }
+        onHandleShowBaotai: {
+            topicPage.handleShowBaotai(cardPoint)
         }
     }
 }

@@ -36,6 +36,7 @@ Item {
         width: 263
         height: 48
         placeholderText: qsTr("请输入手机号码")
+        maximumLength: 11
         textColor: "#969696"
         font.pointSize: 24
         transformOrigin: Item.Center
@@ -186,6 +187,7 @@ Item {
         y: 358
         width: 63
         height: 63
+        enabled: (number_input.length==11)?true:false
 
         text: "确定"
         colorText: "#ffffff"

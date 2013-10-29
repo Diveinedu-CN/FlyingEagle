@@ -64,6 +64,7 @@ Rectangle {
                     menuTabBar2.visible = false
                     navBar.visible = true
                     navBar2.visible = false
+
                     gridLoader.source = "AlbumSelectionPage.qml"
                 }
             }
@@ -152,6 +153,22 @@ Rectangle {
             menuTabBar2.visible = true
 
             gridLoader.source = "MusicAlbumSelectionPage.qml"
+        }
+    }
+
+    Connections {
+        target: gridLoader.item
+        ignoreUnknownSignals: true
+        onHandleBack: {
+            navBar.visible = true
+            menuTabBar.visible = true
+
+            navBar2.visible = false
+            menuTabBar2.visible = false
+
+            menuTabBar2.selectButton(0)
+
+            gridLoader.source = "AlbumSelectionPage.qml"
         }
     }
 

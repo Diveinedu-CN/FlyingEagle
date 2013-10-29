@@ -10,6 +10,8 @@ Rectangle {
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
     signal handleShowSecondFilter(string inputType)
+    signal handleBack()
+
     TestListModel {
         id: testModel
     }
@@ -243,7 +245,8 @@ Rectangle {
             anchors.rightMargin: 70;
             backgroundNormal: "images/back.png";
             onClicked: {
-                handlerLoader("HomePage.qml", 0)
+//                handlerLoader("HomePage.qml", 0)
+                music_album_selection.handleBack()
             }
         }
     }

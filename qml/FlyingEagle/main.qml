@@ -155,57 +155,6 @@ Rectangle {
     }
 
     //在这里加入搜索条,这样就不会被弹窗阴影遮盖了
-    /*
-    TextField {
-        id:searchBar
-        anchors.top: parent.top
-        anchors.topMargin: 10
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        maximumLength: 20
-        placeholderText: qsTr("S搜(歌星/歌名/歌词)")
-        style: TextFieldStyle {
-            id:style
-            textColor: "#FFFFFFFF"
-            background: Image {
-                anchors.fill: parent
-                anchors.leftMargin: -40
-                anchors.rightMargin: 0
-                source: "images/searchbar.png"
-            }
-            panel:Item {
-                anchors.fill: parent
-                property font font
-                property color textColor: style.textColor
-                property color selectionColor: style.selectionColor
-                property color selectedTextColor: style.selectedTextColor
-                implicitWidth: backgroundLoader.implicitWidth ? backgroundLoader.implicitWidth : 100
-                implicitHeight: backgroundLoader.implicitHeight ? backgroundLoader.implicitHeight : 20
-                property color placeholderTextColor: Qt.rgba(1, 1, 1, 0.5)
-                Loader {
-                    id: backgroundLoader
-                    sourceComponent: background
-                    anchors.fill: parent
-                }
-            }
-        }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                searchBar.forceActiveFocus();
-                if(keyboard.state === "show")
-                {
-                    keyboard.state = "hide";
-                    popContentAreaTimer.start();
-                }else
-                {
-                    popContentArea.visible = true;
-                    keyboard.state = "show";
-                }
-            }
-        }
-    }
-    */
     SearchBarMenu {
         id:searchBarMenu
         anchors.top: parent.top

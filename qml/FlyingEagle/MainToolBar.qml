@@ -265,6 +265,25 @@ Rectangle {
                     width: 142;
                     height: 26;
                     source: "images/sliderFg.png"
+                    clip: true;
+                    ParticleSystem {
+                        id: particles
+                    }
+                    ImageParticle {
+                        system: particles
+                        source: "images/jindu-qipao1.png"
+                    }
+                    Emitter {
+                        anchors.fill: progressImg1
+                        system: particles
+                        emitRate: 5
+                        lifeSpan: 4000
+                        velocity: PointDirection { y:-4; yVariation: 4; }
+                        acceleration: PointDirection { y: 4 }
+                        size: 13
+                        endSize: 5
+                        sizeVariation: 0
+                    }
                 }
                 Image {
                     id:progressImg2
@@ -272,26 +291,6 @@ Rectangle {
                     width: 10
                     height: 26;
                     source: "images/sliderFgRadius.png"
-                }
-                ParticleSystem {
-                    id: particles
-                }
-                ImageParticle {
-                    system: particles
-                    source: "images/jindu-qipao1.png"
-                }
-                Emitter {
-                    anchors.fill: progress
-                    system: particles
-                    emitRate: 5
-                    lifeSpan: 4000
-                    velocity: PointDirection { y:-4; yVariation: 4; }
-                    acceleration: PointDirection { y: 4 }
-                    size: 13
-                    endSize: 5
-                    sizeVariation: 0
-                    width: progress.width
-                    height: progress.height
                 }
             }
 

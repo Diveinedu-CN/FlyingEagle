@@ -217,6 +217,8 @@ Rectangle {
                 {
                     popContentAreaYixuan.visible = true;
                     yixuanLoader.item.showUp(true);
+                    popContentArea.visible = false;
+                    tunningPopupPage.visible = false;
                 }
             }
         }
@@ -232,6 +234,8 @@ Rectangle {
                 {
                     popContentAreaYixuan.visible = true;
                     yixuanLoader.item.showUp(true);
+                    popContentArea.visible = false;
+                    tunningPopupPage.visible = false;
                 }
 
             }
@@ -265,6 +269,8 @@ Rectangle {
             if(tunningPopupPage.visible == false)
             {
                 tunningPopupPage.visible = true;
+                popContentArea.visible = false;
+                popContentAreaYixuan.visible = false;
             }else
             {
                 tunningPopupPage.visible = false

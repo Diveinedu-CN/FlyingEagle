@@ -71,17 +71,15 @@ Rectangle {
         zishu.selected = false;
         switch (inputType) {
         case "quanbu":
-//            quanbu.selected = true;
-//            seckeyboard.showEnglishKeyboard();
             baotai_gexing.visible = false
             break;
         case "shoupin":
             shoupin.selected = true;
-            seckeyboard.showEnglishKeyboard();
+            normalInputArea.showShoupin();
             break;
         case "shouxie":
             shouxie.selected = true;
-            seckeyboard.showHandWritingKeyboard();
+            normalInputArea.showShouxie();
             break;
         case "zishu":
             zishu.selected = true;
@@ -674,81 +672,108 @@ Rectangle {
     Rectangle {
         id: secendFilter_DIV;
         width: 712;
-        height: 420/*335*/;
-        anchors.top: parent.top;
-        anchors.topMargin: 215;
+        height: 350;
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 86;
         color: "transparent";
-        clip: true;
         Rectangle {
-            id: secondFilterKeyboard
-            width: 702; height: 350;
-            color: "transparent"
-            anchors.bottom: footer_div.top;
-            anchors.bottomMargin: -410;
-            state: visible?"show":"hide";
-            states: [ State { name: "show" }, State { name: "hide" } ]
-            transitions: [
-                Transition {
-                    from: "show"; to: "hide"
-                    PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: "-410"; duration: 150; easing.type: Easing.InOutQuad; }
-                },
-                Transition {
-                    from: "hide"; to: "show"
-                    PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: "0"; duration: 300; easing.type: Easing.InOutQuad;}
-                }
-            ]
-        Rectangle {
-            id: normalInputArea;
-            visible: !zishu.selected;
-            TextInput {
-                id: secendFilter_input
-                anchors.left: parent.left;
-                anchors.leftMargin: 10;
-                width: 693
-                height: 42
-                maximumLength:25;
-                focus: normalInputArea.visible;
-                text: qsTr("123456")
-                color: "white"
-                font.pointSize: 30
-                transformOrigin: Item.Center
-                echoMode: TextInput.Normal
-                anchors.top: parent.top;
-                anchors.topMargin: 0;
-                horizontalAlignment: TextInput.AlignLeft
-            }
-            KeyBoard {
-                id: seckeyboard;
-                width: 693; height: 295;
-                anchors.top: secendFilter_input.bottom;
-                anchors.topMargin: 0;
-                anchors.left: parent.left;
-                anchors.leftMargin: 10;
-                onNeedHide: {
-                    secendFilter_DIV.visible = false;
-                    baotai_gexing.visible = false;
-                }
-            }
-
-        }
-        Rectangle {
-            id:zishuInputKeyboard;
-            visible: zishu.selected;
-            width: 693; height: 80;
-            color: "transparent";
-            anchors.left: parent.left
-            anchors.leftMargin: 18;
-//            anchors.bottom: footer_div.top;
+            id:keyboardArea;
+            width: 712; height: 350;
             anchors.bottom: parent.bottom;
-            ZishuInput {
-                anchors.fill: parent;
-                onHideClicked: {
-                    secendFilter_DIV.visible = false;
-                    baotai_gexing.visible = false;
+            anchors.bottomMargin: 56;
+            color: "transparent"
+            clip: true;
+            Rectangle {
+                id: secondFilterKeyboard
+                width: 712; height: parent.height;
+                color: "transparent"
+                anchors.left: parent.left
+                anchors.leftMargin: 10;
+                anchors.bottom: parent.bottom;
+                anchors.bottomMargin: -210;
+                state: visible?"show":"hide";
+                states: [ State { name: "show" }, State { name: "hide" } ]
+                transitions: [
+                    Transition {
+                        from: "show"; to: "hide"
+                        PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: -210; duration: 150; easing.type: Easing.InOutQuad; }
+                    },
+                    Transition {
+                        from: "hide"; to: "show"
+                        PropertyAnimation { target: secondFilterKeyboard; properties: "anchors.bottomMargin"; to: 0; duration: 300; easing.type: Easing.InOutQuad;}
+                    }
+                ]
+                Rectangle {
+                    id: normalInputArea;
+                    height: parent.height;
+                    color: "transparent"
+                    visible: !zishu.selected;
+                    function showShoupin()
+                    {
+                        shoupin_keyboard.visible = true;
+                        shouxie_keyboard.visible = false;
+                    }
+                    function showShouxie()
+                    {
+                        shoupin_keyboard.visible = false;
+                        shouxie_keyboard.visible = true;
+                    }
+
+                    TextInput {
+                        id: secendFilter_input
+                        anchors.left: parent.left;
+                        anchors.leftMargin: 10;
+                        width: 693
+                        height: 42
+                        maximumLength:25;
+                        focus: normalInputArea.visible;
+                        text: qsTr("123456")
+                        color: "white"
+                        font.pointSize: 30
+                        transformOrigin: Item.Center
+                        echoMode: TextInput.Normal
+                        anchors.bottom: shoupin_keyboard.visible?shoupin_keyboard.top:shouxie_keyboard.top;
+                        horizontalAlignment: TextInput.AlignLeft
+                    }
+                    ShouPinKeyBoard {
+                        id: shoupin_keyboard;
+                        anchors.bottom: parent.bottom;
+                        width: 693;
+                        height: 195;
+                        color: "transparent";
+                        onHideClicked: {
+                            baotai_gexing.visible = false;
+                        }
+                    }
+                    ShouXieKeyBoard {
+                        id: shouxie_keyboard
+                        anchors.bottom: parent.bottom;
+                        width: 611;
+                        height: 309;
+                        visible: false;
+                        onHideClicked: {
+                            baotai_gexing.visible = false;
+                        }
+                    }
+
+                }
+                Rectangle {
+                    id:zishuInputKeyboard;
+                    visible: zishu.selected;
+                    width: 693; height: 80;
+                    color: "transparent";
+                    anchors.bottom: parent.bottom;
+                    ZishuInput {
+                        anchors.fill: parent;
+                        onHideClicked: {
+                            secendFilter_DIV.visible = false;
+                            baotai_gexing.visible = false;
+                        }
+                    }
                 }
             }
         }
-        }
+
 
         //下面的输入类型选择按钮横条
         Rectangle {
@@ -775,7 +800,6 @@ Rectangle {
                     shoupin.selected = false;
                     shouxie.selected = false;
                     zishu.selected = false;
-//                    seckeyboard.showEnglishKeyboard();
                     baotai_gexing.secendFilterVisible = false;
                     baotai_gexing.visible = false;
 
@@ -796,7 +820,7 @@ Rectangle {
                     shoupin.selected = true;
                     shouxie.selected = false;
                     zishu.selected = false;
-                    seckeyboard.showEnglishKeyboard();
+                    normalInputArea.showShoupin();
                 }
             }
             PushButton {
@@ -814,7 +838,7 @@ Rectangle {
                     shoupin.selected = false;
                     shouxie.selected = true;
                     zishu.selected = false;
-                    seckeyboard.showHandWritingKeyboard();
+                    normalInputArea.showShouxie();
                 }
             }
             PushButton {

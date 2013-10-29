@@ -41,4 +41,5 @@ OTHER_FILES += \
     qml/FlyingEagle/BaotaiGexingJianJiePage.qml \
     qml/FlyingEagle/KeyBoard/ZishuInput.qml \
     qml/FlyingEagle/MovieUDiskPage.qml \
-    qml/FlyingEagle/FoldMenuList.qml
+    qml/FlyingEagle/FoldMenuList.qml \
+    qml/FlyingEagle/KeyBoard/ShouPinKeyBoard.qml

@@ -93,7 +93,7 @@ Rectangle {
                         target: guangpan;
                         from: 0
                         to: -180
-                        duration: 4000;
+                        duration: 16000;
 //                        easing.type: Easing.InOutQuad
                     }
 
@@ -101,7 +101,7 @@ Rectangle {
                         target: guangpan;
                         from: -180
                         to: -360
-                        duration: 4000;
+                        duration: 16000;
 //                        easing.type: Easing.InOutQuad
                     }
                 }

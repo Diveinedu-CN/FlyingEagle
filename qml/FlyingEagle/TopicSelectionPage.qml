@@ -14,7 +14,7 @@ Rectangle {
     height: 591
     color: "transparent"
 
-    property var pathArray: new Array("点歌")
+    property var pathArray: new Array("主题分类")
 
     signal handlerLoader(string name, int index)
 
@@ -83,6 +83,9 @@ Rectangle {
             navBar.createButtons(pathArray)
 
             contentLoader.source = "TopicContent.qml"
+        }
+        onHandleBack: {
+            topicPage.handlerLoader("HomePage.qml", 0)
         }
     }
 }

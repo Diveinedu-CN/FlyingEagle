@@ -12,6 +12,8 @@ Item {
     property int ySrc: 1000
     property int xSrc: 1500
 
+    signal handleBack(string name, int index)
+
     id: rankContent
 
 //    anchors.topMargin: 4
@@ -51,6 +53,7 @@ Item {
         y: ySrc
         width: 112
         height: 138
+        isHorizontal: false
 
         scale: defaultScale
 
@@ -137,6 +140,7 @@ Item {
         y: ySrc
         width: 212
         height: 138
+        isHorizontal: false
 
         scale: defaultScale
 
@@ -201,6 +205,7 @@ Item {
         y: ySrc
         width: 138
         height: 138
+        isHorizontal: false
 
         scale: defaultScale
 
@@ -328,6 +333,7 @@ Item {
         y: ySrc
         width: 138
         height: 136
+        isHorizontal: false
 
         scale: defaultScale
 
@@ -392,7 +398,7 @@ Item {
                 properties: "angle"
                 easing.type: Easing.OutExpo
                 to:0
-                from: 60
+                from: 80
                 duration: 1000
                 direction: RotationAnimation.Counterclockwise
             }
@@ -402,7 +408,7 @@ Item {
                 properties: "angle"
                 easing.type: Easing.OutExpo
                 to:0
-                from: 60
+                from: 80
                 duration: 1000
                 direction: RotationAnimation.Counterclockwise
             }
@@ -710,5 +716,18 @@ Item {
 
     Component.onCompleted: {
         animation.start()
+    }
+
+    PushButton {
+        id:back;
+        width: 100; height: 44;
+        anchors.bottom: parent.bottom;
+        anchors.bottomMargin: -20
+        anchors.right: parent.right;
+        anchors.rightMargin: 100;
+        backgroundNormal: "images/back.png";
+        onClicked: {
+            rankContent.handleBack("homePage.qml", 0)
+        }
     }
 }

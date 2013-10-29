@@ -11,6 +11,8 @@ Rectangle {
     height: 500
     color: "transparent"
 
+    signal handleBack()
+
     PathView {
         id: pathView
         anchors.top: parent.top
@@ -305,6 +307,20 @@ Rectangle {
 
         Component.onCompleted: {
             animation.start()
+        }
+    }
+
+    PushButton {
+        id:backButton;
+        width: 100; height: 44;
+        anchors.bottom: parent.bottom;
+        anchors.bottomMargin: -60
+        anchors.right: parent.right;
+        anchors.rightMargin: 70;
+        backgroundNormal: "images/back.png";
+        onClicked: {
+//                handlerLoader("HomePage.qml", 0)
+            container.handleBack()
         }
     }
 }

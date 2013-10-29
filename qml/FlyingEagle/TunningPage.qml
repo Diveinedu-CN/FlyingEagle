@@ -186,6 +186,7 @@ Rectangle {
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left;
                     anchors.leftMargin: 4;
+                    fillMode: Image.PreserveAspectFit
                     source: "images/dsc_tuning_sfront.png"
                 }
             }
@@ -211,9 +212,10 @@ Rectangle {
                 progress: Image {
                     width: 80
                     height: 6
-                    anchors.fill: parent
                     anchors.bottom: parent.bottom
-                    fillMode: Image.Stretch
+                    anchors.left: parent.left;
+                    anchors.leftMargin: 4;
+                    fillMode: Image.PreserveAspectFit
                     source: "images/dsc_tuning_sfront.png"
                 }
             }

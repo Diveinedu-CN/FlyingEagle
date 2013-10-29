@@ -96,5 +96,8 @@ Rectangle {
 
             contentLoader.source = "RankContent.qml"
         }
+        onHandleBack: {
+            rank_selection.handlerLoader("HomePage.qml", 0)
+        }
     }
 }

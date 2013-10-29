@@ -55,7 +55,7 @@ Rectangle {
                 height: 136
                 source: "images/finalTop/5.png"
                 Behavior on y {
-                    NumberAnimation { easing.amplitude: 5; easing.type: Easing.OutInBack; duration: 100 }
+                    NumberAnimation { easing.amplitude: 5; easing.type: Easing.Linear; duration: 100 }
                 }
             }
 

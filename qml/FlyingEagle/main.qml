@@ -240,7 +240,7 @@ Rectangle {
         }
         Timer {
             id:popContentAreaYixuanTimer
-            interval: 500; running: false; repeat: false
+            interval: 350; running: false; repeat: false
             onTriggered: {
                 popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
             }

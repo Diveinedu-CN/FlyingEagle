@@ -230,6 +230,7 @@ Rectangle {
         y: 461
         width: 68
         height: 36
+        visible: contentItem.visible
 
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 35;
@@ -243,6 +244,7 @@ Rectangle {
         y: 468
         width: 128
         height: 22
+        visible: contentItem.visible
 
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40;
@@ -259,6 +261,7 @@ Rectangle {
         y: 461
         width: 68
         height: 36
+        visible: contentItem.visible
 
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 35;

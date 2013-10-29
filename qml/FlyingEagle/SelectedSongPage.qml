@@ -303,13 +303,13 @@ Item {
                 target: effect
                 properties: "bend"
                 to: 0.95
-                duration: 250
+                duration: 150
             }
             PropertyAnimation {
                 target: effect
                 properties: "minimize"
                 to: 1
-                duration: 250
+                duration: 150
             }
         }
         SequentialAnimation {
@@ -318,13 +318,13 @@ Item {
                 target: effect
                 properties: "minimize"
                 to: 0
-                duration: 250
+                duration: 150
             }
             PropertyAnimation {
                 target: effect
                 properties: "bend"
                 to: 0
-                duration: 250
+                duration: 150
             }
         }
 //        Behavior on minimize {

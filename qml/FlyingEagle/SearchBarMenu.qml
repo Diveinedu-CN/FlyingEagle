@@ -16,7 +16,7 @@ Rectangle {
     TextField {
         id:searchBar
         anchors.top: parent.top
-        anchors.topMargin: 0
+        anchors.topMargin: -2
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left;
@@ -28,7 +28,7 @@ Rectangle {
         font.pixelSize: 18
         style: TextFieldStyle {
             id:style
-            textColor: "#FFFFFFFF"
+            textColor: "#F0F0F0"
             background: Rectangle {
                 anchors.top: parent.top;
                 anchors.right: parent.right;

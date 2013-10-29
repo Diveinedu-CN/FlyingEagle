@@ -5,11 +5,14 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: container
+
     width: 1280
     height: 591
     color: "transparent"
 
     signal handlerLoader(string name, int index)
+    signal handleShowBaotai(variant cardPoint)
 
     Item {
         id: contentItem
@@ -100,6 +103,16 @@ Rectangle {
 
 //                        color: index % 2?"#FF0000":"#00FF00"
 //                    }
+
+                MouseArea {
+                    anchors.fill: parent
+
+                    onClicked: {
+                        var centerX = parent.x+parent.width/2;
+                        var centerY = parent.y+parent.height/2;
+                        container.handleShowBaotai(Qt.point(centerX,centerY));
+                    }
+                }
 
                 Text {
                     id: numberId

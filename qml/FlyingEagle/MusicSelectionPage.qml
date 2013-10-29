@@ -36,7 +36,7 @@ Rectangle {
             anchors.left: navDiangeImage.right
 
             Component.onCompleted: {
-                navBar.createButtons(new Array("点歌"))
+                navBar.createButtons(new Array("歌名"))
             }
         }
 

@@ -11,7 +11,7 @@ Rectangle {
     color: "transparent"
 
     signal handlerLoader(string name, int index)
-    signal handleShowBaotai(string title)
+    signal handleShowBaotai(variant cardPoint)
     signal handleShowSingerInfo(string starname)
     signal handleShowMvPreview(string mv)
     signal handleShowSecondFilter(string inputType)
@@ -79,7 +79,7 @@ Rectangle {
         }
         //指定排行里页面下面的按钮条的事件转发
         onHandleShowBaotai: {
-            rank_selection.handleShowBaotai(title);
+            rank_selection.handleShowBaotai(cardPoint);
         }
         onHandleShowSingerInfo: {
             rank_selection.handleSingerInfo(starname);

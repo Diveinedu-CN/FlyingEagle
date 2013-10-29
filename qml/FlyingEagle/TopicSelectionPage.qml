@@ -17,6 +17,7 @@ Rectangle {
     property var pathArray: new Array("主题分类")
 
     signal handlerLoader(string name, int index)
+    signal handleShowBaotai(variant cardPoint)
 
     //导航图标
     Image {
@@ -86,6 +87,9 @@ Rectangle {
         }
         onHandleBack: {
             topicPage.handlerLoader("HomePage.qml", 0)
+        }
+        onHandleShowBaotai: {
+            topicPage.handleShowBaotai(cardPoint)
         }
     }
 }

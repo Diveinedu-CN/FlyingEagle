@@ -13,6 +13,7 @@ Item {
     property int xSrc: 1500
 
     signal handleBack(string name, int index)
+    signal handleShowBaotai(variant cardPoint)
 
     id: rankContent
 
@@ -727,7 +728,7 @@ Item {
         anchors.rightMargin: 100;
         backgroundNormal: "images/back.png";
         onClicked: {
-            rankContent.handleBack("homePage.qml", 0)
+            rankContent.handleBack("HomePage.qml", 0)
         }
     }
 }

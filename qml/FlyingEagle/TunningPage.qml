@@ -391,6 +391,7 @@ Rectangle {
             anchors.top: parent.top
             onClicked: {
                 tunningItem.handWriteGreetingClicked();
+                tunningItem.closeQifenClicked();
             }
         }
         Rectangle {
@@ -812,7 +813,10 @@ Rectangle {
             anchors.top: parent.top
             backgroundNormal: "images/dy.png"
             anchors.left: parent.left
-            onClicked: tunningItem.movieButtonClicked();
+            onClicked: {
+                tunningItem.movieButtonClicked();
+                tunningItem.closeFuwuClicked();
+            }
         }
 
         PushButton {
@@ -839,7 +843,10 @@ Rectangle {
             anchors.top: parent.top
             backgroundNormal: "images/udisk_add.png"
             anchors.left: parent.left
-            onClicked: tunningItem.udiskAddButtonClicked();
+            onClicked: {
+                tunningItem.udiskAddButtonClicked();
+                tunningItem.closeFuwuClicked();
+            }
         }
         PushButton {
             id: closeFuwuButton

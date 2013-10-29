@@ -597,6 +597,23 @@ Rectangle {
             font.pixelSize: 22
             font.bold: true;
             color: "white"
+            onFocusChanged: {
+                console.log("mediaName focus changed "+mediaName.focus)
+                if (mediaName.focus)
+                {
+                    finger.anchors.top = mediaName.top;
+                    finger.isRight = false;
+                }
+            }
+        }
+        Image {
+            id: finger
+            property bool isRight: false;
+            width: 27;height: 24;
+            source: isRight?"images/finger2.png":"images/finger.png";
+            anchors.left: mediaName.right;
+            anchors.leftMargin: isRight?20:0;
+            anchors.top: mediaName1.top;
         }
 
         TextInput {
@@ -611,8 +628,16 @@ Rectangle {
                 anchors.topMargin: -4;
                 source: "images/udiskAddEditInputBg.png"
             }
-            font.pixelSize: 22
+            font.pixelSize:22;
             color: "white"
+            onFocusChanged: {
+                console.log("mediaName1 focus changed "+mediaName1.focus)
+                if (mediaName1.focus)
+                {
+                    finger.anchors.top = mediaName1.top;
+                    finger.isRight = false;
+                }
+            }
 
         }
 
@@ -630,6 +655,14 @@ Rectangle {
             }
             font.pixelSize: 22
             color: "white"
+            onFocusChanged: {
+                console.log("mediaName focus changed "+mediaName2.focus)
+                if (mediaName2.focus)
+                {
+                    finger.anchors.top = mediaName2.top;
+                    finger.isRight = true;
+                }
+            }
         }
 
         Column {

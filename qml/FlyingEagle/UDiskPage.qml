@@ -944,7 +944,10 @@ Rectangle {
                             width:56;height: 50;
                             text: modelData;
                             backgroundNormal: "";
-                            onClicked: fakekey.sendKey(modelData)
+                            onClicked: {
+                                canvas.clear();
+                                fakekey.sendKey(modelData);
+                            }
                         }
                     }
                 }

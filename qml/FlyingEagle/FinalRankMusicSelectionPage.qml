@@ -186,7 +186,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        icon: "images/TopicCategorySubPage/5.png"
+                        backgroundNormal: "images/TopicCategorySubPage/5.png"
                     }
 
                     PushButton {
@@ -199,7 +199,7 @@ Rectangle {
                         anchors.top: parent.top
                         anchors.topMargin: 16
 
-                        icon: "images/TopicCategorySubPage/6.png"
+                        backgroundNormal: "images/TopicCategorySubPage/6.png"
                     }
                 }
             }//end gridview

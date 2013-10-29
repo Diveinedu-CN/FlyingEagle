@@ -44,7 +44,10 @@ Rectangle {
                 width:80;height: 56;
                 text: modelData;
                 backgroundNormal: "";
-                onClicked: fakekey.sendKey(modelData)
+                onClicked: {
+                    fakekey.sendKey(modelData);
+                    canvas.clear();
+                }
             }
         }
     }

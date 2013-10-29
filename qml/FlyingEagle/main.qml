@@ -52,20 +52,22 @@ Rectangle {
                 id:musicNoteAnimation
 //                loops: Animation.Infinite
                 running: false
-                property int duration: 300;
+                property int duration0: 300;
+                property int duration1: 200;
                 property point startPoint: Qt.point(x,y);
+                property int endX: 0;
                 ParallelAnimation {
-                    NumberAnimation { target: musicNote; property: "x";from:musicNoteAnimation.startPoint.x; to:640; duration: musicNoteAnimation.duration }
-                    NumberAnimation { target: musicNote; property: "y"; easing.type: Easing.OutCirc;from:musicNoteAnimation.startPoint.y; to:275; duration: musicNoteAnimation.duration }
-                    NumberAnimation { target: musicNote; property: "scale";  from:0.5; to:1; duration: musicNoteAnimation.duration }
-                    NumberAnimation { target: musicNote; property: "opacity";from:0.5; to:1; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "x";from:musicNoteAnimation.startPoint.x; to:musicNoteAnimation.endX; duration: musicNoteAnimation.duration0 }
+                    NumberAnimation { target: musicNote; property: "y"; easing.type: Easing.OutBack;from:musicNoteAnimation.startPoint.y; to:musicNoteAnimation.startPoint.y-50; duration: musicNoteAnimation.duration0 }
+                    NumberAnimation { target: musicNote; property: "scale";  from:0.5; to:1; duration: musicNoteAnimation.duration0 }
+                    NumberAnimation { target: musicNote; property: "opacity";from:0.5; to:1; duration: musicNoteAnimation.duration0 }
                 }
 
                 ParallelAnimation {
-                    NumberAnimation { target: musicNote; property: "x";to:1280; duration: musicNoteAnimation.duration }
-                    NumberAnimation { target: musicNote; property: "y";to:550; duration: musicNoteAnimation.duration }
-                    NumberAnimation { target: musicNote; property: "scale"; from:1; to:0; duration: musicNoteAnimation.duration }
-                    NumberAnimation { target: musicNote; property: "opacity";from:1; to:0.2; duration: musicNoteAnimation.duration }
+                    NumberAnimation { target: musicNote; property: "x";to:1280; duration: musicNoteAnimation.duration1 }
+                    NumberAnimation { target: musicNote; property: "y";to:550; duration: musicNoteAnimation.duration1 }
+                    NumberAnimation { target: musicNote; property: "scale"; from:1; to:0; duration: musicNoteAnimation.duration1 }
+                    NumberAnimation { target: musicNote; property: "opacity";from:1; to:0.2; duration: musicNoteAnimation.duration1 }
                 }
             }
         }
@@ -79,6 +81,14 @@ Rectangle {
             }
             onHandleShowBaotai: {
                 musicNoteAnimation.startPoint = cardPoint;
+                if(cardPoint.x>800)
+                {
+                    musicNoteAnimation.endX = cardPoint.x-200;
+                }else
+                {
+                    musicNoteAnimation.endX = cardPoint.x+200;
+                }
+
                 console.log("cardPoint:"+cardPoint);
                 baotaigexing.showNumpad(cardPoint);
             }
@@ -418,29 +428,6 @@ Rectangle {
         color: "#BF000000";
         visible: false;
     }
-/*
-    ParticleSystem {
-        id: particles
-    }
 
-    ImageParticle {
-        system: particles
-
-        source: "images/bubble.png"
-    }
-
-    Emitter {
-        system: particles
-        emitRate: 20
-        lifeSpan: 8000
-        velocity: PointDirection { y:80; yVariation: 40; }
-        acceleration: PointDirection { y: 4 }
-        size: 60
-        endSize: 12
-        sizeVariation: 8
-        width: parent.width
-        height: 100
-    }
-*/
 
 }

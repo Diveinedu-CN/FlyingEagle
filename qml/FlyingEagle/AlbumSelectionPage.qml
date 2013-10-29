@@ -8,7 +8,7 @@ Rectangle {
     color: "transparent"
 
     signal clicked(int index, int type)
-
+    signal handleShowSecondFilter(string inputType)
     TestModel2 {
         id: testModel2
     }
@@ -150,6 +150,90 @@ Rectangle {
 
         onClicked: {
             handlerLoader("HomePage.qml", 0)
+        }
+    }
+
+    //下面的二次筛选按钮条
+    Rectangle {
+        id: footer_div;
+        width: 1280;height: 55;
+        anchors.top: backButton.top;
+        anchors.topMargin: 0;
+        color: "transparent";
+        property string selectedimg: "images/secondfilter_selected.png";
+        property string unselectedimg: "images/secondfilter_unselected.png";
+
+        PushButton {
+            id:quanbu;
+            property bool selected: false;
+            text: "全部";
+            colorText: "white";
+            width: 80; height: 40;
+            anchors.top: parent.top;
+            anchors.left: parent.left;
+            anchors.leftMargin: 90;
+            backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+            onClicked: {
+                quanbu.selected = true;
+                shoupin.selected = false;
+                shouxie.selected = false;
+                zishu.selected = false;
+                container.handleShowSecondFilter("quanbu");
+            }
+        }
+        PushButton {
+            id:shoupin;
+            property bool selected: false;
+            text: "首拼";
+            colorText: "white";
+            width: 80; height: 40;
+            anchors.top: parent.top;
+            anchors.left: quanbu.right;
+            anchors.leftMargin: 15;
+            backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+            onClicked: {
+                quanbu.selected = false;
+                shoupin.selected = false;
+                shouxie.selected = false;
+                zishu.selected = false;
+                container.handleShowSecondFilter("shoupin");
+            }
+        }
+        PushButton {
+            id:shouxie;
+            property bool selected: false;
+            text: "手写";
+            colorText: "white";
+            width: 80; height: 40;
+            anchors.top: parent.top;
+            anchors.left: shoupin.right;
+            anchors.leftMargin: 15;
+            backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+            onClicked: {
+                quanbu.selected = false;
+                shoupin.selected = false;
+                shouxie.selected = false;
+                zishu.selected = false;
+                container.handleShowSecondFilter("shouxie");
+            }
+        }
+        PushButton {
+            id:zishu;
+            property bool selected: false;
+            text: "字数";
+            colorText: "white";
+            width: 80; height: 40;
+            anchors.top: parent.top;
+            anchors.left: shouxie.right;
+            anchors.leftMargin: 15;
+            backgroundNormal: selected?footer_div.selectedimg:footer_div.unselectedimg;
+            onClicked: {
+                quanbu.selected = false;
+                shoupin.selected = false;
+                shouxie.selected = false;
+                zishu.selected = false;
+                container.handleShowSecondFilter("zishu");
+            }
         }
     }
 }

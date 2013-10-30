@@ -167,7 +167,7 @@ Item {
 
 //            text: "0"
         backgroundNormal: "images/delete.png"
-        onClicked: number_input.remove(number_input.length-1,number_input.length);
+        onClicked: number_input.text=number_input.text.substring(0,number_input.length-1);
     }
 
     PushButton{

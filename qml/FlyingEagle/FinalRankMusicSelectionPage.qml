@@ -296,12 +296,19 @@ Rectangle {
                     anchors.rightMargin: 30;
                     backgroundNormal: "images/left.png";
                     onClicked: {
+                        var nextPageIndex = (musicList.currentIndex/7)*7-12;
+                        if(nextPageIndex<0)
+                        {
+                            return;
+                        }
+                        musicList.currentIndex = nextPageIndex;
+//                        musicList.positionViewAtIndex(musicList.currentIndex, GridView.Beginning);
                     }
                 }
                 Text {
                     id: pageText
                     width: 100;
-                    text: qsTr("10/100")
+                    text: (musicList.currentIndex+1)+"/"+(musicList.count);
                     color: "white";
                     font.pixelSize: 18
                     verticalAlignment: Text.AlignVCenter;
@@ -319,6 +326,13 @@ Rectangle {
                     anchors.rightMargin: 80;
                     backgroundNormal: "images/right.png";
                     onClicked: {
+                        var nextPageIndex = (musicList.currentIndex/7)*7+12;
+                        if(nextPageIndex>=musicList.count)
+                        {
+                            return;
+                        }
+                        musicList.currentIndex = nextPageIndex;
+//                        musicList.positionViewAtIndex(musicList.currentIndex, GridView.Beginning);
                     }
                 }
                 PushButton {

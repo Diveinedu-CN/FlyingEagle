@@ -281,12 +281,19 @@ Rectangle {
             anchors.rightMargin: 30;
             backgroundNormal: "images/left.png";
             onClicked: {
+                var nextPageIndex = (starList.currentIndex/7)*7-9;
+                if(nextPageIndex<0)
+                {
+                    return;
+                }
+                starList.currentIndex = nextPageIndex;
+//                starList.positionViewAtIndex(starList.currentIndex, GridView.Beginning);
             }
         }
         Text {
             id: pageText
             width: 100;
-            text: qsTr("10/100")
+            text: (starList.currentIndex+1)+"/"+(starList.count);
             color: "white";
             font.pixelSize: 18
             verticalAlignment: Text.AlignVCenter;
@@ -304,6 +311,13 @@ Rectangle {
             anchors.rightMargin: 80;
             backgroundNormal: "images/right.png";
             onClicked: {
+                var nextPageIndex = (starList.currentIndex/7)*7+9;
+                if(nextPageIndex>=starList.count)
+                {
+                    return;
+                }
+                starList.currentIndex = nextPageIndex;
+//                starList.positionViewAtIndex(starList.currentIndex, GridView.Beginning);
             }
         }
         PushButton {

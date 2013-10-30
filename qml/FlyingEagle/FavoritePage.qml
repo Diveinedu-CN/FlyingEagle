@@ -248,7 +248,10 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 35;
 
-        backgroundNormal: "images/left.png"
+        backgroundNormal: "images/left.png";
+        onClicked: {
+            musicList.moveCurrentIndexLeft();
+        }
     }
 
     Text {
@@ -262,7 +265,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40;
 
-        text: "10/100"
+        text: (musicList.currentIndex+1) + "/" + (musicList.count);
         horizontalAlignment: Text.AlignHCenter
         color: "#FFFFFFFF"
         font.pixelSize: 18
@@ -279,7 +282,10 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 35;
 
-        backgroundNormal: "images/right.png"
+        backgroundNormal: "images/right.png";
+        onClicked: {
+            musicList.moveCurrentIndexRight();
+        }
     }
 
     PushButton {

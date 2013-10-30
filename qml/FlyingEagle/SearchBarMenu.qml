@@ -5,6 +5,8 @@ import QtQuick.Controls.Styles 1.0
 Rectangle {
     id: searchDiv;
     property alias menuList: menuList;
+    signal handleSearch(string title, int type)
+
     width: 330; height:316;
     color: "transparent";
     Image {
@@ -168,11 +170,10 @@ Rectangle {
             colorText: "white"
             backgroundNormal: "images/searchButton.png"
             onClicked: {
-
+                keyboard.state = "hide";
+                popContentAreaTimer.start();
+                searchDiv.handleSearch("", 0)
             }
         }
     }
-
-
-
 }

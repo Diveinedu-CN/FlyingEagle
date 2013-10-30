@@ -173,6 +173,10 @@ Rectangle {
         anchors.rightMargin: 10
 
         width: 330; height:316;
+
+        onHandleSearch: {
+            contentLoader.source = "SearchResultPage.qml"
+        }
     }
 
     //已选弹窗阴影遮盖层,默认不显示,比搜索栏更上一层

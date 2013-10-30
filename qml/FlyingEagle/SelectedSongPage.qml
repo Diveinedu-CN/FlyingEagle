@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQml.Models 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 Item {
@@ -132,78 +133,152 @@ Item {
         //已选框中间的列表
         Component {
             id: songItemDelegate
-            Item {
+            MouseArea {
+                id: dragArea
+
                 property  int size: 20;
                 property  int topMargin: 16;
+                property bool held: false
+
+                drag.target: held ? content : undefined
+                drag.axis: Drag.YAxis
+
+                onPressAndHold: held = true
+                onReleased: held = false
+
                 width: grid.cellWidth; height: grid.cellHeight
                 anchors.leftMargin: 72
-                Text {
-                    id:_seqno;
-                    width:20;height: 40;
-                    font.pixelSize: 18
-                    anchors.left: parent.left;
-                    anchors.leftMargin: 10;
-                    anchors.top:parent.top;
-                    anchors.topMargin: topMargin;
-                    color:"red";
-                    text: index+".";
-                    anchors.verticalCenter: Text.verticalCenter;
+
+                Rectangle {
+                    id: content
+
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        verticalCenter: parent.verticalCenter
+                    }
+
+                    width: dragArea.width
+                    height: dragArea.height
+
+                    Text {
+                        id:_seqno;
+                        width:20;height: 40;
+                        font.pixelSize: 18
+                        anchors.left: parent.left;
+                        anchors.leftMargin: 10;
+                        anchors.top:parent.top;
+                        anchors.topMargin: topMargin;
+                        color:"red";
+                        text: index+".";
+                        anchors.verticalCenter: Text.verticalCenter;
+                    }
+                    Text {
+                        id:_name;
+                        height: 40;
+                        font.pixelSize: 18
+                        anchors.left: _seqno.right;
+                        anchors.leftMargin: 10;
+                        anchors.top:parent.top;
+                        anchors.topMargin: topMargin;
+                        color:"black";
+                        text: name;
+                        anchors.verticalCenter: Text.verticalCenter;
+                    }
+                    Text {
+                        id:_star;
+                        height: 40;
+                        font.pixelSize: 18
+                        anchors.right: _firstButton.left;
+                        anchors.rightMargin: 20;
+                        anchors.top:parent.top;
+                        anchors.topMargin: topMargin;
+                        color:"black";
+                        text: star;
+                        anchors.verticalCenter: Text.verticalCenter;
+                    }
+                    PushButton {
+                        id:_firstButton;
+                        width:40;height: 40;
+                        anchors.right:_delButton.left;
+                        anchors.rightMargin: 10;
+                        backgroundNormal: "images/first.png";
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    PushButton {
+                        id:_delButton;
+                        width:40;height: 40;
+                        anchors.right: parent.right;
+                        backgroundNormal: "images/del.png";
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Drag.active: dragArea.held
+                    Drag.source: dragArea
+                    Drag.hotSpot.x: width / 2
+                    Drag.hotSpot.y: height / 2
+
+                    color: dragArea.held ? "lightsteelblue" : "white"
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 100
+                        }
+                    }
+
+                    states: [
+                        State {
+                            when: dragArea.held
+
+                            ParentChange {
+                                target: content
+                                parent: grid
+                            }
+
+                            AnchorChanges {
+                                target: content
+                                anchors {
+                                    horizontalCenter: undefined
+                                    verticalCenter: undefined
+                                }
+                            }
+                        }
+                    ]
                 }
-                Text {
-                    id:_name;
-                    height: 40;
-                    font.pixelSize: 18
-                    anchors.left: _seqno.right;
-                    anchors.leftMargin: 10;
-                    anchors.top:parent.top;
-                    anchors.topMargin: topMargin;
-                    color:"black";
-                    text: name;
-                    anchors.verticalCenter: Text.verticalCenter;
-                }
-                Text {
-                    id:_star;
-                    height: 40;
-                    font.pixelSize: 18
-                    anchors.right: _firstButton.left;
-                    anchors.rightMargin: 20;
-                    anchors.top:parent.top;
-                    anchors.topMargin: topMargin;
-                    color:"black";
-                    text: star;
-                    anchors.verticalCenter: Text.verticalCenter;
-                }
-                PushButton {
-                    id:_firstButton;
-                    width:40;height: 40;
-                    anchors.right:_delButton.left;
-                    anchors.rightMargin: 10;
-                    backgroundNormal: "images/first.png";
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                PushButton {
-                    id:_delButton;
-                    width:40;height: 40;
-                    anchors.right: parent.right;
-                    backgroundNormal: "images/del.png";
-                    anchors.verticalCenter: parent.verticalCenter
+
+                DropArea {
+                    anchors { fill: parent; margins: 10 }
+
+                    onEntered: {
+                        visualModel.items.move(
+                                    drag.source.DelegateModel.itemsIndex,
+                                    dragArea.DelegateModel.itemsIndex)
+                    }
                 }
             }
         }
 
+        DelegateModel {
+                id: visualModel
+
+                model: TestListModel {}
+                delegate: songItemDelegate
+            }
+
         GridView {
             id: grid
             width: 424;
-            height: 456
+            height: 432
             anchors.left: yixuanButton.left
             anchors.top: yixuanButton.bottom
             cellWidth: grid.width; cellHeight: 54
+
+            property int firstIndexDrag: -1
+
             flow: GridView.TopToBottom
             snapMode: GridView.SnapToRow
             clip: true
             cacheBuffer: 42;
-            model: TestListModel {}
-            delegate: songItemDelegate
+            model: visualModel
+
             //        highlight: Rectangle { width: grid.cellWidth-2; color: "lightblue"; anchors.left: parent.left; anchors.leftMargin: 2; radius: 10 }
             highlightFollowsCurrentItem: true
             focus: true

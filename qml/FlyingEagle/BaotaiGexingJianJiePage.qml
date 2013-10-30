@@ -461,7 +461,7 @@ Rectangle {
         x: 320
         anchors.top: parent.top;
         anchors.topMargin: 74;
-        width: 640; height: 518;
+        width: 574; height: 519;
         color: "transparent";
         MouseArea {
             anchors.fill: parent;
@@ -476,44 +476,54 @@ Rectangle {
 
         Rectangle {
             id:mv_preview_area;
-            width:600;height: 400;
+            x: 35
+            y: 26
+            width:504;height: 380;
             anchors.top:parent.top;
-            anchors.topMargin: 25;
+            anchors.topMargin: 26
             anchors.left: parent.left;
-            anchors.leftMargin: 25;
+            anchors.leftMargin: 35
             color: "black";
         }
 
         PushButton {
             id:mv_preview_top;
-            width: 60;height: 60;
+            x: 155
+            y: 423
+            width: 55;height: 55;
             anchors.top: mv_preview_area.bottom;
-            anchors.topMargin: 25;
+            anchors.topMargin: 19
             anchors.left: parent.left;
-            anchors.leftMargin: 184;
+            anchors.leftMargin: 155
             backgroundNormal: "images/mv_preview_top.png";
         }
         PushButton {
             id:mv_preview_addplay;
-            width: 70;height: 70;
+            x: 260
+            y: 418
+            width: 65;height: 65;
             anchors.top: mv_preview_area.bottom;
-            anchors.topMargin: 15;
+            anchors.topMargin: 14
             anchors.left: mv_preview_top.right;
             anchors.leftMargin: 50;
+            text: "点歌";
+            colorText: "black";
             backgroundNormal: "images/mv_preview_addplay.png";
         }
         PushButton {
             id:mv_preview_fav;
-            width: 60;height: 60;
+            x: 378
+            y: 419
+            width: 55;height: 55;
             anchors.top: mv_preview_area.bottom;
-            anchors.topMargin: 25;
+            anchors.topMargin: 15
             anchors.right: parent.right;
-            anchors.rightMargin: 184;
+            anchors.rightMargin: 141
             backgroundNormal: "images/mv_preview_fav.png";
         }
         PushButton {
             id:mv_preview_close;
-            x: 620
+            x: 540
             y: -15
             width: 40;height: 40;
             backgroundNormal: "images/del.png";

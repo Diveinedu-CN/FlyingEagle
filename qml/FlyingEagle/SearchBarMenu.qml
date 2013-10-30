@@ -124,9 +124,13 @@ Rectangle {
                 anchors.left: parent.left;
                 anchors.leftMargin: 10;
                 Image {
-                    id: img
+                    id: img;
                     anchors.verticalCenter: _item.verticalCenter;
-                    source: "images/1.png"
+                    property int rettype: 3;
+                    property string starImg: "images/1.png";
+                    property string songUnique: "images/3.png";
+                    property string songMore: "images/2.png";
+                    source: rettype==1?starImg:(rettype==2?songUnique:songMore);
                 }
                 Text {
                     id:_name;

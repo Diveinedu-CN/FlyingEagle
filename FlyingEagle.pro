@@ -42,4 +42,5 @@ OTHER_FILES += \
     qml/FlyingEagle/KeyBoard/ZishuInput.qml \
     qml/FlyingEagle/MovieUDiskPage.qml \
     qml/FlyingEagle/FoldMenuList.qml \
-    qml/FlyingEagle/KeyBoard/ShouPinKeyBoard.qml
+    qml/FlyingEagle/KeyBoard/ShouPinKeyBoard.qml \
+    qml/FlyingEagle/TelKeyBoard.qml

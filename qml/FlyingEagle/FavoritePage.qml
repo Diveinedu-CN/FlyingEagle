@@ -206,14 +206,13 @@ Rectangle {
             colorText: "#ffffff"
             backgroundNormal: "images/btnQuit.png"
             onClicked: {
-                keyboardLoader.source = "telKeyBoard.qml"
                 contentItem.visible = false;
+                keyboardLoader.visible = true;
             }
         }
 
 
     }
-
     Item {
         x: 549
         y: 58
@@ -225,7 +224,14 @@ Rectangle {
             y: -14
 
             id: keyboardLoader
-            source: "telKeyBoard.qml"
+//            source: "telKeyBoard.qml"
+            sourceComponent: telKeyboard;
+            Component {
+                id: telKeyboard
+                TelKeyBoard {
+
+                }
+            }
         }
     }
 
@@ -233,7 +239,8 @@ Rectangle {
         target: keyboardLoader.item
         ignoreUnknownSignals: true
         onConfirmClicked: {
-            keyboardLoader.source = ""
+//            keyboardLoader.source = ""
+            keyboardLoader.visible = false;
             contentItem.visible = true
         }
     }

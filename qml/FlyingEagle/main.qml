@@ -52,8 +52,8 @@ Rectangle {
                 id:musicNoteAnimation
 //                loops: Animation.Infinite
                 running: false
-                property int duration0: 300;
-                property int duration1: 200;
+                property int duration0: 400;
+                property int duration1: 600;
                 property point startPoint: Qt.point(x,y);
                 property int endX: 0;
                 ParallelAnimation {
@@ -66,7 +66,7 @@ Rectangle {
                 ParallelAnimation {
                     NumberAnimation { target: musicNote; property: "x";to:1280; duration: musicNoteAnimation.duration1 }
                     NumberAnimation { target: musicNote; property: "y";to:550; duration: musicNoteAnimation.duration1 }
-                    NumberAnimation { target: musicNote; property: "scale"; from:1; to:0; duration: musicNoteAnimation.duration1 }
+                    NumberAnimation { target: musicNote; property: "scale"; from:1; to:0.4; duration: musicNoteAnimation.duration1 }
                     NumberAnimation { target: musicNote; property: "opacity";from:1; to:0.2; duration: musicNoteAnimation.duration1 }
                 }
             }

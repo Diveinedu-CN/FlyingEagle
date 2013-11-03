@@ -60,14 +60,28 @@ Rectangle {
                 pathArray.pop()
                 navBar.createButtons(pathArray)
 
-                contentLoader.source = "TopicContent.qml"
+//                contentLoader.source = "TopicContent.qml"
+                contentLoader.sourceComponent = topiccontent;
             }
         }
     }
 
     Loader {
         id: contentLoader
-        source: "TopicContent.qml"
+//        source: "TopicContent.qml"
+        sourceComponent: topiccontent;
+        Component {
+            id: topiccontent;
+            TopicContent {
+
+            }
+        }
+        Component {
+            id: finalmusicselectionpage;
+            FinalMusicSelectionPage {
+
+            }
+        }
     }
 
     Connections {
@@ -77,13 +91,15 @@ Rectangle {
             pathArray.push(name)
             navBar.createButtons(pathArray)
 
-            contentLoader.source = "FinalMusicSelectionPage.qml"
+//            contentLoader.source = "FinalMusicSelectionPage.qml"
+            contentLoader.sourceComponent = finalmusicselectionpage;
         }
         onHandleLoader: {
             pathArray.pop()
             navBar.createButtons(pathArray)
 
-            contentLoader.source = "TopicContent.qml"
+//            contentLoader.source = "TopicContent.qml"
+            contentLoader.sourceComponent = topiccontent;
         }
         onHandleBack: {
             topicPage.handlerLoader("HomePage.qml", 0)

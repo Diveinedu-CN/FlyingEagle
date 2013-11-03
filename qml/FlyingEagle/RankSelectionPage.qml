@@ -65,7 +65,20 @@ Rectangle {
 
     Loader {
         id: contentLoader
-        source: "RankContent.qml"
+//        source: "RankContent.qml"
+        sourceComponent: rankcontent;
+        Component {
+            id:rankcontent;
+            RankContent {
+
+            }
+        }
+        Component {
+            id:finalrankmusicselectionpage;
+            FinalRankMusicSelectionPage {
+
+            }
+        }
     }
 
     Connections {
@@ -75,7 +88,8 @@ Rectangle {
             pathArray.push(name)
             navBar.createButtons(pathArray)
 
-            contentLoader.source = "FinalRankMusicSelectionPage.qml"
+//            contentLoader.source = "FinalRankMusicSelectionPage.qml"
+            contentLoader.sourceComponent = finalrankmusicselectionpage;
         }
         //指定排行里页面下面的按钮条的事件转发
         onHandleShowBaotai: {
@@ -94,7 +108,8 @@ Rectangle {
             pathArray.pop()
             navBar.createButtons(pathArray)
 
-            contentLoader.source = "RankContent.qml"
+//            contentLoader.source = "RankContent.qml"
+            contentLoader.sourceComponent = rankcontent;
         }
         onHandleBack: {
             rank_selection.handlerLoader("HomePage.qml", 0)

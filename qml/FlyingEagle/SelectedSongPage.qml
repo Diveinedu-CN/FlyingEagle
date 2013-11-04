@@ -272,7 +272,8 @@ Item {
             cellWidth: grid.width; cellHeight: 54
 
             property int firstIndexDrag: -1
-
+            property int pageIndex: 1;
+            property int pageCount: 1;
             flow: GridView.TopToBottom
             snapMode: GridView.SnapToRow
             clip: true
@@ -282,6 +283,17 @@ Item {
             //        highlight: Rectangle { width: grid.cellWidth-2; color: "lightblue"; anchors.left: parent.left; anchors.leftMargin: 2; radius: 10 }
             highlightFollowsCurrentItem: true
             focus: true
+            onCountChanged: {
+                pageCount = Math.floor(count/8)+1;
+            }
+            onContentXChanged: {
+                var tmp = indexAt(contentX+1,0);
+               tmp=tmp<0?0:tmp;
+                pageIndex = Math.floor(tmp/8) + 1;
+            }
+            onMovementEnded: {
+                currentIndex = indexAt(contentX+1,0);
+            }
         }
 
 
@@ -316,7 +328,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 38
             anchors.horizontalCenter: Text.horizontalCenter
-            text:grid.currentIndex+"/"+grid.count
+            text:grid.pageIndex+"/"+grid.pageCount;
             font.pixelSize: 18
             color:"white"
         }

@@ -80,7 +80,8 @@ Rectangle {
             id: musicList
             x: 350
             y: 79
-
+            property int pageIndex: 1;
+            property int pageCount: 1;
             width: 791
             height: 400
 
@@ -195,6 +196,17 @@ Rectangle {
                     backgroundNormal: "images/TopicCategorySubPage/7.png"
                 }
             }
+            onCountChanged: {
+                pageCount = Math.floor(count/7)+1;
+            }
+            onContentXChanged: {
+                var tmp = indexAt(contentX+1,0);
+               tmp=tmp<0?0:tmp;
+                pageIndex = Math.floor(tmp/7) + 1;
+            }
+            onMovementEnded: {
+                currentIndex = indexAt(contentX+1,0);
+            }
         }
 
         PushButton {
@@ -272,7 +284,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40;
 
-        text: (musicList.currentIndex+1) + "/" + (musicList.count);
+        text: (musicList.pageIndex) + "/" + (musicList.pageCount);
         horizontalAlignment: Text.AlignHCenter
         color: "#FFFFFFFF"
         font.pixelSize: 18

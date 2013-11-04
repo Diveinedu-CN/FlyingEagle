@@ -139,7 +139,8 @@ Rectangle {
 
                 cellWidth: 791
                 cellHeight: 57
-
+                property int pageIndex: 1;
+                property int pageCount: 1;
                 flow: GridView.TopToBottom
                 snapMode: GridView.SnapToRow
 
@@ -247,6 +248,17 @@ Rectangle {
                         backgroundNormal: "images/TopicCategorySubPage/7.png"
                     }
                 }
+                onCountChanged: {
+                    pageCount = Math.floor(count/7)+1;
+                }
+                onContentXChanged: {
+                    var tmp = indexAt(contentX+1,0);
+                   tmp=tmp<0?0:tmp;
+                    pageIndex = Math.floor(tmp/7) + 1;
+                }
+                onMovementEnded: {
+                    currentIndex = indexAt(contentX+1,0);
+                }
             }
         }
     }
@@ -281,7 +293,7 @@ Rectangle {
         anchors.right: rightButton.left
         anchors.rightMargin: 15;
 
-        text: (musicList.currentIndex+1)+"/"+musicList.count;
+        text: (musicList.pageIndex)+"/"+musicList.pageCount;
         horizontalAlignment: Text.AlignHCenter
         color: "#FFFFFFFF"
         font.pixelSize: 18

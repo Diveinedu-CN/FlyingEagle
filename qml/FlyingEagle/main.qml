@@ -39,7 +39,48 @@ Rectangle {
             id: contentLoader
 //            asynchronous: true
             visible: status==Loader.Ready?true:false
-            source: "HomePage.qml"
+//            source: "HomePage.qml"
+            sourceComponent: homepage;
+            Component {
+                id: homepage;
+                HomePage {
+                }
+            }
+            Component {
+                id: langselectionpage;
+                LangSelectionPage {
+                }
+            }
+            Component {
+                id: favoritepage;
+                FavoritePage {
+                }
+            }
+            Component {
+                id: starselectionpage;
+                StarSelectionPage {
+                }
+            }
+            Component {
+                id: topicselectionpage;
+                TopicSelectionPage {
+                }
+            }
+            Component {
+                id: rankselectionpage;
+                RankSelectionPage {
+                }
+            }
+            Component {
+                id: musicselectionpage;
+                MusicSelectionPage {
+                }
+            }
+            Component {
+                id: newmusicselectionpage;
+                NewMusicSelectionPage {
+                }
+            }
         }
         Image {
             id: musicNote
@@ -77,7 +118,36 @@ Rectangle {
             ignoreUnknownSignals:true
             onHandlerLoader: {
                 //切换目标页面由信号传入
-                contentLoader.source = name
+//                contentLoader.source = name
+                switch(name)
+                {
+                case "HomePage.qml":
+                    contentLoader.sourceComponent = homepage;
+                    break;
+                case "LangSelectionPage.qml":
+                    contentLoader.sourceComponent = langselectionpage;
+                    break;
+                case "FavoritePage.qml":
+                    contentLoader.sourceComponent = favoritepage;
+                    break;
+                case "StarSelectionPage.qml":
+                    contentLoader.sourceComponent = starselectionpage;
+                    break;
+                case "TopicSelectionPage.qml":
+                    contentLoader.sourceComponent = topicselectionpage;
+                    break;
+                case "RankSelectionPage.qml":
+                    contentLoader.sourceComponent = rankselectionpage;
+                    break;
+                case "MusicSelectionPage.qml":
+                    contentLoader.sourceComponent = musicselectionpage;
+                    break;
+                case "NewMusicSelectionPage.qml":
+                    contentLoader.sourceComponent = newmusicselectionpage;
+                    break;
+                default:
+                    contentLoader.source = name;
+                }
             }
             onHandleShowBaotai: {
                 musicNoteAnimation.startPoint = cardPoint;
@@ -108,7 +178,8 @@ Rectangle {
             onHandlerLoader: {
                 switch (index) {
                 case 0:
-                    contentLoader.source = "HomePage.qml"
+//                    contentLoader.source = "HomePage.qml"
+                    contentLoader.sourceComponent = homepage;
                     break;
                 }
             }

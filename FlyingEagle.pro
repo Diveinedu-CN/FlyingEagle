@@ -43,4 +43,5 @@ OTHER_FILES += \
     qml/FlyingEagle/MovieUDiskPage.qml \
     qml/FlyingEagle/FoldMenuList.qml \
     qml/FlyingEagle/KeyBoard/ShouPinKeyBoard.qml \
-    qml/FlyingEagle/TelKeyBoard.qml
+    qml/FlyingEagle/TelKeyBoard.qml \
+    qml/FlyingEagle/MainPage.qml

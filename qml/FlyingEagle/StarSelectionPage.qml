@@ -65,7 +65,8 @@ Rectangle {
                     navBar.visible = true
                     navBar2.visible = false
 
-                    gridLoader.source = "AlbumSelectionPage.qml"
+//                    gridLoader.source = "AlbumSelectionPage.qml"
+                    gridLoader.sourceComponent = albumselectionpage;
                 }
             }
         }
@@ -115,10 +116,12 @@ Rectangle {
 
                 switch(item.tag) {
                     case 0:
-                        gridLoader.source = "MusicAlbumSelectionPage.qml";
+//                        gridLoader.source = "MusicAlbumSelectionPage.qml";
+                        gridLoader.sourceComponent = musicalbumselectionpage;
                         break;
                     case 1:
-                        gridLoader.source = "PathAlbumSelectionPage.qml";
+//                        gridLoader.source = "PathAlbumSelectionPage.qml";
+                        gridLoader.sourceComponent = pathalbumselectionpage;
                         break;
                     default:
                         break;
@@ -138,7 +141,27 @@ Rectangle {
 
         Loader {
             id: gridLoader
-            source: "AlbumSelectionPage.qml"
+//            source: "AlbumSelectionPage.qml"
+            sourceComponent: albumselectionpage;
+            Component {
+                id: albumselectionpage;
+                AlbumSelectionPage{
+
+                }
+            }
+            Component {
+                id: musicalbumselectionpage;
+                MusicAlbumSelectionPage {
+
+                }
+            }
+
+            Component {
+                id: pathalbumselectionpage;
+                PathAlbumSelectionPage {
+
+                }
+            }
         }
     }
 
@@ -152,7 +175,8 @@ Rectangle {
             navBar2.visible = true
             menuTabBar2.visible = true
 
-            gridLoader.source = "MusicAlbumSelectionPage.qml"
+//            gridLoader.source = "MusicAlbumSelectionPage.qml"
+            gridLoader.sourceComponent = musicalbumselectionpage;
         }
     }
 
@@ -168,7 +192,8 @@ Rectangle {
 
             menuTabBar2.selectButton(0)
 
-            gridLoader.source = "AlbumSelectionPage.qml"
+//            gridLoader.source = "AlbumSelectionPage.qml"
+            gridLoader.sourceComponent = albumselectionpage;
         }
     }
 

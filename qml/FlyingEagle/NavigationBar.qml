@@ -1,3 +1,11 @@
+/*
+ * 导航条的代码文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: JS函数动态生成导航导航条
+**/
 import QtQuick 2.0
 import "componentCreation.js" as ComponentCreation
 

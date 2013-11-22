@@ -1,3 +1,11 @@
+/*
+ * 已选菜单页面
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 已选和已播弹出窗口以及神灯效果
+**/
 import QtQuick 2.0
 import QtQml.Models 2.1
 import QtQuick.Controls 1.0

@@ -1,3 +1,12 @@
+/*
+ * 歌手选择页面
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 歌手选择页面, 从这里进入专辑和音乐选择页面
+**/
+
 import QtQuick 2.0
 
 Rectangle {
@@ -9,6 +18,8 @@ Rectangle {
 
     signal clicked(int index, int type)
     signal handleShowSecondFilter(string inputType)
+
+    //测试数据模型
     TestModel2 {
         id: testModel2
     }
@@ -17,6 +28,7 @@ Rectangle {
         id: testModel
     }
 
+    //歌手列表, 2行6列
     GridView {
         id: musicList
         x: 12
@@ -82,6 +94,7 @@ Rectangle {
         }
     }
 
+    //左翻一页
     PushButton {
         id: leftButton
         x: 693
@@ -106,6 +119,7 @@ Rectangle {
         }
     }
 
+    //页码
     Text {
         id: pageLabel
         x: 775
@@ -123,6 +137,7 @@ Rectangle {
         font.pixelSize: 18
     }
 
+    //下一页
     PushButton {
         id: rightButton
         x: 921
@@ -147,6 +162,7 @@ Rectangle {
         }
     }
 
+    //返回按钮, 直接返回首页
     PushButton {
         id: backButton
         x: 1110

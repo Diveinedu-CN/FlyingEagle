@@ -1,7 +1,17 @@
+/*
+ * 主文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 页面下方的工具条, 所有的控制按钮都位于这个工具条上
+**/
+
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 import QtQuick.Particles 2.0
+
 Rectangle {
     id: rectangle1
     width: 1280
@@ -18,6 +28,7 @@ Rectangle {
         source: !parent.backgroundImage ? parent.backgroundImage : "images/bar.png"
     }
 
+    //切歌图片
     Image {
         x: 10
         y: 1
@@ -29,6 +40,8 @@ Rectangle {
         anchors.top: parent.top
         source: "images/qiege-bg.png"
     }
+
+    //火焰图片
     Image {
         id:huoyanImage
         x: 15
@@ -42,6 +55,8 @@ Rectangle {
         anchors.top: parent.top
         source: "images/dsc_home_cateff.png"
 //        source:"images/qiege_huoyan.png"
+
+        //火焰旋转动画
         SequentialAnimation {
             id: huoyanAnimation
             loops: Animation.Infinite
@@ -96,6 +111,8 @@ Rectangle {
         }
         Component.onCompleted: huoyanAnimation.start();
     }
+
+    //切歌按钮
     RightPushButton {
         id: qiegeButton
         x: 20
@@ -113,8 +130,7 @@ Rectangle {
         backgroundNormal: "images/qiege.png"
     }
 
-
-
+    //原唱, 伴唱切换按钮
     RightPushButton {
         id: yuanchangButton
         property bool isOrign: true;
@@ -126,6 +142,7 @@ Rectangle {
         onClicked: isOrign = !isOrign;
     }
 
+    //播放, 暂停按钮
     RightPushButton {
         id: zantingButton
         property bool isPlaying: true;
@@ -137,6 +154,7 @@ Rectangle {
         onClicked: isPlaying = !isPlaying;
     }
 
+    //重唱按钮
     RightPushButton {
         id: chongchangButton
         anchors.left: zantingButton.right
@@ -146,6 +164,7 @@ Rectangle {
         backgroundNormal: "images/chongchang.png"
     }
 
+    //调音按钮
     RightPushButton {
         id: tiaoyinButton
         anchors.left: chongchangButton.right
@@ -156,6 +175,7 @@ Rectangle {
         backgroundPressed: "images/tiaoyinSel.png"
     }
 
+    //音量调节滑动条
     Slider {
         id: yinliangSlider
         x: 540
@@ -181,6 +201,7 @@ Rectangle {
         }
     }
 
+    //静音, 开启按钮
     RightPushButton {
         id: jingyinButton
         property bool isMuted: false;
@@ -192,6 +213,7 @@ Rectangle {
         onClicked: isMuted = !isMuted;
     }
 
+    //气氛按钮
     RightPushButton {
         id: qifenButton
         anchors.left: jingyinButton.right
@@ -201,6 +223,7 @@ Rectangle {
         backgroundNormal: "images/qifen.png"
     }
 
+    //辅助按钮
     RightPushButton {
         id: fuzhuButton
         anchors.left: qifenButton.right
@@ -210,6 +233,7 @@ Rectangle {
         backgroundNormal: "images/fuzhu.png"
     }
 
+    //播放进度条
     Rectangle {
         id: jinduProgressBar
         property real progressValue: 0.5
@@ -266,13 +290,19 @@ Rectangle {
                     height: 26;
                     source: "images/sliderFg.png"
                     clip: true;
+
+                    //气泡粒子效果
                     ParticleSystem {
                         id: particles
                     }
+
+                    //气泡图片
                     ImageParticle {
                         system: particles
                         source: "images/jindu-qipao1.png"
                     }
+
+                    //粒子发射器
                     Emitter {
                         anchors.fill: progressImg1
                         system: particles
@@ -285,6 +315,8 @@ Rectangle {
                         sizeVariation: 0
                     }
                 }
+
+                //半圆图片
                 Image {
                     id:progressImg2
                     anchors.right: parent.right;

@@ -1,6 +1,11 @@
 /*
- *语种选择界面，根据语种选择歌曲
+ * 语种选择界面，根据语种选择歌曲
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 可以根据不同的语种对歌曲进行筛选并在当前页进行点歌操作
 **/
+
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
@@ -34,17 +39,7 @@ Rectangle {
             source: "images/diange.fw.png"
         }
 
-//        //导航标题
-//        Text {
-//            id: navTitleLabel
-//            anchors.left: navDiangeImage.right
-//            anchors.leftMargin: 4
-//            anchors.verticalCenter: navDiangeImage.verticalCenter
-//            text: qsTr("点歌")
-//            font.pixelSize: 24
-//            color: "#FFFFFFFF"
-//        }
-
+        //导航条, 指示当前页面所在位置
         NavigationBar {
             id: navBar
             anchors.left: navDiangeImage.right
@@ -64,6 +59,7 @@ Rectangle {
             source: "images/daohangtiao.png"
         }
 
+        //语种选择标签栏
         MenuTabBar {
             id: menuTabBar
             anchors.left: tabBar.left
@@ -287,7 +283,6 @@ Rectangle {
                     return;
                 }
                 starList.currentIndex = nextPageIndex;
-//                starList.positionViewAtIndex(starList.currentIndex, GridView.Beginning);
             }
         }
         Text {
@@ -317,7 +312,6 @@ Rectangle {
                     return;
                 }
                 starList.currentIndex = nextPageIndex;
-//                starList.positionViewAtIndex(starList.currentIndex, GridView.Beginning);
             }
         }
         PushButton {

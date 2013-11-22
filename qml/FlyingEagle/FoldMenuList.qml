@@ -1,3 +1,12 @@
+/*
+ * 电影折叠列表
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 实现了类似与QQ的折叠菜单功能
+**/
+
 import QtQuick 2.0
 
 Item {
@@ -9,6 +18,7 @@ Item {
         id: testModel
     }
 
+    //一级菜单
     ListView {
         id: listView
         anchors.fill: parent
@@ -28,6 +38,7 @@ Item {
             height: 32
             color: "transparent"
 
+            //箭头图标
             Image {
                 anchors.fill: parent
                 source: ((subList.count === 0) && (listView.currentIndex===index))?"images/movieSelected.png":""
@@ -78,6 +89,7 @@ Item {
                 }
             }
 
+            //二级菜单
             Column {
                 anchors.top: mainList.bottom
                 anchors.topMargin: 40

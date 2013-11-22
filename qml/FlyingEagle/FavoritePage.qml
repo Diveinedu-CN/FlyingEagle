@@ -1,5 +1,10 @@
 /*
- *收藏页面
+ * 收藏页面
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 通过手机号码登录账号, 里面会有该账号所收藏的歌曲, 必须输入11位手机号码, 否则不能点击确认按钮
 **/
 
 import QtQuick 2.0
@@ -12,7 +17,7 @@ Rectangle {
     color: "transparent"
 
     signal handlerLoader(string name, int index)
-    signal handleShowBaotai(variant cardPoint)
+    signal handleShowBaotai(variant cardPoint)  //显示报台
 
     Item {
         id: contentItem
@@ -76,6 +81,7 @@ Rectangle {
             id: testModel
         }
 
+        //收藏歌曲列表
         GridView {
             id: musicList
             x: 350
@@ -105,6 +111,7 @@ Rectangle {
 //                        color: index % 2?"#FF0000":"#00FF00"
 //                    }
 
+                //选歌, 弹出报台
                 MouseArea {
                     anchors.fill: parent
 
@@ -115,6 +122,7 @@ Rectangle {
                     }
                 }
 
+                //歌曲序号
                 Text {
                     id: numberId
                     anchors.left: parent.left
@@ -130,6 +138,7 @@ Rectangle {
                     font.pixelSize: 18
                 }
 
+                //歌名
                 Text {
                     id: titleId
 
@@ -143,6 +152,7 @@ Rectangle {
                     font.pixelSize: 18
                 }
 
+                //歌星名
                 Text {
                     id: starId
 
@@ -157,6 +167,7 @@ Rectangle {
                     font.pixelSize: 18
                 }
 
+                //置顶按钮
                 PushButton {
                     id: zhiding
                     width: 31
@@ -170,6 +181,7 @@ Rectangle {
                     backgroundNormal: "images/TopicCategorySubPage/5.png"
                 }
 
+                //收藏按钮
                 PushButton {
                     id: shoucang
                     width: 31
@@ -183,6 +195,7 @@ Rectangle {
                     backgroundNormal: "images/TopicCategorySubPage/6.png"
                 }
 
+                //预览按钮
                 PushButton {
                     id: yulan
                     width: 34
@@ -209,6 +222,7 @@ Rectangle {
             }
         }
 
+        //退出登录按钮
         PushButton {
             x: 99
             y: 407
@@ -256,6 +270,8 @@ Rectangle {
             contentItem.visible = true
         }
     }
+
+    //前一页
     PushButton {
         id: leftButton
         x: 733/*693*/
@@ -273,6 +289,7 @@ Rectangle {
         }
     }
 
+    //页码
     Text {
         id: pageLabel
         x: 805/*775*/
@@ -290,6 +307,7 @@ Rectangle {
         font.pixelSize: 18
     }
 
+    //下一页
     PushButton {
         id: rightButton
         x: 950/*921*/
@@ -307,6 +325,7 @@ Rectangle {
         }
     }
 
+    //返回按钮
     PushButton {
         x: 1110
         y: 482

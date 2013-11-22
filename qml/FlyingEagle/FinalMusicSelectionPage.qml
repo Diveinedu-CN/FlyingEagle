@@ -1,5 +1,10 @@
 /*
- *最终的歌曲选择界面
+ * 最终的歌曲选择界面
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 最终歌曲选择页面, 从主题分类页进入
 **/
 
 import QtQuick 2.0
@@ -15,31 +20,14 @@ Rectangle {
     signal handleLoader(string name, int index)
     signal handleShowBaotai(variant cardPoint)
 
-//    //导航图标
-//    Image {
-//        id: navDiangeImage
-//        anchors.left: parent.left
-//        anchors.top: parent.top
-//        source: "images/diange.fw.png"
-//    }
-
-//    //导航标题
-//    Text {
-//        id: navTitleLabel
-//        anchors.left: navDiangeImage.right
-//        anchors.leftMargin: 4
-//        anchors.verticalCenter: navDiangeImage.verticalCenter
-//        text: qsTr("点歌")
-//        font.pixelSize: 24
-//        color: "#FFFFFFFF"
-//    }
-
     Row {
+        //左侧光盘
         Item {
             id: leftHalf
             width: 400
             height: 400
 
+            //外壳图片
             Image {
                 id: waike
                 x: 81
@@ -54,6 +42,7 @@ Rectangle {
                 source: "images/TopicCategorySubPage/1.png"
             }
 
+            //旋转的光盘图片
             Image {
                 property real translateY: -140
                 x: 94
@@ -76,9 +65,11 @@ Rectangle {
                 source: "images/TopicCategorySubPage/2.png"
             }
 
+            //光盘动画
             SequentialAnimation {
                 id: animation
 
+                //光盘下移到目标位置
                 NumberAnimation {
                     target: guangpan;
                     property: "translateY";
@@ -87,6 +78,7 @@ Rectangle {
                     easing.type: Easing.InOutQuad
                 }
 
+                //光盘旋转动画
                 SequentialAnimation {
                     loops: Animation.Infinite
 
@@ -95,7 +87,6 @@ Rectangle {
                         from: 0
                         to: -180
                         duration: 16000;
-//                        easing.type: Easing.InOutQuad
                     }
 
                     RotationAnimation {
@@ -103,7 +94,6 @@ Rectangle {
                         from: -180
                         to: -360
                         duration: 16000;
-//                        easing.type: Easing.InOutQuad
                     }
                 }
             }
@@ -129,6 +119,7 @@ Rectangle {
                 id: testModel
             }
 
+            //歌曲选择列表
             GridView {
                 id: musicList
                 x: 0
@@ -263,6 +254,7 @@ Rectangle {
         }
     }
 
+    //前一页
     PushButton {
         id: leftButton
         x: 336
@@ -281,6 +273,7 @@ Rectangle {
         }
     }
 
+    //页码
     Text {
         id: pageLabel
         x: 420
@@ -299,6 +292,7 @@ Rectangle {
         font.pixelSize: 18
     }
 
+    //下一页
     PushButton {
         id: rightButton
         x: 563
@@ -318,6 +312,7 @@ Rectangle {
         }
     }
 
+    //返回按钮, 返回到上一页(主题选择页)
     PushButton {
         id: backButton
         x: 1110;/*1090*/

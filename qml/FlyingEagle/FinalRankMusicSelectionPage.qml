@@ -1,3 +1,12 @@
+/*
+ * 排行页最终的歌曲选择界面
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 从排行选择页进入, 按排行选择歌曲
+**/
+
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
@@ -20,17 +29,6 @@ Rectangle {
         anchors.top: parent.top
         source: "images/diange.fw.png"
     }
-
-//    //导航标题
-//    Text {
-//        id: navTitleLabel
-//        anchors.left: navDiangeImage.right
-//        anchors.leftMargin: 4
-//        anchors.verticalCenter: navDiangeImage.verticalCenter
-//        text: qsTr("点歌")
-//        font.pixelSize: 24
-//        color: "#FFFFFFFF"
-//    }
 
     Row {
         Item {
@@ -59,6 +57,7 @@ Rectangle {
                 }
             }
 
+            //三种类型的排行选择
             PushButton {
                 id: totalRank;
                 x: 1075
@@ -99,6 +98,7 @@ Rectangle {
                 id: testModel
             }
 
+            //排行歌曲列表
             GridView {
                 id: musicList
                 x: 55
@@ -121,12 +121,6 @@ Rectangle {
                     width: 579
                     height: 57
 
-//                    Rectangle {
-//                        width: 791
-//                        height: 57
-
-//                        color: index % 2?"#FF0000":"#00FF00"
-//                    }
                     MouseArea {
                         anchors.fill: parent;
                         onClicked: {
@@ -138,7 +132,6 @@ Rectangle {
                     Text {
                         id: numberId
                         anchors.left: parent.left
-//                        anchors.leftMargin: 40
                         anchors.top: parent.top
                         anchors.topMargin: 20
                         width: 60
@@ -176,6 +169,7 @@ Rectangle {
                         font.pixelSize: 18
                     }
 
+                    //置顶
                     PushButton {
                         id: zhiding
                         width: 31
@@ -189,6 +183,7 @@ Rectangle {
                         backgroundNormal: "images/TopicCategorySubPage/5.png"
                     }
 
+                    //收藏
                     PushButton {
                         id: shoucang
                         width: 31
@@ -203,8 +198,6 @@ Rectangle {
                     }
                 }
             }//end gridview
-
-
 
             //下面的按钮条
             Rectangle {

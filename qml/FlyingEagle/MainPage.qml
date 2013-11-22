@@ -1,8 +1,18 @@
+/*
+ * 主页面文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 主窗口UI, 提供整个应用的基础框架; 将主界面从上至下分为上部工具条mainMenu (MainBar文件定义),
+ * 内容区域contentArea和下部主工具条mainToolBar (MainToolBar文件定义)三部分. 其中内容区域和上部工具条mainMenu
+ * 还提供了遮盖阴影层popContentArea, 用来统一放置所有的弹出窗口; 内容区域负责所有页面的展示和切换.
+**/
+
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 import QtQuick.Particles 2.0
-//import "YGYKeyBoard"
 import "KeyBoard"
 
 Rectangle {
@@ -35,53 +45,74 @@ Rectangle {
         anchors.bottomMargin: -26
 
         signal handlerLoader(string name, int index)
+
+        /*
+         * contentLoader负责主页面上5个类别的切换, 不同的类别由不同的Component负责显示
+         **/
         Loader {
             id: contentLoader
 //            asynchronous: true
             visible: status==Loader.Ready?true:false
 //            source: "HomePage.qml"
             sourceComponent: homepage;
+
+            //主页面(首页)
             Component {
                 id: homepage;
                 HomePage {
                 }
             }
+
+            //语种选择页
             Component {
                 id: langselectionpage;
                 LangSelectionPage {
                 }
             }
+
+            //收藏页
             Component {
                 id: favoritepage;
                 FavoritePage {
                 }
             }
+
+            //歌星选择页
             Component {
                 id: starselectionpage;
                 StarSelectionPage {
                 }
             }
+
+            //主题选择页
             Component {
                 id: topicselectionpage;
                 TopicSelectionPage {
                 }
             }
+
+            //排行选择页
             Component {
                 id: rankselectionpage;
                 RankSelectionPage {
                 }
             }
+
+            //歌名选择页
             Component {
                 id: musicselectionpage;
                 MusicSelectionPage {
                 }
             }
+
+            //新歌选择页
             Component {
                 id: newmusicselectionpage;
                 NewMusicSelectionPage {
                 }
             }
         }
+
         Image {
             id: musicNote
             width: 90;
@@ -121,34 +152,36 @@ Rectangle {
 //                contentLoader.source = name
                 switch(name)
                 {
-                case "HomePage.qml":
+                case "HomePage.qml":                //返回首页
                     contentLoader.sourceComponent = homepage;
                     break;
-                case "LangSelectionPage.qml":
+                case "LangSelectionPage.qml":       //进入语种选择
                     contentLoader.sourceComponent = langselectionpage;
                     break;
-                case "FavoritePage.qml":
+                case "FavoritePage.qml":            //进入收藏页
                     contentLoader.sourceComponent = favoritepage;
                     break;
-                case "StarSelectionPage.qml":
+                case "StarSelectionPage.qml":       //进入歌星选择页
                     contentLoader.sourceComponent = starselectionpage;
                     break;
-                case "TopicSelectionPage.qml":
+                case "TopicSelectionPage.qml":      //进入主题选择
                     contentLoader.sourceComponent = topicselectionpage;
                     break;
-                case "RankSelectionPage.qml":
+                case "RankSelectionPage.qml":       //进入排行页
                     contentLoader.sourceComponent = rankselectionpage;
                     break;
-                case "MusicSelectionPage.qml":
+                case "MusicSelectionPage.qml":      //歌名旋转页
                     contentLoader.sourceComponent = musicselectionpage;
                     break;
-                case "NewMusicSelectionPage.qml":
+                case "NewMusicSelectionPage.qml":   //新歌选择页
                     contentLoader.sourceComponent = newmusicselectionpage;
                     break;
                 default:
                     contentLoader.source = name;
                 }
             }
+
+            //显示报台
             onHandleShowBaotai: {
                 musicNoteAnimation.startPoint = cardPoint;
                 if(cardPoint.x>800)
@@ -162,12 +195,18 @@ Rectangle {
                 console.log("cardPoint:"+cardPoint);
                 baotaigexing.showNumpad(cardPoint);
             }
+
+            //显示歌手信息
             onHandleShowSingerInfo: {
                 baotaigexing.showSingerInfo(starname);
             }
+
+            //显示MV预览
             onHandleShowMvPreview: {
                 baotaigexing.showMvPreview(mv);
             }
+
+            //显示二次筛选
             onHandleShowSecondFilter: {
                 baotaigexing.showSecendFilter(inputType);
             }
@@ -213,6 +252,7 @@ Rectangle {
             }
 
         }
+
 //        YGYKeyBoard {
         KeyBoard {
             id:keyboard;
@@ -225,6 +265,7 @@ Rectangle {
             }
         }
     }
+
     //输入法 弹窗阴影遮盖层 消失定时器
     Timer {
         id:popContentAreaTimer
@@ -265,6 +306,7 @@ Rectangle {
         anchors.leftMargin: 0
         anchors.topMargin: 0
         visible: false
+
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -272,6 +314,7 @@ Rectangle {
                 popContentAreaYixuanTimer.start();
             }
         }
+
         Timer {
             id:popContentAreaYixuanTimer
             interval: 350; running: false; repeat: false
@@ -279,6 +322,8 @@ Rectangle {
                 popContentAreaYixuan.visible = !popContentAreaYixuan.visible;
             }
         }
+
+        //已选加载器
         Loader {
             id: yixuanLoader
             sourceComponent: yixuanComponent;
@@ -289,6 +334,7 @@ Rectangle {
                 }
             }
         }
+
         //建立信号连接处理点击已选或已选气泡
         Connections {
             target: mainToolBar.yixuanButton
@@ -307,6 +353,7 @@ Rectangle {
                 }
             }
         }
+
         Connections {
             target: mainToolBar.yixuanQiPao
             ignoreUnknownSignals:true
@@ -349,6 +396,8 @@ Rectangle {
         anchors.leftMargin: 0
         anchors.topMargin: 0
         visible: false
+
+        //
         function handleTunningPage(index)
         {
             if(tunningPopupPage.visible == false)
@@ -380,6 +429,8 @@ Rectangle {
                 break;
             }
         }
+
+        //调音
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -436,6 +487,7 @@ Rectangle {
                 tunningPopupPage.handleTunningPage("fuzhu");
             }
         }
+        //辅助
         Connections {
             target: mainToolBar.fuzhuButton
             ignoreUnknownSignals:true
@@ -457,6 +509,8 @@ Rectangle {
                 movieUdiskAdd.showUDisk();
             }
         }
+        //一时偷懒, 没有将按钮和文本合并为同一个按钮
+        //服务按钮
         Connections {
             target: mainMenu.fuwuButton
             ignoreUnknownSignals:true
@@ -464,6 +518,7 @@ Rectangle {
                 tunningPopupPage.handleTunningPage("fuwu");
             }
         }
+        //服务文本
         Connections {
             target: mainMenu.fuwuText
             ignoreUnknownSignals:true

@@ -1,3 +1,10 @@
+/*
+ * 二次筛选输入法字数输入文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+**/
 import QtQuick 2.0
 import Fakekey 1.0
 import ".."

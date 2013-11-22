@@ -1,3 +1,11 @@
+/*
+ * 调音,气氛,辅助,服务弹出窗口文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 调音,气氛,辅助,辅助的弹出窗口集合做同一个页面内.通过visiable属性来切换显示
+**/
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0

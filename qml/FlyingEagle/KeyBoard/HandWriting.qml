@@ -1,3 +1,11 @@
+/*
+ * 输入法手写页面子文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 歌曲搜索输入时候的手写输入法控件
+**/
 import QtQuick 2.0
 import Fakekey 1.0
 import Zinnia 1.0
@@ -195,7 +203,7 @@ Rectangle {
             backgroundNormal: "./images/std-keyboard.png";
             onClicked:
             {
-                handwriting_kbd.hideClicked();
+                handwriting_kbd.hideClicked();//隐藏键盘
             }
         }
 
@@ -246,6 +254,7 @@ Rectangle {
                         ctx.strokeStyle = "red";
                         ctx.lineWidth = 2;
                         for (var i = 0; (i < array.length)&&array[i]; i++) {
+                            //笔画存在数组里.然后调用手写引擎查询接口.获取结果
                             candidates = zinnia.query(canvas.strokes, array[i].x, array[i].y).split(" ");
                             displayCandidates = candidates.slice(0,5);
                             displayCandidatesIndex=0;

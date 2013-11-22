@@ -1,3 +1,11 @@
+/*
+ * 搜索结果页面文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 搜索栏下拉菜单右下角搜索按钮点击后跳转到本页面
+**/
 import QtQuick 2.0
 
 Rectangle {
@@ -42,7 +50,7 @@ Rectangle {
     TestListModel {
         id: testModel
     }
-
+    //搜索结果列表
     GridView {
         id: starList
         anchors.top: tabbarId.bottom
@@ -58,6 +66,7 @@ Rectangle {
         snapMode: GridView.SnapToRow
         cacheBuffer: 40;
         model: testModel
+        //搜索结果列表项的delegate
         delegate: Item {
             width: 426
             height: 139
@@ -154,7 +163,7 @@ Rectangle {
         }
     }
 
-    //下面的按钮条
+    //下面的分页按钮条
     Rectangle {
         id: footer_div;
         width: 1280;height: 55;

@@ -1,3 +1,10 @@
+/*
+ * 二次筛选输入法手写文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+**/
 import QtQuick 2.0
 import Fakekey 1.0
 import Zinnia 1.0
@@ -63,6 +70,7 @@ Rectangle {
             backgroundNormal: "images/std-keyboard-left.png";
             onClicked:
             {
+                //候选词分页
                 displayCandidatesIndex -= 5;
                 if(displayCandidatesIndex>=0)
                 {
@@ -79,6 +87,7 @@ Rectangle {
             backgroundNormal: "images/std-keyboard-right.png";
             onClicked:
             {
+                //候选词分页
                 var leftCount = candidates.length - displayCandidatesIndex - 5;
                 if (leftCount>5)
                 {
@@ -180,6 +189,7 @@ Rectangle {
                     ctx.strokeStyle = "red";
                     ctx.lineWidth = 2;
                     for (var i = 0; (i < array.length)&&array[i]; i++) {
+                        //把存在数组里的笔画.调用手写引擎对象去查询结果
                         candidates = zinnia.query(canvas.strokes, array[i].x, array[i].y).split(" ");
                         displayCandidates = candidates.slice(0,5);
                         displayCandidatesIndex=0;

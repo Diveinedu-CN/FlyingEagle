@@ -110,7 +110,8 @@ Rectangle {
 
                 cellWidth: 505
                 cellHeight: 65
-
+                property int pageIndex: 1;
+                property int pageCount: 1;
                 flow: GridView.TopToBottom
                 snapMode: GridView.SnapToRow
 
@@ -196,6 +197,36 @@ Rectangle {
 
                         backgroundNormal: "images/TopicCategorySubPage/6.png"
                     }
+                }
+                onCountChanged: {
+                    pageCount = Math.floor(count/12)+1;
+                }
+                onContentXChanged: {
+                    var tmp = indexAt(contentX+1,0);
+                    console.log("onContentXChanged, index:"+tmp);
+                   tmp=tmp<0?0:tmp;
+                    pageIndex = Math.floor(tmp/12) + 1;
+                    currentIndex = (pageIndex-1) * 12;
+
+//                    console.log("current: "+currentIndex);
+//                    currentIndex = currentIndex - currentIndex % 12;
+//                    positionViewAtIndex(currentIndex, GridView.Beginning);
+
+//                    musicList.pageIndex = Math.floor(musicList.currentIndex/12) + 1;
+                }
+
+                onMovementEnded: {
+//                    console.log("xxxx: "+currentIndex);
+//                    var tmp = Math.floor(currentIndex/12)*12;
+//                    currentIndex=tmp<0?0:tmp;
+//                    pageIndex = Math.floor(currentIndex/12) + 1;
+
+                    var tmp = indexAt(contentX+1,0);
+                    console.log("onContentXChanged, index:"+tmp);
+                   tmp=tmp<0?0:tmp;
+                    pageIndex = Math.floor(tmp/12) + 1;
+//                    currentIndex = (pageIndex-1) * 12;
+//                    positionViewAtIndex(currentIndex, GridView.Beginning);
                 }
             }//end gridview
 
@@ -289,19 +320,17 @@ Rectangle {
                     anchors.rightMargin: 30;
                     backgroundNormal: "images/left.png";
                     onClicked: {
-                        var nextPageIndex = (musicList.currentIndex/7)*7-12;
-                        if(nextPageIndex<0)
-                        {
-                            return;
-                        }
+                        var nextPageIndex = musicList.currentIndex - 12;
+                        nextPageIndex = (nextPageIndex<0)?0:nextPageIndex;
+                        musicList.pageIndex = Math.floor(nextPageIndex/12) + 1;
                         musicList.currentIndex = nextPageIndex;
-//                        musicList.positionViewAtIndex(musicList.currentIndex, GridView.Beginning);
+                        musicList.positionViewAtIndex(musicList.currentIndex, GridView.Beginning);
                     }
                 }
                 Text {
                     id: pageText
                     width: 100;
-                    text: (musicList.currentIndex+1)+"/"+(musicList.count);
+                    text: (musicList.pageIndex)+"/"+(musicList.pageCount);
                     color: "white";
                     font.pixelSize: 18
                     verticalAlignment: Text.AlignVCenter;
@@ -319,13 +348,18 @@ Rectangle {
                     anchors.rightMargin: 80;
                     backgroundNormal: "images/right.png";
                     onClicked: {
-                        var nextPageIndex = (musicList.currentIndex/7)*7+12;
+                        console.log("index:"+musicList.currentIndex);
+                        var nextPageIndex = musicList.currentIndex+12;
+
+                        console.log("pageIndex:"+musicList.pageIndex);
                         if(nextPageIndex>=musicList.count)
                         {
                             return;
                         }
+                        musicList.pageIndex = Math.floor(nextPageIndex/12) + 1;
                         musicList.currentIndex = nextPageIndex;
-//                        musicList.positionViewAtIndex(musicList.currentIndex, GridView.Beginning);
+                        musicList.positionViewAtIndex(musicList.currentIndex, GridView.Beginning);
+                        console.log("index:"+musicList.currentIndex);
                     }
                 }
                 PushButton {

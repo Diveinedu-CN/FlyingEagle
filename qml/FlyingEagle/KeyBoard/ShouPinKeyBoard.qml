@@ -1,3 +1,10 @@
+/*
+ * 二次筛选输入法首拼键盘文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+**/
 import QtQuick 2.0
 import Fakekey 1.0
 import ".."
@@ -96,7 +103,7 @@ Rectangle {
             backgroundNormal: "./images/std-keyboard.png";
             onClicked:
             {
-                shoupin_keyboard.hideClicked();
+                shoupin_keyboard.hideClicked();//隐藏键盘
             }
         }
     }

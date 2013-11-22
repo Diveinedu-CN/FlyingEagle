@@ -73,13 +73,13 @@ Rectangle {
         Component {
             id: topiccontent;
             TopicContent {
-
+            //主题内容窗口控件
             }
         }
         Component {
             id: finalmusicselectionpage;
             FinalMusicSelectionPage {
-
+            //主题音乐选择页面控件
             }
         }
     }

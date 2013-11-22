@@ -1,3 +1,11 @@
+/*
+ * 主题点歌的主题分类内容页面
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ *
+**/
 import QtQuick 2.0
 
 Rectangle {

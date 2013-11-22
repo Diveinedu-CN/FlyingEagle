@@ -1,3 +1,12 @@
+/*
+ * 电影页
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 电影选择和播放页
+**/
+
 import QtQuick 2.0
 
 Rectangle {
@@ -53,6 +62,7 @@ Rectangle {
         colorText: "#ffffff"
     }
 
+    //电影选择列表
     FoldMenuList {
         x: 920
         y: 139

@@ -1,3 +1,12 @@
+/*
+ * 自定义按钮控件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 可以设置标题, 正常和按下状态的图片, 按钮颜色等属性
+**/
+
 import QtQuick 2.0
 
 
@@ -20,27 +29,12 @@ Rectangle {
     smooth: true
     color: "#00000000"
 
-//    color: backgroundNormal != "" ? "#00000000"
-//                                  : maButton.pressed ? colorPressed
-//                                                     : colorNormal
-
-//    border.width: 2
-//    border.color: maButton.pressed ? "#313131" : colorPressed
-
-//    gradient: Gradient {
-//        GradientStop { position: 0.0; color: maButton.pressed ? colorPressed : colorNormal; }
-//        GradientStop { position: 1.0; color: maButton.pressed ? colorNormal : colorPressed; }
-//    }
-
-//    radius: 5
-
     Image {
         id: bg
         width: parent.width;
         height: parent.height;
         visible: backgroundNormal != ""
         fillMode: Image.PreserveAspectFit
-//        source: maButton.pressed ? backgroundPressed : backgroundNormal
         source: backgroundNormal
         anchors.fill: parent
         antialiasing: true
@@ -67,7 +61,6 @@ Rectangle {
         visible: text != ""
         anchors.centerIn: parent
     }
-
 
     MouseArea {
         id: maButton

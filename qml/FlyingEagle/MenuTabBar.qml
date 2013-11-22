@@ -1,3 +1,12 @@
+/*
+ * 筛选工具条
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 根据标题数组动态创建和改变导航条上的按钮数
+**/
+
 import QtQuick 2.0
 import "componentCreation.js" as ComponentCreation
 

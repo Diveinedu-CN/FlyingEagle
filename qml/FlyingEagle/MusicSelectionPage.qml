@@ -1,5 +1,5 @@
 /*
- *点歌界面
+ * 歌名点歌界面
 **/
 import QtQuick 2.0
 import "componentCreation.js" as ComponentCreation

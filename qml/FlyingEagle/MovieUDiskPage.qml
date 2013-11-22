@@ -1,3 +1,12 @@
+/*
+ * U盘加歌和电影播放选择工具条
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能:
+**/
+
 import QtQuick 2.0
 
 Rectangle {
@@ -34,7 +43,7 @@ Rectangle {
         onMovieClicked: movieUDisk.hidePage()
     }
 
-
+    //显示U盘加个界面
     function showUDisk()
     {
         movieUDisk.udiskVisible = true
@@ -42,12 +51,15 @@ Rectangle {
         movieUDisk.visible = true;
     }
 
+    //显示电影播放界面
     function showMovie()
     {
         movieUDisk.udiskVisible = false
         movieUDisk.movieVisible = true
         movieUDisk.visible = true;
     }
+
+    //隐藏工具条
     function hidePage()
     {
         movieUDisk.visible = false;

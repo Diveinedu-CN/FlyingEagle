@@ -1,3 +1,11 @@
+/*
+ * 歌曲搜索框文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 搜索框的实现文件,获取焦点弹出下拉列表.失去焦点收起下拉列表
+**/
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
@@ -53,7 +61,7 @@ Rectangle {
                 }
             }
         }
-
+        //键盘按键事件
         Keys.onReleased: {
             if (searchBar.text.length >= 0)
             {
@@ -90,7 +98,7 @@ Rectangle {
             }
         }
     }
-
+    //搜索栏的结果列表
     Rectangle  {
         id:menuList
         z:searchBar.z-10;
@@ -176,7 +184,7 @@ Rectangle {
             onClicked: {
                 keyboard.state = "hide";
                 popContentAreaTimer.start();
-                searchDiv.handleSearch("", 0)
+                searchDiv.handleSearch("", 0);//跳转打开搜索结果页面
             }
         }
     }

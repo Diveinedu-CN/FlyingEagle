@@ -1,3 +1,11 @@
+/*
+ * 输入法页面文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 歌曲搜索输入时候的手写输入法总入口控件,包含英文键盘,数字键盘,手写键盘
+**/
 import QtQuick 2.0
 import "script.js" as Tab
 Item {

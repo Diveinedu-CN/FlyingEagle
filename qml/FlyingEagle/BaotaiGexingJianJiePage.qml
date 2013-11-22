@@ -1,3 +1,11 @@
+/*
+ * 报台弹出界面, 歌星简介界面, MV预览界面,发送祝福语界面,以及二次筛选键盘输入界面文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 窗口之间的显示通过visible属性来切换
+**/
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import "KeyBoard"
@@ -728,7 +736,7 @@ Rectangle {
                         shoupin_keyboard.visible = false;
                         shouxie_keyboard.visible = true;
                     }
-
+                    //键盘上面的文字栏
                     TextInput {
                         id: secendFilter_input
                         anchors.left: parent.left;
@@ -745,6 +753,7 @@ Rectangle {
                         anchors.bottom: shoupin_keyboard.visible?shoupin_keyboard.top:shouxie_keyboard.top;
                         horizontalAlignment: TextInput.AlignLeft
                     }
+                    //首拼键盘
                     ShouPinKeyBoard {
                         id: shoupin_keyboard;
                         anchors.bottom: parent.bottom;
@@ -755,6 +764,7 @@ Rectangle {
                             baotai_gexing.visible = false;
                         }
                     }
+                    //手写键盘
                     ShouXieKeyBoard {
                         id: shouxie_keyboard
                         anchors.bottom: parent.bottom;
@@ -767,6 +777,7 @@ Rectangle {
                     }
 
                 }
+                //字数输入
                 Rectangle {
                     id:zishuInputKeyboard;
                     visible: zishu.selected;

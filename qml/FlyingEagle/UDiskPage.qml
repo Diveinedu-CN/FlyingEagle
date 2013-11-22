@@ -1,3 +1,11 @@
+/*
+ * 优盘加歌页面文件
+ *
+ * 开发团队: 月光涯信息科技有限公司
+ * 官方网址: www.yueguangya.com
+ *
+ * 功能: 优盘加歌列表界面和优盘加歌编辑界面
+**/
 import QtQuick 2.0
 import Fakekey 1.0
 import Zinnia 1.0
@@ -15,7 +23,9 @@ Rectangle {
 
         }
     }
-
+    /*
+     *  优盘加歌内容列表页面.和编辑页面并列,采取visible控制切换
+     */
     Rectangle {
         id:udiskAddList
         anchors.fill: parent;
@@ -184,6 +194,9 @@ Rectangle {
                 mediaId: 3
             }
         }
+        /*
+         *  优盘加歌内容列表.
+         */
         GridView {
             id: mediaList
             x: 55
@@ -292,6 +305,9 @@ Rectangle {
             }
         }
 
+        /*
+         *  优盘加歌内容列表页面的加歌弹出小窗口.
+         */
         Rectangle {
             id: udiskPopup
             x: 594
@@ -710,87 +726,7 @@ Rectangle {
             }
         }
 
-//        Rectangle {
-//            x: 157
-//            y: 163
-//            width: 208; height: 38;
-//            PushButton {
-//                anchors.left: parent.left;
-//                backgroundNormal: "images/udiskAddEditInput-.png";
-//                width: 50; height: 38;
-//                visible: false;
-//            }
-//            TextInput {
-//                width: 105
-//                height: 34
-//                anchors.left: parent.left;
-//                anchors.leftMargin: 50;
-//                anchors.top: parent.top;
-//                anchors.topMargin: 2;
-//                Image {
-//                    anchors.fill: parent
-//                    source: "images/udiskAddEditInputBg.png"
-//                }
-//                font.pixelSize: 22
-//                color: "white"
-//                visible: false;
-//            }
-//            PushButton {
-//                anchors.right: parent.right;
-//                backgroundNormal: "images/udiskAddEditInput+.png";
-//                width: 50; height: 38;
-//                visible: false;
-//            }
-//        }
-//
-//        Rectangle {
-//            x: 156
-//            y: 208
-//            width: 208
-//            height: 38
-//        }
 
-//        Rectangle {
-//            x: 156
-//            y: 251
-//            width: 208
-//            height: 38
-//        }
-
-//        Rectangle {
-//            x: 156
-//            y: 296
-//            width: 208
-//            height: 38
-//        }
-
-//        Rectangle {
-//            x: 523
-//            y: 163
-//            width: 208
-//            height: 38
-//        }
-
-//        Rectangle {
-//            x: 523
-//            y: 208
-//            width: 208
-//            height: 38
-//        }
-
-//        Rectangle {
-//            x: 523
-//            y: 251
-//            width: 208
-//            height: 38
-//        }
-
-//        Rectangle {
-//            x: 523
-//            y: 296
-//            width: 208
-//            height: 38
-//        }
 
         //右边上面的输入框
         Rectangle {

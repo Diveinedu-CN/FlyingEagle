@@ -36,16 +36,15 @@ Rectangle {
         }
 
         /*
-         * 闪屏页面
-         * textprerender, 字体渲染缓存,解决中文字体渲染效率太低导致页面滑动慢的问题, 定时器控制4s后消失, 会加载常用中文字库
-         * 目前加载了6000多个汉字
+         * Splash页面
          **/
         Component {
             id: textprerender;
             TextArea {
                 anchors.fill: parent;
-                font.pixelSize: 20;
-                text:"把中文字库的常用汉字放到我这里来,在进去主界面之前进行预渲染.点击屏幕进入主界面.";
+                font.pixelSize: 80;
+                font.family: "翩翩体-简"
+                text:"欢迎使用戴维营教育影音娱乐系统.\nhttp://www.diveinedu.cn";
                 verticalAlignment: TextEdit.AlignVCenter;
                 horizontalAlignment: TextEdit.AlignHCenter;
                 textColor: "red";

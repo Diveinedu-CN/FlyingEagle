@@ -11,7 +11,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 import QtQuick.Particles 2.0
-
+import QtMultimedia 5.0
 Rectangle {
     id: rectangle1
     width: 1280
@@ -151,7 +151,32 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: isPlaying? qsTr("暂停") : qsTr("播放");
         backgroundNormal: isPlaying ? "images/zanting.png" : "images/bofang.png";
-        onClicked: isPlaying = !isPlaying;
+        onClicked:
+        {
+            zantingButton.isPlaying = !zantingButton.isPlaying;
+            if(player.playbackState == MediaPlayer.PlayingState)
+            {
+                player.pause();
+            }else
+            {
+                player.play();
+            }
+        }
+        Connections {
+            target: player
+            onPaused:{
+                zantingButton.isPlaying = false;
+                yinliangSlider.value = player.volume;
+            }
+            onStopped:{
+                zantingButton.isPlaying = false;
+                yinliangSlider.value = player.volume;
+            }
+            onPlaying:{
+                zantingButton.isPlaying = true;
+                yinliangSlider.value = player.volume;
+            }
+        }
     }
 
     //重唱按钮
@@ -162,6 +187,9 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: qsTr("重唱")
         backgroundNormal: "images/chongchang.png"
+        onClicked: {
+            player.seek(0);
+        }
     }
 
     //调音按钮
@@ -186,7 +214,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.topMargin: 46
         height: 38
-
+        value: 0.5
         style: SliderStyle {
             groove: Image {
                 source: "images/tuning_sfront.png"
@@ -199,6 +227,9 @@ Rectangle {
                 source: "images/buttom.png"
             }
         }
+        onValueChanged: {
+            player.volume = value;
+        }
     }
 
     //静音, 开启按钮
@@ -210,7 +241,10 @@ Rectangle {
         anchors.bottom: parent.bottom
         text: isMuted?qsTr("静音"):qsTr("开启")
         backgroundNormal: isMuted?"images/jingyin.png":"images/kaiqi.png"
-        onClicked: isMuted = !isMuted;
+        onClicked: {
+            isMuted = !isMuted;
+            player.muted = isMuted;
+        }
     }
 
     //气氛按钮
@@ -245,6 +279,14 @@ Rectangle {
         height: 41
         color: "transparent"
         clip: true
+        Timer {
+            interval: 500; running: true; repeat: true
+            triggeredOnStart: true;
+            onTriggered: {
+                jinduProgressBar.progressValue = 1 - player.position/player.duration;
+                progressAnimation.stop();
+            }
+        }
         SequentialAnimation {
             id: progressAnimation
             loops: Animation.Infinite
@@ -252,7 +294,7 @@ Rectangle {
                 target: jinduProgressBar;
                 property: "progressValue"
                 from: 0
-                to: 1;
+                to: jinduProgressBar.progressValue;
                 duration: 4000;
             }
         }

@@ -11,7 +11,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 import QtQuick.Particles 2.0
-
+import QtMultimedia 5.0
 Rectangle {
     /*
      * 主窗口大小
@@ -69,6 +69,14 @@ Rectangle {
                 }
             }
 
+        }
+    }
+    MediaPlayer {
+        id: player
+        Component.onCompleted:
+        {
+            source = "images/yongqi.mp3";
+            player.play();
         }
     }
 }
